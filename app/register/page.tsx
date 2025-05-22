@@ -5,7 +5,7 @@ import { PatientForm } from "@/components/forms/PatientForm";
 
 const RegisterPage = () => {
   return (
-    <section className="remove-scrollbar container my-auto">
+    <section className="remove-scrollbar container my-auto bg-[#030303]">
       <div className="sub-container max-w-[496px]">
         <Image
           src="/assets/icons/logo-full.svg"

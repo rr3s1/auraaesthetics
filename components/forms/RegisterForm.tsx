@@ -103,14 +103,14 @@ const RegisterForm = ({ user }: { user: User }) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex-1 space-y-12"
       >
-        <section className="space-y-4">
+        <section className="space-y-4 ">
           <h1 className="header">Welcome 👋</h1>
-          <p className="text-dark-700">Let us know more about yourself.</p>
+          <p className="text-gray-300">Let us know more about yourself.</p>
         </section>
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Personal Information</h2>
+            <h2 className="sub-header text-gray-200">Personal Information</h2>
           </div>
 
           {/* NAME */}
@@ -122,6 +122,8 @@ const RegisterForm = ({ user }: { user: User }) => {
             placeholder="John Doe"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
+            label="Name"
+            labelClassName="text-gray-300"
           />
 
           {/* EMAIL & PHONE */}
@@ -131,6 +133,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="email"
               label="Email address"
+              labelClassName="text-gray-300"
               placeholder="johndoe@gmail.com"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
@@ -141,6 +144,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
+              labelClassName="text-gray-300"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -152,6 +156,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="birthDate"
               label="Date of birth"
+              labelClassName="text-gray-300"
             />
 
             <CustomFormField
@@ -159,6 +164,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="gender"
               label="Gender"
+              labelClassName="text-gray-300"
               renderSkeleton={(field) => (
                 <FormControl>
                   <RadioGroup
@@ -169,7 +175,10 @@ const RegisterForm = ({ user }: { user: User }) => {
                     {GenderOptions.map((option, i) => (
                       <div key={option + i} className="radio-group">
                         <RadioGroupItem value={option} id={option} />
-                        <Label htmlFor={option} className="cursor-pointer">
+                        <Label
+                          htmlFor={option}
+                          className="cursor-pointer text-gray-300"
+                        >
                           {option}
                         </Label>
                       </div>
@@ -187,6 +196,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
+              labelClassName="text-gray-300"
               placeholder="14 street, New york, NY - 5101"
             />
 
@@ -195,6 +205,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="occupation"
               label="Occupation"
+              labelClassName="text-gray-300"
               placeholder=" Software Engineer"
             />
           </div>
@@ -206,6 +217,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactName"
               label="Emergency contact name"
+              labelClassName="text-gray-300"
               placeholder="Guardian's name"
             />
 
@@ -214,6 +226,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactNumber"
               label="Emergency contact number"
+              labelClassName="text-gray-300"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -221,7 +234,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Medical Information</h2>
+            <h2 className="sub-header text-gray-200">Medical Information</h2>
           </div>
 
           {/* PRIMARY CARE PHYSICIAN */}
@@ -230,6 +243,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="primaryPhysician"
             label="Primary care physician"
+            labelClassName="text-gray-300"
             placeholder="Select a physician"
           >
             {Doctors.map((doctor, i) => (
@@ -255,6 +269,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insuranceProvider"
               label="Insurance provider"
+              labelClassName="text-gray-300"
               placeholder="BlueCross BlueShield"
             />
 
@@ -263,6 +278,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
+              labelClassName="text-gray-300"
               placeholder="ABC123456789"
             />
           </div>
@@ -274,6 +290,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="allergies"
               label="Allergies (if any)"
+              labelClassName="text-gray-300"
               placeholder="Peanuts, Penicillin, Pollen"
             />
 
@@ -282,18 +299,20 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="currentMedication"
               label="Current medications"
+              labelClassName="text-gray-300"
               placeholder="Ibuprofen 200mg, Levothyroxine 50mcg"
             />
           </div>
 
-          {/* FAMILY MEDICATION & PAST MEDICATIONS */}
+          {/* FAMILY MEDICAL HISTORY & PAST MEDICAL HISTORY */}
           <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.TEXTAREA}
               control={form.control}
               name="familyMedicalHistory"
-              label=" Family medical history (if relevant)"
-              placeholder="Mother had brain cancer, Father has hypertension"
+              label="Family medical history (if relevant)"
+              labelClassName="text-gray-300"
+              placeholder="allwell"
             />
 
             <CustomFormField
@@ -301,21 +320,25 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="pastMedicalHistory"
               label="Past medical history"
-              placeholder="Appendectomy in 2015, Asthma diagnosis in childhood"
+              labelClassName="text-gray-300"
+              placeholder="Appendectomy in 2015"
             />
           </div>
         </section>
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Identification and Verfication</h2>
+            <h2 className="sub-header text-gray-200">
+              Identification and Verification
+            </h2>
           </div>
 
           <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="identificationType"
-            label="Identification Type"
+            label="Identification type"
+            labelClassName="text-gray-300"
             placeholder="Select identification type"
           >
             {IdentificationTypes.map((type, i) => (
@@ -329,7 +352,8 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="identificationNumber"
-            label="Identification Number"
+            label="Identification number"
+            labelClassName="text-gray-300"
             placeholder="123456789"
           />
 
@@ -337,7 +361,8 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.SKELETON}
             control={form.control}
             name="identificationDocument"
-            label="Scanned Copy of Identification Document"
+            label="Scanned copy of identification document"
+            labelClassName="text-gray-300"
             renderSkeleton={(field) => (
               <FormControl>
                 <FileUploader files={field.value} onChange={field.onChange} />
@@ -348,7 +373,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Consent and Privacy</h2>
+            <h2 className="sub-header text-gray-200">Consent and Privacy</h2>
           </div>
 
           <CustomFormField
@@ -356,22 +381,23 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="treatmentConsent"
             label="I consent to receive treatment for my health condition."
+            labelClassName="text-gray-300"
           />
 
           <CustomFormField
             fieldType={FormFieldType.CHECKBOX}
             control={form.control}
             name="disclosureConsent"
-            label="I consent to the use and disclosure of my health
-            information for treatment purposes."
+            label="I consent to the use and disclosure of my health information for treatment purposes."
+            labelClassName="text-gray-300"
           />
 
           <CustomFormField
             fieldType={FormFieldType.CHECKBOX}
             control={form.control}
             name="privacyConsent"
-            label="I acknowledge that I have reviewed and agree to the
-            privacy policy"
+            label="I acknowledge that I have reviewed and agree to the privacy policy"
+            labelClassName="text-gray-300"
           />
         </section>
 

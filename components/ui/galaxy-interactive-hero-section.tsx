@@ -13,14 +13,18 @@ function HeroSplineBackground() {
       pointerEvents: 'auto',
       overflow: 'hidden',
     }}>
-      <Suspense fallback={<div className="w-full h-full flex items-center justify-center bg-black text-white">Loading 3D Scene...</div>}>
+      <Suspense fallback={<div className="w-full h-full flex items-center opacity-10 pointer-event-none justify-center bg-black text-white">Loading 3D Scene...</div>}>
+        {/* TODO: Replace this Spline scene with one more fitting for a luxury beauty clinic.
+            Consider themes of elegance, abstract beauty, flowing forms, or subtle medical aesthetics.
+            Example ideas: flowing silk, shimmering particles, abstract cellular structures, serene water ripples.
+        */}
         <Spline
           style={{
             width: '100%',
             height: '100vh',
-            pointerEvents: 'auto',
+            pointerEvents: 'none',
           }}
-          scene="https://prod.spline.design/us3ALejTXl6usHZ7/scene.splinecode" // Original
+          scene="https://prod.spline.design/UXhA81Qx4H9Zwevi/scene.splinecode" // Original - Keep as placeholder, recommend changing
         />
       </Suspense>
       <div
@@ -31,8 +35,8 @@ function HeroSplineBackground() {
           width: '100%',
           height: '100vh',
           background: `
-            linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.8)),
-            linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.9))
+            linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent 25%, transparent 75%, rgba(0, 0, 0, 0.4)),
+            linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5))
           `,
           pointerEvents: 'none',
         }}
@@ -45,11 +49,11 @@ function HeroContent() {
   return (
     <div className="text-left text-white pt-16 sm:pt-24 md:pt-32 px-4 max-w-4xl">
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-wide">
-        DRIVE YOUR <span className="text-purple-400">DREAM</span>.<br />
-        WE BUILD <span className="text-pink-400">PERFORMANCE</span> & <span className="text-teal-400">STYLE</span>
+       <span className="text-purple-400"></span>
+       RADIATE  <br/> <span className="text-pink-400">APPEAL</span> & <span className="text-teal-400">HEALTH</span>
       </h1>
       <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90 max-w-2xl italic">
-        Creators of the world’s most iconic modified vehicles. Your vision, our craftsmanship.
+        Pioneers in advanced aesthetic treatments. Your journey to confidence, guided by our expertise.
       </p>
     </div>
   );
@@ -65,9 +69,9 @@ function Navbar() {
   });
 
   const navItems = {
-    Services: ["Overview", "Custom Builds", "Performance Tuning", "Interior Upgrades"],
-    Gallery: ["Featured Builds", "Client Cars", "Concept Designs"],
-    About: ["Our Story", "The Team", "Craftsmanship"],
+    Services: ["Skin Rejuvenation", "Injectables & Fillers", "Body Contouring", "Wellness Therapies"],
+    Gallery: ["Client Transformations", "Our Luxurious Clinic", "Advanced Technology"],
+    About: ["Our Philosophy", "Meet Our Experts", "The Aura Experience"],
   };
 
   const handleMouseEnterNavItem = (item: string) => setHoveredNavItem(item);
@@ -86,10 +90,10 @@ function Navbar() {
 
   const navLinkClass = (itemName: string, extraClasses = '') =>
     `text-sm font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
-      hoveredNavItem === itemName || 
-      (itemName === 'Services' && (hoveredNavItem === 'Overview' || hoveredNavItem === 'Custom Builds' || hoveredNavItem === 'Performance Tuning' || hoveredNavItem === 'Interior Upgrades')) ||
-      (itemName === 'Gallery' && (hoveredNavItem === 'Featured Builds' || hoveredNavItem === 'Client Cars' || hoveredNavItem === 'Concept Designs')) ||
-      (itemName === 'About' && (hoveredNavItem === 'Our Story' || hoveredNavItem === 'The Team' || hoveredNavItem === 'Craftsmanship'))
+      hoveredNavItem === itemName ||
+      (itemName === 'Services' && (navItems.Services.includes(hoveredNavItem || ''))) ||
+      (itemName === 'Gallery' && (navItems.Gallery.includes(hoveredNavItem || ''))) ||
+      (itemName === 'About' && (navItems.About.includes(hoveredNavItem || '')))
         ? 'bg-gray-700/50 text-white'
         : 'text-gray-300 hover:text-white hover:bg-gray-700/30'
     } ${extraClasses}`;
@@ -111,7 +115,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16 ">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0 text-white text-xl font-bold">
-              URBANMODS
+              AURA AESTHETICS
             </a>
           </div>
           <div className="hidden md:flex items-center space-x-2">
@@ -126,12 +130,14 @@ function Navbar() {
                   {key}
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down inline-block ml-1 transition-transform duration-200 group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div className={`absolute left-0 mt-1 w-48 bg-gray-800/80 backdrop-blur-lg rounded-md shadow-lg py-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200`}>
+                <div className={`absolute left-0 mt-1 w-56 bg-gray-800/80 backdrop-blur-lg rounded-md shadow-lg py-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200`}>
                   {subItems.map(subItem => (
                     <a
                       key={subItem}
-                      href="#"
+                      href="#" // TODO: Update hrefs for actual navigation
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-white"
+                      onMouseEnter={() => handleMouseEnterNavItem(subItem)}
+                      onMouseLeave={() => handleMouseEnterNavItem(key)}
                     >
                       {subItem}
                     </a>
@@ -139,13 +145,13 @@ function Navbar() {
                 </div>
               </div>
             ))}
-            <a href="#" className={navLinkClass("Shop")}>Shop</a>
+            <a href="#" className={navLinkClass("Book Now")}>Book Now</a>
             <a href="#" className={navLinkClass("Contact Us")}>Contact Us</a>
           </div>
           <div className="hidden md:flex items-center space-x-3">
-            <Link href="/register" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+            <a href="/register" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
               Register
-            </Link>
+            </a>
             <Link href="/admin" className="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors duration-200">
               Admin
             </Link>
@@ -181,11 +187,11 @@ function Navbar() {
             </div>
           </div>
         ))}
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Shop</a>
+        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Book Now</a>
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Us</a>
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Sign In</a>
+        <a href="/client-portal" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Client Portal</a>
          <button className="w-full mt-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2.5 px-4 rounded-md transition-colors duration-200" onClick={toggleMobileMenu}>
-            Explore Builds
+            Book Appointment
         </button>
       </div>
     </nav>
@@ -201,7 +207,7 @@ export const HeroSection = () => {
       if (heroContentRef.current) {
         requestAnimationFrame(() => {
           const scrollPosition = window.pageYOffset;
-          const maxScroll = 400; 
+          const maxScroll = 400;
           const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
           if (heroContentRef.current) {
             heroContentRef.current.style.opacity = opacity.toString();
@@ -214,12 +220,12 @@ export const HeroSection = () => {
   }, []);
 
   const cardData = [
-    { title: "Bespoke Vehicle Resprays", image: "/placeholder/car-respray.jpg", alt: "Custom car paint job", linkText: "EXPLORE FINISHES" },
-    { title: "Custom Body Kit Fitting", image: "/placeholder/car-bodykit.jpg", alt: "Car with custom body kit", linkText: "VIEW DESIGNS" },
-    { title: "Performance Caliper Painting", image: "/placeholder/car-caliper.jpg", alt: "Custom painted brake caliper", linkText: "SEE OPTIONS" },
-    { title: "Luxury Interior Upgrades", image: "/placeholder/car-interior.jpg", alt: "Upgraded luxury car interior", linkText: "DISCOVER MORE" },
-    { title: "Carbon Fibre Components", image: "/placeholder/car-carbon-parts.jpg", alt: "Custom carbon fibre car parts", linkText: "LEARN MORE" },
-    { title: "Wheel & Tyre Packages", image: "/placeholder/car-wheels.jpg", alt: "Custom alloy wheels on a car", linkText: "BROWSE SELECTION" },
+    { title: "Advanced Dermal Fillers", image: "/placeholder/dermal-fillers.jpg", alt: "Client receiving dermal filler treatment", linkText: "DISCOVER SMOOTHING" },
+    { title: "Laser Skin Rejuvenation", image: "/placeholder/laser-rejuvenation.jpg", alt: "Advanced laser skin treatment", linkText: "EXPLORE RADIANCE" },
+    { title: "Non-Invasive Body Sculpting", image: "/placeholder/body-sculpting.jpg", alt: "Client undergoing body sculpting treatment", linkText: "VIEW CONTOURING" },
+    { title: "Luxury Bespoke Facials", image: "/placeholder/luxury-facial.jpg", alt: "Relaxing luxury facial treatment", linkText: "EXPERIENCE PAMPERING" },
+    { title: "Medical-Grade Skincare", image: "/placeholder/medical-skincare.jpg", alt: "Display of premium medical-grade skincare products", linkText: "LEARN MORE" },
+    { title: "Hair Restoration Therapies", image: "/placeholder/hair-restoration.jpg", alt: "Advanced hair restoration procedure", linkText: "BROWSE SOLUTIONS" },
   ];
 
   return (
@@ -247,29 +253,29 @@ export const HeroSection = () => {
 
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">THE <span className="text-purple-400">URBANMODS</span> DIFFERENCE</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">THE <span className="text-purple-400">AURA</span> DIFFERENCE</h2>
               <p className="text-lg opacity-80 mb-6">
-                At UrbanMods, we've been leaders in car modification for over 30 years, offering bespoke services that transform luxury vehicles into one-of-a-kind masterpieces. We live by "Your urban, your rules" – championing individual expression through meticulous craftsmanship and cutting-edge design.
+                At Aura Aesthetics, we blend artistry with medical science to deliver transformative results. For over 15 years, we've been at the forefront of luxury aesthetic care, offering personalized treatments that enhance your natural beauty and boost your confidence. We believe in 'Your Radiance, Our Passion' – empowering you through meticulous care and state-of-the-art techniques.
               </p>
               <a href="#" className="text-purple-400 hover:text-purple-300 font-semibold">Discover Our Philosophy →</a>
             </div>
             <div className="text-center">
-              <img src="/placeholder/car-workshop-sleek.jpg" alt="Sleek modified car in a modern workshop" className="rounded-lg shadow-xl mx-auto w-full max-w-md" />
+              <img src="/placeholder/clinic-reception-luxury.jpg" alt="Luxurious reception area of Aura Aesthetics clinic" className="rounded-lg shadow-xl mx-auto w-full max-w-md" />
             </div>
             <blockquote className="md:col-span-2 text-center text-xl sm:text-2xl italic opacity-90 py-8 border-t border-b border-gray-700">
-              <p>"A one-off each time. Your urban your rules –</p>
-              <p>we share a necessity for individual expression."</p>
-              <cite className="block mt-4 not-italic text-base opacity-70">– UrbanMods Ethos</cite>
+              <p>"Where science meets artistry,</p>
+              <p>and confidence is beautifully sculpted."</p>
+              <cite className="block mt-4 not-italic text-base opacity-70">– The Aura Aesthetics Philosophy</cite>
             </blockquote>
           </section>
 
           <section>
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">OUR MODIFICATION PROGRAMME</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">OUR SIGNATURE TREATMENTS</h2>
               <p className="text-lg opacity-80 max-w-3xl mx-auto">
-                Our modification programme caters to a diverse range of vehicles. We take pride in offering tailor-made solutions that combine style, performance and exclusivity. Each project is handled with meticulous attention to detail, from body modifications and custom interiors to technical upgrades.
+                Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results.
               </p>
-              <img src="/placeholder/car-lineup-modified.jpg" alt="Lineup of custom modified cars" className="rounded-lg shadow-xl mx-auto mt-8 w-full max-w-lg" />
+              <img src="/placeholder/treatment-collage.jpg" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-xl mx-auto mt-8 w-full max-w-lg" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {cardData.map((card, index) => (
@@ -283,69 +289,67 @@ export const HeroSection = () => {
           </section>
 
           <blockquote className="text-center text-2xl sm:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700">
-            <p>"Turning <span className="text-pink-400 font-semibold">Metal</span> into <span className="text-teal-400 font-semibold">Masterpieces</span>,</p>
-            <p>Engineering <span className="text-purple-400 font-semibold">Dreams</span> into <span className="text-orange-400 font-semibold">Reality</span>."</p>
-            <cite className="block mt-4 not-italic text-base opacity-70">– The UrbanMods Team</cite>
+            <p>"Revealing your <span className="text-pink-400 font-semibold">Inner Radiance</span>, Sculpting <span className="text-teal-400 font-semibold">Timeless Elegance</span>."</p>
+            <cite className="block mt-4 not-italic text-base opacity-70">– The Aura Aesthetics Team</cite>
           </blockquote>
 
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-pink-400">THE URBAN LOOK: <span className="italic">OEM PLUS</span></h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-pink-400">THE AURA LOOK: <span className="italic">REFINED NATURALISM</span></h2>
               <p className="text-lg opacity-80 mb-6">
-                It was hard to find aftermarket modifications that weren’t over the top, so we started designing and manufacturing them ourselves. Over time we found an ‘OEM plus’ design style was the perfect recipe for redefining luxury and performance vehicles in a subtle yet striking way.
+                We found that the most profound beauty enhancements are those that honor individuality. Our 'Refined Naturalism' approach focuses on subtle yet significant improvements, using advanced techniques to restore youthfulness and highlight your unique features, ensuring you look like the best version of yourself.
               </p>
-              <a href="#" className="text-pink-400 hover:text-pink-300 font-semibold">Explore Our Design Language →</a>
+              <a href="#" className="text-pink-400 hover:text-pink-300 font-semibold">Explore Our Aesthetic Philosophy →</a>
             </div>
             <div className="text-center">
-              <img src="/placeholder/car-oem-plus.jpg" alt="Car showcasing OEM plus design modification" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
+              <img src="/placeholder/natural-enhancement-result.jpg" alt="Client showcasing natural-looking aesthetic results" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
           </section>
 
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
              <div className="text-center md:order-2">
-              <img src="/placeholder/car-carbon-fibre-detail.jpg" alt="Close up of carbon fibre car component" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
+              <img src="/placeholder/advanced-clinic-tech.jpg" alt="State-of-the-art aesthetic technology in a clinic setting" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
             <div className="md:order-1">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-teal-400">MASTERS OF CARBON FIBRE</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-teal-400">MASTERS OF <span className="italic">AESTHETIC INNOVATION</span></h2>
               <p className="text-lg opacity-80 mb-6">
-                We are experts at manufacturing our own carbon fibre and other components to the highest standards in our own facilities. This means we have complete quality control and knowledge of our components through design, manufacture, and assembly - guaranteeing perfect fitment, finish, and aftercare.
+                We are dedicated to utilizing the latest, clinically-proven technologies and premium medical-grade products. Our investment in state-of-the-art equipment and continuous training ensures we deliver the safest, most effective treatments with superior outcomes and client satisfaction.
               </p>
-              <a href="#" className="text-teal-400 hover:text-teal-300 font-semibold">Discover Our Carbon Tech →</a>
+              <a href="#" className="text-teal-400 hover:text-teal-300 font-semibold">Discover Our Technologies →</a>
             </div>
           </section>
 
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-orange-400">PERFORMANCE ENGINEERING</h2> {/* Changed color for variety */}
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-orange-400">PERSONALISED <span className="italic">TREATMENT JOURNEYS</span></h2>
               <p className="text-lg opacity-80 mb-6">
-                Beyond aesthetics, our modifications delve deep into enhancing vehicle dynamics. From engine tuning and exhaust systems to suspension upgrades and braking enhancements, we engineer every aspect for peak performance and an exhilarating driving experience, without compromising reliability.
+                Beyond individual treatments, we focus on holistic, personalized journeys. Our expert consultations lead to bespoke plans addressing your unique concerns and goals, ensuring comprehensive care and results that not only look exceptional but also promote long-term skin health and well-being.
               </p>
-              <a href="#" className="text-orange-400 hover:text-orange-300 font-semibold">Explore Performance Upgrades →</a>
+              <a href="#" className="text-orange-400 hover:text-orange-300 font-semibold">Explore Our Approach →</a>
             </div>
             <div className="text-center">
-                 <img src="/placeholder/car-engine-bay.jpg" alt="Detailed view of a modified car engine bay" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
+                 <img src="/placeholder/client-consultation.jpg" alt="Doctor consulting with a client in a luxury clinic" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
           </section>
           
           <blockquote className="text-center text-xl sm:text-2xl italic opacity-90 py-10 border-t border-b border-gray-700 max-w-3xl mx-auto">
-            <p>"The magic of UrbanMods' work recreated the car I always envisioned, reflecting how I feel behind the wheel – pure exhilaration!"</p>
-            <cite className="block mt-4 not-italic text-base opacity-70">– A Thrilled UrbanMods Client</cite>
+            <p>"The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"</p>
+            <cite className="block mt-4 not-italic text-base opacity-70">– A Delighted Aura Client</cite>
           </blockquote>
 
           <section className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">CLIENT BUILDS & TESTIMONIALS</h2>
-            <p className="text-lg opacity-80 mb-4">See what our clients are saying and explore a gallery of their unique vehicles.</p>
-            {/* Placeholder for actual reviews/gallery component */}
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">CLIENT TRANSFORMATIONS & TESTIMONIALS</h2>
+            <p className="text-lg opacity-80 mb-4">Hear from our valued clients and witness the beautiful transformations achieved at Aura Aesthetics.</p>
             <a href="#" className="bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium py-3 px-8 rounded-md transition-colors duration-200">
-              View Gallery & Reviews
+              View Gallery & Testimonials
             </a>
           </section>
 
           <section className="text-center pt-12 border-t border-gray-700">
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12">
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">AWARD-WINNING DESIGNS</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">MASTER TECHNICIANS</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">GLOBAL PARTNERSHIPS</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">AWARD-WINNING TREATMENTS</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">BOARD-CERTIFIED EXPERTS</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">PREMIUM BRAND PARTNERS</h3>
             </div>
           </section>
 

@@ -4,6 +4,12 @@
 
 /* ========================================== TAILWIND STYLES */
 @layer base {
+  /* --- MERIENDA FONT FOR TITLES --- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-merienda);
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
   /* --- UPDATED STYLES TO HIDE GLOBAL SCROLLBAR --- */
   html, body {
     /* For Firefox */
@@ -84,11 +90,60 @@
   }
 
   .header {
-    @apply text-32-bold md:text-36-bold;
+    @apply text-32-bold md:text-36-bold font-merienda;
   }
 
   .sub-header {
-    @apply text-18-bold md:text-24-bold;
+    @apply text-18-bold md:text-24-bold font-merienda;
+  }
+  
+  /* Merienda font utility classes */
+  .font-merienda {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  .merienda-title {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merienda-light {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .merienda-regular {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .merienda-medium {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .merienda-bold {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merienda-black {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
   }
 
   .container {
@@ -177,7 +232,7 @@
 
   /* ===== TYPOGRAPHY */
   .text-36-bold {
-    @apply text-[36px] leading-[40px] font-bold;
+    @apply text-[36px] leading-[40px] font-bold font-merienda;
   }
 
   .text-24-bold {

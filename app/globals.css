@@ -240,13 +240,13 @@
   }
 
   .gradient-button-variant {
-    --gb-color-1: #000022;
-    --gb-color-2: #1f3f6d;
-    --gb-color-3: #469396;
-    --gb-color-4: #f1ffa5;
+    --gb-color-1: #001a00;
+    --gb-color-2: #004000;
+    --gb-color-3: #006400;
+    --gb-color-4: #3a8a3a;
     --border-angle: 200deg;
-    --border-color-1: hsla(320, 75%, 90%, 0.6);
-    --border-color-2: hsla(320, 50%, 90%, 0.15);
+    --border-color-1: hsla(120, 75%, 40%, 0.6);
+    --border-color-2: hsla(120, 50%, 40%, 0.15);
   }
 
   .gradient-button-variant:hover {
@@ -254,10 +254,10 @@
     --pos-y: 95.51%;
     --spread-x: 110.24%;
     --spread-y: 110.2%;
-    --gb-color-1: #000020;
-    --gb-color-2: #f1ffa5;
-    --gb-color-3: #469396;
-    --gb-color-4: #1f3f6d;
+    --gb-color-1: #001200;
+    --gb-color-2: #3a8a3a;
+    --gb-color-3: #006400;
+    --gb-color-4: #004000;
     --gb-color-5: #000;
     --stop-1: 0%;
     --stop-2: 10%;
@@ -265,8 +265,8 @@
     --stop-4: 71.34%;
     --stop-5: 90.76%;
     --border-angle: 210deg;
-    --border-color-1: hsla(320, 75%, 90%, 0.2);
-    --border-color-2: hsla(320, 50%, 90%, 0.75);
+    --border-color-1: hsla(120, 75%, 40%, 0.2);
+    --border-color-2: hsla(120, 50%, 40%, 0.75);
   }
 }
 
@@ -352,6 +352,12 @@
     font-family: var(--font-merienda), cursive;
     font-optical-sizing: auto;
     font-weight: 900;
+    font-style: normal;
+  }
+  
+  .font-racing-sans-one {
+    font-family: var(--font-racing-sans-one), sans-serif;
+    font-weight: 400;
     font-style: normal;
   }
 

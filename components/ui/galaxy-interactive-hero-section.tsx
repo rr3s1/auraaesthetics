@@ -52,18 +52,55 @@ function HeroSplineBackground() {
 function HeroContent() {
   return (
     <div className="text-left mb-16 text-white px-4 ">
-      <h1 className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-8xl font-bold  leading-tight tracking-wide">
-        <GradientText className="text-white pl-10">
+      <h1 className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-9xl font-bold  leading-tight tracking-wide">
+        <GradientText className="text-white pl-10 font-racing-sans-one">
           AURA AESTHETICS
         </GradientText>
       </h1>
-      <p className="lg:text-3xl pl-7 pt-10 sm:text-xl md:text-2xl max-w-2xl italic">
-        Pioneers in advanced aesthetic treatments <br /> Your journey to confidence, guided by our expertise.
+      <p className="lg:text-3xl pl-8 pt-10 sm:text-xl md:text-2xl font-bold uppercase italic">
+        <span className="relative inline-block">
+          <span 
+            className="text-orange-400 relative z-10"
+            style={{
+              textShadow: '0 0 15px rgba(255, 120, 0, 0.7), 0 0 25px rgba(255, 120, 0, 0.5)',
+              filter: 'drop-shadow(0 0 5px rgba(255, 120, 0, 0.8))'
+            }}
+          >
+            Pioneers
+          </span>
+        </span> in{' '}
+        <span className="relative inline-block">
+          <span 
+            className="text-purple-400 relative z-10"
+            style={{
+              textShadow: '0 0 15px rgba(168, 85, 247, 0.7), 0 0 25px rgba(168, 85, 247, 0.5)',
+              filter: 'drop-shadow(0 0 5px rgba(168, 85, 247, 0.8))'
+            }}
+          >
+            advanced aesthetic
+          </span>
+        </span>{' '}
+        treatment
+      </p>
+      <p className="lg:text-3xl pl-7 sm:text-xl md:text-2xl max-w-3xl italic">
+        The {' '}
+        <span className="relative inline-block">
+          <span 
+            className="text-green-500 relative z-10"
+            style={{
+              textShadow: '0 0 15px rgba(0, 200, 100, 0.7), 0 0 25px rgba(0, 200, 100, 0.5)',
+              filter: 'drop-shadow(0 0 5px rgba(0, 200, 100, 0.8))'
+            }}
+          >
+          path to confidence
+          </span>
+        </span>{' '}
+        guided by our expertise
       </p>
       <div className="mt-12 pl-5" style={{ pointerEvents: 'auto' }}>
         <Link href="/register">
-          <GradientButton variant="variant" className="text-xl md:text-2xl py-5 px-10 min-w-[240px]">
-            Book Consultation
+          <GradientButton variant="variant" className="text-xl md:text-2xl py-5 px-10 min-w-[240px] font-merienda">
+            REGISTER & BOOK
           </GradientButton>
         </Link>
       </div>
@@ -107,7 +144,7 @@ function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0">
-              <GradientText className="text-white text-xl md:text-2xl lg:text-3xl font-black tracking-wide">
+              <GradientText className="text-white pl-2 text-xl md:text-2xl lg:text-3xl font-black tracking-wide font-racing-sans-one">
                 AURA
               </GradientText>
             </a>

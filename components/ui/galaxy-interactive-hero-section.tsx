@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -19,7 +20,7 @@ function HeroSplineBackground() {
             height: '100vh',
             pointerEvents: 'auto',
           }}
-          scene="https://prod.spline.design/us3ALejTXl6usHZ7/scene.splinecode"
+          scene="https://prod.spline.design/us3ALejTXl6usHZ7/scene.splinecode" // Original
         />
       </Suspense>
       <div
@@ -43,32 +44,30 @@ function HeroSplineBackground() {
 function HeroContent() {
   return (
     <div className="text-left text-white pt-16 sm:pt-24 md:pt-32 px-4 max-w-4xl">
-      {/* Pattern Banner - Interpreted as main title */}
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-wide">
-        FACIAL SURGERY WITH<br />
-        <span className="text-purple-400">EXPERIENCE</span> <span className="text-pink-400">ARTISTRY</span> <span className="text-teal-400">COMPASSION</span>
+        DRIVE YOUR <span className="text-purple-400">DREAM</span>.<br />
+        WE BUILD <span className="text-pink-400">PERFORMANCE</span> & <span className="text-teal-400">STYLE</span>
       </h1>
       <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90 max-w-2xl italic">
-        Operating on someone’s face is the ultimate trust – Tommy Smith
+        Creators of the world’s most iconic modified vehicles. Your vision, our craftsmanship.
       </p>
     </div>
   );
 }
 
-// Navbar remains unchanged from your original file structure
 function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileDropdowns, setMobileDropdowns] = useState({
-    features: false,
-    enterprise: false,
-    resources: false,
+    services: false,
+    gallery: false,
+    about: false,
   });
 
   const navItems = {
-    Features: ["Overview", "Collaboration", "Security", "Integrations"],
-    Enterprise: ["Solutions", "Customers", "Partners", "Pricing"],
-    Resources: ["Blog", "Docs", "Support", "Webinars"],
+    Services: ["Overview", "Custom Builds", "Performance Tuning", "Interior Upgrades"],
+    Gallery: ["Featured Builds", "Client Cars", "Concept Designs"],
+    About: ["Our Story", "The Team", "Craftsmanship"],
   };
 
   const handleMouseEnterNavItem = (item: string) => setHoveredNavItem(item);
@@ -76,9 +75,8 @@ function Navbar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    // Close all dropdowns when mobile menu is closed
     if (isMobileMenuOpen) {
-      setMobileDropdowns({ features: false, enterprise: false, resources: false });
+      setMobileDropdowns({ services: false, gallery: false, about: false });
     }
   };
 
@@ -88,7 +86,10 @@ function Navbar() {
 
   const navLinkClass = (itemName: string, extraClasses = '') =>
     `text-sm font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
-      hoveredNavItem === itemName || (itemName === 'Features' && (hoveredNavItem === 'Overview' || hoveredNavItem === 'Collaboration' || hoveredNavItem === 'Security' || hoveredNavItem === 'Integrations'))
+      hoveredNavItem === itemName || 
+      (itemName === 'Services' && (hoveredNavItem === 'Overview' || hoveredNavItem === 'Custom Builds' || hoveredNavItem === 'Performance Tuning' || hoveredNavItem === 'Interior Upgrades')) ||
+      (itemName === 'Gallery' && (hoveredNavItem === 'Featured Builds' || hoveredNavItem === 'Client Cars' || hoveredNavItem === 'Concept Designs')) ||
+      (itemName === 'About' && (hoveredNavItem === 'Our Story' || hoveredNavItem === 'The Team' || hoveredNavItem === 'Craftsmanship'))
         ? 'bg-gray-700/50 text-white'
         : 'text-gray-300 hover:text-white hover:bg-gray-700/30'
     } ${extraClasses}`;
@@ -97,7 +98,7 @@ function Navbar() {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
-        setMobileDropdowns({ features: false, enterprise: false, resources: false });
+        setMobileDropdowns({ services: false, gallery: false, about: false });
       }
     };
     window.addEventListener('resize', handleResize);
@@ -105,12 +106,12 @@ function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md" style={{pointerEvents: 'auto'}}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 no-scrollbar backdrop-blur-md" style={{pointerEvents: 'auto'}}>
+      <div className="container mx-auto px-4 sm:px-6 no-scrollbar lg:px-8">
+        <div className="flex items-center justify-between h-16 ">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0 text-white text-xl font-bold">
-              YourLogo
+              URBANMODS
             </a>
           </div>
           <div className="hidden md:flex items-center space-x-2">
@@ -138,16 +139,16 @@ function Navbar() {
                 </div>
               </div>
             ))}
-            <a href="#" className={navLinkClass("Pricing")}>Pricing</a>
-            <a href="#" className={navLinkClass("Contact Sales")}>Contact Sales</a>
+            <a href="#" className={navLinkClass("Shop")}>Shop</a>
+            <a href="#" className={navLinkClass("Contact Us")}>Contact Us</a>
           </div>
           <div className="hidden md:flex items-center space-x-3">
-            <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
-              Sign In
-            </a>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors duration-200">
-              Start Free Trial
-            </button>
+            <Link href="/register" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+              Register
+            </Link>
+            <Link href="/admin" className="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors duration-200">
+              Admin
+            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -166,7 +167,6 @@ function Navbar() {
           </div>
         </div>
       </div>
-      {/* Mobile menu */}
       <div className={`md:hidden fixed inset-x-0 top-16 bg-gray-900/95 backdrop-blur-lg p-4 space-y-2 transition-all duration-300 ease-in-out overflow-y-auto max-h-[calc(100vh-4rem)] ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
         {Object.entries(navItems).map(([key, subItems]) => (
           <div key={key} className="relative">
@@ -181,11 +181,11 @@ function Navbar() {
             </div>
           </div>
         ))}
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Pricing</a>
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Sales</a>
+        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Shop</a>
+        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Us</a>
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Sign In</a>
          <button className="w-full mt-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2.5 px-4 rounded-md transition-colors duration-200" onClick={toggleMobileMenu}>
-            Start Free Trial
+            Explore Builds
         </button>
       </div>
     </nav>
@@ -201,7 +201,7 @@ export const HeroSection = () => {
       if (heroContentRef.current) {
         requestAnimationFrame(() => {
           const scrollPosition = window.pageYOffset;
-          const maxScroll = 400; // Adjust for desired fade-out speed
+          const maxScroll = 400; 
           const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
           if (heroContentRef.current) {
             heroContentRef.current.style.opacity = opacity.toString();
@@ -214,11 +214,12 @@ export const HeroSection = () => {
   }, []);
 
   const cardData = [
-    { title: "Unique Facelift Approach", image: "/placeholder/staff-image.jpg", alt: "Clinic staff of Tommy Smith", linkText: "READ FIRST" },
-    { title: "Face & Neck Lift Journey", image: "/placeholder/carousel-recovery.jpg", alt: "Carousel facelift recovery stages", linkText: "READ MORE" },
-    { title: "Facelift Recovery", image: "/placeholder/carousel-recovery.jpg", alt: "Facelift recovery timeline", linkText: "READ MORE" }, // Re-using image, consider unique if available
-    { title: "Facelift Safety & Risks", image: "/placeholder/royal-college.jpg", alt: "Royal College of Surgeons building", linkText: "READ MORE" },
-    { title: "Facelift Reviews", image: "/placeholder/reviews-card.jpg", alt: "Card showing facelift reviews for Tommy Smith", linkText: "READ MORE" },
+    { title: "Bespoke Vehicle Resprays", image: "/placeholder/car-respray.jpg", alt: "Custom car paint job", linkText: "EXPLORE FINISHES" },
+    { title: "Custom Body Kit Fitting", image: "/placeholder/car-bodykit.jpg", alt: "Car with custom body kit", linkText: "VIEW DESIGNS" },
+    { title: "Performance Caliper Painting", image: "/placeholder/car-caliper.jpg", alt: "Custom painted brake caliper", linkText: "SEE OPTIONS" },
+    { title: "Luxury Interior Upgrades", image: "/placeholder/car-interior.jpg", alt: "Upgraded luxury car interior", linkText: "DISCOVER MORE" },
+    { title: "Carbon Fibre Components", image: "/placeholder/car-carbon-parts.jpg", alt: "Custom carbon fibre car parts", linkText: "LEARN MORE" },
+    { title: "Wheel & Tyre Packages", image: "/placeholder/car-wheels.jpg", alt: "Custom alloy wheels on a car", linkText: "BROWSE SELECTION" },
   ];
 
   return (
@@ -241,120 +242,110 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* New Content Sections Start Here */}
-      <div className="bg-black relative z-10 text-white py-16 md:py-24" style={{ marginTop: '-10vh' }}> {/* Adjusted margin top if needed */}
+      <div className="bg-black relative z-10 text-white py-16 md:py-24" style={{ marginTop: '-10vh' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
 
-          {/* THE DIFFERENCE Section */}
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">THE DIFFERENCE</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">THE <span className="text-purple-400">URBANMODS</span> DIFFERENCE</h2>
               <p className="text-lg opacity-80 mb-6">
-                Tommy Smith is an experienced Plastic Surgeon educated in London and Harvard specialising exclusively in Deep Plane Facelifting and Facial Surgery. He is a former President of The British Association of Aesthetic Plastic Surgeons (BAAPS) and is passionate about his work on the face and passionate about his interest in people.
+                At UrbanMods, we've been leaders in car modification for over 30 years, offering bespoke services that transform luxury vehicles into one-of-a-kind masterpieces. We live by "Your urban, your rules" – championing individual expression through meticulous craftsmanship and cutting-edge design.
               </p>
-              <a href="#" className="text-purple-400 hover:text-purple-300 font-semibold">Read more &rarr;</a>
+              <a href="#" className="text-purple-400 hover:text-purple-300 font-semibold">Discover Our Philosophy →</a>
             </div>
             <div className="text-center">
-              <img src="/placeholder/surgeon-examining.jpg" alt="The UK's best facelift surgeon Tommy Smith examining a facelift patient" className="rounded-lg shadow-xl mx-auto w-full max-w-md" />
+              <img src="/placeholder/car-workshop-sleek.jpg" alt="Sleek modified car in a modern workshop" className="rounded-lg shadow-xl mx-auto w-full max-w-md" />
             </div>
             <blockquote className="md:col-span-2 text-center text-xl sm:text-2xl italic opacity-90 py-8 border-t border-b border-gray-700">
-              <p>"Making a significant and worthwhile improvement in a natural way</p>
-              <p>BUT keeping your face still looking like you</p>
-              <p>AND as if it was never touched."</p>
-              <cite className="block mt-4 not-italic text-base opacity-70">– Tommy Smith</cite>
+              <p>"A one-off each time. Your urban your rules –</p>
+              <p>we share a necessity for individual expression."</p>
+              <cite className="block mt-4 not-italic text-base opacity-70">– UrbanMods Ethos</cite>
             </blockquote>
           </section>
 
-          {/* FACE & NECK LIFT WITH Tommy Smith Section */}
           <section>
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">FACE & NECK LIFT WITH Tommy Smith</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">OUR MODIFICATION PROGRAMME</h2>
               <p className="text-lg opacity-80 max-w-3xl mx-auto">
-                Facelift surgery is a rapidly evolving field. Tommy Smith has had an outward looking approach over the last two decades actively contributing to the Science and Safety of Facelift Surgery as well as the wider spheres of Facelift Artistry and Facelift Psychology.
+                Our modification programme caters to a diverse range of vehicles. We take pride in offering tailor-made solutions that combine style, performance and exclusivity. Each project is handled with meticulous attention to detail, from body modifications and custom interiors to technical upgrades.
               </p>
-              <img src="/placeholder/surgeon-examining-2.jpg" alt="The UK's best facelift surgeon Tommy Smith examining a patient" className="rounded-lg shadow-xl mx-auto mt-8 w-full max-w-lg" />
+              <img src="/placeholder/car-lineup-modified.jpg" alt="Lineup of custom modified cars" className="rounded-lg shadow-xl mx-auto mt-8 w-full max-w-lg" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {cardData.map((card, index) => (
                 <div key={index} className="bg-gray-800/50 p-6 rounded-xl shadow-lg border border-gray-700/50 flex flex-col">
                   <img src={card.image} alt={card.alt} className="w-full h-48 object-cover rounded-md mb-4"/>
                   <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                  <a href="#" className="mt-auto text-purple-400 hover:text-purple-300 font-semibold self-start">{card.linkText} &rarr;</a>
+                  <a href="#" className="mt-auto text-purple-400 hover:text-purple-300 font-semibold self-start">{card.linkText} →</a>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Quote Section */}
           <blockquote className="text-center text-2xl sm:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700">
-             {/* Pattern Quote - Interpreted as styled blockquote */}
-            <p>"Turning Facelift Surgery into</p>
-            <p><span className="text-pink-400 font-semibold">Artistry</span> into <span className="text-teal-400 font-semibold">Confidence</span>"</p>
-            <cite className="block mt-4 not-italic text-base opacity-70">– Tommy Smith</cite>
+            <p>"Turning <span className="text-pink-400 font-semibold">Metal</span> into <span className="text-teal-400 font-semibold">Masterpieces</span>,</p>
+            <p>Engineering <span className="text-purple-400 font-semibold">Dreams</span> into <span className="text-orange-400 font-semibold">Reality</span>."</p>
+            <cite className="block mt-4 not-italic text-base opacity-70">– The UrbanMods Team</cite>
           </blockquote>
 
-          {/* FACELIFT ARTISTRY Section */}
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-pink-400">FACELIFT ARTISTRY</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-pink-400">THE URBAN LOOK: <span className="italic">OEM PLUS</span></h2>
               <p className="text-lg opacity-80 mb-6">
-                After studying the original manuscripts of Leonardo da Vinci in the Louvre, Tommy discovered that Leonardo defined natural beauty as the sum of three virtues – youth, femininity, and elegance; characterised by contour, definition, and silhouette. Leonardo called this ‘the formula for the feminine eternal.’ Tommy adapted Leonardo’s formula to improve the results of Deep Plane Facelift Surgery for which he was awarded a Guggenheim Professorship at The Louvre in Paris.
+                It was hard to find aftermarket modifications that weren’t over the top, so we started designing and manufacturing them ourselves. Over time we found an ‘OEM plus’ design style was the perfect recipe for redefining luxury and performance vehicles in a subtle yet striking way.
               </p>
-              <a href="#" className="text-pink-400 hover:text-pink-300 font-semibold">READ MORE &rarr;</a>
+              <a href="#" className="text-pink-400 hover:text-pink-300 font-semibold">Explore Our Design Language →</a>
             </div>
             <div className="text-center">
-              <img src="/placeholder/facelift-patient.jpg" alt="Facelift patient of Tommy Smith" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
+              <img src="/placeholder/car-oem-plus.jpg" alt="Car showcasing OEM plus design modification" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
           </section>
 
-          {/* FACELIFT PSYCHOLOGY Section */}
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-             <div className="text-center md:order-2"> {/* Image on the right for variety */}
-              <img src="/placeholder/facelift-outline.jpg" alt="Facelift outline pencil drawing" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
+             <div className="text-center md:order-2">
+              <img src="/placeholder/car-carbon-fibre-detail.jpg" alt="Close up of carbon fibre car component" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
             <div className="md:order-1">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-teal-400">FACELIFT PSYCHOLOGY</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-teal-400">MASTERS OF CARBON FIBRE</h2>
               <p className="text-lg opacity-80 mb-6">
-                Facelift Surgery is as much about improving confidence and self-esteem as enhancing looks. Compassion and a personal approach are Tommy’s tools for translating the physical change of surgery into the power of confidence. Tommy collaborated in Rome and Oxford with Franca Sozzani, the Editor of Italian Vogue, to highlight and improve the benefits of facial surgery in restoring the confidence of the girl within.
+                We are experts at manufacturing our own carbon fibre and other components to the highest standards in our own facilities. This means we have complete quality control and knowledge of our components through design, manufacture, and assembly - guaranteeing perfect fitment, finish, and aftercare.
               </p>
-              <a href="#" className="text-teal-400 hover:text-teal-300 font-semibold">READ FIRST &rarr;</a>
+              <a href="#" className="text-teal-400 hover:text-teal-300 font-semibold">Discover Our Carbon Tech →</a>
             </div>
           </section>
 
-          {/* FACELIFT SCIENCE Section */}
           <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-purple-400">FACELIFT SCIENCE</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-orange-400">PERFORMANCE ENGINEERING</h2> {/* Changed color for variety */}
               <p className="text-lg opacity-80 mb-6">
-                Facelift Surgery should be evidence based and not dictated by the hype of press or social media. Tommy has a passion for innovation and research reflected in a 20 year history of scientific publications improving the safety, outcome, and recovery from Facelift Surgery. Tommy explores the science of facelift surgery through the lens of original research he has published over the past two decades – what he calls “Faceology”.
+                Beyond aesthetics, our modifications delve deep into enhancing vehicle dynamics. From engine tuning and exhaust systems to suspension upgrades and braking enhancements, we engineer every aspect for peak performance and an exhilarating driving experience, without compromising reliability.
               </p>
-              <a href="#" className="text-purple-400 hover:text-purple-300 font-semibold">READ MORE &rarr;</a>
+              <a href="#" className="text-orange-400 hover:text-orange-300 font-semibold">Explore Performance Upgrades →</a>
             </div>
-             {/* No specific image listed for science, can add one if needed or re-use an abstract one. Using the pencil drawing here as it could fit. */}
             <div className="text-center">
-                {/* Example: <img src="/placeholder/science-abstract.jpg" alt="Abstract representation of facelift science" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/> */}
+                 <img src="/placeholder/car-engine-bay.jpg" alt="Detailed view of a modified car engine bay" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
             </div>
           </section>
           
-          {/* Fiona Golfar Quote Section */}
           <blockquote className="text-center text-xl sm:text-2xl italic opacity-90 py-10 border-t border-b border-gray-700 max-w-3xl mx-auto">
-            <p>"The magic of Tommy’s surgery recreated the face I wanted to see in the mirror and reflected how I felt inside"</p>
-            <cite className="block mt-4 not-italic text-base opacity-70">– Fiona Golfar Editor at Large British VOGUE and Facelift Patient of Tommy Smith.</cite>
+            <p>"The magic of UrbanMods' work recreated the car I always envisioned, reflecting how I feel behind the wheel – pure exhilaration!"</p>
+            <cite className="block mt-4 not-italic text-base opacity-70">– A Thrilled UrbanMods Client</cite>
           </blockquote>
 
-          {/* FACELIFT REVIEWS Section */}
           <section className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">FACELIFT REVIEWS</h2>
-            {/* Content for reviews would go here. For now, it's a heading. */}
-            <p className="text-lg opacity-80">Patient testimonials and reviews will be displayed here.</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8">CLIENT BUILDS & TESTIMONIALS</h2>
+            <p className="text-lg opacity-80 mb-4">See what our clients are saying and explore a gallery of their unique vehicles.</p>
+            {/* Placeholder for actual reviews/gallery component */}
+            <a href="#" className="bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium py-3 px-8 rounded-md transition-colors duration-200">
+              View Gallery & Reviews
+            </a>
           </section>
 
-          {/* Footer Titles Section */}
           <section className="text-center pt-12 border-t border-gray-700">
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12">
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">HUNTERIAN PROFESSOR</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">FORMER PRESIDENT</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">GUGGENHEIM PROFESSOR</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">AWARD-WINNING DESIGNS</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">MASTER TECHNICIANS</h3>
+              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">GLOBAL PARTNERSHIPS</h3>
             </div>
           </section>
 

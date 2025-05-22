@@ -4,11 +4,30 @@
 
 /* ========================================== TAILWIND STYLES */
 @layer base {
-  /* Remove scrollbar */
+  /* --- UPDATED STYLES TO HIDE GLOBAL SCROLLBAR --- */
+  html, body {
+    /* For Firefox */
+    scrollbar-width: none;
+    /* For IE and older Edge */
+    -ms-overflow-style: none;
+  }
+
+  /* For WebKit browsers (Chrome, Safari, newer Edge) */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0px !important;     /* Make scrollbar invisible by setting width to 0 */
+    height: 0px !important;    /* Also for horizontal scrollbar if it were to appear */
+    display: none !important;  /* Reinforce hiding */
+    background: transparent !important; /* Ensure no background artifacts if width/height 0 isn't enough */
+  }
+  /* --- END OF UPDATED STYLES --- */
+
+  /* Original .remove-scrollbar class definition */
   .remove-scrollbar::-webkit-scrollbar {
     width: 0px;
     height: 0px;
     border-radius: 0px;
+    /* display: none; /* You can add this for consistency if this class is used */
   }
 
   .remove-scrollbar::-webkit-scrollbar-track {
@@ -21,13 +40,29 @@
   }
 
   .remove-scrollbar::-webkit-scrollbar-thumb:hover {
-    /* background: #1e2238; */
     background: transparent;
   }
+  
+  /* If you want .remove-scrollbar to be fully cross-browser for specific elements: */
+  /*
+  .remove-scrollbar {
+    scrollbar-width: none; // For Firefox
+    -ms-overflow-style: none; // For IE and older Edge
+  }
+  .remove-scrollbar::-webkit-scrollbar { // For Webkit, already defined above mostly
+    display: none;
+  }
+  */
 }
 
 @layer utilities {
   /* ===== UTILITIES */
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
   .sidebar {
     @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
   }
@@ -57,8 +92,8 @@
   }
 
   .container {
-    @apply relative flex-1 overflow-y-auto px-[5%];
-  }
+    @apply relative flex-1 overflow-y-auto px-[5%]; /* This has overflow-y-auto. If applied to body or html, it could be a source. */
+  }                                                  /* However, based on your HeroSection code, it's used for internal content blocks. */
 
   .sub-container {
     @apply mx-auto flex size-full flex-col py-10;
@@ -348,3 +383,5 @@
 .PhoneInputInput::placeholder {
   color: #1a1d21;
 }
+
+/* The tailwind.config.js content should be in its separate file, not here. */

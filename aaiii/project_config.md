@@ -1,49 +1,26 @@
-# Project Configuration (LTM)
+# project_config.md
+Last-Updated: 2025-03-27
+## Project Goal
+ Upgrade design / styling up to x110 fold for C:\000 AppsProjs\000   MedicalSchedule\000   Implementations\Attempt\FirstNewM\mainC\app\page.tsx 
 
-_This file contains the stable, long-term context for the project._
-_It should be updated infrequently, primarily when core goals, tech, or patterns change._
-
----
-
-## Core Goal
-
-Create minimum 5 high polished sections for the landing page with 'register' & 'book an appointment' buttons on Hero section
-
----
+ implement animations & transitions in all components
+ create more content for each component  
 
 ## Tech Stack
-
-_(List the primary technologies, frameworks, and languages used. E.g.,)_
-
-- **Frontend:** React, TypeScript, CSS Modules
-- **Backend:** Node.js, Express, PostgreSQL
-- **Testing:** Jest, React Testing Library
-- **Linting/Formatting:** ESLint, Prettier
-
----
-
+- **Language(s):** e.g. TypeScript 5, 
+- **Framework(s):** e.g. Next.js 14,
+- **Build / Tooling:** 
 ## Critical Patterns & Conventions
 
-_(Document any non-standard but crucial design patterns, architectural decisions, or coding conventions specific to this project. E.g.,)_
-
-- **State Management:** Redux Toolkit slices pattern.
-- **API Design:** RESTful principles, specific endpoint naming convention `/api/v1/...`.
-- **Error Handling:** Use custom `AppError` class for backend errors.
-- **Commit Messages:** Follow Conventional Commits format.
-
----
-
-## Key Constraints
-
-_(List any major limitations or non-negotiable requirements. E.g.,)_
-
-- Must support IE11 (if applicable).
-- Deployment target is AWS Lambda.
-- Strict adherence to budget/performance targets.
-
----
-
+## Constraints
+- Performance / latency budgets  
+- Security or compliance requirements  
+- External APIs with rate limits or cost ceilings  
 ## Tokenization Settings
-
-- **Estimation Method:** Character-based
-- **Characters Per Token (Estimate):** 4
+- Estimated chars-per-token: 3.5  
+- Max tokens per message: 8 000
+- Plan for summary when **workflow_state.md** exceeds ~12 K chars.
+---
+## Changelog
+- Enhanced the landing page (`app/page.tsx` and its components) with new content, Tailwind CSS styling, and Framer Motion animations.
+<!-- The agent prepends the latest summary here as a new list item after each VALIDATE phase -->

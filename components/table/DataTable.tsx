@@ -7,9 +7,9 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 import { Button } from "@/components/ui/button";
 import {
@@ -52,79 +52,70 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="data-table">
-      <Table className="shad-table">
-        <TableHeader className=" bg-dark-200">
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id} className="shad-table-row-header">
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-                className="shad-table-row"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
+    <div className="data-table w-full">
+      <div className="rounded-md border border-slate-200 dark:border-slate-700">
+        <Table>
+          <TableHeader className="bg-slate-50 dark:bg-slate-800">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id} className="border-slate-200 dark:border-slate-700">
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id} className="text-slate-700 dark:text-slate-300 px-4 py-3">
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-      <div className="table-actions">
+            ))}
+          </TableHeader>
+          <TableBody className="divide-y divide-slate-200 dark:divide-slate-700">
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  className="hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-150"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id} className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          className="shad-gray-btn"
         >
-          <Image
-            src="/assets/icons/arrow.svg"
-            width={24}
-            height={24}
-            alt="arrow"
-          />
+          <ChevronLeftIcon className="h-4 w-4 mr-1" />
+          Previous
         </Button>
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          className="shad-gray-btn"
         >
-          <Image
-            src="/assets/icons/arrow.svg"
-            width={24}
-            height={24}
-            alt="arrow "
-            className="rotate-180"
-          />
+          Next
+          <ChevronRightIcon className="h-4 w-4 ml-1" />
         </Button>
       </div>
     </div>

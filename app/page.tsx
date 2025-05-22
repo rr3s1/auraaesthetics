@@ -1,60 +1,45 @@
-import Image from "next/image";
+"use client";
+
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
-import { PasskeyModal } from "@/components/PasskeyModal";
-
-const Home = ({ searchParams }: SearchParamProps) => {
-  const isAdmin = searchParams?.admin === "true";
+export default function LandingPage() {
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.5 + i * 0.2,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    }),
+  };
 
   return (
-    <div className="flex h-screen max-h-screen">
-      {isAdmin && <PasskeyModal />}
-
-      <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[496px]">
-          <div className="text-center">
-            <Image
-              src="/assets/icons/logo-full.svg"
-              height={1000}
-              width={1000}
-              alt="CarePulse Logo"
-              className="mx-auto mb-12 h-10 w-fit"
-            />
-            <h1 className="header mb-6 text-4xl font-bold">
-              Welcome to CarePulse!
-            </h1>
-            <p className="mb-8 text-lg text-dark-700">
-              Streamlining healthcare appointments for patients and providers.
-              Join us to experience seamless medical scheduling and care.
-            </p>
-            <Link
-              href="/register"
-              className="shad-primary-btn mb-10 inline-block px-6 py-3 text-lg"
-            >
-              Get Started Now
-            </Link>
-          </div>
-
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              &copy; 2024 CarePluse
-            </p>
-            <Link href="/?admin=true" className="text-green-500">
-              Admin
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Image
-        src="/assets/images/onboarding-img.png"
-        height={1000}
-        width={1000}
-        alt="patient"
-        className="side-img max-w-[50%]"
+    <div className="relative min-h-screen bg-[#030303]">
+      <HeroGeometric
+        badge="Medical Scheduler"
+        title1="Streamlined Appointments"
+        title2="Efficient Healthcare Access"
       />
+      <motion.div
+        custom={3} // Animation order after HeroGeometric's internal elements
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col sm:flex-row items-center gap-4 p-4"
+      >
+        <Button asChild size="lg" variant="default" className="px-8 py-3 text-lg w-full sm:w-auto">
+          <Link href="/register">Get Started Now</Link>
+        </Button>
+        <Button asChild size="lg" variant="outline" className="px-8 py-3 text-lg border-white/50 text-white/80 hover:bg-white/10 hover:text-white w-full sm:w-auto">
+          <Link href="/admin">Admin Dashboard</Link>
+        </Button>
+      </motion.div>
     </div>
   );
-};
-
-export default Home;
+}

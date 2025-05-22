@@ -131,4 +131,6 @@ _(Stick to the approved list in Tech Stack unless a strong case is made and appr
 
 ## Changelog
 
+- Implemented a new animated landing page (`app/page.tsx`) using the `HeroGeometric` component, featuring "Get Started Now" and "Admin" navigation buttons.
+- Added `lucide-react` and `framer-motion` as dependencies.
 <!-- The agent prepends the latest summary here as a new list item after each VALIDATE phase -->

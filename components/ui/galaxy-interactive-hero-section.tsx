@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import { GradientText } from "@/components/ui/gradient-text";
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function HeroSplineBackground() {
@@ -25,7 +26,9 @@ function HeroSplineBackground() {
             height: '100vh',
             pointerEvents: 'none',
           }}
-          scene="https://prod.spline.design/UXhA81Qx4H9Zwevi/scene.splinecode" // Original - Keep as placeholder, recommend changing
+          scene="https://prod.spline.design/u9NDfui5LD1sOMit/scene.splinecode" 
+        
+          // Original - Keep as placeholder, recommend changing
         />
       </Suspense>
       <div
@@ -48,12 +51,13 @@ function HeroSplineBackground() {
 
 function HeroContent() {
   return (
-    <div className="text-left text-white pt-16 sm:pt-24 md:pt-32 px-4 max-w-4xl">
-      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-wide">
-       <span className="text-purple-400"></span>
-       RADIATE  <br/> <span className="text-pink-400">APPEAL</span> & <span className="text-teal-400">HEALTH</span>
+    <div className="text-left mb-16 text-white px-4 ">
+      <h1 className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-8xl font-bold  leading-tight tracking-wide">
+        <GradientText className="text-white pl-10">
+          AURA AESTHETICS
+        </GradientText>
       </h1>
-      <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90 max-w-2xl italic">
+      <p className="lg:text-3xl pl-5 pt-10 sm:text-xl md:text-2xl opacity-90 max-w-2xl italic">
         Pioneers in advanced aesthetic treatments. Your journey to confidence, guided by our expertise.
       </p>
     </div>
@@ -90,7 +94,7 @@ function Navbar() {
   };
 
   const navLinkClass = (itemName: string, extraClasses = '') =>
-    `text-sm font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
+    `text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
       hoveredNavItem === itemName ||
       (itemName === 'Services' && (navItems.Services.includes(hoveredNavItem || ''))) ||
       (itemName === 'Gallery' && (navItems.Gallery.includes(hoveredNavItem || ''))) ||
@@ -111,12 +115,14 @@ function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 no-scrollbar backdrop-blur-md" style={{pointerEvents: 'auto'}}>
+    <nav className="fixed top-0 left-0 right-0 z-50 py-4 bg-black/30 no-scrollbar backdrop-blur-md" style={{pointerEvents: 'auto'}}>
       <div className="container mx-auto px-4 sm:px-6 no-scrollbar lg:px-8">
-        <div className="flex items-center justify-between h-16 ">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="flex-shrink-0 text-white text-xl font-bold">
-              AURA AESTHETICS
+            <a href="#" className="flex-shrink-0">
+              <GradientText className="text-white text-xl md:text-2xl lg:text-3xl font-merienda tracking-wide">
+                AURA
+              </GradientText>
             </a>
           </div>
           <div className="hidden md:flex items-center space-x-2">
@@ -136,7 +142,7 @@ function Navbar() {
                     <a
                       key={subItem}
                       href="#" // TODO: Update hrefs for actual navigation
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700/50 hover:text-white"
+                      className="block px-4 py-2 text-base text-gray-300 hover:bg-gray-700/50 hover:text-white"
                       onMouseEnter={() => handleMouseEnterNavItem(subItem)}
                       onMouseLeave={() => handleMouseEnterNavItem(key)}
                     >
@@ -151,7 +157,7 @@ function Navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-3">
             <Link href="/register">
-              <RainbowButton className="text-sm text-black font-medium">
+              <RainbowButton className="text-base md:text-lg text-black font-medium">
                 Register
               </RainbowButton>
             </Link>

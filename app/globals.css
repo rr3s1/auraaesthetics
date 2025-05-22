@@ -407,3 +407,55 @@ button {
     transform: scale(1) translate(0px, 0px);
   }
 }
+
+/* ===== LANDING PAGE STYLE FORM COMPONENTS (New Additions) ===== */
+@layer components {
+  .landing-primary-button {
+    @apply w-full rounded-lg bg-gradient-to-r from-primary-green to-accent-teal px-6 py-3 text-base font-semibold text-white shadow-md transition-opacity duration-300 ease-in-out hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary-green/50 focus:ring-offset-2 disabled:opacity-60;
+  }
+
+  .landing-form-label {
+    @apply mb-1.5 block text-sm font-medium text-neutral-light-gray/90;
+  }
+
+  .landing-form-input-wrapper {
+    @apply flex items-center rounded-lg border border-white/20 bg-white/5 px-3 dark:border-slate-700/50 dark:bg-slate-800/30;
+  }
+
+  .landing-form-input {
+    @apply h-11 flex-1 border-0 bg-transparent p-3 py-2 text-base text-white placeholder-neutral-light-gray/60 focus:outline-none focus:ring-0; /* Adjusted: removed focus:ring-2 focus:ring-primary-green/70 focus:ring-offset-0 as wrapper might handle focus indication better or it can be added if direct input focus is desired */
+  }
+
+  .landing-form-textarea {
+    @apply flex min-h-[100px] w-full rounded-lg border border-white/20 bg-white/5 p-3 text-base text-white placeholder-neutral-light-gray/60 focus:outline-none focus:ring-2 focus:ring-primary-green/70 focus:ring-offset-2 dark:border-slate-700/50 dark:bg-slate-800/30;
+  }
+
+  .landing-form-select-trigger {
+    @apply flex h-11 w-full items-center justify-between whitespace-nowrap rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-base text-white ring-offset-transparent placeholder:text-neutral-light-gray/60 focus:outline-none focus:ring-2 focus:ring-primary-green/70 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-primary-green/70 dark:border-slate-700/50 dark:bg-slate-800/30;
+  }
+
+  .landing-form-select-content {
+    @apply relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border border-neutral-dark-gray/50 bg-neutral-dark-gray/95 text-white shadow-lg backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-slate-700 dark:bg-slate-900/95;
+  }
+
+  .landing-checkbox-label {
+    @apply cursor-pointer text-sm font-medium text-neutral-light-gray/80 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+  }
+
+  /* Styling for the checkbox itself if needed, assuming ShadCN's Checkbox component allows class pass-through or uses data attributes for styling hooks */
+  /* .landing-checkbox {} */
+
+  /* Styling for phone input - this is tricky as react-phone-number-input has its own structure */
+  /* We might need to target its internal classes if they are predictable, or wrap it and style the wrapper */
+  .landing-phone-input .PhoneInputInput {
+    @apply h-11 w-full rounded-lg border-0 bg-transparent px-3 py-2 text-base text-white placeholder-neutral-light-gray/60 focus:outline-none focus:ring-0 !important; /* Overriding react-phone-number-input styles */
+  }
+  .landing-phone-input .PhoneInputCountrySelect {
+    @apply text-white !important; /* Example for country select, might need more specific selectors */
+  }
+  .landing-phone-input .PhoneInputCountryIcon--border {
+    @apply shadow-none !important; /* Remove default box shadow */
+    /* Consider using a filter to make flags match the light/dark theme if pure CSS */
+  }
+
+}

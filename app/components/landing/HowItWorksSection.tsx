@@ -29,13 +29,13 @@ const StepCard: React.FC<StepProps> = ({ number, icon: Icon, title, description 
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       <div className="relative mb-5">
-        <Icon className="size-16 text-blue-600 dark:text-blue-400" />
-        <span className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white ring-2 ring-white dark:bg-blue-400 dark:ring-slate-800">
+        <Icon className="size-16 text-primary-green dark:text-gradient-green-start" />
+        <span className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-gradient-to-tr from-primary-green to-accent-teal text-xs font-bold text-white ring-2 ring-white dark:ring-slate-800">
           {number}
         </span>
       </div>
-      <h4 className="mb-3 text-xl font-semibold text-slate-800 dark:text-white">{title}</h4>
-      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+      <h4 className="mb-3 text-xl font-semibold text-neutral-dark-gray dark:text-neutral-light-gray">{title}</h4>
+      <p className="text-sm leading-relaxed text-neutral-medium-gray dark:text-neutral-light-gray/80">
         {description}
       </p>
     </motion.div>
@@ -49,28 +49,28 @@ const HowItWorksSection: React.FC = () => {
       icon: UserPlusIcon,
       title: "Create Your Secure Account",
       description:
-        "Sign up in under a minute with your basic information. Your privacy and data security are our top priority.",
+        "Sign up in under a minute for lifetime access. Your privacy and data security are our top priority.",
     },
     {
       number: "02",
       icon: MagnifyingGlassCircleIcon,
-      title: "Discover a Wide Network of Providers",
+      title: "Discover Top Providers",
       description:
-        "Easily browse, search, and filter for doctors, specialists, and healthcare services tailored to your needs and location.",
+        "Easily browse, search, and filter for doctors, specialists, and healthcare services tailored to your needs and location. Find the perfect match for your health.",
     },
     {
       number: "03",
       icon: CalendarDaysIcon,
-      title: "Book with Confidence & Ease",
+      title: "Book Instantly, 24/7",
       description:
-        "View real-time availability and select the appointment slot that works best for your schedule. Instant confirmations, no more phone calls.",
+        "View real-time availability and select the appointment slot that works best for your schedule. Get instant confirmations—no more waiting or phone calls.",
     },
     {
       number: "04",
       icon: Cog8ToothIcon,
-      title: "Seamless Consultations & Management",
+      title: "Manage Your Health Journey",
       description:
-        "Attend your appointments (in-person or telehealth) and effortlessly manage your entire family's healthcare journey from your personalized dashboard.",
+        "Attend appointments (in-person or telehealth) and effortlessly track your visit history, manage family profiles, and stay organized with your personalized CarePulse dashboard.",
     },
   ];
 
@@ -84,23 +84,23 @@ const HowItWorksSection: React.FC = () => {
 
   return (
     <motion.section
-      className="bg-white px-4 py-16 dark:bg-black sm:px-6 lg:px-8 lg:py-24"
+      className="bg-neutral-light-gray px-4 py-16 dark:bg-neutral-dark-gray sm:px-6 lg:px-8 lg:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
       <motion.h2
-        className="mb-4 text-center text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl lg:text-5xl"
+        className="mb-4 text-center text-3xl font-extrabold text-neutral-dark-gray dark:text-neutral-light-gray sm:text-4xl lg:text-5xl"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5}} }}
       >
-        Getting Started is Easy
+        Your Simple Path to Stress-Free Healthcare
       </motion.h2>
       <motion.p
-        className="mx-auto mb-12 max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400 md:mb-16"
+        className="mx-auto mb-12 max-w-3xl text-center text-lg text-neutral-medium-gray dark:text-neutral-light-gray/80 md:mb-16"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5, delay: 0.2}} }}
       >
-        Follow these simple steps to take control of your medical scheduling experience.
+        Experience a new era of convenience. In just a few clicks, you&apos;re on your way to seamless medical appointment management with CarePulse.
       </motion.p>
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step) => (

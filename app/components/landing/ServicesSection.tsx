@@ -25,13 +25,15 @@ const FeatureCard: React.FC<FeatureProps> = ({ icon: Icon, title, description })
 
   return (
     <motion.div
-      className="flex h-full flex-col items-center rounded-xl bg-white p-6 text-center shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl dark:bg-slate-800 sm:items-start sm:text-left"
+      className="group flex h-full flex-col items-center rounded-xl bg-white p-6 text-center shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl dark:bg-slate-800 sm:items-start sm:text-left"
       variants={cardVariants}
       whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
     >
-      <Icon className="mb-5 size-12 shrink-0 text-blue-600 dark:text-blue-400" />
-      <h3 className="mb-3 text-xl font-semibold text-slate-800 dark:text-white">{title}</h3>
-      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+      <div className="mb-5 rounded-lg bg-primary-blue/10 p-3 transition-colors duration-300 group-hover:bg-gradient-to-br group-hover:from-accent-teal group-hover:to-primary-blue">
+        <Icon className="size-10 shrink-0 text-primary-blue transition-colors duration-300 group-hover:text-white dark:text-gradient-blue-start" />
+      </div>
+      <h3 className="mb-3 text-xl font-semibold text-neutral-dark-gray dark:text-neutral-light-gray">{title}</h3>
+      <p className="text-sm leading-relaxed text-neutral-medium-gray dark:text-neutral-light-gray/80">
         {description}
       </p>
     </motion.div>
@@ -44,13 +46,13 @@ const ServicesSection: React.FC = () => {
       icon: CalendarDaysIcon,
       title: "Effortless Scheduling",
       description:
-        "Book, reschedule, or cancel appointments in seconds with our intuitive interface. Manage your family's health bookings all in one place.",
+        "Book, reschedule, or cancel appointments in seconds with our seamless, intuitive interface. Effortlessly manage your entire family's health bookings all in one secure hub.",
     },
     {
       icon: ClockIcon,
       title: "Minimize Waiting, Maximize Care",
       description:
-        "Our smart system optimizes schedules to get you seen by your doctor faster. More time for care, less time in the waiting room.",
+        "Our intelligent scheduling optimizes appointment flow, getting you seen by your doctor faster. Spend more quality time on your care, and less time in the waiting room.",
     },
     {
       icon: DevicePhoneMobileIcon,
@@ -88,23 +90,23 @@ const ServicesSection: React.FC = () => {
 
   return (
     <motion.section
-      className="bg-slate-50 px-4 py-16 dark:bg-slate-900 sm:px-6 lg:px-8 lg:py-24"
+      className="bg-neutral-light-gray px-4 py-16 dark:bg-neutral-dark-gray sm:px-6 lg:px-8 lg:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={sectionVariants}
     >
       <motion.h2
-        className="mb-4 text-center text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl lg:text-5xl"
+        className="mb-4 text-center text-3xl font-extrabold text-neutral-dark-gray dark:text-neutral-light-gray sm:text-4xl lg:text-5xl"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5}} }}
       >
-        Key Features & Benefits
+        Everything You Need for Smarter Healthcare Management
       </motion.h2>
       <motion.p
-        className="mx-auto mb-12 max-w-2xl text-center text-lg text-slate-600 dark:text-slate-400 md:mb-16"
+        className="mx-auto mb-12 max-w-2xl text-center text-lg text-neutral-medium-gray dark:text-neutral-light-gray/80 md:mb-16"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5, delay: 0.2}} }}
       >
-        Discover how we make your healthcare journey smoother.
+        CarePulse is packed with powerful features designed to simplify your medical appointments, save you time, and put you in control of your health journey.
       </motion.p>
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (

@@ -44,22 +44,22 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
             className="mx-auto size-20 rounded-full object-cover shadow-md"
           />
         ) : (
-          <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-blue-600 text-3xl font-semibold text-white shadow-md ring-4 ring-white dark:bg-blue-500 dark:ring-slate-800">
+          <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-primary-blue text-3xl font-semibold text-white shadow-md ring-4 ring-white dark:bg-primary-blue/80 dark:ring-slate-800">
             {avatarPlaceholder || name.substring(0, 1)}
           </div>
         )}
       </div>
 
       <div className="relative grow">
-        <ChatBubbleOvalLeftEllipsisIcon className="absolute left-0 top-0 size-10 -translate-x-4 -translate-y-4 text-slate-200 dark:text-slate-700" />
-        <blockquote className="relative z-10 mb-6 text-base italic leading-relaxed text-slate-600 dark:text-slate-300 md:text-lg">
+        <ChatBubbleOvalLeftEllipsisIcon className="absolute left-0 top-0 size-10 -translate-x-4 -translate-y-4 text-primary-green/50 dark:text-primary-green/40" />
+        <blockquote className="relative z-10 mb-6 text-base italic leading-relaxed text-neutral-medium-gray dark:text-neutral-light-gray/90 md:text-lg">
           &ldquo;{quote}&rdquo;
         </blockquote>
       </div>
 
       <cite className="mt-auto border-t border-slate-200 pt-5 text-center dark:border-slate-700">
-        <span className="block text-lg font-bold text-slate-800 dark:text-white">{name}</span>
-        <span className="block text-sm text-slate-500 dark:text-slate-400">{title}</span>
+        <span className="block text-lg font-bold text-neutral-dark-gray dark:text-neutral-light-gray">{name}</span>
+        <span className="block text-sm text-neutral-medium-gray/80 dark:text-neutral-light-gray/70">{title}</span>
       </cite>
     </motion.div>
   );
@@ -114,23 +114,23 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <motion.section
-      className="bg-slate-100 px-4 py-16 dark:bg-slate-950 sm:px-6 lg:px-8 lg:py-24"
+      className="bg-neutral-light-gray px-4 py-16 dark:bg-neutral-dark-gray sm:px-6 lg:px-8 lg:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionVariants}
     >
       <motion.h2
-        className="mb-4 text-center text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl lg:text-5xl"
+        className="mb-4 text-center text-3xl font-extrabold text-neutral-dark-gray dark:text-neutral-light-gray sm:text-4xl lg:text-5xl"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5}} }}
       >
-        What Our Users Say
+        Trusted by Patients and Professionals Alike
       </motion.h2>
       <motion.p
-        className="mx-auto mb-12 max-w-3xl text-center text-lg text-slate-600 dark:text-slate-400 md:mb-16"
+        className="mx-auto mb-12 max-w-3xl text-center text-lg text-neutral-medium-gray dark:text-neutral-light-gray/80 md:mb-16"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5, delay: 0.2}} }}
       >
-        Real stories from people who&rsquo;ve transformed their healthcare experience.
+        Hear directly from our growing community about how CarePulse is making healthcare simpler and more accessible for everyone.
       </motion.p>
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial, index) => (

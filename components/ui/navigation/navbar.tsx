@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { GradientText } from "@/components/ui/gradient-text";
+import React, { useState, useEffect } from 'react';
+
 import { GradientButton } from "@/components/ui/gradient-button";
+import { GradientText } from "@/components/ui/gradient-text";
 
 export function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
@@ -19,7 +20,7 @@ export function Navbar() {
   };
 
   const navLinkClass = (itemName: string, extraClasses = '') =>
-    `text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
+    `text-base md:text-xl lg:text-2xl font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
       hoveredNavItem === itemName
         ? 'bg-gray-700/50 text-white'
         : 'text-gray-300 hover:text-white hover:bg-gray-700/30'
@@ -36,17 +37,17 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 py-4 bg-black/30 no-scrollbar backdrop-blur-md" style={{pointerEvents: 'auto'}}>
-      <div className="container mx-auto px-4 sm:px-6 no-scrollbar lg:px-8">
+    <nav className="no-scrollbar fixed inset-x-0 top-0 z-50 bg-black py-4 backdrop-blur-md" style={{pointerEvents: 'auto'}}>
+      <div className="no-scrollbar container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="flex-shrink-0">
-              <GradientText className="text-white pl-20 pr-5 text-2xl md:text-4xl lg:text-5xl tracking-wide cinzel-decorative-bold">
+            <a href="#" className="shrink-0">
+              <GradientText className="cinzel-decorative-bold pl-20 pr-5 text-2xl tracking-wide text-white md:text-4xl lg:text-5xl">
                 AURA
               </GradientText>
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden items-center space-x-4 md:flex">
             {navItems.map((item) => (
               <a
                 key={item}
@@ -59,25 +60,25 @@ export function Navbar() {
               </a>
             ))}
           </div>
-          <div className="hidden md:flex items-center space-x-3 pr-10">
+          <div className="hidden items-center space-x-3 pr-10 md:flex">
             {/* <Link href="/register">
               <GradientButton className="text-xs md:text-lg font-medium scale-70 transform">
                 Register
               </GradientButton>
             </Link> */}
             <Link href="/admin">
-              <GradientButton className="text-xs md:text-lg font-medium scale-70  transform">
+              <GradientButton className="scale-70 text-xs font-medium md:text-lg">
                 Admin
               </GradientButton>
             </Link>
           </div>
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+              className="text-gray-300 hover:text-white focus:text-white focus:outline-none"
               aria-label="Toggle menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -88,21 +89,21 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      <div className={`md:hidden fixed inset-x-0 top-16 bg-gray-900/95 backdrop-blur-lg p-4 space-y-2 transition-all duration-300 ease-in-out overflow-y-auto max-h-[calc(100vh-4rem)] ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
+      <div className={`fixed inset-x-0 top-16 max-h-[calc(100vh-4rem)] space-y-2 overflow-y-auto bg-gray-900/95 p-4 backdrop-blur-lg transition-all duration-300 ease-in-out md:hidden ${isMobileMenuOpen ? 'pointer-events-auto translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}>
         {navItems.map((item) => (
           <a 
             key={item} 
             href={`/${item.toLowerCase()}`} 
-            className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" 
+            className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" 
             onClick={toggleMobileMenu}
           >
             {item}
           </a>
         ))}
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Book Now</a>
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Contact Us</a>
-        <a href="/client-portal" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Client Portal</a>
-         <button className="w-full mt-2 gradient-button text-white text-sm font-medium py-2.5 px-4 rounded-md" onClick={toggleMobileMenu}>
+        <a href="#" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Book Now</a>
+        <a href="#" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Contact Us</a>
+        <a href="/client-portal" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Client Portal</a>
+         <button className="gradient-button mt-2 w-full rounded-md px-4 py-2.5 text-base font-medium text-white" onClick={toggleMobileMenu}>
             Book Appointment
         </button>
       </div>

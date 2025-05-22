@@ -1,76 +1,67 @@
 "use client";
 
-import React, { Suspense, lazy } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React, { Suspense, lazy } from 'react';
+
 import { GradientText } from "@/components/ui/gradient-text";
+
+import { AnimatedBlock } from '../animations/animated-components';
 import { 
   sectionContainerVariants, 
-  simpleFadeInUp, 
-  paragraphLineVariants, 
+  simpleFadeInUp,
   imageDramaticRevealVariants 
-} from '../animations/animation-variants'; // Assuming this path is correct
-import { AnimatedBlock, AnimatedText } from '../animations/animated-components'; // Assuming this path is correct
+} from '../animations/animation-variants';
+import { TestimonialBlockquote } from '../galaxy-interactive-hero-section';
+import { GradientButton } from '../gradient-button';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 export function AuraDifferenceSection() {
   return (
+    
     <motion.section
-      className="flex flex-col md:flex-row items-center justify-between h-screen w-full px-4 md:px-10 lg:px-16 gap-8 md:gap-12" // Added responsive layout
+      className="flex min-h-screen w-full flex-col items-center justify-center gap-y-10 gap-x-8 px-4 py-12 md:flex-row md:justify-around md:items-stretch md:gap-x-6 lg:gap-x-12 md:px-6 lg:px-10 xl:px-16" // Responsive layout, padding, gap
       variants={sectionContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="flex flex-col pl-20 justify-center h-full w-full md:w-1/3">
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-5xl lg:text-6xl font-bold py-10">
-          <GradientText className="cinzel-decorative-bold leading-relaxed">Empowering your shining radiance</GradientText>
+
+      <div className="flex w-full order-1 flex-col justify-center text-center md:w-1/3 md:text-left">
+        <AnimatedBlock el="div" variants={simpleFadeInUp} className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <p className="cormorant-garamond pb-2 text-white sm:pb-3">CONFIDENT</p>
+          <h1 className="cinzel-decorative-bold py-2 text-white sm:py-3">AURA</h1>
+          
+          <GradientText className="cinzel-decorative-bold pt-2 leading-snug text-white sm:pt-3 sm:leading-normal">& <br/> Perfected Radiance</GradientText>
         </AnimatedBlock>
 
-        {/* <AnimatedText
-          text="" // Empty as we're using highlightSpans
-          el="p"
-          className="text-lg lg:text-xl opacity-80 mb-8" // Slightly larger text
-          variants={paragraphLineVariants}
-          staggerAmount={0.04} // Faster stagger for paragraph lines
-          splitter="word"
-          highlightSpans={[
-            <GradientText key="empowering" className="font-bold">Empowering</GradientText>,
-            <span key="your"> your radiance to </span>,
-            <GradientText key="shine" className="font-bold"> shine</GradientText>,
-            <span key="always">, always in your favor</span>
-          ]}
-        /> */}
-        <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
+      
+        <AnimatedBlock variants={simpleFadeInUp} className="pt-6 sm:pt-8" delay={0.3}>
           <Link href="#" legacyBehavior>
-            <a className="text-purple-400 hover:text-purple-300 font-semibold text-lg inline-block transform hover:translate-x-1 transition-transform duration-200">
-              Discover Our Philosophy →
-            </a>
+          <GradientButton className="px-4 py-2 text-xs font-medium sm:px-5 sm:py-2.5 sm:text-sm md:text-base">
+                Discover Our Philosophy →
+              </GradientButton>
           </Link>
         </AnimatedBlock>
       </div>
-      <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center relative h-full flex items-center justify-center w-full md:w-2/3">
+      <AnimatedBlock variants={imageDramaticRevealVariants} className="relative  order-2 flex w-full items-center justify-center md:w-2/3">
         {/* 
           This div is the direct parent of the Spline component.
           It needs to take full height of its parent (the AnimatedBlock).
         */}
-        <div className="w-full h-full rounded-lg overflow-y-auto shadow-2xl relative pointer-events-auto"> {/* Modified: added overflow-y-auto and pointer-events-auto */}
-          <Suspense fallback={<div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-lg">Loading 3D Scene...</div>}>
+        <div className="pointer-events-auto relative w-full  max-w-md md:max-w-full aspect-[4/3] md:aspect-auto md:h-full rounded-lg shadow-2xl overflow-hidden"> 
+          <Suspense fallback={<div className="flex size-full items-center justify-center rounded-lg bg-gray-100">Loading 3D Scene...</div>}> 
             <Spline
               style={{
                 width: '100%',
                 height: '100%',
-                // borderRadius: '0.5rem', // Already on parent, and parent has overflow-hidden
-                position: 'absolute', // Ensures it fills the relative parent
+                position: 'absolute', 
                 top: 0,
                 left: 0,
-                pointerEvents: 'auto', // Enable pointer events for scrolling
-                // right: 0, // Not strictly needed with width: 100% and left: 0
-                // bottom: 0, // Not strictly needed with height: 100% and top: 0
-                // objectFit: 'cover' // Not applicable to Spline/iframe, remove
+                pointerEvents: 'auto', 
               }}
-              scene="https://prod.spline.design/aWr8E2jhkdBMTWQt/scene.splinecode"
+              scene="https://prod.spline.design/3-accyixYYHDqKCS/scene.splinecode"
             />
           </Suspense>
         </div>

@@ -1,8 +1,10 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react';
+
+import { AnimatedBlock, AnimatedText } from '../animations/animated-components';
 import { 
   sectionContainerVariants, 
   simpleFadeInUp, 
@@ -11,7 +13,6 @@ import {
   cardVariants,
   cardHoverEffect
 } from '../animations/animation-variants';
-import { AnimatedBlock, AnimatedText } from '../animations/animated-components';
 
 interface TreatmentCard {
   title: string;
@@ -37,14 +38,14 @@ export function SignatureTreatmentsSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
     >
-      <div className="text-center mb-16"> {/* Increased margin */}
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl cinzel-decorative-bold mb-6">
+      <div className="mb-16 text-center"> {/* Increased margin */}
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-6 text-3xl sm:text-4xl  lg:text-5xl">
           OUR SIGNATURE TREATMENTS
         </AnimatedBlock>
         <AnimatedText
           text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
           el="p"
-          className="text-2xl lg:text-3xl opacity-80 max-w-3xl mx-auto cormorant-garamond"
+          className="cormorant-garamond mx-auto max-w-3xl text-2xl opacity-80 lg:text-3xl"
           variants={paragraphLineVariants}
           staggerAmount={0.03}
           splitter="line"
@@ -54,7 +55,7 @@ export function SignatureTreatmentsSection() {
         </AnimatedBlock>
       </div>
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" // Increased gap
+        className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3" // Increased gap
         variants={{ visible: { transition: { staggerChildren: 0.15 } } }} // Stagger cards
       >
         {cardData.map((card, index) => (
@@ -62,13 +63,13 @@ export function SignatureTreatmentsSection() {
             key={card.title + index} // Ensure key is unique if titles can repeat
             el="div"
             variants={cardVariants}
-            className="bg-gray-800/60 p-6 rounded-xl shadow-xl border border-gray-700/50 flex flex-col hover:border-purple-500/70 transition-colors duration-300" // Added hover border
+            className="flex flex-col rounded-xl border border-gray-700/50 bg-gray-800/60 p-6 shadow-xl transition-colors duration-300 hover:border-purple-500/70" // Added hover border
             whileHover={cardHoverEffect}
           >
-            <img src={card.image} alt={card.alt} className="w-full h-52 object-cover rounded-md mb-5"/>
-            <h3 className="text-xl lg:text-2xl cinzel-decorative-bold mb-3">{card.title}</h3>
+            <img src={card.image} alt={card.alt} className="mb-5 h-52 w-full rounded-md object-cover"/>
+            <h3 className="cinzel-decorative-bold mb-3 text-xl lg:text-2xl">{card.title}</h3>
             <Link href="#" legacyBehavior>
-              <a className="mt-auto text-purple-400 hover:text-purple-200 font-semibold self-start text-md group">
+              <a className="text-md group mt-auto self-start font-semibold text-purple-400 hover:text-purple-200">
                 {card.linkText} <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
               </a>
             </Link>

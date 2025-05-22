@@ -1,10 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { HeroGeometric } from "@/components/ui/shape-landing-hero";
-
 import { StatCard } from "@/components/StatCard";
 import { columns } from "@/components/table/columns";
 import { DataTable } from "@/components/table/DataTable";
+import { GradientButton } from "@/components/ui/gradient-button";
+import { GradientText } from "@/components/ui/gradient-text";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 const AdminPage = async () => {
@@ -17,21 +15,21 @@ const AdminPage = async () => {
         title1="System Overview"
         title2="Manage & Monitor"
       /> */}
-      <div className="relative z-10 p-4 sm:p-6 bg-[#030303] md:p-8 text-gray-100">
-        <div className="mx-auto flex max-w-7xl flex-col bg-[#030303] space-y-14">
-          <header className="admin-header">
-            <Link href="/" className="cursor-pointer">
-              <Image
-                src="/assets/icons/logo-full.svg"
-                height={32}
-                width={162}
-                alt="logo"
-                className="h-8 w-fit"
-              />
-            </Link>
+      <div className="relative z-10 bg-[#030303] p-4 text-gray-100 sm:p-6 md:p-8">
+        <div className="mx-auto flex max-w-7xl flex-col space-y-14 bg-[#030303]">
+          
+          <div className="flex items-center bg-[#030303]">
+            <a href="#" className="shrink-0">
+              <GradientText className="cinzel-decorative-bold pl-20 pr-5 text-2xl tracking-wide text-white md:text-4xl lg:text-5xl">
+                AURA
+              </GradientText>
+            </a>
+          </div>
 
-            <p className="text-16-semibold">Admin Dashboard</p>
-          </header>
+          <GradientButton className="scale-70 font-merienda text-xs tracking-widest md:text-4xl">
+                 Appointments Dashboard
+              </GradientButton>
+         
 
           <main className="admin-main bg-[#030303]">
 

@@ -1,8 +1,9 @@
 "use client";
 
 import React from 'react';
-import { blockquoteVariants } from '../animations/animation-variants';
+
 import { AnimatedBlock } from '../animations/animated-components';
+import { blockquoteVariants } from '../animations/animation-variants';
 
 interface TestimonialBlockquoteProps {
   quote: string;
@@ -22,7 +23,7 @@ export function TestimonialBlockquote({
       className={className}
     >
       <p>{quote}</p>
-      <cite className="block mt-4 not-italic text-base opacity-70">{citation}</cite>
+      <cite className="mt-4 block text-base not-italic opacity-70">{citation}</cite>
     </AnimatedBlock>
   );
 }

@@ -1,20 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef, useState, Suspense } from 'react';
-import { Navbar } from '../navigation/navbar';
-import { HeroSplineBackground } from './hero-spline-background';
-import { HeroContent } from './hero-content';
-import { AuraDifferenceSection } from '../content-sections/aura-difference-section';
-import { TestimonialBlockquote } from '../content-sections/testimonial-blockquote';
-import { SignatureTreatmentsSection } from '../content-sections/signature-treatments-section';
-import { RefinedNaturalismSection } from '../content-sections/refined-naturalism-section';
+import React, { useEffect, useRef, Suspense } from 'react';
+
 import { AestheticInnovationSection } from '../content-sections/aesthetic-innovation-section';
-import { PersonalisedJourneySection } from '../content-sections/personalised-journey-section';
-import { ClientTransformationsSection } from '../content-sections/client-transformations-section';
+import { AuraDifferenceSection } from '../content-sections/aura-difference-section';
 import { AwardsExpertiseSection } from '../content-sections/awards-expertise-section';
+import { ClientTransformationsSection } from '../content-sections/client-transformations-section';
+import { PersonalisedJourneySection } from '../content-sections/personalised-journey-section';
+import { RefinedNaturalismSection } from '../content-sections/refined-naturalism-section';
+import { SignatureTreatmentsSection } from '../content-sections/signature-treatments-section';
+import { TestimonialBlockquote } from '../content-sections/testimonial-blockquote';
+import { Navbar } from '../navigation/navbar';
+
+import { HeroContent } from './hero-content';
+import { HeroSplineBackground } from './hero-spline-background';
 
 export const HeroSection = () => {
-  const [scrollY, setScrollY] = useState(0);
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
 
   function handleScroll() {
@@ -42,8 +43,8 @@ export const HeroSection = () => {
     <div className="relative bg-black" style={{ overflowX: 'hidden' }}> {/* Ensure base background for areas not covered */}
       <Navbar />
       {/* Hero Area */}
-      <div className="relative h-screen w-full pb-30 overflow-hidden"> {/* Full height on all screens */}
-        <div className="absolute inset-0 z-0 pointer-events-auto">
+      <div className="pb-30 relative h-screen w-full overflow-hidden"> {/* Full height on all screens */}
+        <div className="pointer-events-auto absolute inset-0 z-0">
           <HeroSplineBackground />
         </div>
 
@@ -53,29 +54,35 @@ export const HeroSection = () => {
           // pointerEvents handled by JS now
         }}>
           <div className="container mx-auto">
-            <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-white text-xl">Loading Aura Experience...</div>}>
+            <Suspense fallback={<div className="flex size-full items-center justify-center text-xl text-white">Loading Aura Experience...</div>}>
               <HeroContent />
             </Suspense>
           </div>
         </div>
       </div>
 
-      <div className="bg-black relative z-10 text-white py-16 md:py-24" style={{ marginTop: '-10vh', overflowX: 'hidden', width: '100%' }}>
+      <div className="relative z-10 bg-black py-16 text-white md:py-24" style={{ marginTop: '-10vh', overflowX: 'hidden', width: '100%' }}>
+      <div className="absolute z-[1] w-[20%] h-[20%] rounded-full right-100 top-100 opacity-30 white__gradient" />
+      <div className="absolute z-[1] w-[50%] h-[50%] rounded-full right-1 opacity-20 blue__gradient" />
+      <div className="absolute z-[1] w-[64%] h-[64%] rounded-full left-10 bottom-30 opacity-20 blue__gradient" />
+      <div className="absolute z-[1] w-[64%] h-[64%] rounded-full left-10 bottom-0 opacity-20 blue__gradient" />
+       
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', width: '100%' }}> {/* Full width container */}
           {/* --- THE AURA DIFFERENCE --- */}
+          
+        {/* Container for other components with constrained width */}
+        <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
+            <TestimonialBlockquote 
+              quote="Where science meets artistry, and confidence is beautifully sculpted."
+              citation="– The Aura Aesthetics Philosophy"
+              className="border-y border-gray-700 py-10 text-center text-2xl italic opacity-90 sm:text-3xl md:col-span-2 lg:text-5xl"
+            />
+          </div>
           <div className="w-full">
             <AuraDifferenceSection />
           </div>
           
-          {/* Container for other components with constrained width */}
-          <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
-            <TestimonialBlockquote 
-              quote="Where science meets artistry, and confidence is beautifully sculpted."
-              citation="– The Aura Aesthetics Philosophy"
-              className="md:col-span-2 text-center text-2xl sm:text-3xl lg:text-5xl italic opacity-90 py-10 border-t border-b border-gray-700"
-            />
-          </div>
-
+        
           {/* Container for all other components with constrained width */}
           <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
             {/* --- OUR SIGNATURE TREATMENTS --- */}
@@ -84,7 +91,7 @@ export const HeroSection = () => {
             <TestimonialBlockquote 
               quote="Revealing your Inner Radiance, Sculpting Timeless Elegance."
               citation="– The Aura Aesthetics Team"
-              className="text-center text-2xl sm:text-3xl lg:text-4xl italic opacity-90 py-12 border-t border-b border-gray-700 cinzel-decorative-bold"
+              className="cinzel-decorative-bold border-y border-gray-700 py-12 text-center text-2xl italic opacity-90 sm:text-3xl lg:text-4xl"
             />
 
             {/* --- REFINED NATURALISM --- */}
@@ -100,7 +107,7 @@ export const HeroSection = () => {
             <TestimonialBlockquote 
               quote="The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"
               citation="– A Delighted Aura Client"
-              className="text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 mb-20 border-t border-b border-purple-400 max-w-3xl mx-auto cinzel-decorative-bold bg-gradient-to-r from-purple-900/20 to-indigo-900/20 text-gradient-to-r from-purple-200 to-indigo-100 rounded-lg shadow-lg"
+              className="cinzel-decorative-bold text-gradient-to-r mx-auto mb-20 max-w-3xl rounded-lg border-y border-purple-400 bg-gradient-to-r from-purple-200 from-purple-900/20 to-indigo-100 to-indigo-900/20 py-10 text-center text-xl italic opacity-90 shadow-lg sm:text-2xl lg:text-3xl"
             />
 
             {/* --- CLIENT TRANSFORMATIONS CTA --- */}

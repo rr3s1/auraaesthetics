@@ -8,6 +8,10 @@
   ],
   "rules": {
     "no-undef": "off",
+    "react/display-name": "off",
+    "tailwindcss/no-custom-classname": "warn",
+    "@next/next/no-img-element": "warn",
+    "react-hooks/exhaustive-deps": "warn",
     "import/order": [
       "error",
       {

@@ -52,11 +52,11 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="data-table">
+    <div className="data-table ">
       <Table className="shad-table">
-        <TableHeader className=" bg-dark-200">
+        <TableHeader className="cormorant-garamond bg-dark-200 lg:text-2xl">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id} className="shad-table-row-header">
+            <TableRow key={headerGroup.id} className="shad-table-row-header ">
               {headerGroup.headers.map((header) => {
                 return (
                   <TableHead key={header.id}>
@@ -72,13 +72,13 @@ export function DataTable<TData, TValue>({
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody>
+        <TableBody className="cormorant-garamond ">
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="shad-table-row"
+                className="shad-table-row "
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -88,15 +88,15 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))
           ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
+            <TableRow >
+              <TableCell colSpan={columns.length} className="h-24 text-center ">
                 No results.
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <div className="table-actions">
+      <div className="table-actions cormorant-garamond">
         <Button
           variant="outline"
           size="sm"

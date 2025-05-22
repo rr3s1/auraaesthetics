@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
-import { Merienda } from "next/font/google";
-import { Racing_Sans_One } from "next/font/google";
-import { Cinzel_Decorative } from "next/font/google";
-import { Cormorant_Garamond } from "next/font/google";
+import { Plus_Jakarta_Sans as FontSans , Merienda , Racing_Sans_One as RacingSansOne , Cinzel_Decorative as CinzelDecorative , Cormorant_Garamond as CormorantGaramond } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { Footer } from "@/components/ui/footer/footer";
 
+import { Footer } from "@/components/ui/footer/footer";
 import { cn } from "@/lib/utils";
 
 const fontSans = FontSans({
@@ -22,28 +18,28 @@ const fontMerienda = Merienda({
   variable: "--font-merienda",
 });
 
-const fontRacingSansOne = Racing_Sans_One({
+const fontRacingSansOne = RacingSansOne({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-racing-sans-one",
 });
 
-const fontCinzelDecorative = Cinzel_Decorative({
+const fontCinzelDecorative = CinzelDecorative({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   variable: "--font-cinzel-decorative",
 });
 
-const fontCormorantGaramond = Cormorant_Garamond({
+const fontCormorantGaramond = CormorantGaramond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant-garamond",
 });
 
 export const metadata: Metadata = {
-  title: "CarePulse",
+  title: "AURA Aesthetics",
   description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+    "A beauty clinic system designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
   icons: {
     icon: "/assets/icons/logo-icon.svg",
   },

@@ -1,7 +1,8 @@
 "use client";
 
-import React from 'react';
 import { motion, Variants } from 'framer-motion';
+import React from 'react';
+
 import { GradientButton } from "@/components/ui/gradient-button";
 
 // Helper Component for Animating Text (Headings/Paragraphs)
@@ -108,14 +109,17 @@ export const AnimatedBlock: React.FC<AnimatedBlockProps> = ({
 export const MotionGradientButton = motion(React.forwardRef<
   HTMLButtonElement, 
   { variant?: "default" | "variant" | null; className?: string; children: React.ReactNode; [key: string]: any }
->(({ variant, className, children, ...props }, ref) => (
-  <GradientButton
-    ref={ref as any}
-    variant={variant}
-    className={className}
-    {...props}
-  >
-    {children}
-  </GradientButton>
-)));
+>(({ variant, className, children, ...props }, ref) => {
+  const GradientButtonWithRef = (
+    <GradientButton
+      ref={ref as any}
+      variant={variant}
+      className={className}
+      {...props}
+    >
+      {children}
+    </GradientButton>
+  );
+  return GradientButtonWithRef;
+}));
 MotionGradientButton.displayName = 'MotionGradientButton';

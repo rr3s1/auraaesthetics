@@ -2,18 +2,19 @@ import Image from "next/image";
 import React from "react";
 
 import { PatientForm } from "@/components/forms/PatientForm";
+import { GradientText } from "@/components/ui/gradient-text";
 
 const RegisterPage = () => {
   return (
     <section className="remove-scrollbar container my-auto bg-[#030303]">
       <div className="sub-container max-w-[496px]">
-        <Image
-          src="/assets/icons/logo-full.svg"
-          height={1000}
-          width={1000}
-          alt="CarePulse Logo"
-          className="mb-12 h-10 w-fit"
-        />
+        <div className="flex items-center">
+          <a href="#" className="shrink-0">
+            <GradientText className="cinzel-decorative-bold pl-20 pr-5 text-2xl tracking-wide text-white md:text-4xl lg:text-5xl">
+              AURA
+            </GradientText>
+          </a>
+        </div>
 
         <PatientForm />
 

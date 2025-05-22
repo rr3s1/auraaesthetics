@@ -101,14 +101,11 @@ const RegisterForm = ({ user }: { user: User }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex-1 space-y-12"
+        className="flex-1 space-y-12 bg-black"
       >
-        <section className="space-y-4 ">
-          <h1 className="header">Welcome 👋</h1>
-          <p className="text-gray-300">Let us know more about yourself.</p>
-        </section>
+      
 
-        <section className="space-y-6">
+        <section className="space-y-6 pt-10">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header text-gray-200">Personal Information</h2>
           </div>
@@ -326,7 +323,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 bg-black">
           <div className="mb-9 space-y-1">
             <h2 className="sub-header text-gray-200">
               Identification and Verification

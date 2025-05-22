@@ -113,6 +113,10 @@
     --color-3: 210 100% 63%;
     --color-4: 195 100% 63%;
     --color-5: 90 100% 63%;
+    --color-11: 210 80% 60%; /* Example: A vibrant blue hue, saturation, lightness */
+    --color-22: 180 70% 50%; /* Example: A teal/cyan */
+    --color-33: 30 90% 65%;  /* Example: A warm orange/gold for icons/accents */
+    /* Define --color-4 and --color-5 if used */
   }
   
   /* --- MERIENDA FONT FOR TITLES --- */
@@ -680,4 +684,22 @@
   color: #1a1d21;
 }
 
+
+/* The tailwind.config.js content should be in its separate file, not here. */
+
+/* Copied from ProjectB for background effects */
+.blue__gradient {
+  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  filter: blur(123px);
+}
+
+.pink__gradient {
+  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  filter: blur(900px);
+}
+
+.white__gradient {
+  background: rgba(255, 255, 255, 0.6);
+  filter: blur(750px);
+}
 /* The tailwind.config.js content should be in its separate file, not here. */

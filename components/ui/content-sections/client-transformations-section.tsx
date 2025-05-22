@@ -1,15 +1,17 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react';
+
+import { AnimatedBlock, AnimatedText } from '../animations/animated-components';
 import { 
   sectionContainerVariants, 
   simpleFadeInUp, 
   paragraphLineVariants, 
   ctaButtonVariants 
 } from '../animations/animation-variants';
-import { AnimatedBlock, AnimatedText } from '../animations/animated-components';
+import { GradientButton } from '../gradient-button';
 
 export function ClientTransformationsSection() {
   return (
@@ -20,23 +22,25 @@ export function ClientTransformationsSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl cinzel-decorative-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-indigo-200">
+      <AnimatedBlock el="h2" variants={simpleFadeInUp} className="cormorant-garamond mb-8 bg-gradient-to-r from-purple-300 to-indigo-200 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
         CLIENT TRANSFORMATIONS & <span className="text-pink-300">TESTIMONIALS</span>
       </AnimatedBlock>
       <AnimatedText
         text="Hear from our valued clients and witness the beautiful transformations achieved at Aura Aesthetics."
         el="p" 
-        className="text-2xl lg:text-3xl text-indigo-100 mb-10 cormorant-garamond" // Increased margin
+        className="cormorant-garamond mb-10 text-2xl text-indigo-100 lg:text-3xl" // Increased margin
         variants={paragraphLineVariants} 
         splitter="line" 
         staggerAmount={0.03}
       />
       <motion.div variants={ctaButtonVariants} whileHover="hover" whileTap="tap">
-        <Link href="#" legacyBehavior>
-          <a className="bg-purple-600 hover:bg-purple-500 text-white text-lg font-medium py-4 px-10 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-purple-500/50">
-            View Gallery & Testimonials
-          </a>
-        </Link>
+       
+
+        <Link href="#">
+              <GradientButton className="scale-100 text-xl font-medium md:text-2xl">
+              View Gallery & Testimonials
+              </GradientButton>
+            </Link>
       </motion.div>
     </motion.section>
   );

@@ -1,9 +1,12 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react';
+
 import { GradientText } from "@/components/ui/gradient-text";
+
+import { MotionGradientButton } from '../animations/animated-components';
 import { 
   containerVariants, 
   titleWrapperVariants, 
@@ -12,7 +15,6 @@ import {
   glowingSpanVariants, 
   buttonWrapperVariants 
 } from '../animations/animation-variants';
-import { MotionGradientButton } from '../animations/animated-components';
 
 export function HeroContent() {
   const titleText = "AURA AESTHETICS";
@@ -20,24 +22,24 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="text-left mb-16 text-white px-4 min-h-[70vh] flex flex-col justify-center"
+      className="mb-16 flex min-h-[70vh] flex-col justify-center px-4 text-left text-white"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Main Title */}
       <motion.h1
-        className="text-3xl opacity-100 sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-normal max-w-full tracking-wide "
+        className="max-w-full text-3xl font-bold leading-tight sm:text-5xl md:text-7xl lg:text-9xl sm:leading-tight md:leading-tight lg:leading-normal tracking-wide opacity-100"
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <GradientText className="text-white pl-10 cinzel-decorative-black">
+        <GradientText className="cinzel-decorative-black  md:pl-8 lg:pl-10 text-white">
           {titleCharacters.map((char, index) => (
             <motion.span
               key={`${char}-${index}`}
               variants={titleCharVariants}
               whileHover="hover"
-              style={{ display: 'inline-block', lineHeight: '160px'}}
+              className="inline-block"
             >
               {char === " " ? "\u00A0" : char}
             </motion.span>
@@ -47,7 +49,7 @@ export function HeroContent() {
 
       {/* First Paragraph */}
       <motion.p
-        className="lg:text-3xl pl-8 pt-10 sm:text-xl md:text-2xl font-bold uppercase italic"
+        className="pt-6 sm:pl-6 sm:pt-8 md:pl-8 md:pt-10 font-bold uppercase italic text-base sm:text-xl md:text-2xl lg:text-3xl"
         variants={paragraphVariants}
       >
         <motion.span
@@ -56,7 +58,7 @@ export function HeroContent() {
           whileHover="hover"
         >
           <span 
-            className="text-orange-400 relative z-10"
+            className="relative z-10 text-orange-400"
             style={{
               textShadow: '0 0 15px rgba(255, 120, 0, 0.7), 0 0 25px rgba(255, 120, 0, 0.5)',
               filter: 'drop-shadow(0 0 5px rgba(255, 120, 0, 0.8))'
@@ -71,7 +73,7 @@ export function HeroContent() {
           whileHover="hover"
         >
           <span 
-            className="text-purple-400 relative z-10"
+            className="relative z-10 text-purple-400"
             style={{
               textShadow: '0 0 15px rgba(168, 85, 247, 0.7), 0 0 25px rgba(168, 85, 247, 0.5)',
               filter: 'drop-shadow(0 0 5px rgba(168, 85, 247, 0.8))'
@@ -109,14 +111,14 @@ export function HeroContent() {
 
       {/* CTA Button Wrapper */}
       <motion.div
-        className="mt-12 pl-5"
+        className="mt-8 pl-4 sm:mt-10 sm:pl-5 md:mt-12"
         style={{ pointerEvents: 'auto' }}
         variants={buttonWrapperVariants}
       >
         <Link href="/register" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
-            className="text-xl md:text-2xl py-5 px-10 min-w-[240px] cormorant-garamond"
+            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 

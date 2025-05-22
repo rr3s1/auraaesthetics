@@ -12,7 +12,7 @@ import { UserFormValidation } from "@/lib/validation";
 
 import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
-import SubmitButton from "../SubmitButton";
+import { MotionGradientButton } from "../ui/animations/animated-components";
 
 export const PatientForm = () => {
   const router = useRouter();
@@ -53,8 +53,8 @@ export const PatientForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
         <section className="mb-12 space-y-4">
-          <h1 className="header">Hi there 👋</h1>
-          <p className="text-dark-700">Get started with appointments.</p>
+          
+          <p className="text-dark-700 text-3xl font-bold mt-10 cormorant-garamond">Get started with appointments.</p>
         </section>
 
         <CustomFormField
@@ -85,7 +85,20 @@ export const PatientForm = () => {
           placeholder="+1 555 123 4567"
         />
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <MotionGradientButton
+          type="submit"
+          disabled={isLoading}
+          variant="variant"
+          className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
+          }}
+          whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          REGISTER 
+        </MotionGradientButton>
       </form>
     </Form>
   );

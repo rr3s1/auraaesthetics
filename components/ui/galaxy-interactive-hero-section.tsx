@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
-import { RainbowButton } from "@/components/ui/rainbow-button";
 import { GradientText } from "@/components/ui/gradient-text";
+import { GradientButton } from "@/components/ui/gradient-button";
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function HeroSplineBackground() {
@@ -57,9 +57,16 @@ function HeroContent() {
           AURA AESTHETICS
         </GradientText>
       </h1>
-      <p className="lg:text-3xl pl-5 pt-10 sm:text-xl md:text-2xl opacity-90 max-w-2xl italic">
+      <p className="lg:text-3xl pl-5 pt-10 sm:text-xl md:text-2xl max-w-2xl italic">
         Pioneers in advanced aesthetic treatments. Your journey to confidence, guided by our expertise.
       </p>
+      <div className="mt-12 pl-5" style={{ pointerEvents: 'auto' }}>
+        <Link href="/appointment">
+          <GradientButton className="text-xl md:text-2xl py-5 px-10 min-w-[240px]">
+            Book Appointment
+          </GradientButton>
+        </Link>
+      </div>
     </div>
   );
 }
@@ -152,19 +159,17 @@ function Navbar() {
                 </div>
               </div>
             ))}
-            <a href="#" className={navLinkClass("Book Now")}>Book Now</a>
-            <a href="#" className={navLinkClass("Contact Us")}>Contact Us</a>
           </div>
           <div className="hidden md:flex items-center space-x-3">
             <Link href="/register">
-              <RainbowButton className="text-base md:text-lg text-black font-medium">
+              <GradientButton className="text-base md:text-lg font-medium">
                 Register
-              </RainbowButton>
+              </GradientButton>
             </Link>
             <Link href="/admin">
-              <RainbowButton variant="purple" className="text-sm text-white font-medium">
+              <GradientButton variant="variant" className="text-base md:text-lg font-medium">
                 Admin
-              </RainbowButton>
+              </GradientButton>
             </Link>
           </div>
           <div className="md:hidden flex items-center">
@@ -201,7 +206,7 @@ function Navbar() {
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Book Now</a>
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Us</a>
         <a href="/client-portal" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Client Portal</a>
-         <button className="w-full mt-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2.5 px-4 rounded-md transition-colors duration-200" onClick={toggleMobileMenu}>
+         <button className="w-full mt-2 gradient-button text-white text-sm font-medium py-2.5 px-4 rounded-md" onClick={toggleMobileMenu}>
             Book Appointment
         </button>
       </div>

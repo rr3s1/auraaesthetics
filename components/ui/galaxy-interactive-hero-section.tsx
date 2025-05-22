@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import { RainbowButton } from "@/components/ui/rainbow-button";
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function HeroSplineBackground() {
@@ -149,11 +150,15 @@ function Navbar() {
             <a href="#" className={navLinkClass("Contact Us")}>Contact Us</a>
           </div>
           <div className="hidden md:flex items-center space-x-3">
-            <a href="/register" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
-              Register
-            </a>
-            <Link href="/admin" className="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors duration-200">
-              Admin
+            <Link href="/register">
+              <RainbowButton className="text-sm text-black font-medium">
+                Register
+              </RainbowButton>
+            </Link>
+            <Link href="/admin">
+              <RainbowButton variant="purple" className="text-sm text-white font-medium">
+                Admin
+              </RainbowButton>
             </Link>
           </div>
           <div className="md:hidden flex items-center">

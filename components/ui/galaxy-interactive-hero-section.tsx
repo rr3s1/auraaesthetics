@@ -57,13 +57,13 @@ function HeroContent() {
           AURA AESTHETICS
         </GradientText>
       </h1>
-      <p className="lg:text-3xl pl-5 pt-10 sm:text-xl md:text-2xl max-w-2xl italic">
-        Pioneers in advanced aesthetic treatments. Your journey to confidence, guided by our expertise.
+      <p className="lg:text-3xl pl-7 pt-10 sm:text-xl md:text-2xl max-w-2xl italic">
+        Pioneers in advanced aesthetic treatments <br /> Your journey to confidence, guided by our expertise.
       </p>
       <div className="mt-12 pl-5" style={{ pointerEvents: 'auto' }}>
-        <Link href="/appointment">
-          <GradientButton className="text-xl md:text-2xl py-5 px-10 min-w-[240px]">
-            Book Appointment
+        <Link href="/register">
+          <GradientButton variant="variant" className="text-xl md:text-2xl py-5 px-10 min-w-[240px]">
+            Book Consultation
           </GradientButton>
         </Link>
       </div>
@@ -74,38 +74,19 @@ function HeroContent() {
 function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mobileDropdowns, setMobileDropdowns] = useState({
-    services: false,
-    gallery: false,
-    about: false,
-  });
 
-  const navItems = {
-    Services: ["Skin Rejuvenation", "Injectables & Fillers", "Body Contouring", "Wellness Therapies"],
-    Gallery: ["Client Transformations", "Our Luxurious Clinic", "Advanced Technology"],
-    About: ["Our Philosophy", "Meet Our Experts", "The Aura Experience"],
-  };
+  const navItems = ['Services', 'Gallery', 'About'];
 
   const handleMouseEnterNavItem = (item: string) => setHoveredNavItem(item);
   const handleMouseLeaveNavItem = () => setHoveredNavItem(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (isMobileMenuOpen) {
-      setMobileDropdowns({ services: false, gallery: false, about: false });
-    }
-  };
-
-  const toggleMobileDropdown = (key: keyof typeof mobileDropdowns) => {
-    setMobileDropdowns(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
   const navLinkClass = (itemName: string, extraClasses = '') =>
     `text-base md:text-lg lg:text-xl font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
-      hoveredNavItem === itemName ||
-      (itemName === 'Services' && (navItems.Services.includes(hoveredNavItem || ''))) ||
-      (itemName === 'Gallery' && (navItems.Gallery.includes(hoveredNavItem || ''))) ||
-      (itemName === 'About' && (navItems.About.includes(hoveredNavItem || '')))
+      hoveredNavItem === itemName
         ? 'bg-gray-700/50 text-white'
         : 'text-gray-300 hover:text-white hover:bg-gray-700/30'
     } ${extraClasses}`;
@@ -114,7 +95,6 @@ function Navbar() {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
-        setMobileDropdowns({ services: false, gallery: false, about: false });
       }
     };
     window.addEventListener('resize', handleResize);
@@ -127,47 +107,32 @@ function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0">
-              <GradientText className="text-white text-xl md:text-2xl lg:text-3xl font-merienda tracking-wide">
+              <GradientText className="text-white text-xl md:text-2xl lg:text-3xl font-black tracking-wide">
                 AURA
               </GradientText>
             </a>
           </div>
-          <div className="hidden md:flex items-center space-x-2">
-            {Object.entries(navItems).map(([key, subItems]) => (
-              <div
-                key={key}
-                className="relative group"
-                onMouseEnter={() => handleMouseEnterNavItem(key)}
+          <div className="hidden md:flex items-center space-x-4">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className={navLinkClass(item)}
+                onMouseEnter={() => handleMouseEnterNavItem(item)}
                 onMouseLeave={handleMouseLeaveNavItem}
               >
-                <button className={navLinkClass(key)}>
-                  {key}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down inline-block ml-1 transition-transform duration-200 group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div className={`absolute left-0 mt-1 w-56 bg-gray-800/80 backdrop-blur-lg rounded-md shadow-lg py-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200`}>
-                  {subItems.map(subItem => (
-                    <a
-                      key={subItem}
-                      href="#" // TODO: Update hrefs for actual navigation
-                      className="block px-4 py-2 text-base text-gray-300 hover:bg-gray-700/50 hover:text-white"
-                      onMouseEnter={() => handleMouseEnterNavItem(subItem)}
-                      onMouseLeave={() => handleMouseEnterNavItem(key)}
-                    >
-                      {subItem}
-                    </a>
-                  ))}
-                </div>
-              </div>
+                {item}
+              </a>
             ))}
           </div>
           <div className="hidden md:flex items-center space-x-3">
-            <Link href="/register">
-              <GradientButton className="text-base md:text-lg font-medium">
+            {/* <Link href="/register">
+              <GradientButton className="text-xs md:text-lg font-medium scale-70 transform">
                 Register
               </GradientButton>
-            </Link>
+            </Link> */}
             <Link href="/admin">
-              <GradientButton variant="variant" className="text-base md:text-lg font-medium">
+              <GradientButton className="text-xs md:text-lg font-medium scale-70 transform">
                 Admin
               </GradientButton>
             </Link>
@@ -190,18 +155,15 @@ function Navbar() {
         </div>
       </div>
       <div className={`md:hidden fixed inset-x-0 top-16 bg-gray-900/95 backdrop-blur-lg p-4 space-y-2 transition-all duration-300 ease-in-out overflow-y-auto max-h-[calc(100vh-4rem)] ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'}`}>
-        {Object.entries(navItems).map(([key, subItems]) => (
-          <div key={key} className="relative">
-            <button className="text-gray-300 hover:text-gray-100 flex items-center justify-between w-full text-left text-sm py-2" onClick={() => toggleMobileDropdown(key.toLowerCase() as keyof typeof mobileDropdowns)} aria-expanded={mobileDropdowns[key.toLowerCase() as keyof typeof mobileDropdowns]}>
-              {key}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`lucide lucide-chevron-down ml-2 transition-transform duration-200 ${mobileDropdowns[key.toLowerCase() as keyof typeof mobileDropdowns] ? 'rotate-180' : ''}`}><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-             <div className={`pl-4 space-y-2 mt-2 overflow-hidden transition-all duration-300 ease-in-out ${mobileDropdowns[key.toLowerCase() as keyof typeof mobileDropdowns] ? 'max-h-[250px] opacity-100 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-              {subItems.map(subItem => (
-                <a key={subItem} href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-1 transition duration-150" onClick={toggleMobileMenu}>{subItem}</a>
-              ))}
-            </div>
-          </div>
+        {navItems.map((item) => (
+          <a 
+            key={item} 
+            href={`/${item.toLowerCase()}`} 
+            className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" 
+            onClick={toggleMobileMenu}
+          >
+            {item}
+          </a>
         ))}
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Book Now</a>
         <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Us</a>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { GradientText } from "@/components/ui/gradient-text";
 import { GradientButton } from "@/components/ui/gradient-button";
+import { motion, Variants } from 'framer-motion';
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function HeroSplineBackground() {
@@ -49,16 +50,137 @@ function HeroSplineBackground() {
   );
 }
 
+// Animation variants for the HeroContent component
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const titleWrapperVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.035,
+    },
+  },
+};
+
+const titleCharVariants: Variants = {
+  hidden: { y: 25, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 100, damping: 10 },
+  },
+  hover: {
+    y: -3,
+    transition: { duration: 0.2 }
+  }
+};
+
+const paragraphVariants: Variants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.7, ease: [0.42, 0, 0.58, 1] },
+  },
+};
+
+const glowingSpanVariants: Variants = {
+  hidden: { opacity: 0, filter: 'blur(4px) brightness(0.7)', scale: 0.85 },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px) brightness(1)',
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      type: 'spring',
+      stiffness: 120,
+      damping: 10,
+      delay: 0.3,
+    },
+  },
+  hover: {
+    scale: 1.05,
+    filter: 'blur(0px) brightness(1.15)',
+    transition: { duration: 0.2, type: 'spring', stiffness: 300 },
+  },
+};
+
+const buttonWrapperVariants: Variants = {
+  hidden: { y: 30, opacity: 0, scale: 0.9 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 90, damping: 12, duration: 0.6 },
+  },
+};
+
+// Motion-compatible GradientButton
+const MotionGradientButton = motion(React.forwardRef<
+  HTMLButtonElement, 
+  { variant?: string; className?: string; children: React.ReactNode; [key: string]: any }
+>(({ variant, className, children, ...props }, ref) => (
+  <GradientButton
+    ref={ref as any}
+    variant={variant}
+    className={className}
+    {...props}
+  >
+    {children}
+  </GradientButton>
+)));
+MotionGradientButton.displayName = 'MotionGradientButton';
+
 function HeroContent() {
+  const titleText = "AURA AESTHETICS";
+  const titleCharacters = Array.from(titleText);
+
   return (
-    <div className="text-left mb-16 text-white px-4 ">
-      <h1 className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-9xl font-bold  leading-tight tracking-wide">
+    <motion.div
+      className="text-left mb-16 text-white px-4 min-h-[70vh] flex flex-col justify-center"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Main Title */}
+      <motion.h1
+        className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-9xl font-bold leading-tight tracking-wide"
+        variants={titleWrapperVariants}
+        aria-label={titleText}
+      >
         <GradientText className="text-white pl-10 font-racing-sans-one">
-          AURA AESTHETICS
+          {titleCharacters.map((char, index) => (
+            <motion.span
+              key={`${char}-${index}`}
+              variants={titleCharVariants}
+              whileHover="hover"
+              style={{ display: 'inline-block' }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </GradientText>
-      </h1>
-      <p className="lg:text-3xl pl-8 pt-10 sm:text-xl md:text-2xl font-bold uppercase italic">
-        <span className="relative inline-block">
+      </motion.h1>
+
+      {/* First Paragraph */}
+      <motion.p
+        className="lg:text-3xl pl-8 pt-10 sm:text-xl md:text-2xl font-bold uppercase italic"
+        variants={paragraphVariants}
+      >
+        <motion.span
+          className="relative inline-block"
+          variants={glowingSpanVariants}
+          whileHover="hover"
+        >
           <span 
             className="text-orange-400 relative z-10"
             style={{
@@ -68,8 +190,12 @@ function HeroContent() {
           >
             Pioneers
           </span>
-        </span> in{' '}
-        <span className="relative inline-block">
+        </motion.span> in{' '}
+        <motion.span
+          className="relative inline-block"
+          variants={glowingSpanVariants}
+          whileHover="hover"
+        >
           <span 
             className="text-purple-400 relative z-10"
             style={{
@@ -79,12 +205,21 @@ function HeroContent() {
           >
             advanced aesthetic
           </span>
-        </span>{' '}
+        </motion.span>{' '}
         treatment
-      </p>
-      <p className="lg:text-3xl pl-7 sm:text-xl md:text-2xl max-w-3xl italic">
+      </motion.p>
+
+      {/* Second Paragraph */}
+      <motion.p
+        className="lg:text-3xl pl-7 sm:text-xl md:text-2xl max-w-3xl italic"
+        variants={paragraphVariants}
+      >
         The {' '}
-        <span className="relative inline-block">
+        <motion.span
+          className="relative inline-block"
+          variants={glowingSpanVariants}
+          whileHover="hover"
+        >
           <span 
             className="text-green-500 relative z-10"
             style={{
@@ -94,17 +229,32 @@ function HeroContent() {
           >
           path to confidence
           </span>
-        </span>{' '}
+        </motion.span>{' '}
         guided by our expertise
-      </p>
-      <div className="mt-12 pl-5" style={{ pointerEvents: 'auto' }}>
-        <Link href="/register">
-          <GradientButton variant="variant" className="text-xl md:text-2xl py-5 px-10 min-w-[240px] font-merienda">
+      </motion.p>
+
+      {/* CTA Button Wrapper */}
+      <motion.div
+        className="mt-12 pl-5"
+        style={{ pointerEvents: 'auto' }}
+        variants={buttonWrapperVariants}
+      >
+        <Link href="/register" passHref legacyBehavior>
+          <MotionGradientButton
+            variant="variant"
+            className="text-xl md:text-2xl py-5 px-10 min-w-[240px] font-merienda"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
+            }}
+            whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          >
             REGISTER & BOOK
-          </GradientButton>
+          </MotionGradientButton>
         </Link>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

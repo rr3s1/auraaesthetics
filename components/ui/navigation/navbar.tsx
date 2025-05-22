@@ -5,10 +5,12 @@ import React, { useState, useEffect } from 'react';
 
 import { GradientButton } from "@/components/ui/gradient-button";
 import { GradientText } from "@/components/ui/gradient-text";
+import { PasskeyModal } from "@/components/PasskeyModal";
 
 export function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPasskeyModalOpen, setIsPasskeyModalOpen] = useState(false);
 
   const navItems = ['Services', 'Gallery', 'About'];
 
@@ -35,6 +37,14 @@ export function Navbar() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobileMenuOpen]);
+
+  const handleAdminClick = () => {
+    setIsPasskeyModalOpen(true);
+  };
+
+  const handlePasskeyModalClose = () => {
+    setIsPasskeyModalOpen(false);
+  };
 
   return (
     <nav className="no-scrollbar fixed inset-x-0 top-0 z-50 bg-black py-4 backdrop-blur-md" style={{pointerEvents: 'auto'}}>
@@ -66,11 +76,12 @@ export function Navbar() {
                 Register
               </GradientButton>
             </Link> */}
-            <Link href="/admin">
-              <GradientButton className="scale-70 text-xs font-medium md:text-lg">
-                Admin
-              </GradientButton>
-            </Link>
+            <GradientButton 
+              className="scale-70 text-xs font-medium md:text-lg"
+              onClick={handleAdminClick}
+            >
+              Admin
+            </GradientButton>
           </div>
           <div className="flex items-center md:hidden">
             <button
@@ -101,12 +112,14 @@ export function Navbar() {
           </a>
         ))}
       
-      <Link href="/admin">
-              <GradientButton className="scale-70 text-xs font-medium md:text-lg">
-                Admin
-              </GradientButton>
-            </Link>
+        <GradientButton 
+          className="scale-70 text-xs font-medium md:text-lg"
+          onClick={handleAdminClick}
+        >
+          Admin
+        </GradientButton>
       </div>
+      {isPasskeyModalOpen && <PasskeyModal onClose={handlePasskeyModalClose} />}
     </nav>
   );
 }

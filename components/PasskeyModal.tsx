@@ -20,10 +20,14 @@ import {
 } from "@/components/ui/input-otp";
 import { decryptKey, encryptKey } from "@/lib/utils";
 
-export const PasskeyModal = () => {
+interface PasskeyModalProps {
+  onClose: () => void;
+}
+
+export const PasskeyModal = ({ onClose }: PasskeyModalProps) => {
   const router = useRouter();
   const path = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // Controls AlertDialog visibility
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
 
@@ -35,38 +39,56 @@ export const PasskeyModal = () => {
   useEffect(() => {
     const accessKey = encryptedKey && decryptKey(encryptedKey);
 
-    if (path)
+    if (path) {
       if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY?.toString()) {
-        setOpen(false);
         router.push("/admin");
+        onClose(); // Notify parent to unmount
       } else {
-        setOpen(true);
+        setOpen(true); // Not authenticated, show the modal
       }
-  }, [encryptedKey, path, router, decryptKey]);
+    }
+  }, [encryptedKey, path, router, decryptKey, onClose]); // Added onClose to dependencies
 
-  const closeModal = () => {
-    setOpen(false);
-    router.push("/");
+  // Centralized function to handle modal closing and navigation
+  const handleModalCloseAction = (targetPath: string) => {
+    setOpen(false); // Ensure AlertDialog knows it's closing
+    router.push(targetPath);
+    onClose(); // Notify parent to unmount
   };
 
-  const validatePasskey = (
+  // Renamed original closeModal for clarity, used by explicit 'X' button
+  const onExplicitCloseButtonClick = () => {
+    handleModalCloseAction("/");
+  };
+
+  // Renamed original validatePasskey for clarity
+  const validateAdminPasskey = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
 
     if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
-      const encryptedKey = encryptKey(passkey);
-
-      localStorage.setItem("accessKey", encryptedKey);
-
-      setOpen(false);
+      const newEncryptedKey = encryptKey(passkey);
+      localStorage.setItem("accessKey", newEncryptedKey);
+      handleModalCloseAction("/admin");
     } else {
       setError("Invalid passkey. Please try again.");
     }
   };
 
+  // Handles AlertDialog's onOpenChange (e.g., Esc key, overlay click)
+  const handleAlertDialogOpenChange = (isOpenRequest: boolean) => {
+    if (!isOpenRequest) {
+      // If AlertDialog is requesting to close due to dismissal
+      handleModalCloseAction("/");
+    } else {
+      // If requesting to open (e.g. programmatically, though useEffect handles initial open)
+      setOpen(isOpenRequest);
+    }
+  };
+
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog open={open} onOpenChange={handleAlertDialogOpenChange}>
       <AlertDialogContent className="shad-alert-dialog">
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-start justify-between">
@@ -76,7 +98,7 @@ export const PasskeyModal = () => {
               alt="close"
               width={20}
               height={20}
-              onClick={() => closeModal()}
+              onClick={onExplicitCloseButtonClick} // Updated to new handler
               className="cursor-pointer"
             />
           </AlertDialogTitle>
@@ -108,7 +130,7 @@ export const PasskeyModal = () => {
         </div>
         <AlertDialogFooter>
           <AlertDialogAction
-            onClick={(e) => validatePasskey(e)}
+            onClick={(e) => validateAdminPasskey(e)} // Updated to new handler
             className="shad-primary-btn w-full"
           >
             Enter Admin Passkey

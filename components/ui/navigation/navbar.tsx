@@ -100,12 +100,12 @@ export function Navbar() {
             {item}
           </a>
         ))}
-        <a href="#" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Book Now</a>
-        <a href="#" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Contact Us</a>
-        <a href="/client-portal" className="cormorant-garamond block py-2 text-base text-gray-300 transition duration-150 hover:text-gray-100" onClick={toggleMobileMenu}>Client Portal</a>
-         <button className="gradient-button mt-2 w-full rounded-md px-4 py-2.5 text-base font-medium text-white" onClick={toggleMobileMenu}>
-            Book Appointment
-        </button>
+      
+      <Link href="/admin">
+              <GradientButton className="scale-70 text-xs font-medium md:text-lg">
+                Admin
+              </GradientButton>
+            </Link>
       </div>
     </nav>
   );

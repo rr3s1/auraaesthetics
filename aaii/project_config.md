@@ -7,11 +7,6 @@ Last-Updated: <date_will_be_updated_by_AI_or_user>
 ## ✨ Core Goal
 
 Upgrade landing page with x10 improved UI/UX having a CTA button in Hero section inviting to register as a patient
-&&
-create an admin button on top right side of landing page to access admin panel
-&&
-update all pages style /design to match landing page
-
 ---
 
 ## 🛠️ Tech Stack & Environment

@@ -1,0 +1,79 @@
+.howItWorksSection {
+  padding: 50px 20px;
+  background-color: #f0f9ff; /* A very light, slightly different blue */
+  text-align: center;
+}
+
+.howItWorksSection h2 {
+  font-size: 2.2em;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 1.1em;
+  color: #4b5563;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stepCard {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative; /* For positioning the number */
+  text-align: left;
+}
+
+.stepNumber {
+  position: absolute;
+  top: -15px;
+  left: 25px;
+  background-color: #3b82f6; /* Primary blue */
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 20px; /* Pill shape */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stepCard h4 {
+  font-size: 1.3em;
+  color: #111827;
+  margin-top: 30px; /* Space below number */
+  margin-bottom: 10px;
+}
+
+.stepCard p {
+  font-size: 0.95em;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .howItWorksSection h2 {
+    font-size: 1.8em;
+  }
+  .subheading {
+    font-size: 1em;
+  }
+  .stepCard h4 {
+    font-size: 1.15em;
+  }
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+}

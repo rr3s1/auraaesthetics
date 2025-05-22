@@ -1,0 +1,83 @@
+.testimonialsSection {
+  padding: 50px 20px;
+  background-color: #f9fafb; /* Light gray background */
+  text-align: center;
+}
+
+.testimonialsSection h2 {
+  font-size: 2.2em;
+  color: #1f2937;
+  margin-bottom: 40px;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonialCard {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content for a traditional testimonial look */
+}
+
+.avatarPlaceholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #d1d5db; /* Neutral gray for placeholder */
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.quote {
+  font-size: 1.05em;
+  font-style: italic;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 10px; /* Space for quote marks if added via ::before */
+}
+
+.cite {
+  font-style: normal;
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+  color: #111827;
+  font-size: 1.1em;
+}
+
+.title {
+  display: block;
+  font-size: 0.9em;
+  color: #6b7280;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonialsSection h2 {
+    font-size: 1.8em;
+  }
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+  .quote {
+    font-size: 1em;
+  }
+}

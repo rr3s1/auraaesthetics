@@ -1,11 +1,11 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import Image from "next/image";
 
 import { Doctors } from "@/constants";
 import { formatDateTime } from "@/lib/utils";
 import { Appointment } from "@/types/appwrite.types";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { AppointmentModal } from "../AppointmentModal";
 import { StatusBadge } from "../StatusBadge";
@@ -59,17 +59,15 @@ export const columns: ColumnDef<Appointment>[] = [
         (doctor) => doctor.name === appointment.primaryPhysician,
       );
 
-      const fallbackInitials = doctor?.name
-        ?.split(' ')
-        .map((n) => n[0])
-        .join('') || 'Dr';
-
       return (
         <div className="flex items-center gap-3">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={doctor?.image!} alt={doctor?.name || 'doctor'} />
-            <AvatarFallback>{fallbackInitials}</AvatarFallback>
-          </Avatar>
+          <Image
+            src={doctor?.image!}
+            alt="doctor"
+            width={100}
+            height={100}
+            className="size-8"
+          />
           <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
         </div>
       );

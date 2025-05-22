@@ -18,13 +18,13 @@ const RequestSuccess = async ({
   );
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gradient-blue-start via-primary-green to-gradient-teal-end px-4 py-16 sm:px-6 lg:px-8">
-      <div className="relative z-10 w-full max-w-2xl rounded-xl bg-neutral-light-gray/90 p-8 text-center shadow-2xl backdrop-blur-md dark:bg-neutral-dark-gray/90">
-        <Link href="/" className="mb-8 inline-block">
+    <div className=" flex h-screen max-h-screen px-[5%]">
+      <div className="success-img">
+        <Link href="/">
           <Image
             src="/assets/icons/logo-full.svg"
-            height={40}
-            width={150}
+            height={1000}
+            width={1000}
             alt="logo"
             className="h-10 w-fit"
           />
@@ -33,60 +33,47 @@ const RequestSuccess = async ({
         <section className="flex flex-col items-center">
           <Image
             src="/assets/gifs/success.gif"
-            height={160}
-            width={150}
+            height={300}
+            width={280}
             alt="success"
-            className="mx-auto mb-6 rounded-lg"
           />
-          <h2 className="mb-4 text-3xl font-bold text-neutral-dark-gray dark:text-neutral-light-gray sm:text-4xl">
-            Your <span className="text-primary-green">appointment has</span>
+          <h2 className="header mb-6 max-w-[600px] text-center">
+            Your <span className="text-green-500"> appointment has</span>
             been successfully scheduled!
           </h2>
-          <p className="mb-8 text-lg text-neutral-medium-gray dark:text-neutral-light-gray/90">
-            We&apos;ll be in touch shortly to confirm.
-          </p>
+          <p>We&apos;ll be in touch shortly to confirm.</p>
         </section>
 
-        <section className="mb-8 rounded-lg bg-white/50 p-6 dark:bg-black/30">
-          <h3 className="mb-4 text-xl font-semibold text-neutral-dark-gray dark:text-neutral-light-gray">
-            Requested Appointment Details:
-          </h3>
-          <div className="space-y-3 text-left">
-            <div className="flex items-center text-sm text-neutral-medium-gray dark:text-neutral-light-gray/90">
-              <Image
-                src={doctor?.image!}
-                alt="doctor"
-                width={24}
-                height={24}
-                className="mr-3 size-6 rounded-full"
-              />
-              <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
-            </div>
-            <div className="flex items-center text-sm text-neutral-medium-gray dark:text-neutral-light-gray/90">
-              <Image
-                src="/assets/icons/calendar.svg"
-                height={24}
-                width={24}
-                alt="calendar"
-                className="mr-3 size-6"
-              />
-              <p>{formatDateTime(appointment.schedule).dateTime}</p>
-            </div>
+        <section className="request-details">
+          <p>Requested appointment details: </p>
+          <div className="flex items-center gap-3">
+            <Image
+              src={doctor?.image!}
+              alt="doctor"
+              width={100}
+              height={100}
+              className="size-6"
+            />
+            <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
           </div>
+          <div className="flex gap-2">
+            <Image
+              src="/assets/icons/calendar.svg"
+              height={24}
+              width={24}
+              alt="calendar"
+            />
+          </div>
+          <p> {formatDateTime(appointment.schedule).dateTime}</p>
+
+          <Button variant="outline" className="shad-primary-btn" asChild>
+            <Link href={`/patients/${userId}/new-appointment`}>
+              New Appointment
+            </Link>
+          </Button>
+
+          <p className="copyright">© 2024 CarePluse</p>
         </section>
-
-        <Button
-          asChild
-          className="w-full rounded-lg bg-primary-green px-8 py-3 text-lg font-semibold text-white shadow-md transition-colors duration-300 ease-in-out hover:bg-primary-green/90 focus:outline-none focus:ring-2 focus:ring-primary-green/50 focus:ring-offset-2 sm:w-auto"
-        >
-          <Link href={`/patients/${userId}/new-appointment`}>
-            Book Another Appointment
-          </Link>
-        </Button>
-
-        <p className="copyright mt-10 text-xs text-neutral-medium-gray dark:text-neutral-light-gray/70">
-          {new Date().getFullYear()} CarePulse
-        </p>
       </div>
     </div>
   );

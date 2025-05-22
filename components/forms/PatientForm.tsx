@@ -51,10 +51,10 @@ export const PatientForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-12">
-        <section className="space-y-4">
-          <h1 className="text-3xl font-bold text-white">Hi there 👋</h1>
-          <p className="text-neutral-light-gray/80">Get started with appointments.</p>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+        <section className="mb-12 space-y-4">
+          <h1 className="header">Hi there 👋</h1>
+          <p className="text-dark-700">Get started with appointments.</p>
         </section>
 
         <CustomFormField
@@ -65,9 +65,6 @@ export const PatientForm = () => {
           placeholder="John Doe"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
-          labelClassName="landing-form-label"
-          inputWrapperClassName="landing-form-input-wrapper"
-          className="landing-form-input"
         />
 
         <CustomFormField
@@ -78,9 +75,6 @@ export const PatientForm = () => {
           placeholder="johndoe@gmail.com"
           iconSrc="/assets/icons/email.svg"
           iconAlt="email"
-          labelClassName="landing-form-label"
-          inputWrapperClassName="landing-form-input-wrapper"
-          className="landing-form-input"
         />
 
         <CustomFormField
@@ -89,12 +83,9 @@ export const PatientForm = () => {
           name="phone"
           label="Phone number"
           placeholder="(555) 123-4567"
-          labelClassName="landing-form-label"
-          inputWrapperClassName="landing-form-input-wrapper landing-phone-input"
-          className="landing-form-input"
         />
 
-        <SubmitButton isLoading={isLoading} className="landing-primary-button w-full">Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
     </Form>
   );

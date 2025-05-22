@@ -7,6 +7,216 @@ import { GradientButton } from "@/components/ui/gradient-button";
 import { motion, Variants } from 'framer-motion';
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
+// Animation variants for the entire page
+const sectionContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Increased stagger for drama between major elements in a section
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const dramaticTitleWordVariants: Variants = {
+  hidden: { y: "100%", opacity: 0, skewY: 7 }, // Increased skew and y offset
+  visible: {
+    y: "0%",
+    opacity: 1,
+    skewY: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80, // Softer spring for a more grand reveal
+      damping: 20,
+      duration: 1.2, // Longer duration
+    },
+  },
+};
+
+const paragraphLineVariants: Variants = {
+  hidden: { opacity: 0, y: 30, filter: "blur(3px)" }, // Added blur
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.9,
+      ease: [0.25, 0.1, 0.25, 1.0], // More dramatic ease
+    },
+  },
+};
+
+const imageDramaticRevealVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.75, filter: "brightness(0.5) saturate(0.5)" }, // Start smaller, desaturated, darker
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "brightness(1) saturate(1)",
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 10,
+      duration: 1.5, // Longer duration for a majestic feel
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 60, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 70,
+      damping: 17,
+    },
+  },
+};
+
+const cardHoverEffect = {
+  scale: 1.04,
+  boxShadow: "0px 15px 35px -10px rgba(168, 85, 247, 0.4)", // More pronounced shadow
+  transition: { type: 'spring', stiffness: 250, damping: 10 }
+};
+
+const blockquoteVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.85, rotateX: -30 }, // Added 3D rotation
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotateX: 0,
+    transition: {
+      type: "spring",
+      stiffness: 60,
+      damping: 12,
+      duration: 1.0,
+    },
+  },
+};
+
+const simpleFadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const ctaButtonVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 100, damping: 10, delay: 0.2 },
+  },
+  hover: {
+    scale: 1.08, // More dramatic hover scale
+    boxShadow: "0px 8px 25px rgba(168, 85, 247, 0.3)", // Purple shadow
+    transition: { type: "spring", stiffness: 300, damping: 10 }
+  },
+  tap: { scale: 0.92 }
+};
+
+// Helper Component for Animating Text (Headings/Paragraphs)
+interface AnimatedTextProps {
+  text: string; // Simple string text
+  el?: keyof JSX.IntrinsicElements;
+  className?: string;
+  variants: Variants;
+  staggerAmount?: number;
+  baseDelay?: number;
+  splitter?: 'word' | 'line';
+  highlightSpans?: React.ReactNode[]; // For pre-split text with styled spans
+}
+
+const AnimatedText: React.FC<AnimatedTextProps> = ({
+  text,
+  el: Element = 'p',
+  className,
+  variants,
+  staggerAmount = 0.05,
+  baseDelay = 0,
+  splitter = 'word',
+  highlightSpans // If provided, text prop is ignored and this is used
+}) => {
+  const elementsToAnimate = highlightSpans 
+    ? highlightSpans.map((span, i) => ({ id: i, content: span }))
+    : (splitter === 'line' ? text.split('\n') : text.split(' ')).map((item, i) => ({ id: i, content: item }));
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 1 }, // Parent doesn't fade, children do
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: baseDelay,
+        staggerChildren: staggerAmount,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }} // Trigger when 30% in view
+      style={{ display: Element === 'span' ? 'inline-block' : 'block' }}
+    >
+      {elementsToAnimate.map((el, index) => (
+        <span key={el.id} style={{ display: 'inline-block', overflow: 'hidden' }}> {/* For y: "100%" reveals */}
+          <motion.span
+            style={{ display: 'inline-block' }}
+            variants={variants}
+          >
+            {el.content}
+            {splitter === 'word' && !highlightSpans && index < elementsToAnimate.length - 1 ? '\u00A0' : ''}
+          </motion.span>
+          {splitter === 'line' && !highlightSpans && index < elementsToAnimate.length - 1 ? <br /> : ''}
+        </span>
+      ))}
+    </motion.div>
+  );
+};
+
+// Component for animating blocks of rich text (with existing spans)
+interface AnimatedBlockProps {
+  children: React.ReactNode;
+  el?: keyof JSX.IntrinsicElements;
+  className?: string;
+  variants: Variants;
+  delay?: number;
+  whileHover?: any;
+  whileTap?: any;
+}
+
+const AnimatedBlock: React.FC<AnimatedBlockProps> = ({
+  children,
+  el = 'div',
+  className,
+  variants,
+  delay = 0,
+  whileHover,
+  whileTap
+}) => {
+  const Component = motion[el as keyof typeof motion] || motion.div;
+  
+  return (
+    <Component
+      className={className}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ delay }} // Simplified transition with delay
+      whileHover={whileHover}
+      whileTap={whileTap}
+    >
+      {children}
+    </Component>
+  );
+};
+
 function HeroSplineBackground() {
   return (
     <div style={{
@@ -26,26 +236,14 @@ function HeroSplineBackground() {
             width: '100%',
             height: '100vh',
             pointerEvents: 'none',
+            opacity: 1, // Ensure full opacity
           }}
-          scene="https://prod.spline.design/u9NDfui5LD1sOMit/scene.splinecode" 
+          scene="https://prod.spline.design/tl2Wh7lQInd1PrUW/scene.splinecode" 
         
           // Original - Keep as placeholder, recommend changing
         />
       </Suspense>
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          background: `
-            linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent 25%, transparent 75%, rgba(0, 0, 0, 0.4)),
-            linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5))
-          `,
-          pointerEvents: 'none',
-        }}
-      />
+      {/* Overlay div removed to make Spline fully visible */}
     </div>
   );
 }
@@ -127,7 +325,7 @@ const buttonWrapperVariants: Variants = {
 // Motion-compatible GradientButton
 const MotionGradientButton = motion(React.forwardRef<
   HTMLButtonElement, 
-  { variant?: string; className?: string; children: React.ReactNode; [key: string]: any }
+  { variant?: "default" | "variant" | null; className?: string; children: React.ReactNode; [key: string]: any }
 >(({ variant, className, children, ...props }, ref) => (
   <GradientButton
     ref={ref as any}
@@ -210,11 +408,11 @@ function HeroContent() {
       </motion.p>
 
       {/* Second Paragraph */}
-      <motion.p
-        className="lg:text-3xl pl-7 sm:text-xl md:text-2xl max-w-3xl italic"
+      {/* <motion.p
+        className="lg:text-2xl pl-7 sm:text-xl md:text-xl max-w-3xl italic"
         variants={paragraphVariants}
       >
-        The {' '}
+        EMBRACE {' '}
         <motion.span
           className="relative inline-block"
           variants={glowingSpanVariants}
@@ -223,15 +421,15 @@ function HeroContent() {
           <span 
             className="text-green-500 relative z-10"
             style={{
-              textShadow: '0 0 15px rgba(0, 200, 100, 0.7), 0 0 25px rgba(0, 200, 100, 0.5)',
-              filter: 'drop-shadow(0 0 5px rgba(0, 200, 100, 0.8))'
+              textShadow: '0 0 15px rgba(0, 123, 200, 0.92), 0 0 25px rgba(0, 117, 200, 0.62)',
+              filter: 'drop-shadow(0 0 5px rgba(0, 180, 200, 0.91))'
             }}
           >
-          path to confidence
+          A PATH TO CONFIDENCE 
           </span>
         </motion.span>{' '}
-        guided by our expertise
-      </motion.p>
+        GUIDED BY OUR EXPERTISE
+      </motion.p> */}
 
       {/* CTA Button Wrapper */}
       <motion.div
@@ -250,7 +448,7 @@ function HeroContent() {
             whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
-            REGISTER & BOOK
+            SCHEDULE A CONSULTATION
           </MotionGradientButton>
         </Link>
       </motion.div>
@@ -365,21 +563,26 @@ function Navbar() {
 
 
 export const HeroSection = () => {
-  const heroContentRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const heroContentWrapperRef = useRef<HTMLDivElement>(null);
+
+  function handleScroll() {
+    if (heroContentWrapperRef.current) {
+      requestAnimationFrame(() => {
+        const scrollPosition = window.pageYOffset;
+        const maxScroll = 400; // Fade out over 400px
+        const opacity = Math.max(0, 1 - scrollPosition / maxScroll); // Ensure opacity doesn't go below 0
+        const scale = Math.max(0.9, 1 - (scrollPosition / maxScroll) * 0.1); // Subtle scale down
+        
+        heroContentWrapperRef.current.style.opacity = opacity.toString();
+        heroContentWrapperRef.current.style.transform = `scale(${scale})`;
+        // Prevent interaction when faded
+        heroContentWrapperRef.current.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
+      });
+    }
+  }
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (heroContentRef.current) {
-        requestAnimationFrame(() => {
-          const scrollPosition = window.pageYOffset;
-          const maxScroll = 400;
-          const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
-          if (heroContentRef.current) {
-            heroContentRef.current.style.opacity = opacity.toString();
-          }
-        });
-      }
-    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -394,129 +597,268 @@ export const HeroSection = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative bg-black"> {/* Ensure base background for areas not covered */}
       <Navbar />
-      <div className="relative min-h-screen">
+      {/* Hero Area */}
+      <div className="relative min-h-screen overflow-hidden"> {/* Overflow hidden for dramatic effects */}
         <div className="absolute inset-0 z-0 pointer-events-auto">
           <HeroSplineBackground />
         </div>
 
-        <div ref={heroContentRef} style={{
+        <div ref={heroContentWrapperRef} style={{
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100vh',
-          display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10, pointerEvents: 'none'
+          display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
+          // pointerEvents handled by JS now
         }}>
           <div className="container mx-auto">
-           <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-white">Loading Content...</div>}>
-            <HeroContent />
-           </Suspense>
+            <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-white text-xl">Loading Aura Experience...</div>}>
+              <HeroContent />
+            </Suspense>
           </div>
         </div>
       </div>
 
       <div className="bg-black relative z-10 text-white py-16 md:py-24" style={{ marginTop: '-10vh' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
-
-          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20 md:space-y-28"> {/* Increased spacing */}
+          {/* --- THE AURA DIFFERENCE --- */}
+          <motion.section
+            className="grid md:grid-cols-2 gap-10 md:gap-16 items-center" // Increased gap
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">THE <span className="text-purple-400">AURA</span> DIFFERENCE</h2>
-              <p className="text-lg opacity-80 mb-6">
-                At Aura Aesthetics, we blend artistry with medical science to deliver transformative results. For over 15 years, we've been at the forefront of luxury aesthetic care, offering personalized treatments that enhance your natural beauty and boost your confidence. We believe in 'Your Radiance, Our Passion' – empowering you through meticulous care and state-of-the-art techniques.
-              </p>
-              <a href="#" className="text-purple-400 hover:text-purple-300 font-semibold">Discover Our Philosophy →</a>
-            </div>
-            <div className="text-center">
-              <img src="/placeholder/clinic-reception-luxury.jpg" alt="Luxurious reception area of Aura Aesthetics clinic" className="rounded-lg shadow-xl mx-auto w-full max-w-md" />
-            </div>
-            <blockquote className="md:col-span-2 text-center text-xl sm:text-2xl italic opacity-90 py-8 border-t border-b border-gray-700">
-              <p>"Where science meets artistry,</p>
-              <p>and confidence is beautifully sculpted."</p>
-              <cite className="block mt-4 not-italic text-base opacity-70">– The Aura Aesthetics Philosophy</cite>
-            </blockquote>
-          </section>
+              <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+                THE <span className="text-purple-400">AURA</span> DIFFERENCE
+              </AnimatedBlock>
 
-          <section>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">OUR SIGNATURE TREATMENTS</h2>
-              <p className="text-lg opacity-80 max-w-3xl mx-auto">
-                Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results.
-              </p>
-              <img src="/placeholder/treatment-collage.jpg" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-xl mx-auto mt-8 w-full max-w-lg" />
+              <AnimatedText
+                text="At Aura Aesthetics, we blend artistry with medical science to deliver transformative results. For over 15 years, we've been at the forefront of luxury aesthetic care, offering personalized treatments that enhance your natural beauty and boost your confidence. We believe in 'Your Radiance, Our Passion' – empowering you through meticulous care and state-of-the-art techniques."
+                el="p"
+                className="text-lg lg:text-xl opacity-80 mb-8" // Slightly larger text
+                variants={paragraphLineVariants}
+                staggerAmount={0.04} // Faster stagger for paragraph lines
+                splitter="line"
+              />
+              <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
+                <Link href="#" legacyBehavior>
+                  <a className="text-purple-400 hover:text-purple-300 font-semibold text-lg inline-block transform hover:translate-x-1 transition-transform duration-200">
+                    Discover Our Philosophy →
+                  </a>
+                </Link>
+              </AnimatedBlock>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
+              <img src="/placeholder/clinic-reception-luxury.jpg" alt="Luxurious reception area of Aura Aesthetics clinic" className="rounded-lg shadow-2xl mx-auto w-full max-w-md" />
+            </AnimatedBlock>
+          </motion.section>
+          <AnimatedBlock el="blockquote" variants={blockquoteVariants} className="md:col-span-2 text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700">
+            <p>"Where science meets artistry,</p>
+            <p>and confidence is beautifully sculpted."</p>
+            <cite className="block mt-4 not-italic text-base opacity-70">– The Aura Aesthetics Philosophy</cite>
+          </AnimatedBlock>
+
+          {/* --- OUR SIGNATURE TREATMENTS --- */}
+          <motion.section
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            <div className="text-center mb-16"> {/* Increased margin */}
+              <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                OUR SIGNATURE TREATMENTS
+              </AnimatedBlock>
+              <AnimatedText
+                text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
+                el="p"
+                className="text-lg lg:text-xl opacity-80 max-w-3xl mx-auto"
+                variants={paragraphLineVariants}
+                staggerAmount={0.03}
+                splitter="line"
+              />
+              <AnimatedBlock variants={imageDramaticRevealVariants} delay={0.2} className="mx-auto mt-10 w-full max-w-lg">
+                <img src="/placeholder/treatment-collage.jpg" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-2xl" />
+              </AnimatedBlock>
+            </div>
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" // Increased gap
+              variants={{ visible: { transition: { staggerChildren: 0.15 } } }} // Stagger cards
+            >
               {cardData.map((card, index) => (
-                <div key={index} className="bg-gray-800/50 p-6 rounded-xl shadow-lg border border-gray-700/50 flex flex-col">
-                  <img src={card.image} alt={card.alt} className="w-full h-48 object-cover rounded-md mb-4"/>
-                  <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                  <a href="#" className="mt-auto text-purple-400 hover:text-purple-300 font-semibold self-start">{card.linkText} →</a>
-                </div>
+                <AnimatedBlock
+                  key={card.title + index} // Ensure key is unique if titles can repeat
+                  el="div"
+                  variants={cardVariants}
+                  className="bg-gray-800/60 p-6 rounded-xl shadow-xl border border-gray-700/50 flex flex-col hover:border-purple-500/70 transition-colors duration-300" // Added hover border
+                  whileHover={cardHoverEffect}
+                >
+                  <img src={card.image} alt={card.alt} className="w-full h-52 object-cover rounded-md mb-5"/>
+                  <h3 className="text-xl lg:text-2xl font-semibold mb-3">{card.title}</h3>
+                  <Link href="#" legacyBehavior>
+                    <a className="mt-auto text-purple-400 hover:text-purple-200 font-semibold self-start text-md group">
+                      {card.linkText} <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </a>
+                  </Link>
+                </AnimatedBlock>
               ))}
-            </div>
-          </section>
-
-          <blockquote className="text-center text-2xl sm:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700">
+            </motion.div>
+          </motion.section>
+          <AnimatedBlock el="blockquote" variants={blockquoteVariants} className="text-center text-2xl sm:text-3xl lg:text-4xl italic opacity-90 py-12 border-t border-b border-gray-700">
             <p>"Revealing your <span className="text-pink-400 font-semibold">Inner Radiance</span>, Sculpting <span className="text-teal-400 font-semibold">Timeless Elegance</span>."</p>
             <cite className="block mt-4 not-italic text-base opacity-70">– The Aura Aesthetics Team</cite>
-          </blockquote>
+          </AnimatedBlock>
 
-          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* --- REFINED NATURALISM --- */}
+          <motion.section
+            className="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-pink-400">THE AURA LOOK: <span className="italic">REFINED NATURALISM</span></h2>
-              <p className="text-lg opacity-80 mb-6">
-                We found that the most profound beauty enhancements are those that honor individuality. Our 'Refined Naturalism' approach focuses on subtle yet significant improvements, using advanced techniques to restore youthfulness and highlight your unique features, ensuring you look like the best version of yourself.
-              </p>
-              <a href="#" className="text-pink-400 hover:text-pink-300 font-semibold">Explore Our Aesthetic Philosophy →</a>
+              <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+                THE AURA LOOK: <span className="text-pink-400 italic">REFINED NATURALISM</span>
+              </AnimatedBlock>
+              <AnimatedText
+                text="We found that the most profound beauty enhancements are those that honor individuality. Our 'Refined Naturalism' approach focuses on subtle yet significant improvements, using advanced techniques to restore youthfulness and highlight your unique features, ensuring you look like the best version of yourself."
+                el="p"
+                className="text-lg lg:text-xl opacity-80 mb-8"
+                variants={paragraphLineVariants} 
+                splitter="line" 
+                staggerAmount={0.03}
+              />
+              <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
+                <Link href="#" legacyBehavior>
+                  <a className="text-pink-400 hover:text-pink-300 font-semibold text-lg inline-block transform hover:translate-x-1 transition-transform duration-200">
+                    Explore Our Aesthetic Philosophy →
+                  </a>
+                </Link>
+              </AnimatedBlock>
             </div>
-            <div className="text-center">
-              <img src="/placeholder/natural-enhancement-result.jpg" alt="Client showcasing natural-looking aesthetic results" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
-            </div>
-          </section>
+            <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
+              <img src="/placeholder/natural-enhancement-result.jpg" alt="Client showcasing natural-looking aesthetic results" className="rounded-lg shadow-2xl mx-auto w-full max-w-md"/>
+            </AnimatedBlock>
+          </motion.section>
 
-          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-             <div className="text-center md:order-2">
-              <img src="/placeholder/advanced-clinic-tech.jpg" alt="State-of-the-art aesthetic technology in a clinic setting" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
-            </div>
+          {/* --- AESTHETIC INNOVATION --- */}
+          <motion.section
+            className="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center md:order-2">
+              <img src="/placeholder/advanced-clinic-tech.jpg" alt="State-of-the-art aesthetic technology in a clinic setting" className="rounded-lg shadow-2xl mx-auto w-full max-w-md"/>
+            </AnimatedBlock>
             <div className="md:order-1">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-teal-400">MASTERS OF <span className="italic">AESTHETIC INNOVATION</span></h2>
-              <p className="text-lg opacity-80 mb-6">
-                We are dedicated to utilizing the latest, clinically-proven technologies and premium medical-grade products. Our investment in state-of-the-art equipment and continuous training ensures we deliver the safest, most effective treatments with superior outcomes and client satisfaction.
-              </p>
-              <a href="#" className="text-teal-400 hover:text-teal-300 font-semibold">Discover Our Technologies →</a>
+              <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+                MASTERS OF <span className="text-teal-400 italic">AESTHETIC INNOVATION</span>
+              </AnimatedBlock>
+              <AnimatedText
+                text="We are dedicated to utilizing the latest, clinically-proven technologies and premium medical-grade products. Our investment in state-of-the-art equipment and continuous training ensures we deliver the safest, most effective treatments with superior outcomes and client satisfaction."
+                el="p"
+                className="text-lg lg:text-xl opacity-80 mb-8"
+                variants={paragraphLineVariants} 
+                splitter="line" 
+                staggerAmount={0.03}
+              />
+              <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
+                <Link href="#" legacyBehavior>
+                  <a className="text-teal-400 hover:text-teal-300 font-semibold text-lg inline-block transform hover:translate-x-1 transition-transform duration-200">
+                    Discover Our Technologies →
+                  </a>
+                </Link>
+              </AnimatedBlock>
             </div>
-          </section>
+          </motion.section>
 
-          <section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* --- PERSONALISED JOURNEYS --- */}
+          <motion.section
+            className="grid md:grid-cols-2 gap-10 md:gap-16 items-center"
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-orange-400">PERSONALISED <span className="italic">TREATMENT JOURNEYS</span></h2>
-              <p className="text-lg opacity-80 mb-6">
-                Beyond individual treatments, we focus on holistic, personalized journeys. Our expert consultations lead to bespoke plans addressing your unique concerns and goals, ensuring comprehensive care and results that not only look exceptional but also promote long-term skin health and well-being.
-              </p>
-              <a href="#" className="text-orange-400 hover:text-orange-300 font-semibold">Explore Our Approach →</a>
+              <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+                PERSONALISED <span className="text-orange-400 italic">TREATMENT JOURNEYS</span>
+              </AnimatedBlock>
+              <AnimatedText
+                text="Beyond individual treatments, we focus on holistic, personalized journeys. Our expert consultations lead to bespoke plans addressing your unique concerns and goals, ensuring comprehensive care and results that not only look exceptional but also promote long-term skin health and well-being."
+                el="p"
+                className="text-lg lg:text-xl opacity-80 mb-8"
+                variants={paragraphLineVariants} 
+                splitter="line" 
+                staggerAmount={0.03}
+              />
+              <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
+                <Link href="#" legacyBehavior>
+                  <a className="text-orange-400 hover:text-orange-300 font-semibold text-lg inline-block transform hover:translate-x-1 transition-transform duration-200">
+                    Explore Our Approach →
+                  </a>
+                </Link>
+              </AnimatedBlock>
             </div>
-            <div className="text-center">
-                 <img src="/placeholder/client-consultation.jpg" alt="Doctor consulting with a client in a luxury clinic" className="rounded-lg shadow-xl mx-auto w-full max-w-md"/>
-            </div>
-          </section>
+            <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
+              <img src="/placeholder/client-consultation.jpg" alt="Doctor consulting with a client in a luxury clinic" className="rounded-lg shadow-2xl mx-auto w-full max-w-md"/>
+            </AnimatedBlock>
+          </motion.section>
           
-          <blockquote className="text-center text-xl sm:text-2xl italic opacity-90 py-10 border-t border-b border-gray-700 max-w-3xl mx-auto">
+          {/* --- TESTIMONIAL BLOCKQUOTE --- */}
+          <AnimatedBlock el="blockquote" variants={blockquoteVariants} className="text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700 max-w-3xl mx-auto">
             <p>"The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"</p>
             <cite className="block mt-4 not-italic text-base opacity-70">– A Delighted Aura Client</cite>
-          </blockquote>
+          </AnimatedBlock>
 
-          <section className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8">CLIENT TRANSFORMATIONS & TESTIMONIALS</h2>
-            <p className="text-lg opacity-80 mb-4">Hear from our valued clients and witness the beautiful transformations achieved at Aura Aesthetics.</p>
-            <a href="#" className="bg-purple-600 hover:bg-purple-700 text-white text-lg font-medium py-3 px-8 rounded-md transition-colors duration-200">
-              View Gallery & Testimonials
-            </a>
-          </section>
+          {/* --- CLIENT TRANSFORMATIONS CTA --- */}
+          <motion.section
+            className="text-center"
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+              CLIENT TRANSFORMATIONS & TESTIMONIALS
+            </AnimatedBlock>
+            <AnimatedText
+              text="Hear from our valued clients and witness the beautiful transformations achieved at Aura Aesthetics."
+              el="p" 
+              className="text-lg lg:text-xl opacity-80 mb-10" // Increased margin
+              variants={paragraphLineVariants} 
+              splitter="line" 
+              staggerAmount={0.03}
+            />
+            <motion.div variants={ctaButtonVariants} whileHover="hover" whileTap="tap">
+              <Link href="#" legacyBehavior>
+                <a className="bg-purple-600 hover:bg-purple-500 text-white text-lg font-medium py-4 px-10 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-purple-500/50">
+                  View Gallery & Testimonials
+                </a>
+              </Link>
+            </motion.div>
+          </motion.section>
 
-          <section className="text-center pt-12 border-t border-gray-700">
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12">
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">AWARD-WINNING TREATMENTS</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">BOARD-CERTIFIED EXPERTS</h3>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-wider opacity-80">PREMIUM BRAND PARTNERS</h3>
+          {/* --- AWARDS/EXPERTISE --- */}
+          <motion.section
+            className="text-center pt-16 border-t border-gray-700" // Increased padding
+            variants={sectionContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-10 md:space-x-16"> {/* Increased spacing */}
+              {["AWARD-WINNING TREATMENTS", "BOARD-CERTIFIED EXPERTS", "PREMIUM BRAND PARTNERS"].map((text, i) => (
+                <AnimatedBlock key={text} el="h3" variants={simpleFadeInUp} delay={i * 0.15} className="text-lg sm:text-xl lg:text-2xl font-semibold tracking-wider opacity-80">
+                  {text}
+                </AnimatedBlock>
+              ))}
             </div>
-          </section>
+          </motion.section>
 
         </div>
       </div>

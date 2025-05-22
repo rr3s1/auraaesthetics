@@ -68,23 +68,23 @@ export const HeroSection = () => {
           </div>
           
           {/* Container for other components with constrained width */}
-          <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
+          <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
             <TestimonialBlockquote 
               quote="Where science meets artistry, and confidence is beautifully sculpted."
               citation="– The Aura Aesthetics Philosophy"
-              className="md:col-span-2 text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700"
+              className="md:col-span-2 text-center text-2xl sm:text-3xl lg:text-5xl italic opacity-90 py-10 border-t border-b border-gray-700"
             />
           </div>
 
           {/* Container for all other components with constrained width */}
-          <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
+          <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
             {/* --- OUR SIGNATURE TREATMENTS --- */}
             <SignatureTreatmentsSection />
             
             <TestimonialBlockquote 
               quote="Revealing your Inner Radiance, Sculpting Timeless Elegance."
               citation="– The Aura Aesthetics Team"
-              className="text-center text-2xl sm:text-3xl lg:text-4xl italic opacity-90 py-12 border-t border-b border-gray-700"
+              className="text-center text-2xl sm:text-3xl lg:text-4xl italic opacity-90 py-12 border-t border-b border-gray-700 cinzel-decorative-bold"
             />
 
             {/* --- REFINED NATURALISM --- */}
@@ -100,7 +100,7 @@ export const HeroSection = () => {
             <TestimonialBlockquote 
               quote="The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"
               citation="– A Delighted Aura Client"
-              className="text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 border-t border-b border-gray-700 max-w-3xl mx-auto"
+              className="text-center text-xl sm:text-2xl lg:text-3xl italic opacity-90 py-10 mb-20 border-t border-b border-purple-400 max-w-3xl mx-auto cinzel-decorative-bold bg-gradient-to-r from-purple-900/20 to-indigo-900/20 text-gradient-to-r from-purple-200 to-indigo-100 rounded-lg shadow-lg"
             />
 
             {/* --- CLIENT TRANSFORMATIONS CTA --- */}

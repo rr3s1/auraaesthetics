@@ -24,8 +24,8 @@ export function AuraDifferenceSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="flex flex-col pl-20 justify-center h-full w-full md:w-1/3">
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-8">
-          <GradientText className="font-racing-sans-one">Empowering your shining radiance</GradientText>
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-5xl lg:text-6xl font-bold py-10">
+          <GradientText className="cinzel-decorative-bold leading-relaxed">Empowering your shining radiance</GradientText>
         </AnimatedBlock>
 
         {/* <AnimatedText

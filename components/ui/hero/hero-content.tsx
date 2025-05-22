@@ -27,17 +27,17 @@ export function HeroContent() {
     >
       {/* Main Title */}
       <motion.h1
-        className="text-3xl opacity-100 sm:text-5xl md:text-6xl lg:text-9xl font-bold leading-tight tracking-wide"
+        className="text-3xl opacity-100 sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-normal max-w-full tracking-wide "
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <GradientText className="text-white pl-10 font-racing-sans-one">
+        <GradientText className="text-white pl-10 cinzel-decorative-black">
           {titleCharacters.map((char, index) => (
             <motion.span
               key={`${char}-${index}`}
               variants={titleCharVariants}
               whileHover="hover"
-              style={{ display: 'inline-block' }}
+              style={{ display: 'inline-block', lineHeight: '160px'}}
             >
               {char === " " ? "\u00A0" : char}
             </motion.span>
@@ -71,7 +71,7 @@ export function HeroContent() {
           whileHover="hover"
         >
           <span 
-            className="text-purple-400 text-merienda relative z-10"
+            className="text-purple-400 relative z-10"
             style={{
               textShadow: '0 0 15px rgba(168, 85, 247, 0.7), 0 0 25px rgba(168, 85, 247, 0.5)',
               filter: 'drop-shadow(0 0 5px rgba(168, 85, 247, 0.8))'
@@ -116,7 +116,7 @@ export function HeroContent() {
         <Link href="/register" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
-            className="text-xl md:text-2xl py-5 px-10 min-w-[240px] font-merienda"
+            className="text-xl md:text-2xl py-5 px-10 min-w-[240px] cormorant-garamond"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
@@ -124,7 +124,7 @@ export function HeroContent() {
             whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
-            SCHEDULE A CONSULTATION
+            REGISTER & SCHEDULE
           </MotionGradientButton>
         </Link>
       </motion.div>

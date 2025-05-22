@@ -3,7 +3,10 @@ import "./globals.css";
 import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import { Merienda } from "next/font/google";
 import { Racing_Sans_One } from "next/font/google";
+import { Cinzel_Decorative } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Footer } from "@/components/ui/footer/footer";
 
 import { cn } from "@/lib/utils";
 
@@ -23,6 +26,18 @@ const fontRacingSansOne = Racing_Sans_One({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-racing-sans-one",
+});
+
+const fontCinzelDecorative = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-cinzel-decorative",
+});
+
+const fontCormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant-garamond",
 });
 
 export const metadata: Metadata = {
@@ -47,10 +62,13 @@ export default function RootLayout({
           fontSans.variable,
           fontMerienda.variable,
           fontRacingSansOne.variable,
+          fontCinzelDecorative.variable,
+          fontCormorantGaramond.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

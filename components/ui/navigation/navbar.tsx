@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0">
-              <GradientText className="text-white pl-2 text-xl md:text-2xl lg:text-3xl font-black tracking-wide font-racing-sans-one">
+              <GradientText className="text-white pl-20 pr-5 text-2xl md:text-4xl lg:text-5xl tracking-wide cinzel-decorative-bold">
                 AURA
               </GradientText>
             </a>
@@ -51,7 +51,7 @@ export function Navbar() {
               <a
                 key={item}
                 href={`/${item.toLowerCase()}`}
-                className={navLinkClass(item)}
+                className={`${navLinkClass(item)} cormorant-garamond`}
                 onMouseEnter={() => handleMouseEnterNavItem(item)}
                 onMouseLeave={handleMouseLeaveNavItem}
               >
@@ -59,14 +59,14 @@ export function Navbar() {
               </a>
             ))}
           </div>
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-3 pr-10">
             {/* <Link href="/register">
               <GradientButton className="text-xs md:text-lg font-medium scale-70 transform">
                 Register
               </GradientButton>
             </Link> */}
             <Link href="/admin">
-              <GradientButton className="text-xs md:text-lg font-medium scale-70 transform">
+              <GradientButton className="text-xs md:text-lg font-medium scale-70  transform">
                 Admin
               </GradientButton>
             </Link>
@@ -93,15 +93,15 @@ export function Navbar() {
           <a 
             key={item} 
             href={`/${item.toLowerCase()}`} 
-            className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" 
+            className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" 
             onClick={toggleMobileMenu}
           >
             {item}
           </a>
         ))}
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Book Now</a>
-        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Contact Us</a>
-        <a href="/client-portal" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150" onClick={toggleMobileMenu}>Client Portal</a>
+        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Book Now</a>
+        <a href="#" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Contact Us</a>
+        <a href="/client-portal" className="block text-gray-300 hover:text-gray-100 text-sm py-2 transition duration-150 cormorant-garamond" onClick={toggleMobileMenu}>Client Portal</a>
          <button className="w-full mt-2 gradient-button text-white text-sm font-medium py-2.5 px-4 rounded-md" onClick={toggleMobileMenu}>
             Book Appointment
         </button>

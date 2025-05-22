@@ -355,6 +355,32 @@
     font-style: normal;
   }
   
+  /* Cinzel Decorative font classes */
+  .cinzel-decorative-regular {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .cinzel-decorative-bold {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .cinzel-decorative-black {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  /* Cormorant Garamond font classes */
+  .cormorant-garamond {
+    font-family: var(--font-cormorant-garamond), serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
   .font-racing-sans-one {
     font-family: var(--font-racing-sans-one), sans-serif;
     font-weight: 400;

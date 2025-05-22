@@ -22,12 +22,12 @@ interface TreatmentCard {
 
 export function SignatureTreatmentsSection() {
   const cardData: TreatmentCard[] = [
-    { title: "Advanced Dermal Fillers", image: "/placeholder/dermal-fillers.jpg", alt: "Client receiving dermal filler treatment", linkText: "DISCOVER SMOOTHING" },
-    { title: "Laser Skin Rejuvenation", image: "/placeholder/laser-rejuvenation.jpg", alt: "Advanced laser skin treatment", linkText: "EXPLORE RADIANCE" },
-    { title: "Non-Invasive Body Sculpting", image: "/placeholder/body-sculpting.jpg", alt: "Client undergoing body sculpting treatment", linkText: "VIEW CONTOURING" },
-    { title: "Luxury Bespoke Facials", image: "/placeholder/luxury-facial.jpg", alt: "Relaxing luxury facial treatment", linkText: "EXPERIENCE PAMPERING" },
-    { title: "Medical-Grade Skincare", image: "/placeholder/medical-skincare.jpg", alt: "Display of premium medical-grade skincare products", linkText: "LEARN MORE" },
-    { title: "Hair Restoration Therapies", image: "/placeholder/hair-restoration.jpg", alt: "Advanced hair restoration procedure", linkText: "BROWSE SOLUTIONS" },
+    { title: "Advanced Dermal Fillers", image: "/advanced_dermal.png", alt: "Client receiving dermal filler treatment", linkText: "DISCOVER SMOOTHING" },
+    { title: "Laser Skin Rejuvenation", image: "/laser.png", alt: "Advanced laser skin treatment", linkText: "EXPLORE RADIANCE" },
+    { title: "Non-Invasive Body Sculpting", image: "/body_sculpt.png", alt: "Client undergoing body sculpting treatment", linkText: "VIEW CONTOURING" },
+    { title: "Luxury Bespoke Facials", image: "/frontEnd.png", alt: "Relaxing luxury facial treatment", linkText: "EXPERIENCE PAMPERING" },
+    { title: "Medical-Grade Skincare", image: "/products.png", alt: "Display of premium medical-grade skincare products", linkText: "LEARN MORE" },
+    { title: "Hair Restoration Therapies", image: "/hairR.png", alt: "Advanced hair restoration procedure", linkText: "BROWSE SOLUTIONS" },
   ];
 
   return (
@@ -38,19 +38,19 @@ export function SignatureTreatmentsSection() {
       viewport={{ once: true, amount: 0.15 }}
     >
       <div className="text-center mb-16"> {/* Increased margin */}
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="text-3xl sm:text-4xl lg:text-5xl cinzel-decorative-bold mb-6">
           OUR SIGNATURE TREATMENTS
         </AnimatedBlock>
         <AnimatedText
           text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
           el="p"
-          className="text-lg lg:text-xl opacity-80 max-w-3xl mx-auto"
+          className="text-2xl lg:text-3xl opacity-80 max-w-3xl mx-auto cormorant-garamond"
           variants={paragraphLineVariants}
           staggerAmount={0.03}
           splitter="line"
         />
         <AnimatedBlock variants={imageDramaticRevealVariants} delay={0.2} className="mx-auto mt-10 w-full max-w-lg">
-          <img src="/placeholder/treatment-collage.jpg" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-2xl" />
+          <img src="/collage.png" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-2xl" />
         </AnimatedBlock>
       </div>
       <motion.div
@@ -66,7 +66,7 @@ export function SignatureTreatmentsSection() {
             whileHover={cardHoverEffect}
           >
             <img src={card.image} alt={card.alt} className="w-full h-52 object-cover rounded-md mb-5"/>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-3">{card.title}</h3>
+            <h3 className="text-xl lg:text-2xl cinzel-decorative-bold mb-3">{card.title}</h3>
             <Link href="#" legacyBehavior>
               <a className="mt-auto text-purple-400 hover:text-purple-200 font-semibold self-start text-md group">
                 {card.linkText} <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>

@@ -19,7 +19,7 @@ export function AwardsExpertiseSection() {
     >
       <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-10 md:space-x-16"> {/* Increased spacing */}
         {["AWARD-WINNING TREATMENTS", "BOARD-CERTIFIED EXPERTS", "PREMIUM BRAND PARTNERS"].map((text, i) => (
-          <AnimatedBlock key={text} el="h3" variants={simpleFadeInUp} delay={i * 0.15} className="text-lg sm:text-xl lg:text-2xl font-semibold tracking-wider opacity-80">
+          <AnimatedBlock key={text} el="h3" variants={simpleFadeInUp} delay={i * 0.15} className="text-lg sm:text-xl lg:text-2xl cinzel-decorative-bold tracking-wider opacity-80">
             {text}
           </AnimatedBlock>
         ))}

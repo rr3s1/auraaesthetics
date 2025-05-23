@@ -20,7 +20,7 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="mb-16 flex min-h-[70vh] flex-col items-start justify-center px-4 text-left text-white"
+      className="mb-16 flex min-h-[70vh] flex-col items-center justify-center px-4 text-left text-white sm:items-start"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -115,7 +115,7 @@ export function HeroContent() {
         style={{ pointerEvents: 'auto' }}
         variants={buttonWrapperVariants}
       >
-        <Link href="/contact" passHref legacyBehavior>
+        <Link href="/register" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
             className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"

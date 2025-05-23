@@ -18,11 +18,11 @@ export function HeroSplineBackground() {
             Example ideas: flowing silk, shimmering particles, abstract cellular structures, serene water ripples.
         */}
         <Spline
+          className="size-1/2 opacity-65 sm:size-full sm:opacity-100"
           style={{
             width: '100%',
             height: '100vh',
             pointerEvents: 'none',
-            opacity: 1, // Ensure full opacity
           }}
           scene="https://prod.spline.design/3a6VJOAKhdYAKMwC/scene.splinecode" 
         

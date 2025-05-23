@@ -125,21 +125,49 @@
     font-optical-sizing: auto;
     font-style: normal;
   }
-  /* --- UPDATED STYLES TO HIDE GLOBAL SCROLLBAR --- */
-  html, body {
-    /* For Firefox */
-    scrollbar-width: none;
+  /* --- UPDATED STYLES TO ENABLE PROPER SCROLL BEHAVIOR --- */
+  html {
+    /* Enable smooth scrolling for better user experience */
+    scroll-behavior: smooth;
+    /* For Firefox - allow scrollbar but make it thin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(224, 185, 124, 0.3) rgba(28, 8, 0, 0.1);
     /* For IE and older Edge */
-    -ms-overflow-style: none;
+    -ms-overflow-style: scrollbar;
+  }
+  
+  body {
+    /* Ensure proper scroll behavior */
+    overflow-x: hidden; /* Only hide horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(224, 185, 124, 0.3) rgba(28, 8, 0, 0.1);
   }
 
-  /* For WebKit browsers (Chrome, Safari, newer Edge) */
+  /* For WebKit browsers (Chrome, Safari, newer Edge) - Custom styled scrollbar */
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {
-    width: 0px !important;     /* Make scrollbar invisible by setting width to 0 */
-    height: 0px !important;    /* Also for horizontal scrollbar if it were to appear */
-    display: none !important;  /* Reinforce hiding */
-    background: transparent !important; /* Ensure no background artifacts if width/height 0 isn't enough */
+    width: 8px;
+    height: 8px;
+  }
+  
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: rgba(28, 8, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(224, 185, 124, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover {
+    background: rgba(224, 185, 124, 0.5);
   }
   /* --- END OF UPDATED STYLES --- */
 

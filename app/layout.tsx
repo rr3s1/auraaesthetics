@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Plus_Jakarta_Sans as FontSans , Merienda , Racing_Sans_One as RacingSansOne , Cinzel_Decorative as CinzelDecorative , Cormorant_Garamond as CormorantGaramond } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { Footer } from "@/components/ui/footer/footer";
 import { cn } from "@/lib/utils";
@@ -64,6 +65,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
+          <SpeedInsights />
           <Footer />
         </ThemeProvider>
       </body>

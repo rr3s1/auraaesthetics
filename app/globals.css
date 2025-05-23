@@ -277,8 +277,8 @@
     --gb-color-3: #A22800;
     --gb-color-4: #f8fafc;
     --border-angle: 120deg;
-    --border-color-1: hsla(120, 75%, 40%, 0.6);
-    --border-color-2: hsla(120, 50%, 40%, 0.15);
+    --border-color-1: hsla(24, 100%, 50%, 0.8);
+    --border-color-2: hsla(30, 100%, 60%, 0.4);
   }
 
   .gradient-button-variant:hover {
@@ -297,8 +297,8 @@
     --stop-4: 75.34%;
     --stop-5: 95.76%;
     --border-angle: 210deg;
-    --border-color-1: hsla(120, 75%, 40%, 0.2);
-    --border-color-2: hsla(120, 50%, 40%, 0.75);
+    --border-color-1: hsla(16, 100%, 50%, 0.6);
+    --border-color-2: hsla(24, 100%, 50%, 0.9);
   }
 }
 

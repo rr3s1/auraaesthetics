@@ -1,5 +1,7 @@
+ <img src="https://github.com/user-attachments/assets/f666d9b9-ba56-4e6d-a679-35ecadb5b58c" /> <br/>  
+
  <br/>  
-  <h1 align="center">AURA Aesthetics</h1>
+  
   <h1 align="center ">
      <a href="#" target="_blank">Beauty Clinic Management System</a>
 </h1> <br/>

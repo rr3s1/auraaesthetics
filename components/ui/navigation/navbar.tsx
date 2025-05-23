@@ -112,27 +112,17 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Enhanced Admin Button with Luxury Styling */}
+          {/* Enhanced Admin Button with GradientButton Styling */}
           <div className="hidden items-center space-x-3 pr-10 md:flex">
             <button 
-              className="cormorant-garamond rounded-xl border border-white/20 bg-gradient-to-br from-[#6d2c91] via-[#5c1d84]
-                         to-[#240b36] px-6 py-3 text-sm
-                         font-semibold uppercase tracking-wider 
-                         text-white shadow-inner
-                         backdrop-blur-sm transition-all duration-300
-                         ease-in-out hover:scale-105 hover:border-[#e0b97c]/40
-                         hover:from-[#7d3ca1]
-                         hover:via-[#6c2d94] hover:to-[#341b46]"
+              className="gradient-button cormorant-garamond focus-visible:ring-ring inline-flex min-w-[90px]
+                         items-center justify-center rounded-[11px] px-6 py-3
+                         font-sans text-sm font-bold 
+                         font-semibold uppercase tracking-wider
+                         text-white transition-all duration-300
+                         ease-in-out hover:scale-105
+                         focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
               onClick={handleAdminClick}
-              style={{
-                boxShadow: 'inset 0 0 4px rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = 'inset 0 0 4px rgba(255, 255, 255, 0.2), 0 0 20px rgba(224, 185, 124, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = 'inset 0 0 4px rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3)';
-              }}
             >
               Admin
             </button>
@@ -184,16 +174,14 @@ export function Navbar() {
         ))}
       
         <button 
-          className="cormorant-garamond mt-6 w-full rounded-xl border border-white/20 bg-gradient-to-br from-[#6d2c91] via-[#5c1d84]
-                     to-[#240b36] px-6 py-3 text-sm
-                     font-semibold uppercase tracking-wider 
-                     text-white shadow-inner
-                     transition-all duration-300 ease-in-out
-                     hover:shadow-lg"
+          className="gradient-button cormorant-garamond focus-visible:ring-ring mt-6 inline-flex w-full min-w-[90px]
+                     items-center justify-center rounded-[11px] px-6 py-3
+                     font-sans text-sm font-bold 
+                     font-semibold uppercase tracking-wider
+                     text-white transition-all duration-300
+                     ease-in-out focus-visible:outline-none
+                     focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
           onClick={handleAdminClick}
-          style={{
-            boxShadow: 'inset 0 0 4px rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3)'
-          }}
         >
           Admin
         </button>

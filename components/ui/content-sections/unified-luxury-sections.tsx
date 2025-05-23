@@ -79,14 +79,14 @@ function LuxurySection({
         <AnimatedText
           text={description}
           el="p"
-          className="mb-8 max-w-2xl text-2xl leading-relaxed text-neutral-200 opacity-90 md:text-xl lg:text-2xl"
+          className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-200 opacity-90"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}
         />
         <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
           <Link href={ctaLink} legacyBehavior>
-            <a className={`inline-block text-xl font-medium ${colors.text} ${colors.hover} tracking-wide underline underline-offset-4 transition-all duration-300 hover:tracking-wider`}>
+            <a className={`inline-block text-sm font-medium ${colors.text} ${colors.hover} tracking-wide underline underline-offset-4 transition-all duration-300 hover:tracking-wider`}>
               {ctaText} →
             </a>
           </Link>

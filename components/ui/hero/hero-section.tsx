@@ -2,14 +2,13 @@
 
 import React, { useEffect, useRef, Suspense, useCallback } from 'react';
 
-import { AestheticInnovationSection } from '../content-sections/aesthetic-innovation-section';
 import { AuraDifferenceSection } from '../content-sections/aura-difference-section';
 import { AwardsExpertiseSection } from '../content-sections/awards-expertise-section';
 import { ClientTransformationsSection } from '../content-sections/client-transformations-section';
-import { PersonalisedJourneySection } from '../content-sections/personalised-journey-section';
-import { RefinedNaturalismSection } from '../content-sections/refined-naturalism-section';
+import ContactAndNewsletterSection from '../content-sections/ContactAndNewsletterSection';
 import { SignatureTreatmentsSection } from '../content-sections/signature-treatments-section';
 import { TestimonialBlockquote } from '../content-sections/testimonial-blockquote';
+import { UnifiedLuxurySections } from '../content-sections/unified-luxury-sections';
 import { Navbar } from '../navigation/navbar';
 
 import { HeroContent } from './hero-content';
@@ -134,15 +133,8 @@ export const HeroSection = () => {
               citation="– The Aura Aesthetics Team"
               className="cinzel-decorative-bold rounded-lg border-y border-amber-300/20 bg-gradient-to-r from-transparent via-amber-900/10 to-transparent py-12 text-center text-2xl italic opacity-90 sm:text-3xl lg:text-4xl"
             />
-
-            {/* --- REFINED NATURALISM --- */}
-            <RefinedNaturalismSection />
-
-            {/* --- AESTHETIC INNOVATION --- */}
-            <AestheticInnovationSection />
-
-            {/* --- PERSONALISED JOURNEYS --- */}
-            <PersonalisedJourneySection />
+            <UnifiedLuxurySections />
+           
             
             {/* --- ENHANCED TESTIMONIAL BLOCKQUOTE --- */}
             <TestimonialBlockquote 
@@ -159,6 +151,8 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <ContactAndNewsletterSection />
     </div>
   );
 };

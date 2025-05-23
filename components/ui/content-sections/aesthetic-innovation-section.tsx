@@ -11,42 +11,62 @@ import {
   paragraphLineVariants, 
   imageDramaticRevealVariants 
 } from '../animations/animation-variants';
-import { TestimonialBlockquote } from '../galaxy-interactive-hero-section';
 
 export function AestheticInnovationSection() {
   return (
     <motion.section
-      className="my-20 grid items-center gap-10 md:grid-cols-2 md:gap-16"
+      className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2"
       variants={sectionContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
+      {/* Background subtle gradient */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-teal-900/10 via-transparent to-transparent opacity-30" />
       
-      
-      <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center md:order-2">
-        <img src="/Intruments.png" alt="State-of-the-art aesthetic technology in a clinic setting" className="mx-auto w-full max-w-md rounded-lg shadow-2xl"/>
-      </AnimatedBlock>
-      <div className="md:order-1">
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="cinzel-decorative-bold mb-8 text-3xl sm:text-4xl lg:text-5xl">
-          MASTERS OF <span className="italic text-teal-400">AESTHETIC INNOVATION</span>
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10"
+      >
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-white md:text-5xl">
+          Masters of <br />
+          <span className="font-medium italic text-teal-300">Aesthetic Innovation</span>
         </AnimatedBlock>
         <AnimatedText
           text="We are dedicated to utilizing the latest, clinically-proven technologies and premium medical-grade products. Our investment in state-of-the-art equipment and continuous training ensures we deliver the safest, most effective treatments with superior outcomes and client satisfaction."
           el="p"
-          className="cormorant-garamond mb-8 text-2xl opacity-80 lg:text-3xl"
+          className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-200 opacity-90"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}
         />
         <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
           <Link href="#" legacyBehavior>
-            <a className="inline-block text-2xl font-semibold text-teal-400 transition-transform duration-200 hover:translate-x-1 hover:text-teal-300">
+            <a className="inline-block text-sm font-medium tracking-wide text-teal-400 underline underline-offset-4 transition-all duration-300 hover:tracking-wider hover:text-white">
               Discover Our Technologies →
             </a>
           </Link>
         </AnimatedBlock>
-      </div>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10"
+      >
+        <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
+          <motion.img 
+            src="/Intruments.png" 
+            alt="State-of-the-art aesthetic technology in a clinic setting" 
+            className="mx-auto w-full max-w-md rounded-xl object-cover shadow-2xl transition-transform duration-300 hover:scale-105"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          />
+        </AnimatedBlock>
+      </motion.div>
     </motion.section>
   );
 }

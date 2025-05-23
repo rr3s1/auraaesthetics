@@ -10,7 +10,6 @@ import {
   simpleFadeInUp, 
   paragraphLineVariants, 
   imageDramaticRevealVariants,
-  cardVariants,
   cardHoverEffect
 } from '../animations/animation-variants';
 
@@ -32,50 +31,85 @@ export function SignatureTreatmentsSection() {
   ];
 
   return (
-    <motion.section
-      variants={sectionContainerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-    >
-      <div className="mb-16 text-center"> {/* Increased margin */}
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-6 text-3xl sm:text-4xl  lg:text-5xl">
-          OUR SIGNATURE TREATMENTS
-        </AnimatedBlock>
-        <AnimatedText
-          text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique, meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
-          el="p"
-          className="cormorant-garamond mx-auto max-w-3xl text-2xl opacity-80 lg:text-3xl"
-          variants={paragraphLineVariants}
-          staggerAmount={0.03}
-          splitter="line"
-        />
-        <AnimatedBlock variants={imageDramaticRevealVariants} delay={0.2} className="mx-auto mt-10 w-full max-w-lg">
-          <img src="/collage.png" alt="Collage showcasing various aesthetic treatments and results" className="rounded-lg shadow-2xl" />
-        </AnimatedBlock>
-      </div>
-      <motion.div
-        className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3" // Increased gap
-        variants={{ visible: { transition: { staggerChildren: 0.15 } } }} // Stagger cards
+    <div className="bg-gradient-radial from-[#4b1e10]/20 via-[#2f0d0a]/85 to-[#1a0a06] px-4 py-20">
+      <motion.section
+        variants={sectionContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        className="mx-auto max-w-7xl"
       >
-        {cardData.map((card, index) => (
-          <AnimatedBlock
-            key={card.title + index} // Ensure key is unique if titles can repeat
-            el="div"
-            variants={cardVariants}
-            className="flex flex-col rounded-xl border border-gray-700/50 bg-gray-800/60 p-6 shadow-xl transition-colors duration-300 hover:border-purple-500/70" // Added hover border
-            whileHover={cardHoverEffect}
-          >
-            <img src={card.image} alt={card.alt} className="mb-5 h-52 w-full rounded-md object-cover"/>
-            <h3 className="cinzel-decorative-bold mb-3 text-xl lg:text-2xl">{card.title}</h3>
-            <Link href="#" legacyBehavior>
-              <a className="text-md group mt-auto self-start font-semibold text-purple-400 hover:text-purple-200">
-                {card.linkText} <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
-            </Link>
+        <div className="mb-20 text-center">
+          <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 text-center font-serif text-4xl font-bold leading-tight tracking-wide text-[#fff6ec] md:text-5xl">
+            OUR SIGNATURE TREATMENTS
           </AnimatedBlock>
-        ))}
-      </motion.div>
-    </motion.section>
+          
+          <hr className="mx-auto mb-8 w-24 border-t border-[#fff0dd]/20" />
+          
+          <AnimatedText
+            text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique — meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
+            el="p"
+            className="mx-auto max-w-4xl text-center text-lg font-light leading-relaxed text-[#ddd4cc] md:text-xl"
+            variants={paragraphLineVariants}
+            staggerAmount={0.03}
+            splitter="line"
+          />
+          
+          <AnimatedBlock variants={imageDramaticRevealVariants} delay={0.2} className="mx-auto mt-12 w-full max-w-2xl">
+            <img 
+              src="/collage.png" 
+              alt="Collage showcasing various aesthetic treatments and results" 
+              className="rounded-2xl shadow-2xl ring-1 ring-[#fff0dd]/10" 
+            />
+          </AnimatedBlock>
+        </div>
+
+        <motion.div
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-x-10 gap-y-14 px-6 sm:grid-cols-2 lg:grid-cols-3"
+          variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+        >
+          {cardData.map((card, index) => (
+            <motion.div
+              key={card.title + index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative overflow-hidden rounded-2xl bg-[#1c0f0a]/95 p-6 shadow-xl backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_rgba(212,175,55,0.2)]"
+              whileHover={cardHoverEffect}
+            >
+              {/* Gradient glow effect on hover */}
+              <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-rose-400/10 via-amber-400/15 to-yellow-200/10 opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-100" />
+              
+              {/* Enhanced border glow */}
+              <div className="absolute inset-0 rounded-2xl border border-[#fff0dd]/10 transition-all duration-500 group-hover:border-[#d4af37]/40 group-hover:shadow-[inset_0_1px_0_rgba(212,175,55,0.2)]" />
+              
+              <div className="relative z-10">
+                <div className="mb-6 overflow-hidden rounded-xl">
+                  <img 
+                    src={card.image} 
+                    alt={card.alt} 
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                
+                <h3 className="mb-4 font-serif text-xl font-semibold leading-snug tracking-wide text-[#fff6ec] transition-colors duration-300 group-hover:text-[#fff8f0] lg:text-2xl">
+                  {card.title}
+                </h3>
+                
+                <Link href="#" legacyBehavior>
+                  <a className="group/link mt-auto self-start bg-gradient-to-r from-rose-400 via-amber-300 to-yellow-200 bg-clip-text text-sm font-semibold uppercase tracking-[0.15em] text-transparent transition-all duration-300 hover:from-[#fff6ec] hover:via-[#fff6ec] hover:to-[#fff6ec] hover:underline">
+                    {card.linkText} 
+                    <span className="ml-2 inline-block transition-transform duration-300 group-hover/link:translate-x-2">
+                      →
+                    </span>
+                  </a>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
+    </div>
   );
 }

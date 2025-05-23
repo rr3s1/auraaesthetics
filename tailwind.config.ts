@@ -58,6 +58,7 @@ const config = {
         appointments: "url('/assets/images/appointments-bg.png')",
         pending: "url('/assets/images/pending-bg.png')",
         cancelled: "url('/assets/images/cancelled-bg.png')",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       keyframes: {
         "accordion-down": {
@@ -107,6 +108,10 @@ const config = {
           "50%": { bottom: "25%", right: "40%" },
           "90%": { bottom: "50%", right: "25%" },
         },
+        "pulse": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -114,10 +119,26 @@ const config = {
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         "rainbow": "rainbow var(--speed, 2s) infinite linear",
         "gradient-slow": "gradient-slow 6s ease infinite",
+        "pulse": "pulse 6s infinite ease-in-out",
+        "pulse-slow": "pulse 6s infinite ease-in-out",
+        "pulse-slower": "pulse 8s infinite ease-in-out",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: { addUtilities: any }) {
+      addUtilities({
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    },
+  ],
 } satisfies Config;
 
 export default config;

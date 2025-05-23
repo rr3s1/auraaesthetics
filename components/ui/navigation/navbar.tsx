@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
+import { PasskeyModal } from "@/components/PasskeyModal";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { GradientText } from "@/components/ui/gradient-text";
-import { PasskeyModal } from "@/components/PasskeyModal";
 
 export function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState<string | null>(null);
@@ -52,7 +52,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="#" className="shrink-0">
-              <GradientText className="cinzel-decorative-bold pl-20 pr-5 text-2xl tracking-wide text-white md:text-4xl lg:text-5xl">
+              <GradientText className="cinzel-decorative-bold px-5 pl-1 text-2xl tracking-wide text-white md:pl-16 md:text-4xl lg:text-5xl">
                 AURA
               </GradientText>
             </a>

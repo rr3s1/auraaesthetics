@@ -24,7 +24,7 @@ export function HeroSplineBackground() {
             pointerEvents: 'none',
             opacity: 1, // Ensure full opacity
           }}
-          scene="https://prod.spline.design/pr4ny12ZibDjbpbc/scene.splinecode" 
+          scene="https://prod.spline.design/3a6VJOAKhdYAKMwC/scene.splinecode" 
         
           // Original - Keep as placeholder, recommend changing
         />

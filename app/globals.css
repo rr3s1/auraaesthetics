@@ -244,9 +244,9 @@
   }
 
   .gradient-button-variant {
-    --gb-color-1: #030b61da;
-    --gb-color-2: #06326b;
-    --gb-color-3: #123198cd;
+    --gb-color-1: #A22800;
+    --gb-color-2: #A22800;
+    --gb-color-3: #A22800;
     --gb-color-4: #f8fafc;
     --border-angle: 120deg;
     --border-color-1: hsla(120, 75%, 40%, 0.6);
@@ -258,11 +258,11 @@
     --pos-y: 95.51%;
     --spread-x: 110.24%;
     --spread-y: 110.2%;
-    --gb-color-1: #efefef;
-    --gb-color-2: #05387b;
-    --gb-color-3: #081d5c;
-    --gb-color-4: #052a5a96;
-    --gb-color-5: #020311;
+    --gb-color-1: #8B2200;
+    --gb-color-2: #A22800;
+    --gb-color-3: #8B2200;
+    --gb-color-4: #A22800;
+    --gb-color-5: #7A1F00;
     --stop-1: 0%;
     --stop-2: 8.8%;
     --stop-3: 21.44%;

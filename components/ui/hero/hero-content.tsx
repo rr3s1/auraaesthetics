@@ -4,13 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 
-import { GradientText } from "@/components/ui/gradient-text";
+import { AnimatedText } from "@/components/ui/animated-shiny-text";
 
 import { MotionGradientButton } from '../animations/animated-components';
 import { 
   containerVariants, 
   titleWrapperVariants, 
-  titleCharVariants, 
   paragraphVariants, 
   glowingSpanVariants, 
   buttonWrapperVariants 
@@ -18,38 +17,37 @@ import {
 
 export function HeroContent() {
   const titleText = "AURA AESTHETICS";
-  const titleCharacters = Array.from(titleText);
 
   return (
     <motion.div
-      className="mb-16 flex min-h-[70vh] flex-col justify-center px-4 text-left text-white"
+      className="mb-16 flex min-h-[70vh] flex-col items-start justify-center px-4 text-left text-white"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Main Title */}
-      <motion.h1
-        className="max-w-full text-3xl font-bold leading-tight sm:text-5xl md:text-7xl lg:text-9xl sm:leading-tight md:leading-tight lg:leading-normal tracking-wide opacity-100"
+      <motion.div
+        className="-mt-4 max-w-full sm:-mt-6 md:-mt-8"
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <GradientText className="cinzel-decorative-black  md:pl-8 lg:pl-10 text-white">
-          {titleCharacters.map((char, index) => (
-            <motion.span
-              key={`${char}-${index}`}
-              variants={titleCharVariants}
-              whileHover="hover"
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </GradientText>
-      </motion.h1>
+        <AnimatedText
+          text={titleText}
+          gradientColors="linear-gradient(90deg, #ff6b35, #f7931e, #ffea00, #ffb347, #ffea00, #d2691e)"
+          gradientAnimationDuration={3}
+          hoverEffect={true}
+          className="cinzel-decorative-black py-0"
+          textClassName="text-3xl font-bold cinzel-decorative-black text-center leading-tight tracking-wide sm:text-4xl sm:leading-tight md:text-8xl md:leading-tight lg:text-8xl lg:leading-normal text-white"
+          style={{
+            textShadow: '0 4px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4)',
+            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))'
+          }}
+        />
+      </motion.div>
 
       {/* First Paragraph */}
       <motion.p
-        className="pt-6 sm:pl-6 sm:pt-8 md:pl-8 md:pt-10 font-bold uppercase italic text-base sm:text-xl md:text-2xl lg:text-3xl"
+        className="pt-6 text-center text-base font-bold uppercase italic sm:pt-8 sm:text-xl md:pt-10 md:text-2xl lg:text-3xl"
         variants={paragraphVariants}
       >
         <motion.span
@@ -73,10 +71,12 @@ export function HeroContent() {
           whileHover="hover"
         >
           <span 
-            className="relative z-10 text-purple-400"
+            className="relative z-10 font-semibold"
             style={{
-              textShadow: '0 0 15px rgba(168, 85, 247, 0.7), 0 0 25px rgba(168, 85, 247, 0.5)',
-              filter: 'drop-shadow(0 0 5px rgba(168, 85, 247, 0.8))'
+              color: '#FFDDBB',
+              fontWeight: '600',
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 8px rgba(255, 221, 187, 0.4)',
+              filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4))'
             }}
           >
            Delivered with Care

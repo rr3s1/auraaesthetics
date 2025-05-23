@@ -4,13 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { Suspense, lazy } from 'react';
 
-import { AnimatedBlock } from '../animations/animated-components';
+import { AnimatedBlock , MotionGradientButton } from '../animations/animated-components';
 import { 
   sectionContainerVariants, 
   simpleFadeInUp,
   imageDramaticRevealVariants 
 } from '../animations/animation-variants';
-import { GradientButton } from '../gradient-button';
 
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
@@ -30,24 +29,33 @@ export function AuraDifferenceSection() {
           {/* Background glow accent */}
           <div className="absolute left-1/2 top-1/2 z-[-1] size-4/5 -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-pink-100/10 via-[#fff0f5]/5 to-transparent blur-3xl" />
           
-          <h2 className="space-y-2 font-serif text-4xl font-light leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="space-y-2 font-serif text-4xl font-light leading-tight text-white md:text-6xl lg:text-9xl">
             <div className="cormorant-garamond pb-2 sm:pb-3">Confident</div>
             <div className="cinzel-decorative-bold bg-gradient-to-r from-[#fdf0f4] via-[#ffe0fb] to-[#f6a0ff] bg-clip-text text-[3.25rem] font-extrabold tracking-tight text-transparent sm:text-[4rem] lg:text-[5rem]">
               AURA
             </div>
             <div className="py-1 text-3xl font-medium tracking-wide text-[#3de5ff] sm:text-4xl lg:text-5xl">&</div>
-            <div className="cinzel-decorative-bold bg-gradient-to-r from-pink-400 via-purple-500 to-red-500 bg-clip-text text-[2.75rem] font-black tracking-tight text-transparent sm:text-4xl lg:text-5xl">
+            <div className="cinzel-decorative-bold bg-gradient-to-r from-pink-400 via-purple-500 to-red-500 bg-clip-text text-[2.75rem] font-black tracking-tight text-transparent sm:text-4xl lg:text-7xl">
               Perfected Radiance
             </div>
           </h2>
         </AnimatedBlock>
 
         <AnimatedBlock variants={simpleFadeInUp} className="pt-6 sm:pt-8" delay={0.3}>
-          <Link href="#" legacyBehavior>
-            <GradientButton className="rounded-xl px-6 py-3 text-sm font-medium text-white shadow-lg transition-transform duration-200 hover:scale-[1.02]">
-              Discover Our Philosophy →
-            </GradientButton>
-          </Link>
+        <Link href="/register" passHref legacyBehavior>
+          <MotionGradientButton
+            variant="variant"
+            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
+            }}
+            whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          >
+            AURA's VISION →
+          </MotionGradientButton>
+        </Link>
         </AnimatedBlock>
       </div>
       <AnimatedBlock variants={imageDramaticRevealVariants} className="relative  order-2 flex w-full items-center justify-center md:w-2/3">

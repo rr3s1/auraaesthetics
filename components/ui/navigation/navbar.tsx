@@ -10,7 +10,7 @@ export function Navbar() {
   const [isPasskeyModalOpen, setIsPasskeyModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = ['Services', 'Gallery', 'About'];
+  const navItems = ['Services', 'About', 'Contact'];
 
   const handleMouseEnterNavItem = (item: string) => setHoveredNavItem(item);
   const handleMouseLeaveNavItem = () => setHoveredNavItem(null);
@@ -75,7 +75,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Enhanced Logo with Gradient Animation */}
           <div className="flex items-center">
-            <a href="#" className="group shrink-0">
+            <a href="/" className="group shrink-0">
               <span className="cinzel-decorative-bold bg-size-200 bg-pos-0 hover:bg-pos-100 animate-shimmer relative bg-gradient-to-r 
                              from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c]
                              bg-clip-text px-5 pl-1 text-2xl
@@ -117,7 +117,7 @@ export function Navbar() {
             <button 
               className="gradient-button cormorant-garamond focus-visible:ring-ring inline-flex min-w-[90px]
                          items-center justify-center rounded-[11px] px-6 py-3
-                         font-sans text-sm font-bold 
+                         font-sans text-sm 
                          font-semibold uppercase tracking-wider
                          text-white transition-all duration-300
                          ease-in-out hover:scale-105
@@ -176,7 +176,7 @@ export function Navbar() {
         <button 
           className="gradient-button cormorant-garamond focus-visible:ring-ring mt-6 inline-flex w-full min-w-[90px]
                      items-center justify-center rounded-[11px] px-6 py-3
-                     font-sans text-sm font-bold 
+                     font-sans text-sm 
                      font-semibold uppercase tracking-wider
                      text-white transition-all duration-300
                      ease-in-out focus-visible:outline-none

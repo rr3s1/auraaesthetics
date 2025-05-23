@@ -111,11 +111,11 @@ export function HeroContent() {
 
       {/* CTA Button Wrapper */}
       <motion.div
-        className="mt-8 pl-4 sm:mt-10 sm:pl-5 md:mt-12"
+        className="m:mt-10 mt-8 md:mt-12"
         style={{ pointerEvents: 'auto' }}
         variants={buttonWrapperVariants}
       >
-        <Link href="/register" passHref legacyBehavior>
+        <Link href="/contact" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
             className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
@@ -126,7 +126,7 @@ export function HeroContent() {
             whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
           >
-            REGISTER & SCHEDULE
+            SCHEDULE CONSULTATION
           </MotionGradientButton>
         </Link>
       </motion.div>

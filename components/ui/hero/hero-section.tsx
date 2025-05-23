@@ -50,7 +50,7 @@ export const HeroSection = () => {
   }, [handleScroll]);
 
   // Define a warmer base background color
-  const warmBgColor = '#1c0800'; // A very dark, warm reddish-brown
+  const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown
 
   return (
     <div className="relative" style={{ backgroundColor: warmBgColor }}> {/* Removed overflowX hidden and no-scrollbar */}
@@ -88,12 +88,12 @@ export const HeroSection = () => {
       <div 
         className="relative z-10 py-16 text-white md:py-24" 
         style={{ 
-          background: 'radial-gradient(circle at 50% 0%, rgba(255, 186, 120, 0.08) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)',
+          background: 'radial-gradient(circle at 50% 0%, rgba(139, 69, 19, 0.15) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)',
           marginTop: '-5vh', // Reduced from -10vh to minimize layout shifts
         }}
       >
         {/* Simplified ambient overlays for better performance */}
-        <div className="absolute -right-20 -top-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-amber-100/20 via-orange-200/15 to-transparent opacity-30" style={{ filter: 'blur(400px)' }} />
+        <div className="absolute -right-20 -top-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-orange-800/25 via-amber-900/15 to-transparent opacity-30" style={{ filter: 'blur(400px)' }} />
         <div className="absolute -bottom-20 -left-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-red-800/30 to-transparent opacity-25" style={{ filter: 'blur(300px)' }} />
        
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', width: '100%' }}>

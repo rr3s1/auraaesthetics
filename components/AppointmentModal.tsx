@@ -32,12 +32,17 @@ export const AppointmentModal = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+  const buttonStyles = {
+    schedule: "text-emerald-400 hover:text-emerald-300 hover:bg-emerald-900/20 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200",
+    cancel: "text-red-400 hover:text-red-300 hover:bg-red-900/20 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-200"
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="ghost"
-          className={`capitalize ${type === "schedule" && "text-green-500"}`}
+          className={`rounded-md px-3 py-1 capitalize backdrop-blur-sm ${buttonStyles[type]}`}
         >
           {type}
         </Button>

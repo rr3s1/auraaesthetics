@@ -49,7 +49,7 @@ export function SignatureTreatmentsSection() {
           <AnimatedText
             text="Our comprehensive suite of treatments caters to a wide range of aesthetic goals. We pride ourselves on offering bespoke solutions that combine innovation, safety, and artistry. Each client's journey is unique — meticulously planned from initial consultation through to aftercare, ensuring exceptional results."
             el="p"
-            className="mx-auto max-w-4xl text-center text-lg font-light leading-relaxed text-[#ddd4cc] md:text-xl"
+            className="mx-auto max-w-4xl text-center text-xl font-light leading-relaxed text-[#ddd4cc] md:text-2xl"
             variants={paragraphLineVariants}
             staggerAmount={0.03}
             splitter="line"

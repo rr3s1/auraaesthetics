@@ -8,13 +8,12 @@ import { formatDateTime } from "@/lib/utils";
 import { Appointment } from "@/types/appwrite.types";
 
 import { AppointmentModal } from "../AppointmentModal";
-import { StatusBadge } from "../StatusBadge";
 
 export const columns: ColumnDef<Appointment>[] = [
   {
     header: "#",
     cell: ({ row }) => {
-      return <p className="text-14-medium ">{row.index + 1}</p>;
+      return <p className="text-14-medium text-gray-400">{row.index + 1}</p>;
     },
   },
   {
@@ -22,7 +21,7 @@ export const columns: ColumnDef<Appointment>[] = [
     header: "Patient",
     cell: ({ row }) => {
       const appointment = row.original;
-      return <p className="text-14-medium ">{appointment.patient.name}</p>;
+      return <p className="text-14-medium font-semibold text-white">{appointment.patient.name}</p>;
     },
   },
   {
@@ -30,9 +29,34 @@ export const columns: ColumnDef<Appointment>[] = [
     header: "Status",
     cell: ({ row }) => {
       const appointment = row.original;
+      const statusConfig = {
+        scheduled: {
+          bg: "bg-emerald-900/80",
+          text: "text-emerald-300",
+          ring: "ring-emerald-500/30",
+          icon: "✅"
+        },
+        pending: {
+          bg: "bg-amber-900/80", 
+          text: "text-amber-300",
+          ring: "ring-amber-500/30",
+          icon: "⏳"
+        },
+        cancelled: {
+          bg: "bg-red-900/80",
+          text: "text-red-300", 
+          ring: "ring-red-500/30",
+          icon: "⚠️"
+        }
+      };
+      
+      const config = statusConfig[appointment.status as keyof typeof statusConfig] || statusConfig.pending;
+      
       return (
         <div className="min-w-[115px]">
-          <StatusBadge status={appointment.status} />
+          <span className={`inline-flex items-center gap-1 rounded-full ${config.bg} px-3 py-1 text-xs font-medium ${config.text} shadow-inner ring-1 ${config.ring} backdrop-blur-sm`}>
+            {config.icon} {appointment.status}
+          </span>
         </div>
       );
     },
@@ -43,7 +67,7 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       const appointment = row.original;
       return (
-        <p className="text-14-regular min-w-[100px]">
+        <p className="text-14-regular min-w-[100px] text-gray-300">
           {formatDateTime(appointment.schedule).dateTime}
         </p>
       );
@@ -66,9 +90,9 @@ export const columns: ColumnDef<Appointment>[] = [
             alt="doctor"
             width={100}
             height={100}
-            className="size-8"
+            className="size-8 rounded-full ring-2 ring-white/20"
           />
-          <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
+          <p className="whitespace-nowrap text-gray-200">Dr. {doctor?.name}</p>
         </div>
       );
     },
@@ -80,7 +104,7 @@ export const columns: ColumnDef<Appointment>[] = [
       const appointment = row.original;
 
       return (
-        <div className="flex gap-1">
+        <div className="flex gap-3">
           <AppointmentModal
             patientId={appointment.patient.$id}
             userId={appointment.userId}

@@ -37,7 +37,7 @@ export function RefinedNaturalismSection() {
         <AnimatedText
           text="We found that the most profound beauty enhancements are those that honor individuality. Our 'Refined Naturalism' approach focuses on subtle yet significant improvements, using advanced techniques to restore youthfulness and highlight your unique features, ensuring you look like the best version of yourself."
           el="p"
-          className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-200 opacity-90"
+          className="mb-8 max-w-2xl text-xl leading-relaxed text-neutral-200 opacity-90"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}

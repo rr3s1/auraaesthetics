@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, Suspense, useCallback } from 'react';
+import React, { useEffect, useRef, Suspense, useCallback, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { AuraDifferenceSection } from '../content-sections/aura-difference-section';
 import { AwardsExpertiseSection } from '../content-sections/awards-expertise-section';
@@ -14,40 +16,33 @@ import { Navbar } from '../navigation/navbar';
 import { HeroContent } from './hero-content';
 import { HeroSplineBackground } from './hero-spline-background';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const HeroSection = () => {
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>();
+  const heroSectionRef = useRef<HTMLDivElement>(null); // Ref for the main hero section (scroll trigger)
 
-  // Throttled scroll handler for better performance
-  const handleScroll = useCallback(() => {
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-    }
-    
-    rafRef.current = requestAnimationFrame(() => {
-      if (heroContentWrapperRef.current) {
-        const scrollPosition = window.pageYOffset;
-        const maxScroll = 400; // Fade out over 400px
-        const opacity = Math.max(0, 1 - scrollPosition / maxScroll);
-        const scale = Math.max(0.95, 1 - (scrollPosition / maxScroll) * 0.05); // Reduced scale change for smoother animation
-        
-        // Use transform3d for hardware acceleration
-        heroContentWrapperRef.current.style.opacity = opacity.toString();
-        heroContentWrapperRef.current.style.transform = `translate3d(0, 0, 0) scale(${scale})`;
-        heroContentWrapperRef.current.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
-      }
-    });
+  useLayoutEffect(() => {
+    if (!heroContentWrapperRef.current || !heroSectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: heroSectionRef.current,
+        start: "top top",
+        end: "+=400", // Animate over 400px of scroll
+        scrub: true,
+        animation: gsap.to(heroContentWrapperRef.current, {
+          autoAlpha: 0, // Fades out and sets visibility: hidden
+          scale: 0.95,
+          ease: "none"
+        }),
+        // For debugging ScrollTrigger positions:
+        // markers: true 
+      });
+    }, heroSectionRef); // scope context to heroSectionRef for cleanup
+
+    return () => ctx.revert(); // Cleanup GSAP animations and ScrollTriggers
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, [handleScroll]);
 
   // Define a warmer base background color
   const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown
@@ -56,7 +51,7 @@ export const HeroSection = () => {
     <div className="relative" style={{ backgroundColor: warmBgColor }}> {/* Removed overflowX hidden and no-scrollbar */}
       <Navbar />
       {/* Hero Area */}
-      <div className="relative h-screen w-full"> {/* Removed overflow-hidden and no-scrollbar to fix scroll issues */}
+      <div ref={heroSectionRef} className="relative h-screen w-full"> {/* Removed overflow-hidden and no-scrollbar to fix scroll issues */}
         {/* Simplified and optimized background gradients - reduced from 5 to 3 elements */}
         <div className="absolute inset-0 z-[-1]">
           {/* Element 1: Main gradient - top left */}
@@ -75,6 +70,8 @@ export const HeroSection = () => {
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
           display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
           willChange: 'transform, opacity', // Optimize for animations
+          // Initial opacity and scale are now handled by GSAP if needed, or CSS.
+          // For ScrollTrigger, GSAP will manage these from their current state.
         }}>
           <div className="container mx-auto">
             <Suspense fallback={<div className="flex size-full items-center justify-center text-xl text-white">Loading Aura Experience...</div>}>

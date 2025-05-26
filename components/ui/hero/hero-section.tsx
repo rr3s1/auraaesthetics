@@ -102,7 +102,7 @@ export const HeroSection = () => {
         {/* Container for philosophy quote with enhanced styling */}
         <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
             {/* Enhanced Philosophy Statement */}
-            <div className="mb-20 mt-16 text-center">
+            <div className="mb-20 mt-20 text-center">
               <h2 className="cormorant-garamond mx-auto max-w-5xl px-4 text-3xl font-light italic leading-relaxed tracking-wide text-[#fdf7ef] md:text-4xl lg:text-5xl">
                 Where science meets artistry,<br />
                 <span className="bg-gradient-to-r from-amber-200 via-orange-200 to-rose-200 bg-clip-text text-transparent">

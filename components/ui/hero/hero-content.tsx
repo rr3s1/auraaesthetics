@@ -37,9 +37,9 @@ export function HeroContent() {
           gradientAnimationDuration={3}
           hoverEffect={true}
           className="cinzel-decorative-black py-0"
-          textClassName="text-3xl font-bold cinzel-decorative-black text-center leading-tight tracking-wide sm:text-4xl sm:leading-tight md:text-8xl md:leading-tight lg:text-8xl lg:leading-normal text-white"
+          textClassName="text-5xl font-bold cinzel-decorative-black text-center leading-tight tracking-wide sm:text-5xl sm:leading-tight md:text-8xl md:leading-tight lg:text-8xl lg:leading-normal text-white"
           style={{
-            textShadow: '0 4px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4)',
+            textShadow: '1px 4px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4)',
             filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))'
           }}
         />

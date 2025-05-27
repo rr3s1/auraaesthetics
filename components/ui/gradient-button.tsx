@@ -21,6 +21,8 @@ const gradientButtonVariants = cva(
       variant: {
         default: "",
         variant: "gradient-button-variant",
+        goldenHourGlow: "gradient-button-golden-hour",
+        ignitedRadiance: "gradient-button-ignited-radiance",
       },
     },
     defaultVariants: {

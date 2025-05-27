@@ -29,21 +29,37 @@ const config = {
           500: "#79B5EC",
           600: "#152432",
         },
-        red: {
-          500: "#F37877",
-          600: "#3E1716",
-          700: "#F24E43",
-        },
+        // Ignited Radiance Theme
+        "site-bg": "#FCFBF8",            // Primary Background: Pale Alabaster
+        "content-bg": "#F7F6F2",          // Slightly darker Alabaster for content areas
+        "text-primary": "#3A3A3A",        // Main Text: Deep Charcoal
+        "text-secondary": "#5A5A5A",      // Secondary Text: Lighter Charcoal
+
+        "accent-yellow-dark": "#FDB110",   // Primary Accent: Dark Yellow (gold-like)
+        "accent-orange": "#F57A08",        // Secondary Accent: Orange
+        "accent-yellow": "#FCCF14",        // Secondary Accent: Brighter Yellow
+        "accent-red": "#E8400C",           // Tertiary Accent: Vibrant Red (use sparingly)
+        "accent-red-deep": "#C81E08",      // Deepest Accent: Dark Red (use minimally)
+        
+        // Previous Golden Hour Glow colors - commented out for reference
+        // "accent-gold-rich": "#B89D62",
+        // "accent-gold-vibrant": "#FFD700",
+        // "accent-sage-taupe": "#88856A",
+
+        // Light and dark variants for the new theme
         light: {
-          200: "#E8E9E9",
+          DEFAULT: "#FCFBF8", // Pale Alabaster (primary background)
+          200: "#F7F6F2",     // Slightly darker alabaster (content background)
+          subtle: "#5A5A5A",  // Secondary text color
         },
         dark: {
-          200: "#0D0F10",
-          300: "#131619",
-          400: "#1A1D21",
-          500: "#363A3D",
-          600: "#76828D",
-          700: "#ABB8C4",
+          DEFAULT: "#3A3A3A", // Deep Charcoal (primary text)
+          200: "#5A5A5A",     // Lighter Charcoal (secondary text)
+          300: "#FDB110",     // Dark Yellow (primary accent)
+          400: "#F57A08",     // Orange (secondary accent)
+          500: "#FCCF14",     // Brighter Yellow (secondary accent)
+          600: "#E8400C",     // Vibrant Red (tertiary accent)
+          700: "#C81E08",     // Dark Red (deepest accent)
         },
         "color-1": "hsl(var(--color-1))",
         "color-2": "hsl(var(--color-2))",
@@ -127,7 +143,8 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
-    function({ addUtilities }: { addUtilities: any }) {
+    function({ addUtilities, theme }: { addUtilities: any, theme: any }) {
+      const textPrimaryColor = theme('colors.text-primary');
       addUtilities({
         '.no-scrollbar': {
           '-ms-overflow-style': 'none',
@@ -135,6 +152,9 @@ const config = {
           '&::-webkit-scrollbar': {
             display: 'none',
           },
+        },
+        '.text-glow-primary': {
+          textShadow: `0 0 8px ${textPrimaryColor}`,
         },
       });
     },

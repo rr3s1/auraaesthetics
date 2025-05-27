@@ -300,6 +300,54 @@
     --border-color-1: hsla(16, 100%, 50%, 0.6);
     --border-color-2: hsla(24, 100%, 50%, 0.9);
   }
+
+  .gradient-button-golden-hour {
+    --gb-color-1: #C0A772; /* Lighter Rich Gold */
+    --gb-color-2: #B89D62; /* Rich Gold */
+    --gb-color-3: #AF9358; /* Darker Rich Gold */
+    --gb-color-4: #B89D62; /* Rich Gold */
+    --gb-color-5: #C0A772; /* Lighter Rich Gold */
+
+    --border-color-1: #88856A; /* Sage Taupe */
+    --border-color-2: #88856A; /* Sage Taupe */
+  }
+
+  .gradient-button-golden-hour:hover {
+    --border-color-1: #F8F0E3; /* Light Champagne */
+    --border-color-2: #F8F0E3; /* Light Champagne */
+  }
+
+  /* Ignited Radiance Theme Button */
+  .gradient-button-ignited-radiance {
+    --gb-color-1: #FDB110; /* Dark Yellow */
+    --gb-color-2: #F57A08; /* Orange */
+    --gb-color-3: #FCCF14; /* Yellow */
+    --gb-color-4: #FDB110; /* Dark Yellow */
+    --gb-color-5: #F57A08; /* Orange */
+
+    /* Adjust stops for a pleasing gradient flow */
+    --stop-1: 0%;
+    --stop-2: 30%;
+    --stop-3: 60%;
+    --stop-4: 85%;
+    --stop-5: 100%;
+
+    --border-angle: 135deg;
+    --border-color-1: hsla(39, 98%, 53%, 0.5); /* Dark Yellow with alpha */
+    --border-color-2: hsla(27, 91%, 50%, 0.3); /* Orange with alpha */
+  }
+
+  .gradient-button-ignited-radiance:hover {
+    --gb-color-1: #F57A08; /* Orange */
+    --gb-color-2: #E8400C; /* Red */
+    --gb-color-3: #FDB110; /* Dark Yellow */
+    --gb-color-4: #F57A08; /* Orange */
+    --gb-color-5: #E8400C; /* Red */
+    
+    --border-angle: 160deg;
+    --border-color-1: hsla(27, 91%, 50%, 0.7); /* Orange with alpha */
+    --border-color-2: hsla(13, 82%, 48%, 0.5); /* Red with alpha */
+  }
 }
 
 @layer utilities {
@@ -447,6 +495,24 @@
     font-weight: 400;
     font-style: normal;
   }
+
+  /* Golden Hour Glow Palette Utilities */
+  .bg-golden-shimmer {
+    background-image: linear-gradient(90deg, #B89D62, #F8F0E3, #FFD700, #B89D62);
+  }
+
+  .text-golden-shimmer {
+    background: linear-gradient(90deg, #B89D62, #F8F0E3, #FFD700, #B89D62);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
+  .bg-warm-radial {
+    background-image: radial-gradient(circle, rgba(248, 240, 227, 0) 0%, #C9B98F 100%); /* transparent Light Champagne to Richer Champagne/Warm Beige */
+  }
+  /* End Golden Hour Glow Palette Utilities */
 
   .container {
     @apply relative flex-1 overflow-y-auto px-[5%]; /* This has overflow-y-auto. If applied to body or html, it could be a source. */

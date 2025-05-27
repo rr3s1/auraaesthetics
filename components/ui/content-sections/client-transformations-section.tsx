@@ -22,13 +22,13 @@ export function ClientTransformationsSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <AnimatedBlock el="h2" variants={simpleFadeInUp} className="cormorant-garamond mb-8 bg-gradient-to-r from-purple-300 to-indigo-200 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
-        CLIENT TRANSFORMATIONS & <span className="text-pink-300">TESTIMONIALS</span>
+      <AnimatedBlock el="h2" variants={simpleFadeInUp} className="cormorant-garamond mb-8 bg-gradient-to-r from-accent-yellow-dark to-accent-orange bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
+        CLIENT TRANSFORMATIONS & <span className="text-accent-red">TESTIMONIALS</span>
       </AnimatedBlock>
       <AnimatedText
         text="Hear from our valued clients and witness the beautiful transformations achieved at Aura Aesthetics."
         el="p" 
-        className="cormorant-garamond mb-10 text-2xl text-indigo-100 lg:text-3xl" // Increased margin
+        className="cormorant-garamond mb-10 text-2xl text-text-primary lg:text-3xl" // Increased margin
         variants={paragraphLineVariants} 
         splitter="line" 
         staggerAmount={0.03}

@@ -22,7 +22,7 @@ export function AestheticInnovationSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       {/* Background subtle gradient */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-teal-900/10 via-transparent to-transparent opacity-30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-accent-yellow-dark/10 via-transparent to-transparent opacity-30" />
       
       <motion.div
         initial={{ opacity: 0, x: -30 }}
@@ -30,21 +30,21 @@ export function AestheticInnovationSection() {
         transition={{ duration: 0.6 }}
         className="relative z-10"
       >
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-white md:text-5xl">
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-text-primary md:text-5xl">
           Masters of <br />
-          <span className="font-medium italic text-teal-300">Aesthetic Innovation</span>
+          <span className="font-medium italic text-accent-orange">Aesthetic Innovation</span>
         </AnimatedBlock>
         <AnimatedText
           text="We are dedicated to utilizing the latest, clinically-proven technologies and premium medical-grade products. Our investment in state-of-the-art equipment and continuous training ensures we deliver the safest, most effective treatments with superior outcomes and client satisfaction."
           el="p"
-          className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-200 opacity-90"
+          className="mb-8 max-w-2xl text-lg leading-relaxed text-text-secondary opacity-90"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}
         />
         <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
           <Link href="#" legacyBehavior>
-            <a className="inline-block text-sm font-medium tracking-wide text-teal-400 underline underline-offset-4 transition-all duration-300 hover:tracking-wider hover:text-white">
+            <a className="inline-block text-sm font-medium tracking-wide text-accent-yellow-dark underline underline-offset-4 transition-all duration-300 hover:tracking-wider hover:text-accent-red">
               Discover Our Technologies →
             </a>
           </Link>

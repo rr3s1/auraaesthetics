@@ -37,19 +37,19 @@ function LuxurySection({
 }: LuxurySectionProps) {
   const colorClasses = {
     pink: {
-      gradient: 'from-pink-900/10',
-      text: 'text-pink-400',
-      hover: 'hover:text-white'
+      gradient: 'from-accent-yellow-dark/10',
+      text: 'text-accent-yellow-dark',
+      hover: 'hover:text-accent-red'
     },
     teal: {
-      gradient: 'from-teal-900/10',
-      text: 'text-teal-300',
-      hover: 'hover:text-white'
+      gradient: 'from-accent-orange/10',
+      text: 'text-accent-orange',
+      hover: 'hover:text-accent-yellow-dark'
     },
     orange: {
-      gradient: 'from-orange-900/10',
-      text: 'text-orange-400',
-      hover: 'hover:text-white'
+      gradient: 'from-accent-red/10',
+      text: 'text-accent-red',
+      hover: 'hover:text-accent-orange'
     }
   };
 
@@ -72,14 +72,14 @@ function LuxurySection({
         transition={{ duration: 0.6 }}
         className={`relative z-10 ${reverse ? 'lg:order-2' : ''}`}
       >
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-white md:text-5xl">
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-text-primary md:text-5xl">
           {title} <br />
           <span className={`${colors.text} font-medium italic`}>{titleHighlight}</span>
         </AnimatedBlock>
         <AnimatedText
           text={description}
           el="p"
-          className="mb-8 max-w-2xl text-2xl leading-relaxed text-neutral-200 opacity-90 md:text-xl lg:text-2xl"
+          className="mb-8 max-w-2xl text-2xl leading-relaxed text-text-secondary opacity-90 md:text-xl lg:text-2xl"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}
@@ -153,7 +153,7 @@ export function UnifiedLuxurySections() {
   return (
     <div className="relative">
       {/* Global section divider */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-neutral-800/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-accent-yellow-dark/10 to-transparent" />
       
       {sections.map((section, index) => (
         <React.Fragment key={index}>
@@ -161,7 +161,7 @@ export function UnifiedLuxurySections() {
           {index < sections.length - 1 && (
             <div className="relative">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent-yellow-dark/20 to-transparent" />
               </div>
               <div className="h-16" />
             </div>

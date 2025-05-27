@@ -22,7 +22,7 @@ export function RefinedNaturalismSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       {/* Background subtle gradient */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-pink-900/10 via-transparent to-transparent opacity-30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-accent-yellow-dark/10 via-transparent to-transparent opacity-30" />
       
       <motion.div
         initial={{ opacity: 0, x: -30 }}
@@ -30,21 +30,21 @@ export function RefinedNaturalismSection() {
         transition={{ duration: 0.6 }}
         className="relative z-10"
       >
-        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-white md:text-5xl">
+        <AnimatedBlock el="h2" variants={simpleFadeInUp} className="mb-8 font-serif text-4xl font-semibold leading-tight tracking-wide text-text-primary md:text-5xl">
           The Aura Look: <br />
-          <span className="font-medium italic text-pink-400">Refined Naturalism</span>
+          <span className="font-medium italic text-accent-yellow-dark">Refined Naturalism</span>
         </AnimatedBlock>
         <AnimatedText
           text="We found that the most profound beauty enhancements are those that honor individuality. Our 'Refined Naturalism' approach focuses on subtle yet significant improvements, using advanced techniques to restore youthfulness and highlight your unique features, ensuring you look like the best version of yourself."
           el="p"
-          className="mb-8 max-w-2xl text-xl leading-relaxed text-neutral-200 opacity-90"
+          className="mb-8 max-w-2xl text-xl leading-relaxed text-text-secondary opacity-90"
           variants={paragraphLineVariants} 
           splitter="line" 
           staggerAmount={0.03}
         />
         <AnimatedBlock variants={simpleFadeInUp} delay={0.3}>
           <Link href="#" legacyBehavior>
-            <a className="inline-block text-sm font-medium tracking-wide text-pink-400 underline underline-offset-4 transition-all duration-300 hover:tracking-wider hover:text-white">
+            <a className="inline-block text-sm font-medium tracking-wide text-accent-orange underline underline-offset-4 transition-all duration-300 hover:tracking-wider hover:text-accent-red">
               Explore Our Aesthetic Philosophy →
             </a>
           </Link>

@@ -12,7 +12,7 @@ import {
 export function AwardsExpertiseSection() {
   return (
     <motion.section
-      className="border-t border-gray-700 pt-16 text-center" // Increased padding
+      className="border-t border-accent-yellow-dark/30 pt-16 text-center" // Increased padding
       variants={sectionContainerVariants}
       initial="hidden"
       whileInView="visible"

@@ -90,7 +90,7 @@ export const HeroSection = () => {
         className="relative z-10 py-16 text-text-primary md:py-24 bg-warm-radial" // Changed text-white to text-text-primary, applied bg-warm-radial
         style={{ 
           // background: 'radial-gradient(circle at 50% 0%, rgba(139, 69, 19, 0.15) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)', // Replaced with bg-warm-radial
-          marginTop: '-5vh', // Reduced from -10vh to minimize layout shifts
+         
         }}
       >
         {/* Simplified ambient overlays for better performance */}
@@ -98,7 +98,9 @@ export const HeroSection = () => {
         <div className="absolute -bottom-20 -left-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-accent-red/30 to-transparent opacity-25" style={{ filter: 'blur(300px)' }} />
        
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', width: '100%' }}>
-          {/* --- PHILOSOPHY SECTION WITH ENHANCED TYPOGRAPHY --- */}
+            {/* --- OUR SIGNATURE TREATMENTS --- */}
+            <SignatureTreatmentsSection />
+            
           
         {/* Container for philosophy quote with enhanced styling */}
         <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
@@ -126,9 +128,7 @@ export const HeroSection = () => {
         
           {/* Container for all other components with constrained width */}
           <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }} className="cormorant-garamond">
-            {/* --- OUR SIGNATURE TREATMENTS --- */}
-            <SignatureTreatmentsSection />
-            
+          
             <TestimonialBlockquote 
               quote="Revealing your Inner Radiance, Sculpting Timeless Elegance."
               citation="– The Aura Aesthetics Team"

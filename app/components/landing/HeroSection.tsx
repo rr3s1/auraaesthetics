@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <motion.section
-      className="relative flex min-h-[calc(100vh-80px)] flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gradient-blue-start via-primary-green to-gradient-teal-end px-4 py-16 dark:from-slate-800 dark:via-neutral-dark-gray dark:to-black sm:px-6 lg:px-8"
+      className="relative flex  flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-gradient-blue-start via-primary-green to-gradient-teal-end px-4 py-16 dark:from-slate-800 dark:via-neutral-dark-gray dark:to-black sm:px-6 lg:px-8"
       // The min-h is an example, adjust if you have a fixed header of certain height (e.g. 80px)
       initial="hidden"
       animate="visible"

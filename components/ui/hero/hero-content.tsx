@@ -33,22 +33,22 @@ export function HeroContent() {
       >
         <AnimatedText
           text={titleText}
-          gradientColors="linear-gradient(90deg, #FDB110, #F57A08, #FCCF14, #E8400C)"
+          gradientColors="linear-gradient(90deg, #FDB110, #F57A08, #E8400C)"
           gradientAnimationDuration={3}
           hoverEffect={true}
           className="cinzel-decorative-black py-0"
-          textClassName="text-5xl font-bold cinzel-decorative-black text-center leading-tight tracking-wide sm:text-4xl sm:leading-tight md:text-8xl md:leading-tight lg:text-9xl lg:leading-normal text-text-primary"
+          textClassName="text-5xl font-bold cinzel-decorative-black text-center leading-tight tracking-wide sm:leading-tight md:text-7xl md:leading-tight lg:text-9xl lg:leading-normal text-text-primary"
           style={{
-            textShadow: '0 2px 5px rgba(58, 58, 58, 0.25), 0 0 15px rgba(253, 177, 16, 0.35), 0 0 25px rgba(245, 122, 8, 0.2)',
-            filter: 'drop-shadow(0 1px 3px rgba(245, 122, 8, 0.3)) drop-shadow(0 0 10px rgba(253, 177, 16, 0.2))'
-            // Enhanced shadows for more nuanced glow and definition against the Spline
+            textShadow: '1px 1px 3px rgba(58, 58, 58, 0.4), 0 0 10px rgba(245, 122, 8, 0.2)',
+            filter: 'drop-shadow(0 1px 3px rgba(58, 58, 58, 0.5)) drop-shadow(0 0 15px rgba(245, 122, 8, 0.3))'
+            // Strong contrast with deep charcoal shadow to make the gradient pop against background
           }}
         />
       </motion.div>
 
-      {/* First Paragraph */}
-      <motion.p
-        className="pt-6 text-center text-base font-semibold uppercase tracking-wider sm:pt-8 sm:text-xl md:pt-10 md:text-2xl lg:text-3xl"
+      {/* Tagline */}
+      <motion.div
+        className="pt-6 text-center text-3xl font-bold uppercase tracking-wider sm:pt-8 md:pt-10 md:text-4xl lg:text-5xl"
         variants={paragraphVariants}
       >
         <motion.span
@@ -57,16 +57,18 @@ export function HeroContent() {
           whileHover="hover"
         >
           <span
-            className="relative z-10 text-accent-yellow"
+            className="relative z-10 inline-block font-bold"
             style={{
-              textShadow: '0 0 8px rgba(245, 122, 8, 0.6)'
-              // Subtle orange glow to make the yellow text pop
+              color: '#F57A08', // Orange from the specified gradient
+              textShadow: '1px 1px 2px rgba(58, 58, 58, 0.5)' // Deep Charcoal text shadow
             }}
           >
-            Your Glow  
+            YOUR GLOW
           </span>
         </motion.span>{' '}
-        <span className="text-site-bg">ELEVATED WITH PASSION</span>
+        <span className="inline-block font-bold" style={{ color: '#3A3A3A' }}>
+          ELEVATED WITH <span className="inline-block" style={{ color: '#E8400C' }}>PASSION</span>
+        </span>
         {/* <br />
         <motion.span
           className="relative inline-block"
@@ -84,7 +86,7 @@ export function HeroContent() {
           </span>
         </motion.span>{' '} */}
         
-      </motion.p>
+      </motion.div>
 
       {/* Second Paragraph - Commented out in original */}
       {/* <motion.p

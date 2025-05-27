@@ -18,7 +18,7 @@ export function HeroSplineBackground() {
             Example ideas: flowing silk, shimmering particles, abstract cellular structures, serene water ripples.
         */}
         <Spline
-          className="size-1/2 sm:size-full"
+          className="opacity-65 sm:opacity-100"
           style={{
             width: '100%',
             height: '100vh',

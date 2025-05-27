@@ -65,25 +65,25 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out no-scrollbar
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out no-scrollbar overflow-x-hidden w-full
         ${isScrolled 
           ? 'border-b border-accent-yellow-dark/20 bg-site-bg/90 py-3 shadow-lg backdrop-blur-md' 
           : 'bg-gradient-to-r from-site-bg/90 to-content-bg/90 py-4 backdrop-blur-sm'
         }`} 
       style={{pointerEvents: 'auto'}}
     >
-      <div className="container mx-auto px-4 no-scrollbar sm:px-6 lg:px-8">
+      <div className="container mx-auto px-2 no-scrollbar sm:px-4 lg:px-6 max-w-full overflow-x-hidden">
         <div className="flex items-center justify-between">
           {/* Enhanced Logo with Gradient Animation */}
-          <div className="flex items-center">
+          <div className="flex items-center overflow-hidden">
             <a href="/" className="group shrink-0">
               <span className="cinzel-decorative-bold bg-size-200 bg-pos-0 hover:bg-pos-100 animate-shimmer relative bg-gradient-to-r 
                              from-accent-yellow-dark via-accent-orange to-accent-red
-                             bg-clip-text px-5 pl-1 text-2xl
+                             bg-clip-text px-1 sm:px-2 text-xl
                              font-extrabold tracking-wide text-transparent transition-all
-                             duration-1000 ease-in-out group-hover:drop-shadow-[0_0_15px_rgba(245,122,8,0.5)] md:pl-16
-                             md:text-4xl
-                             lg:text-5xl">
+                             duration-300 ease-in-out group-hover:drop-shadow-[0_0_15px_rgba(245,122,8,0.5)] sm:pl-2 md:pl-4 lg:pl-6
+                             sm:text-2xl md:text-3xl
+                             lg:text-4xl">
                 AURA
               </span>
             </a>
@@ -156,9 +156,9 @@ export function Navbar() {
       </div>
 
       {/* Enhanced Mobile Menu with Luxury Styling */}
-      <div className={`fixed inset-x-0 top-16 max-h-[calc(100vh-4rem)] space-y-4 overflow-y-auto 
+      <div className={`fixed inset-x-0 top-16 max-h-[calc(100vh-4rem)] space-y-4 overflow-y-auto overflow-x-hidden w-full
                       border-b border-accent-yellow-dark/20 bg-gradient-to-b from-site-bg/95
-                      to-content-bg/95 p-6 backdrop-blur-lg transition-all duration-300 ease-in-out md:hidden 
+                      to-content-bg/95 p-4 sm:p-6 backdrop-blur-lg transition-all duration-300 ease-in-out md:hidden 
                       ${isMobileMenuOpen 
                         ? 'pointer-events-auto translate-y-0 opacity-100' 
                         : 'pointer-events-none -translate-y-4 opacity-0'
@@ -169,7 +169,7 @@ export function Navbar() {
             href={`/${item.toLowerCase()}`} 
             className="cormorant-garamond block rounded-r-lg border-l-2 border-transparent py-3 text-lg
                        font-semibold uppercase tracking-wider text-text-primary
-                       transition-all duration-300 hover:border-accent-yellow-dark
+                       transition-all duration-900 hover:border-accent-yellow-dark
                        hover:bg-accent-yellow-dark/5 hover:pl-4 hover:text-accent-orange" 
             onClick={toggleMobileMenu}
             style={{

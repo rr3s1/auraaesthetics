@@ -116,22 +116,15 @@ export function Footer() {
         <div className="mt-16 border-t border-accent-yellow-dark/20 pt-8 text-center">
           <div className="flex flex-wrap items-center justify-center gap-4">
             <div className="flex items-center space-x-2">
-              <div className="size-2 animate-pulse rounded-full bg-accent-yellow"></div>
+              <div className="size-2 animate-pulse rounded-full bg-green-500"></div>
               <span className="text-xs text-text-secondary">SSL Secured</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="size-2 rounded-full bg-accent-orange"></div>
+              <div className="size-2 rounded-full bg-green-500"></div>
               <span className="text-xs text-text-secondary">Privacy Protected</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="size-2 rounded-full bg-accent-red"></div>
-              <span className="text-xs text-text-secondary">Certified Professionals</span>
-            </div>
+  
           </div>
-          
-          <p className="cormorant-garamond mt-6 text-sm italic tracking-wide text-text-secondary">
-            <span className="text-accent-yellow-dark">Designed for radiance.</span> Crafted with precision.
-          </p>
           
           <p className="mt-4 text-sm tracking-wider text-text-secondary/80">
             {currentYear} AURA Aesthetics. All rights reserved.

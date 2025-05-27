@@ -95,6 +95,16 @@ export const simpleFadeInUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
+export const simpleFadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, type: 'spring', stiffness: 70, damping: 15 } }
+};
+
+export const simpleFadeInRight: Variants = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, type: 'spring', stiffness: 70, damping: 15 } }
+};
+
 export const ctaButtonVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {

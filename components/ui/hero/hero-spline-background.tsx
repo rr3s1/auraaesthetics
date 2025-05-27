@@ -29,12 +29,12 @@ export function HeroSplineBackground() {
             https://prod.spline.design/YOUR_NEW_IGNITED_RADIANCE_SCENE/scene.splinecode
         */}
         <Spline
-          className="opacity-90"
+          className="opacity-100"
           style={{
-            width: '100%',
-            height: '100%',
+            width: '110%',
+            height: '110%',
           }}
-          scene="https://prod.spline.design/34t9YjYkcx7PrX1l/scene.splinecode" // KEEP AS PLACEHOLDER UNTIL REPLACED
+          scene="https://prod.spline.design/5rRURbVXjAe-rXSV/scene.splinecode" // KEEP AS PLACEHOLDER UNTIL REPLACED
         />
       </Suspense>
     </div>

@@ -351,6 +351,33 @@
 }
 
 @layer utilities {
+  /* Card Border Glow Properties for Signature Treatments */
+  @property --color-border-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  @property --color-glow-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  @property --color-inner-glow-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  .signature-treatment-card-group:hover .card-border-glow,
+  .signature-treatment-card-group:focus-within .card-border-glow {
+    --color-border-start: theme('colors.accent-orange.DEFAULT / 50%');
+    --color-glow-start: theme('colors.accent-red.DEFAULT / 30%');
+    --color-inner-glow-start: theme('colors.accent-yellow-dark.DEFAULT / 20%');
+    transition: --color-border-start 0.5s, --color-glow-start 0.5s, --color-inner-glow-start 0.5s;
+  }
+  
   /* ===== UTILITIES */
 
   .no-scrollbar {
@@ -360,7 +387,7 @@
   
   /* Luxury Navbar Animation Classes */
   .animate-shimmer {
-    animation: shimmer 3s ease-in-out infinite;
+    animation: shimmer 21s ease-in-out infinite;
   }
   
   .bg-size-200 {

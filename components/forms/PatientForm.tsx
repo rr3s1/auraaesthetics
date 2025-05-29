@@ -97,7 +97,7 @@ export const PatientForm = () => {
                 Schedule Your Consultation
               </h1>
               <p className="cormorant-garamond text-lg leading-relaxed text-text-primary/85 md:text-xl">
-                Embark on your journey to renewed confidence with Aura Aesthetics.
+                Embark on your journey to renewed confidence.
               </p>
             </header>
 
@@ -164,7 +164,7 @@ export const PatientForm = () => {
                   variants={messageVariants} initial="hidden" animate="visible" exit="exit"
                   className="mt-4 text-center text-lg font-medium text-accent-yellow-dark"
                 >
-                  Thank you! We'll be in touch shortly to confirm.
+                  Thank you! We&apos;ll be in touch shortly to confirm.
                 </motion.p>
               )}
               {submissionStatus === "error" && (

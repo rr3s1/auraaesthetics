@@ -763,7 +763,95 @@
 
   /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
   .input-phone {
-    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-dark-600 border-dark-500 !important;
+    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-slate-100 border-dark-500 !important;
+  }
+
+  /* =====  PHONE INPUT CUSTOM PROPERTIES FOR IGNITED RADIANCE THEME */
+  :root {
+    /* Country select dropdown arrow colors */
+    --PhoneInputCountrySelectArrow-color: #0665fc; /* Secondary text color for normal state */
+    --PhoneInputCountrySelectArrow-opacity: 0.8; /* Arrow opacity when not focused */
+    --PhoneInput-color--focus: #FDB110; /* Primary accent color when focused */
+    
+    /* Country flag styling */
+    --PhoneInputCountryFlag-height: 1.2em;
+    --PhoneInputCountryFlag-borderColor: #E0E0E0;
+    --PhoneInputCountryFlag-aspectRatio: 1.5;
+  }
+
+  /* Phone input container styling for light theme */
+  .PhoneInput {
+    background: #FCFBF8 !important; /* Site background */
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 0.375rem !important;
+    color: #e8e0e0 !important; /* Primary text color */
+  }
+
+  .PhoneInput--focus {
+    border-color: #FDB110 !important; /* Primary accent when focused */
+    box-shadow: 0 0 0 1px #FDB110 !important;
+  }
+
+  /* Country select button styling */
+  .PhoneInputCountrySelect {
+    background: transparent !important;
+    border: none !important;
+    color: #eeecec !important;
+  }
+
+  .PhoneInputCountrySelect:focus {
+    outline: none !important;
+    background: rgba(249, 249, 249, 0.1) !important; /* Subtle accent background on focus */
+  }
+
+  /* SPECIFIC ARROW COLOR FIXES */
+  .PhoneInputCountrySelectArrow {
+    color: #0665fc !important;
+    opacity: 0.8 !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelectArrow {
+    color: #FDB110 !important;
+    opacity: 1 !important;
+  }
+
+  /* Additional specific selectors for arrow elements */
+  .PhoneInputCountrySelect button::after,
+  .PhoneInputCountrySelect > button::after,
+  .PhoneInputCountrySelect [role="button"]::after {
+    border-top-color: #0665fc !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelect button::after,
+  .PhoneInput--focus .PhoneInputCountrySelect > button::after,
+  .PhoneInput--focus .PhoneInputCountrySelect [role="button"]::after {
+    border-top-color: #FDB110 !important;
+  }
+
+  /* SVG arrow elements */
+  .PhoneInputCountrySelect svg,
+  .PhoneInputCountrySelectArrow svg {
+    fill: #0665fc !important;
+    color: #0665fc !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelect svg,
+  .PhoneInput--focus .PhoneInputCountrySelectArrow svg {
+    fill: #FDB110 !important;
+    color: #FDB110 !important;
+  }
+
+  /* Ensure custom properties work in all contexts */
+  .PhoneInput,
+  .PhoneInput * {
+    --PhoneInputCountrySelectArrow-color: #0665fc !important;
+    --PhoneInputCountrySelectArrow-opacity: 0.8 !important;
+  }
+
+  .PhoneInput--focus,
+  .PhoneInput--focus * {
+    --PhoneInputCountrySelectArrow-color: #FDB110 !important;
+    --PhoneInputCountrySelectArrow-opacity: 1 !important;
   }
 
   /* =====  REACT DATE PICKER OVERRIDES */
@@ -835,13 +923,14 @@
 .PhoneInputInput {
   outline: none;
   margin-left: 4px;
-  background: #1a1d21;
+  background: #ffffff;
   font-size: 14px;
   font-weight: 500;
+  color: #3A3A3A;
 }
 
 .PhoneInputInput::placeholder {
-  color: #1a1d21;
+  color: #3A3A3A;
 }
 
 

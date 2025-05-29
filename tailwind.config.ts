@@ -56,10 +56,10 @@ const config = {
           DEFAULT: "#3A3A3A", // Deep Charcoal (primary text)
           200: "#5A5A5A",     // Lighter Charcoal (secondary text)
           300: "#FDB110",     // Dark Yellow (primary accent)
-          400: "#F57A08",     // Orange (secondary accent)
+          400: "#ffffff",     // Orange (secondary accent)
           500: "#FCCF14",     // Brighter Yellow (secondary accent)
-          600: "#E8400C",     // Vibrant Red (tertiary accent)
-          700: "#C81E08",     // Dark Red (deepest accent)
+          600: "slate-200",     // Vibrant Red (tertiary accent)
+          700: "#3A3A3A",     // Dark Red (deepest accent)
         },
         "color-1": "hsl(var(--color-1))",
         "color-2": "hsl(var(--color-2))",

@@ -45,9 +45,16 @@ export const PatientForm = () => {
 
       if (newUser) {
         setSubmissionStatus("success");
-        setTimeout(() => {
-          router.push(`/patients/${newUser.$id}/register`);
-        }, 2000);
+        
+        // Navigate immediately with fallback
+        const targetUrl = `/patients/${newUser.$id}/register`;
+        try {
+          await router.push(targetUrl);
+        } catch (routerError) {
+          console.warn("Router.push failed, using window.location:", routerError);
+          // Fallback to window.location if router fails
+          window.location.href = targetUrl;
+        }
       } else {
         throw new Error("User creation did not return expected data.");
       }
@@ -59,10 +66,7 @@ export const PatientForm = () => {
       } else {
         setErrorMessage("An unexpected error occurred. Please try again.");
       }
-    } finally {
-      if (submissionStatus !== "success") {
-        setIsLoading(false);
-      }
+      setIsLoading(false);
     }
   };
 

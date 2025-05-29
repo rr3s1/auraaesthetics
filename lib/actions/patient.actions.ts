@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { ID, InputFile, Query } from "node-appwrite";
 
 import {
@@ -26,6 +27,10 @@ export const createUser = async (user: CreateUserParams) => {
       user.name,
     );
 
+    // Revalidate relevant paths to ensure fresh data
+    revalidatePath('/');
+    revalidatePath('/register');
+    
     return parseStringify(newuser);
   } catch (error: any) {
     // Check existing user
@@ -86,6 +91,11 @@ export const registerPatient = async ({
         ...patient,
       },
     );
+
+    // Revalidate relevant paths to ensure fresh data
+    revalidatePath('/admin');
+    revalidatePath(`/patients/${patient.userId}/register`);
+    revalidatePath(`/patients/${patient.userId}/new-appointment`);
 
     return parseStringify(newPatient);
   } catch (error) {

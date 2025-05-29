@@ -88,26 +88,35 @@ const RegisterForm = ({ user }: { user: User }) => {
       const newPatient = await registerPatient(patient);
 
       if (newPatient) {
-        router.push(`/patients/${user.$id}/new-appointment`);
+        // Use a small delay to ensure server state is updated
+        setTimeout(() => {
+          const targetUrl = `/patients/${user.$id}/new-appointment`;
+          try {
+            router.push(targetUrl);
+          } catch (routerError) {
+            console.warn("Router.push failed, using window.location:", routerError);
+            // Fallback to window.location if router fails
+            window.location.href = targetUrl;
+          }
+        }, 500);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Registration error:", error);
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex-1 space-y-12 bg-black"
+        className="flex-1 space-y-12 bg-site-bg"
       >
       
 
-        <section className="space-y-6 pt-10">
+        <section className="space-y-6 bg-site-bg pt-10">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header text-gray-200">Personal Information</h2>
+            <h2 className="sub-header text-slate-600">Personal Information</h2>
           </div>
 
           {/* NAME */}
@@ -120,7 +129,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
             label="Name"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
           />
 
           {/* EMAIL & PHONE */}
@@ -130,7 +139,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="email"
               label="Email address"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder="johndoe@gmail.com"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
@@ -141,7 +150,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -153,7 +162,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="birthDate"
               label="Date of birth"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
             />
 
             <CustomFormField
@@ -161,7 +170,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="gender"
               label="Gender"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               renderSkeleton={(field) => (
                 <FormControl>
                   <RadioGroup
@@ -174,7 +183,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                         <RadioGroupItem value={option} id={option} />
                         <Label
                           htmlFor={option}
-                          className="cursor-pointer text-gray-300"
+                          className="cursor-pointer text-slate-600"
                         >
                           {option}
                         </Label>
@@ -193,7 +202,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder="14 street, New york, NY - 5101"
             />
 
@@ -202,7 +211,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="occupation"
               label="Occupation"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder=" Software Engineer"
             />
           </div>
@@ -214,7 +223,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactName"
               label="Emergency contact name"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder="Guardian's name"
             />
 
@@ -223,7 +232,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactNumber"
               label="Emergency contact number"
-              labelClassName="text-gray-300"
+              labelClassName="text-slate-600"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -231,7 +240,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header text-gray-200">Medical Information</h2>
+            <h2 className="sub-header text-slate-600">Medical Information</h2>
           </div>
 
           {/* PRIMARY CARE PHYSICIAN */}
@@ -240,7 +249,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="primaryPhysician"
             label="Primary care physician"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
             placeholder="Select a physician"
           >
             {Doctors.map((doctor, i) => (
@@ -275,7 +284,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
-              labelClassName="text-gray-300"
+              labelClassName=" text-slate-600"
               placeholder="ABC123456789"
             />
           </div>
@@ -323,9 +332,9 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
         </section>
 
-        <section className="space-y-6 bg-black">
+        <section className="bg-project-bg space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header text-gray-200">
+            <h2 className="sub-header text-slate-600">
               Identification and Verification
             </h2>
           </div>
@@ -335,7 +344,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="identificationType"
             label="Identification type"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
             placeholder="Select identification type"
           >
             {IdentificationTypes.map((type, i) => (
@@ -350,7 +359,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="identificationNumber"
             label="Identification number"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
             placeholder="123456789"
           />
 
@@ -359,7 +368,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="identificationDocument"
             label="Scanned copy of identification document"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
             renderSkeleton={(field) => (
               <FormControl>
                 <FileUploader files={field.value} onChange={field.onChange} />
@@ -370,7 +379,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header text-gray-200">Consent and Privacy</h2>
+            <h2 className="sub-header text-slate-600">Consent and Privacy</h2>
           </div>
 
           <CustomFormField
@@ -378,7 +387,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="treatmentConsent"
             label="I consent to receive treatment for my health condition."
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
           />
 
           <CustomFormField
@@ -386,7 +395,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="disclosureConsent"
             label="I consent to the use and disclosure of my health information for treatment purposes."
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
           />
 
           <CustomFormField
@@ -394,7 +403,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="privacyConsent"
             label="I acknowledge that I have reviewed and agree to the privacy policy"
-            labelClassName="text-gray-300"
+            labelClassName="text-slate-600"
           />
         </section>
 

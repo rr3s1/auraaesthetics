@@ -46,9 +46,16 @@ export const PatientForm = () => {
 
       if (newUser) {
         setSubmissionStatus("success");
-        setTimeout(() => {
-          router.push(`/patients/${newUser.$id}/register`);
-        }, 2000);
+        
+        // Navigate immediately with fallback
+        const targetUrl = `/patients/${newUser.$id}/register`;
+        try {
+          await router.push(targetUrl);
+        } catch (routerError) {
+          console.warn("Router.push failed, using window.location:", routerError);
+          // Fallback to window.location if router fails
+          window.location.href = targetUrl;
+        }
       } else {
         throw new Error("Registration failed. Please try again.");
       }
@@ -60,10 +67,7 @@ export const PatientForm = () => {
       } else {
         setErrorMessage("An unexpected error occurred.");
       }
-    } finally {
-      if (submissionStatus !== "success") {
-        setIsLoading(false);
-      }
+      setIsLoading(false);
     }
   };
 
@@ -164,7 +168,7 @@ export const PatientForm = () => {
                   variants={messageVariants} initial="hidden" animate="visible" exit="exit"
                   className="mt-4 text-center text-lg font-medium text-accent-yellow-dark"
                 >
-                  Thank you! We&apos;ll be in touch shortly to confirm.
+                  Registration successful! Please allow page to load and proceed to the next step.
                 </motion.p>
               )}
               {submissionStatus === "error" && (

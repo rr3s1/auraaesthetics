@@ -86,9 +86,16 @@ export const AppointmentForm = ({
 
         if (newAppointment) {
           form.reset();
-          router.push(
-            `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`,
-          );
+          
+          // Navigate with fallback
+          const targetUrl = `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`;
+          try {
+            router.push(targetUrl);
+          } catch (routerError) {
+            console.warn("Router.push failed, using window.location:", routerError);
+            // Fallback to window.location if router fails
+            window.location.href = targetUrl;
+          }
         }
       } else {
         const appointmentToUpdate = {

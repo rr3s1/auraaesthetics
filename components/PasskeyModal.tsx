@@ -47,13 +47,23 @@ export const PasskeyModal = ({ onClose }: PasskeyModalProps) => {
         setOpen(true); // Not authenticated, show the modal
       }
     }
-  }, [encryptedKey, path, router, decryptKey, onClose]); // Added onClose to dependencies
+  }, [encryptedKey, path, router, onClose]); // Removed decryptKey from dependencies
 
   // Centralized function to handle modal closing and navigation
   const handleModalCloseAction = (targetPath: string) => {
     setOpen(false); // Ensure AlertDialog knows it's closing
-    router.push(targetPath);
-    onClose(); // Notify parent to unmount
+    
+    // Add a small delay to ensure state updates are processed
+    setTimeout(() => {
+      try {
+        router.push(targetPath);
+      } catch (routerError) {
+        console.warn("Router.push failed, using window.location:", routerError);
+        // Fallback to window.location if router fails
+        window.location.href = targetPath;
+      }
+      onClose(); // Notify parent to unmount
+    }, 100);
   };
 
   // Renamed original closeModal for clarity, used by explicit 'X' button
@@ -70,6 +80,10 @@ export const PasskeyModal = ({ onClose }: PasskeyModalProps) => {
     if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
       const newEncryptedKey = encryptKey(passkey);
       localStorage.setItem("accessKey", newEncryptedKey);
+      
+      // Clear any errors
+      setError("");
+      
       handleModalCloseAction("/admin");
     } else {
       setError("Invalid passkey. Please try again.");

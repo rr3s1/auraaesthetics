@@ -110,8 +110,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 5px rgba(253, 177, 16, 0.1), 0 0 15px rgba(245, 122, 8, 0.08), 0 4px 20px rgba(58, 58, 58, 0.07)"
           : "none",
-        width: visible ? "min(95%, 1000px)" : "100%",
-        minWidth: visible ? "min(95%, 600px)" : "100%",
+        width: visible ? "50%" : "100%",
+        minWidth: visible ? "700px" : "100%",
         y: visible ? 20 : 0,
         borderRadius: visible ? "9999px" : "0px",
       }}
@@ -121,7 +121,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 30,
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-5xl items-center justify-around self-start px-6 py-3 lg:flex",
+        "relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start px-6 py-3 lg:flex",
         className
       )}
     >
@@ -173,14 +173,14 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         boxShadow: visible
           ? "0 0 5px rgba(253, 177, 16, 0.1), 0 0 15px rgba(245, 122, 8, 0.08), 0 4px 15px rgba(58, 58, 58, 0.07)"
           : "none",
-        width: "100%",
-        borderRadius: visible ? "1rem" : "0px",
-        y: visible ? 10 : 0,
-        paddingRight: visible ? "12px" : "8px",
-        paddingLeft: visible ? "12px" : "8px",
+        width: visible ? "90%" : "100%",
+        borderRadius: visible ? "1.5rem" : "0px",
+        y: visible ? 16 : 0,
+        paddingRight: visible ? "16px" : "8px",
+        paddingLeft: visible ? "16px" : "8px",
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full flex-col items-center justify-between py-2 px-2 lg:hidden",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-1rem)] flex-col items-center justify-between py-3 lg:hidden",
         className
       )}
     >
@@ -200,12 +200,7 @@ export const MobileNavHeader = ({
         className,
       )}
     >
-      <div className="flex items-center">
-        {React.Children.toArray(children)[0]}
-      </div>
-      <div className="flex items-center p-2">
-        {React.Children.toArray(children)[1]}
-      </div>
+      {children}
     </div>
   );
 };
@@ -243,15 +238,10 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
 }) => {
-  const iconStyles = "w-6 h-6 sm:w-7 sm:h-7 text-text-primary cursor-pointer";
-  return (
-    <div className="rounded-md p-1 transition-colors hover:bg-gray-100/50 active:bg-gray-200/50">
-      {isOpen ? (
-        <IconX className={iconStyles} onClick={onClick} />
-      ) : (
-        <IconMenu2 className={iconStyles} onClick={onClick} />
-      )}
-    </div>
+  return isOpen ? (
+    <IconX className="text-text-primary" onClick={onClick} />
+  ) : (
+    <IconMenu2 className="text-text-primary" onClick={onClick} />
   );
 };
 
@@ -259,7 +249,7 @@ export const NavbarLogo = () => {
   return (
     <div className="inline-block">
       <GradientText
-        className="cinzel-decorative-black py-0 text-xl font-black tracking-wider sm:text-2xl md:text-3xl lg:text-4xl"
+        className="cinzel-decorative-black py-0 text-3xl font-black tracking-wider lg:text-4xl"
         gradient="bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red"
       >
         AURA

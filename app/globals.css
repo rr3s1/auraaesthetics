@@ -153,9 +153,6 @@
     /* For Firefox */
     scrollbar-width: thin;
     scrollbar-color: rgba(224, 185, 124, 0.3) rgba(28, 8, 0, 0.1);
-    /* Prevent horizontal scroll issues on mobile */
-    max-width: 100vw;
-    position: relative;
   }
 
   /* For WebKit browsers (Chrome, Safari, newer Edge) - Custom styled scrollbar */

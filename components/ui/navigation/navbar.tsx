@@ -1,71 +1,55 @@
 "use client";
 
-import { IconHome, IconUser, IconMessage } from '@tabler/icons-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
-import { NavbarLogo } from "@/components/ui/resizable-navbar";
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
+} from "@/components/ui/resizable-navbar";
 
 import { MotionGradientButton } from '../animations/animated-components';
 
 export function NavbarComponent() {
-  // Create a component for the icons that will properly handle hover states
-  const NavIcon = ({ children }: { children: React.ReactNode }) => (
-    <div className="size-5 text-orange-600 transition-colors duration-200 group-hover:text-white">
-      {children}
-    </div>
-  );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     {
       name: "Services",
       link: "/services",
-      icon: <NavIcon><IconHome className="size-full" /></NavIcon>,
     },
     {
       name: "About",
       link: "/about",
-      icon: <NavIcon><IconUser className="size-full" /></NavIcon>,
     },
     {
       name: "Contact",
       link: "/contact",
-      icon: <NavIcon><IconMessage className="size-full" /></NavIcon>,
     },
   ];
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 w-full ">
-      <div className="bg-project-bg/90 dark:bg-project-bg flex items-center border-transparent py-3 pl-2 pr-6 backdrop-blur-md">
-        {/* Logo on the left */}
-        <div className="flex w-[120px] items-center">
-          <Link href="/" className="group inline-block" aria-label="AURA Homepage">
-            <NavbarLogo />
-          </Link>
-        </div>
-        
-        {/* Navigation items in the middle */}
-        <div className="flex grow items-center justify-center">
-          <div className="flex items-center space-x-8 pl-4 pr-10 ">
-            {navItems.map((item, idx) => (
-              <a
-                key={`nav-item-${idx}`}
-                href={item.link}
-                className="group relative flex items-center space-x-1 transition-colors duration-200 hover:text-white dark:text-orange-600 dark:hover:text-white"
-              >
-                <span className="block sm:hidden">{item.icon}</span>
-                <span className="hidden text-sm font-medium uppercase sm:block lg:text-lg">{item.name}</span>
-              </a>
-            ))}
+    <div className="relative w-full">
+      <Navbar>
+        {/* Desktop Navigation */}
+        <NavBody>
+          <div className="ml-8">
+            <Link href="/" className="group inline-block" aria-label="AURA Homepage">
+              <NavbarLogo />
+            </Link>
           </div>
-        </div>
-        
-        {/* Admin button on the right */}
-        <div className="flex w-[120px] items-center justify-end">
+          <NavItems items={navItems} />
+          <div className="mr-8 flex items-center gap-4">
           <MotionGradientButton
             href="/admin"
             variant="variant"
-            className="cormorant-garamond p-1.5 text-sm sm:px-4 sm:py-2 sm:text-base md:px-5 md:py-2"
+            className="cormorant-garamond max-h-[25px] p-6 text-lg sm:px-8 sm:py-4 sm:text-xl md:px-10  md:py-5 "
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
@@ -75,8 +59,61 @@ export function NavbarComponent() {
           >
             ADMIN
           </MotionGradientButton>
-        </div>
-      </div>
+          </div>
+        </NavBody>
+
+        {/* Mobile Navigation */}
+        <MobileNav>
+          <MobileNavHeader>
+            <Link href="/" className="group inline-block" aria-label="AURA Homepage">
+              <NavbarLogo />
+            </Link>
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+          </MobileNavHeader>
+
+          <MobileNavMenu
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+          >
+            {navItems.map((item, idx) => (
+              <a
+                key={`mobile-link-${idx}`}
+                href={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative text-neutral-600 dark:text-neutral-300"
+              >
+                <span className="block">{item.name}</span>
+              </a>
+            ))}
+            <div className="flex w-full flex-col gap-4">
+          
+
+
+
+
+
+
+
+            <MotionGradientButton
+            href="/admin"
+            variant="variant"
+            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
+            }}
+            whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          >
+            ADMIN
+          </MotionGradientButton>
+            </div>
+          </MobileNavMenu>
+        </MobileNav>
+      </Navbar>
     </div>
   );
 }

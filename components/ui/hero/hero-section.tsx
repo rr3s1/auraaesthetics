@@ -53,19 +53,19 @@ export const HeroSection = () => {
   // const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown // Commented out, using Tailwind class now
 
   return (
-    <div className="relative overflow-hidden bg-site-bg"> {/* Added overflow-hidden to prevent horizontal scroll */}
+    <div className="relative bg-site-bg overflow-hidden"> {/* Added overflow-hidden to prevent horizontal overflow */}
       <NavbarComponent />
       {/* Hero Area */}
-      <div className="relative h-screen w-full overflow-hidden"> {/* Added overflow-hidden back to prevent gradient elements from causing horizontal scroll */}
+      <div className="relative h-screen w-full overflow-hidden"> {/* Added overflow-hidden to contain background elements */}
         {/* Simplified and optimized background gradients - reduced from 5 to 3 elements */}
         {/* Enhanced background gradients for Ignited Radiance theme */}
-        <div className="absolute inset-0 z-[-1] overflow-hidden opacity-70"> {/* Added overflow-hidden to gradient container */}
+        <div className="absolute inset-0 z-[-1] opacity-70 overflow-hidden">
           {/* Element 1: Main gradient - top left warm gold */}
-          <div className="absolute -left-1/4 -top-1/4 size-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/70 via-accent-orange/50 to-transparent" style={{ filter: 'blur(100px)' }} />
+          <div className="absolute -left-1/4 -top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/70 via-accent-orange/50 to-transparent" style={{ filter: 'blur(80px)' }} />
           {/* Element 2: Main gradient - bottom right warm red */}
-          <div className="absolute -bottom-1/4 -right-1/4 size-3/4 rounded-full bg-gradient-radial from-accent-red/70 via-accent-red-deep/50 to-transparent" style={{ filter: 'blur(100px)' }} />
+          <div className="absolute -bottom-1/4 -right-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-red/70 via-accent-red-deep/50 to-transparent" style={{ filter: 'blur(80px)' }} />
           {/* Element 3: Central ambient glow - subtle yellow */}
-          <div className="absolute left-1/4 top-1/4 size-3/4 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent" style={{ filter: 'blur(120px)' }} />
+          <div className="absolute left-1/4 top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent" style={{ filter: 'blur(100px)' }} />
         </div>
 
         <div className="absolute inset-0 z-0">
@@ -74,10 +74,10 @@ export const HeroSection = () => {
 
         <div ref={heroContentWrapperRef} style={{
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-          display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 10,
+          display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
           willChange: 'transform, opacity', // Optimize for animations
         }}>
-          <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto">
             <Suspense fallback={<div className="flex size-full items-center justify-center text-xl text-white">Loading Aura Experience...</div>}>
               <HeroContent />
             </Suspense>
@@ -87,7 +87,7 @@ export const HeroSection = () => {
 
       {/* Enhanced Transition Section with smoother transition */}
       <div 
-        className="bg-warm-radial relative z-10 overflow-hidden py-16 text-text-primary md:py-24" // Added overflow-hidden
+        className="bg-warm-radial relative z-10 py-16 text-text-primary md:py-24" // Changed text-white to text-text-primary, applied bg-warm-radial
         style={{ 
           // background: 'radial-gradient(circle at 50% 0%, rgba(139, 69, 19, 0.15) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)', // Replaced with bg-warm-radial
          

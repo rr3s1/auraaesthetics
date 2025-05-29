@@ -19,7 +19,7 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="relative z-10 mb-16 flex min-h-[60vh] flex-col items-center justify-center px-3 sm:px-4 text-left text-text-primary sm:items-start overflow-hidden"
+      className="relative z-10 mb-16 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden px-3 text-left text-text-primary sm:items-start sm:px-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -30,15 +30,18 @@ export function HeroContent() {
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+        {/* MODIFIED: Changed sm:flex-row to md:flex-row and adjusted gaps */}
+        <div className="flex w-full flex-col items-center justify-center gap-2 md:flex-row md:gap-4 lg:gap-6">
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-3 sm:py-4 text-center text-4xl sm:text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-9xl"
+            // MODIFIED: Font size progression
+            className="cinzel-decorative-black min-h-[1.2em] py-3 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-3 sm:py-4 text-center text-4xl sm:text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-9xl"
+            // MODIFIED: Font size progression
+            className="cinzel-decorative-black min-h-[1.2em] py-3 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
           >
             Aesthetics
           </GradientText>
@@ -47,7 +50,7 @@ export function HeroContent() {
 
       {/* Tagline */}
       <motion.div
-        className="pt-4 sm:pt-6 text-center text-lg sm:text-xl font-bold uppercase tracking-wider sm:pt-8 md:pt-10 md:text-4xl lg:text-5xl"
+        className="pt-4 text-center text-lg font-bold uppercase tracking-wider sm:pt-6 sm:pt-8 sm:text-xl md:pt-10 md:text-3xl lg:text-4xl xl:text-5xl"
         variants={paragraphVariants}
       >
         <span
@@ -70,30 +73,6 @@ export function HeroContent() {
            OUR PASSION
         </span>
       </motion.div>
-
-      {/* Second Paragraph - Commented out in original */}
-      {/* <motion.p
-        className="lg:text-2xl pl-7 sm:text-xl md:text-xl max-w-3xl italic"
-        variants={paragraphVariants}
-      >
-        EMBRACE {' '}
-        <motion.span
-          className="relative inline-block"
-          variants={glowingSpanVariants}
-          whileHover="hover"
-        >
-          <span 
-            className="text-green-500 relative z-10"
-            style={{
-              textShadow: '0 0 15px rgba(0, 123, 200, 0.92), 0 0 25px rgba(0, 117, 200, 0.62)',
-              filter: 'drop-shadow(0 0 5px rgba(0, 180, 200, 0.91))'
-            }}
-          >
-          A PATH TO CONFIDENCE 
-          </span>
-        </motion.span>{' '}
-        GUIDED BY OUR EXPERTISE
-      </motion.p> */}
 
       {/* CTA Button Wrapper */}
       <motion.div

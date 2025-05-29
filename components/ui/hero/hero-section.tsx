@@ -53,7 +53,7 @@ export const HeroSection = () => {
   // const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown // Commented out, using Tailwind class now
 
   return (
-    <div className="relative bg-site-bg"> {/* Removed overflowX hidden and no-scrollbar, Applied bg-site-bg */}
+    <div className="relative bg-site-bg w-full"> {/* Removed overflowX hidden and no-scrollbar, Applied bg-site-bg */}
       <NavbarComponent />
       {/* Hero Area */}
       <div className="relative h-screen w-full"> {/* Removed overflow-hidden and no-scrollbar to fix scroll issues */}

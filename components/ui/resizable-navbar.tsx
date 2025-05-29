@@ -245,7 +245,7 @@ export const MobileNavToggle = ({
 }) => {
   const iconStyles = "w-6 h-6 sm:w-7 sm:h-7 text-text-primary cursor-pointer";
   return (
-    <div className="p-1 rounded-md hover:bg-gray-100/50 active:bg-gray-200/50 transition-colors">
+    <div className="rounded-md p-1 transition-colors hover:bg-gray-100/50 active:bg-gray-200/50">
       {isOpen ? (
         <IconX className={iconStyles} onClick={onClick} />
       ) : (
@@ -259,7 +259,7 @@ export const NavbarLogo = () => {
   return (
     <div className="inline-block">
       <GradientText
-        className="cinzel-decorative-black py-0 text-xl sm:text-2xl md:text-3xl font-black tracking-wider lg:text-4xl"
+        className="cinzel-decorative-black py-0 text-xl font-black tracking-wider sm:text-2xl md:text-3xl lg:text-4xl"
         gradient="bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red"
       >
         AURA

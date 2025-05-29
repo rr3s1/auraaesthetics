@@ -19,7 +19,7 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="relative z-10 mb-16 flex min-h-[70vh] w-full max-w-7xl flex-col items-center justify-center px-4 text-left text-text-primary sm:items-start sm:px-6 lg:px-8"
+      className="relative z-10 mb-12 flex min-h-[60vh] w-full max-w-7xl flex-col items-center justify-center px-3 text-left text-text-primary sm:mb-16 sm:min-h-[70vh] sm:items-start sm:px-4 lg:px-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -30,15 +30,15 @@ export function HeroContent() {
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
+        <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-2 sm:flex-row sm:gap-6 lg:gap-8">
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl"
+            className="cinzel-decorative-black min-h-[1.2em] py-2 text-center text-4xl font-bold leading-tight tracking-[0.08em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-5xl sm:tracking-[0.12em] md:text-6xl lg:text-7xl xl:text-8xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center  text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl"
+            className="cinzel-decorative-black min-h-[1.2em] py-2 text-center text-4xl font-bold leading-tight tracking-[0.08em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-5xl sm:tracking-[0.12em] md:text-6xl lg:text-7xl xl:text-8xl"
           >
             Aesthetics
           </GradientText>
@@ -47,7 +47,7 @@ export function HeroContent() {
 
       {/* Tagline */}
       <motion.div
-        className="pt-6 text-center text-xl font-bold uppercase tracking-wider sm:pt-8  md:pt-10 md:text-4xl  lg:text-4xl xl:text-5xl"
+        className="pt-4 text-center text-lg font-bold uppercase tracking-wide sm:pt-6 sm:text-xl sm:tracking-wider md:pt-10 md:text-3xl lg:text-4xl xl:text-5xl"
         variants={paragraphVariants}
       >
         <span
@@ -97,14 +97,14 @@ export function HeroContent() {
 
       {/* CTA Button Wrapper */}
       <motion.div
-        className="mt-10 md:mt-12 "
+        className="mt-8 md:mt-12"
         style={{ pointerEvents: 'auto' }}
         variants={buttonWrapperVariants}
       >
         <Link href="/register" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
-            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[180px] sm:px-8 sm:py-4 sm:text-lg md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+            className="cormorant-garamond min-w-[160px] px-4 py-3 text-base sm:min-w-[180px] sm:px-6 sm:py-3 sm:text-lg md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 

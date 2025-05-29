@@ -108,18 +108,24 @@ export const AnimatedBlock: React.FC<AnimatedBlockProps> = ({
 // Motion-compatible GradientButton
 export const MotionGradientButton = motion(React.forwardRef<
   HTMLButtonElement, 
-  { variant?: "default" | "variant" | "goldenHourGlow" | "ignitedRadiance" | null; className?: string; children: React.ReactNode; [key: string]: any }
->(({ variant, className, children, ...props }, ref) => {
-  const GradientButtonWithRef = (
+  { 
+    variant?: "default" | "variant" | "goldenHourGlow" | "ignitedRadiance" | null; 
+    className?: string; 
+    children: React.ReactNode;
+    href?: string;
+    [key: string]: any;
+  }
+>(({ variant, className, children, href, ...props }, ref) => {
+  return (
     <GradientButton
       ref={ref as any}
       variant={variant}
       className={className}
+      href={href}
       {...props}
     >
       {children}
     </GradientButton>
   );
-  return GradientButtonWithRef;
 }));
 MotionGradientButton.displayName = 'MotionGradientButton';

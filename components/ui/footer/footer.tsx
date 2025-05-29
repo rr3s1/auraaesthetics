@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
+import { NavbarLogo } from "@/components/ui/resizable-navbar";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -46,15 +48,23 @@ export function Footer() {
           
           {/* Enhanced Brand Column */}
           <div className="max-w-md space-y-6 lg:col-span-2">
-            <Link href="/" className="group inline-block" aria-label="AURA Homepage">
-              <span className="cinzel-decorative-bold bg-size-200 bg-pos-0 hover:bg-pos-100 animate-shimmer relative bg-gradient-to-r 
-                             from-accent-yellow-dark via-accent-orange to-accent-red
-                             bg-clip-text text-5xl
-                             font-extrabold tracking-[0.2em] text-transparent transition-all
-                             duration-1000 ease-in-out group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(245,122,8,0.5)]">
-                AURA
-              </span>
-            </Link>
+            
+            <div className="ml-8">
+              <Link 
+                href="/" 
+                className="group inline-block" 
+                aria-label="AURA Homepage"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }}
+              >
+                <NavbarLogo />
+              </Link>
+            </div>
             
             <p className="cormorant-garamond text-lg font-light leading-relaxed text-text-secondary">
               Elevating beauty through personalized aesthetic journeys and innovative treatments. 

@@ -108,15 +108,25 @@
   /* --- RAINBOW BUTTON COLORS --- */
   :root {
     /* These are used by the GradientText component */
-    --color-1: 0 100% 63%;
-    --color-2: 270 100% 63%;
-    --color-3: 210 100% 63%;
-    --color-4: 195 100% 63%;
-    --color-5: 90 100% 63%;
+    --color-1: 330 100% 40%; /* Dark Neon Pink */
+    --color-2: 140 100% 55%; /* Bright Electric Green */
+    --color-3: 210 100% 30%; /* Deep Neon Blue */
+    --color-4: 60 100% 70%; /* Light Neon Yellow */
+    --color-5: 295 100% 45%; /* Dark Neon Purple */
     --color-11: 210 80% 60%; /* Example: A vibrant blue hue, saturation, lightness */
     --color-22: 180 70% 50%; /* Example: A teal/cyan */
     --color-33: 30 90% 65%;  /* Example: A warm orange/gold for icons/accents */
+    --brand: 50 100% 50%; /* Bright, punchy yellow */
     /* Define --color-4 and --color-5 if used */
+  }
+  
+  .dark {
+    --color-1: 330 100% 40%; /* Dark Neon Pink */
+    --color-2: 140 100% 55%; /* Bright Electric Green */
+    --color-3: 210 100% 30%; /* Deep Neon Blue */
+    --color-4: 60 100% 70%; /* Light Neon Yellow */
+    --color-5: 295 100% 45%; /* Dark Neon Purple */
+    --brand: 50 100% 50%; /* Bright, punchy yellow */
   }
   
   /* --- MERIENDA FONT FOR TITLES --- */
@@ -272,9 +282,9 @@
   }
 
   .gradient-button-variant {
-    --gb-color-1: #A22800;
-    --gb-color-2: #A22800;
-    --gb-color-3: #A22800;
+    --gb-color-1: #F57A08;
+    --gb-color-2: #E8400C;
+    --gb-color-3: #C81E08;
     --gb-color-4: #f8fafc;
     --border-angle: 120deg;
     --border-color-1: hsla(24, 100%, 50%, 0.8);

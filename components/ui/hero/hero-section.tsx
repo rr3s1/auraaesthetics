@@ -9,7 +9,7 @@ import ContactAndNewsletterSection from '../content-sections/ContactAndNewslette
 import { SignatureTreatmentsSection } from '../content-sections/signature-treatments-section';
 import { TestimonialBlockquote } from '../content-sections/testimonial-blockquote';
 import { UnifiedLuxurySections } from '../content-sections/unified-luxury-sections';
-import { Navbar } from '../navigation/navbar';
+import { NavbarComponent } from '../navigation/navbar';
 
 import { HeroContent } from './hero-content';
 import { HeroSplineBackground } from './hero-spline-background';
@@ -54,7 +54,7 @@ export const HeroSection = () => {
 
   return (
     <div className="relative bg-site-bg"> {/* Removed overflowX hidden and no-scrollbar, Applied bg-site-bg */}
-      <Navbar />
+      <NavbarComponent />
       {/* Hero Area */}
       <div className="relative h-screen w-full"> {/* Removed overflow-hidden and no-scrollbar to fix scroll issues */}
         {/* Simplified and optimized background gradients - reduced from 5 to 3 elements */}
@@ -87,7 +87,7 @@ export const HeroSection = () => {
 
       {/* Enhanced Transition Section with smoother transition */}
       <div 
-        className="relative z-10 py-16 text-text-primary md:py-24 bg-warm-radial" // Changed text-white to text-text-primary, applied bg-warm-radial
+        className="bg-warm-radial relative z-10 py-16 text-text-primary md:py-24" // Changed text-white to text-text-primary, applied bg-warm-radial
         style={{ 
           // background: 'radial-gradient(circle at 50% 0%, rgba(139, 69, 19, 0.15) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)', // Replaced with bg-warm-radial
          

@@ -1,6 +1,6 @@
 "use client";
 
-import { HeroSection } from '@/components/ui/galaxy-interactive-hero-section';
+import { HeroSection } from '@/components/ui/hero';
 
 export default function LandingPage() {
   return (

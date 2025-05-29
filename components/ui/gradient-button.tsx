@@ -2,6 +2,7 @@
 
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import Link from "next/link"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -34,19 +35,30 @@ const gradientButtonVariants = cva(
 export interface GradientButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof gradientButtonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
+  href?: string;
 }
 
 const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
+  ({ className, variant, asChild = false, href, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    const buttonContent = (
       <Comp
         className={cn(gradientButtonVariants({ variant, className }))}
         ref={ref}
         {...props}
       />
-    )
+    );
+
+    if (href) {
+      return (
+        <Link href={href} className="inline-block">
+          {buttonContent}
+        </Link>
+      );
+    }
+
+    return buttonContent;
   }
 )
 GradientButton.displayName = "GradientButton"

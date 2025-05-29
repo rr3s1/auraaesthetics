@@ -30,15 +30,15 @@ export function HeroContent() {
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        <div className="flex w-full flex-row items-center justify-center gap-4">
+        <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-7xl md:text-8xl lg:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-9xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
-            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-7xl md:text-8xl lg:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em] py-4 text-center  text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-6xl lg:text-9xl"
           >
             Aesthetics
           </GradientText>
@@ -47,7 +47,7 @@ export function HeroContent() {
 
       {/* Tagline */}
       <motion.div
-        className="pt-6 text-center text-3xl font-bold uppercase tracking-wider sm:pt-8 md:pt-10 md:text-4xl lg:text-5xl"
+        className="pt-6 text-center text-xl font-bold uppercase tracking-wider sm:pt-8 md:pt-10 md:text-4xl lg:text-5xl"
         variants={paragraphVariants}
       >
         <span
@@ -104,7 +104,7 @@ export function HeroContent() {
         <Link href="/register" passHref legacyBehavior>
           <MotionGradientButton
             variant="variant"
-            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[180px] sm:px-8 sm:py-4 sm:text-lg md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 

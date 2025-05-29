@@ -49,7 +49,7 @@ export function NavbarComponent() {
           <MotionGradientButton
             href="/admin"
             variant="variant"
-            className="cormorant-garamond max-h-[25px] p-6 text-lg sm:px-8 sm:py-4 sm:text-xl md:px-10  md:py-5 "
+            className="cormorant-garamond px-3 py-1.5 text-sm sm:px-4 sm:py-2 sm:text-base md:px-5 md:py-2"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
@@ -83,33 +83,26 @@ export function NavbarComponent() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="cormorant-garamond w-full rounded-lg p-3 text-lg font-medium text-neutral-600 transition-all duration-200 hover:bg-neutral-100 hover:text-accent-orange dark:text-slate-500 dark:hover:bg-neutral-200 sm:text-xl"
               >
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
-          
-
-
-
-
-
-
-
-            <MotionGradientButton
-            href="/admin"
-            variant="variant"
-            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
-            }}
-            whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          >
-            ADMIN
-          </MotionGradientButton>
+            <div className="mt-4 flex w-full flex-col gap-4">
+              <MotionGradientButton
+                href="/admin"
+                variant="variant"
+                className="cormorant-garamond w-full justify-center px-3 py-2 text-sm sm:text-base"
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
+                }}
+                whileTap={{ scale: 0.98, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                ADMIN
+              </MotionGradientButton>
             </div>
           </MobileNavMenu>
         </MobileNav>

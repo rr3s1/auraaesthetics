@@ -74,10 +74,10 @@ export const HeroSection = () => {
 
         <div ref={heroContentWrapperRef} style={{
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-          display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
+          display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 10,
           willChange: 'transform, opacity', // Optimize for animations
         }}>
-          <div className="container mx-auto">
+          <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
             <Suspense fallback={<div className="flex size-full items-center justify-center text-xl text-white">Loading Aura Experience...</div>}>
               <HeroContent />
             </Suspense>

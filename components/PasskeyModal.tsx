@@ -126,7 +126,7 @@ export const PasskeyModal = ({ onClose }: PasskeyModalProps) => {
             value={passkey}
             onChange={(value) => setPasskey(value)}
           >
-            <InputOTPGroup className="shad-otp">
+            <InputOTPGroup className="shad-otp text-green-500">
               <InputOTPSlot className="shad-otp-slot" index={0} />
               <InputOTPSlot className="shad-otp-slot" index={1} />
               <InputOTPSlot className="shad-otp-slot" index={2} />

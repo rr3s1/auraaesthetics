@@ -39,7 +39,7 @@ export function NavbarComponent() {
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <div className="ml-8">
+          <div >
             <Link href="/" className="group inline-block" aria-label="AURA Homepage">
               <NavbarLogo />
             </Link>

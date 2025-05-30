@@ -40,7 +40,7 @@ const config = {
         "accent-yellow": "#FCCF14",        // Secondary Accent: Brighter Yellow
         "accent-red": "#E8400C",           // Tertiary Accent: Vibrant Red (use sparingly)
         "accent-red-deep": "#C81E08",      // Deepest Accent: Dark Red (use minimally)
-        
+        "accent-yellow-light": "#eaac47", 
         // Premium testimonial colors
         "rich-charcoal": "#121212",        // Dark background for testimonials
         "light-cream": "#f8f8f8",          // Light text color for testimonials

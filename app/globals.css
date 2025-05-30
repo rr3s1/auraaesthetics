@@ -936,6 +936,16 @@
 
 /* The tailwind.config.js content should be in its separate file, not here. */
 
+/* --- HERO GRADIENT MASK UTILITY --- */
+.hero-gradient-mask {
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
 /* Copied from ProjectB for background effects */
 .blue__gradient {
   background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);

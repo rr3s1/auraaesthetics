@@ -19,7 +19,7 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="relative z-10 mb-16 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden px-3 text-left text-text-primary sm:items-start sm:px-4"
+      className="relative hero-gradient-mask  z-10 mb-16 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden px-3 text-left text-text-primary sm:items-start sm:px-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

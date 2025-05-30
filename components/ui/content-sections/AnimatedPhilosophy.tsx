@@ -113,7 +113,7 @@ const AnimatedPhilosophy: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}
+      style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%', borderRadius: '2rem' }}
       className="bg-[url('/assets/paint.svg')] bg-cover bg-center bg-opacity-30"
     >
       <div className="flex flex-col justify-center items-center min-h-[60vh] relative py-20">

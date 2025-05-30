@@ -66,11 +66,11 @@ export const HeroSection = () => {
           <div className="absolute left-1/4 top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent" style={{ filter: 'blur(100px)' }} />
         </div>
 
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 hero-gradient-mask">
           <HeroSplineBackground />
         </div>
 
-        <div ref={heroContentWrapperRef} style={{
+        <div ref={heroContentWrapperRef} className="hero-gradient-mask" style={{
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
           display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
           willChange: 'transform, opacity',

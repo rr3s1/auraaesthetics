@@ -36,7 +36,7 @@ export function AuraDifferenceSection() {
         
         <AnimatedBlock el="div" variants={simpleFadeInUp} className="relative">
           
-          <h2 className="space-y-1 font-serif text-4xl font-light leading-tight text-text-primary md:text-5xl lg:text-7xl xl:text-8xl"> {/* Adjusted spacing and sizes */}
+          <h2 className="space-y-1 pl-10 font-serif text-4xl font-light leading-tight text-text-primary md:text-5xl lg:text-7xl xl:text-8xl"> {/* Adjusted spacing and sizes */}
             <div className="cormorant-garamond pb-2 sm:pb-3">Confident</div>
             <div 
               className="cinzel-decorative-bold bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-[3rem] font-extrabold tracking-tight text-transparent sm:text-[3.75rem] lg:text-[4.5rem] xl:text-[5.5rem]"
@@ -54,7 +54,7 @@ export function AuraDifferenceSection() {
           </h2>
         </AnimatedBlock>
 
-        <AnimatedBlock variants={simpleFadeInUp} className="pt-8 sm:pt-10" delay={0.3}> {/* Increased top padding */}
+        <AnimatedBlock variants={simpleFadeInUp} className="pt-8 pl-10 sm:pt-10" delay={0.3}> {/* Increased top padding */}
           <MotionGradientButton
             variant="ignitedRadiance"
             className="cormorant-garamond min-w-[220px] px-8 py-4 text-lg font-semibold sm:min-w-[240px] sm:px-10 sm:py-5 sm:text-xl" // Slightly larger button

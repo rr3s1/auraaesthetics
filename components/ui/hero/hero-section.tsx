@@ -13,6 +13,7 @@ import { NavbarComponent } from '../navigation/navbar';
 
 import { HeroContent } from './hero-content';
 import { HeroSplineBackground } from './hero-spline-background';
+import { AnimatedPhilosophy } from '../content-sections';
 
 export const HeroSection = () => {
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
@@ -53,18 +54,14 @@ export const HeroSection = () => {
   // const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown // Commented out, using Tailwind class now
 
   return (
-    <div className="relative bg-site-bg overflow-hidden"> {/* Added overflow-hidden to prevent horizontal overflow */}
+    <div className="relative bg-site-bg overflow-hidden"> {/* Main page overflow */}
       <NavbarComponent />
       {/* Hero Area */}
-      <div className="relative h-screen w-full overflow-hidden"> {/* Added overflow-hidden to contain background elements */}
-        {/* Simplified and optimized background gradients - reduced from 5 to 3 elements */}
-        {/* Enhanced background gradients for Ignited Radiance theme */}
+      <div className="relative h-screen w-full overflow-hidden">
+        {/* ... (hero background elements remain the same) ... */}
         <div className="absolute inset-0 z-[-1] opacity-70 overflow-hidden">
-          {/* Element 1: Main gradient - top left warm gold */}
           <div className="absolute -left-1/4 -top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/70 via-accent-orange/50 to-transparent" style={{ filter: 'blur(80px)' }} />
-          {/* Element 2: Main gradient - bottom right warm red */}
           <div className="absolute -bottom-1/4 -right-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-red/70 via-accent-red-deep/50 to-transparent" style={{ filter: 'blur(80px)' }} />
-          {/* Element 3: Central ambient glow - subtle yellow */}
           <div className="absolute left-1/4 top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent" style={{ filter: 'blur(100px)' }} />
         </div>
 
@@ -75,7 +72,7 @@ export const HeroSection = () => {
         <div ref={heroContentWrapperRef} style={{
           position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
           display: 'flex', justifyContent: 'flex-start', alignItems: 'center', zIndex: 10,
-          willChange: 'transform, opacity', // Optimize for animations
+          willChange: 'transform, opacity',
         }}>
           <div className="container mx-auto">
             <Suspense fallback={<div className="flex size-full items-center justify-center text-xl text-white">Loading Aura Experience...</div>}>
@@ -87,39 +84,22 @@ export const HeroSection = () => {
 
       {/* Enhanced Transition Section with smoother transition */}
       <div 
-        className="bg-warm-radial relative z-10 py-16 text-text-primary md:py-24" // Changed text-white to text-text-primary, applied bg-warm-radial
-        style={{ 
-          // background: 'radial-gradient(circle at 50% 0%, rgba(139, 69, 19, 0.15) 0%, rgba(100, 42, 20, 0.3) 45%, rgba(22, 7, 2, 0.85) 100%)', // Replaced with bg-warm-radial
-         
-        }}
+        className="bg-warm-radial relative z-10 py-16 text-text-primary md:py-24 overflow-hidden" // Added overflow-hidden here
       >
-        {/* Simplified ambient overlays for better performance */}
-        <div className="absolute -right-20 -top-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-accent-orange/25 via-accent-yellow-dark/15 to-transparent opacity-30" style={{ filter: 'blur(400px)' }} />
-        <div className="absolute -bottom-20 -left-20 z-[1] size-2/5 rounded-full bg-gradient-radial from-accent-red/30 to-transparent opacity-25" style={{ filter: 'blur(300px)' }} />
+        {/* Ambient overlays BEHIND the content now */}
+        <div className="absolute -right-20 -top-20 z-[-1] size-2/5 rounded-full bg-gradient-radial from-accent-orange/25 via-accent-yellow-dark/15 to-transparent opacity-30" style={{ filter: 'blur(400px)' }} />
+        <div className="absolute -bottom-20 -left-20 z-[-1] size-2/5 rounded-full bg-gradient-radial from-accent-red/30 to-transparent opacity-25" style={{ filter: 'blur(300px)' }} />
        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', width: '100%' }}>
+        {/* Content wrapper - will now be on top of the z-[-1] overlays */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem', width: '100%', position: 'relative' /* Ensures it participates in stacking */ }}>
             {/* --- OUR SIGNATURE TREATMENTS --- */}
             <SignatureTreatmentsSection />
             
-          
-        {/* Container for philosophy quote with enhanced styling */}
-        <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
-            {/* Enhanced Philosophy Statement */}
-            <div className="mb-20 mt-16 text-center">
-              <h2 className="cormorant-garamond mx-auto max-w-5xl px-4 text-3xl font-light italic leading-relaxed tracking-wide text-text-primary md:text-4xl lg:text-5xl"> {/* Changed text-[#fdf7ef] to text-text-primary */}
-                Where science meets artistry,<br />
-                <span className="text-accent-yellow-dark"> 
-                  and confidence is beautifully sculpted.
-                </span>
-              </h2>
-              <div className="mt-8 flex justify-center">
-                <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent-yellow/60 to-transparent"></div>
-              </div>
-              <p className="cormorant-garamond mt-6 text-lg italic text-accent-orange/80">
-                – The Aura Aesthetics Philosophy
-              </p>
+            {/* ... (rest of the content in HeroSection) ... */}
+            {/* Container for philosophy quote with enhanced styling */}
+            <div style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%' }}>
+              {/* ... (philosophy quote content) ... */}
             </div>
-          </div>
           
           <div className="w-full">
             <AuraDifferenceSection />
@@ -136,14 +116,14 @@ export const HeroSection = () => {
             />
             <UnifiedLuxurySections />
            
-            
+            <AnimatedPhilosophy/>
             {/* --- ENHANCED TESTIMONIAL BLOCKQUOTE --- */}
             <TestimonialBlockquote 
               quote="The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"
               citation="– A Delighted Aura Client"
               className="cinzel-decorative-bold mx-auto mb-20 max-w-3xl rounded-lg border border-accent-yellow/30 bg-gradient-to-r from-accent-yellow-dark/20 via-accent-orange/20 to-accent-red/20 px-8 py-10 text-center text-xl italic opacity-90 shadow-2xl backdrop-blur-sm sm:text-2xl lg:text-3xl"
             />
-
+            
             {/* --- CLIENT TRANSFORMATIONS CTA --- */}
             <ClientTransformationsSection />
 

@@ -115,7 +115,37 @@ export const HeroSection = () => {
             <TestimonialBlockquote 
               quote="Revealing your Inner Radiance, Sculpting Timeless Elegance."
               citation="– The Aura Aesthetics Team"
-              className="cinzel-decorative-bold rounded-lg border-y border-accent-yellow/20 bg-gradient-to-r from-transparent via-accent-orange/10 to-transparent py-12 text-center text-2xl italic opacity-90 sm:text-3xl lg:text-4xl"
+              // `wrapperClassName` to ensure the blockquote itself is centered if its `mx-auto` isn't sufficient
+              // The component's default `textAlign='text-center'` on its wrapper handles this.
+              // So, `wrapperClassName="text-center"` is redundant if default `textAlign` is used.
+              
+              // `className` now styles the blockquote element directly
+              className="
+                mx-auto                   
+                max-w-4xl                  // Allow it to be a bit wider
+                
+                rounded-xl                 // More pronounced rounding for the block
+                border-t-2 border-b-2      // Thicker, more defined top and bottom borders
+                border-accent-orange/70    // Richer, warmer border color (from #F57A08)
+                
+                bg-gradient-to-br from-content-bg via-accent-yellow/15 to-content-bg // Subtle, elegant background
+                
+                py-12                      // Generous vertical padding
+                px-8                       // Horizontal padding for breathing room
+                
+                shadow-xl                  // A distinct but soft shadow for depth and lift
+                opacity-100                // Ensure full opacity, no washed-out feeling
+              "
+              // `quoteClassName` to style the quote text specifically
+              quoteClassName="
+                cinzel-decorative-bold     // The statement font for the quote
+                text-text-primary          // Main text color for high contrast (#3A3A3A)
+                text-2xl sm:text-3xl lg:text-4xl // Impactful text sizing
+                italic                     // Retain italic for an elegant touch
+                leading-snug sm:leading-normal // Adjust line height for larger text
+              "
+              // `citationClassName` can be used to further tweak if the new defaults in TestimonialBlockquote aren't enough
+              // e.g., citationClassName="text-accent-orange" if you want the citation to be orange
             />
             <UnifiedLuxurySections />
            

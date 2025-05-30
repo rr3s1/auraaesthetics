@@ -361,6 +361,42 @@
 }
 
 @layer utilities {
+  /* Testimonial fadeInUp animation */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Pulse animation for decorative elements */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  
+  /* Shimmer animation for divider */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+  
+  /* Testimonial hover effect */
+  .testimonial-hover:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+
   /* Card Border Glow Properties for Signature Treatments */
   @property --color-border-start {
     syntax: '<color>';

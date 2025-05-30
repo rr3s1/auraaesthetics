@@ -14,7 +14,7 @@ import { NavbarComponent } from '../navigation/navbar';
 import { HeroContent } from './hero-content';
 import { HeroSplineBackground } from './hero-spline-background';
 import { AnimatedPhilosophy } from '../content-sections';
-import { PremiumTestimonialCard } from '../content-sections/PremiumTestimonialCard';
+import TestimonialCards from '../content-sections/TestimonialCards';
 
 export const HeroSection = () => {
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
@@ -115,228 +115,41 @@ export const HeroSection = () => {
             <TestimonialBlockquote 
               quote="Revealing your Inner Radiance, Sculpting Timeless Elegance."
               citation="– The Aura Aesthetics Team"
-              // `wrapperClassName` to ensure the blockquote itself is centered if its `mx-auto` isn't sufficient
-              // The component's default `textAlign='text-center'` on its wrapper handles this.
-              // So, `wrapperClassName="text-center"` is redundant if default `textAlign` is used.
-              
-              // `className` now styles the blockquote element directly
+       
               className="
                 mx-auto                   
-                max-w-4xl                  // Allow it to be a bit wider
-                
-                rounded-xl                 // More pronounced rounding for the block
-                border-t-2 border-b-2      // Thicker, more defined top and bottom borders
-                border-accent-orange/70    // Richer, warmer border color (from #F57A08)
-                
-                bg-gradient-to-br from-content-bg via-accent-yellow/15 to-content-bg // Subtle, elegant background
-                
-                py-12                      // Generous vertical padding
-                px-8                       // Horizontal padding for breathing room
-                
-                shadow-xl                  // A distinct but soft shadow for depth and lift
-                opacity-100                // Ensure full opacity, no washed-out feeling
+                max-w-4xl        
+                rounded-xl                 
+                border-t-2 border-b-2      
+                border-accent-orange/70    
+                bg-gradient-to-br from-content-bg via-accent-yellow/15 to-content-bg 
+                py-12                      
+                px-8       
+                shadow-xl                  
+                opacity-100               
               "
-              // `quoteClassName` to style the quote text specifically
               quoteClassName="
-                cinzel-decorative-bold     // The statement font for the quote
-                text-text-primary          // Main text color for high contrast (#3A3A3A)
-                text-2xl sm:text-3xl lg:text-4xl // Impactful text sizing
-                italic                     // Retain italic for an elegant touch
-                leading-snug sm:leading-normal // Adjust line height for larger text
+                cinzel-decorative-bold     
+                text-text-primary          
+                text-2xl sm:text-3xl lg:text-4xl 
+                italic                     
+                leading-snug sm:leading-normal 
               "
-              // `citationClassName` can be used to further tweak if the new defaults in TestimonialBlockquote aren't enough
-              // e.g., citationClassName="text-accent-orange" if you want the citation to be orange
+         
             />
             <UnifiedLuxurySections />
            
          
 
 
-        {/* --- PREMIUM TESTIMONIAL --- */}
-        <div className="relative my-24">
-    {/* Luxury texture overlay */}
-    <div className="absolute inset-0 z-0 bg-cover bg-center mix-blend-overlay opacity-10 rounded-2xl"></div>
-    
-    <div className="relative z-10 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center opacity-90 border border-gold-accent/30 rounded-2xl p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
-      {/* Metallic gradient border */}
-      <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-conic-gradient from-gold-accent via-transparent to-gold-accent animate-spin-slow opacity-10"></div>
-      </div>
-      
-      {/* Gold foil accents */}
-      <div className="absolute top-0 right-0 z-0 w-24 h-24 bg-gold-accent/10 blur-xl transform translate-x-12 -translate-y-12"></div>
-      <div className="absolute bottom-0 left-0 z-0 w-32 h-32 bg-gold-accent/8 blur-xl transform -translate-x-12 translate-y-12"></div>
-      
-      {/* Content container */}
-      <div className="relative z-20">
-        {/* Star rating */}
-        <div className="flex mb-6">
-          {[...Array(5)].map((_, i) => (
-            <svg key={i} className="w-6 h-6 fill-gold-accent mr-1" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
-          ))}
-        </div>
-        
-     
-        
-        <div className="pl-12 pr-8 py-2">
-          {/* Headline */}
-          <h3 className="playfair-display text-gold-accent text-2xl tracking-widest uppercase mb-6">
-            Exceptional Experience
-          </h3>
-          
-          {/* Testimonial text */}
-          <p className="playfair-display text-light-cream text-2xl leading-relaxed italic mb-8">
-            "The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. 
-            I feel more confident and radiant than ever before!"
-          </p>
-          
-          {/* Gold divider */}
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-accent to-transparent my-8"></div>
-          
-          {/* Client attribution */}
-          <div className="flex items-center">
-            {/* Client avatar */}
-            <div className="relative mr-6">
-              <div className="absolute inset-0 rounded-full border border-gold-accent/50 animate-pulse-slow"></div>
-              <div className="size-16 rounded-full bg-deep-emerald flex items-center justify-center border-2 border-gold-accent/30 overflow-hidden">
-                {/* Replace with actual image */}
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-              </div>
-            </div>
-            
-            <div>
-              <p className="montserrat font-semibold text-light-cream text-xl mb-1">
-                Sarah Johnson
-              </p>
-              <div className="flex items-center">
-                <span className="montserrat text-gold-accent text-sm tracking-wide mr-3">
-                  VERIFIED CLIENT
-                </span>
-                <span className="w-1 h-1 rounded-full bg-gold-accent/70"></span>
-                <span className="montserrat text-light-cream/80 text-sm ml-3">
-                  Facial Sculpting
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-        {/* --- PREMIUM TESTIMONIAL --- */}
-        <div className="relative my-24">
-    {/* Luxury texture overlay */}
-    <div className="absolute inset-0 z-0 bg-cover bg-center mix-blend-overlay opacity-10 rounded-2xl"></div>
-    
-    <div className="relative z-10 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center opacity-100 border border-gold-accent/30 rounded-2xl p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
-      {/* Metallic gradient border */}
-      <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden">
-        <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-conic-gradient from-gold-accent via-transparent to-gold-accent animate-spin-slow opacity-10"></div>
-      </div>
-      
-      {/* Gold foil accents */}
-      <div className="absolute top-0 right-0 z-0 w-24 h-24 bg-gold-accent/10 blur-xl transform translate-x-12 -translate-y-12"></div>
-      <div className="absolute bottom-0 left-0 z-0 w-32 h-32 bg-gold-accent/8 blur-xl transform -translate-x-12 translate-y-12"></div>
-      
-      {/* Content container */}
-      <div className="relative z-20">
-        {/* Star rating */}
-        <div className="flex mb-6">
-          {[...Array(5)].map((_, i) => (
-            <svg key={i} className="w-6 h-6 fill-gold-accent mr-1" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
-          ))}
-        </div>
-        
-     
-        
-        <div className="pl-12 pr-8 py-2">
-          {/* Headline */}
-          <h3 className="playfair-display text-gold-accent text-2xl tracking-widest uppercase mb-6">
-            Exceptional Experience
-          </h3>
-          
-          {/* Testimonial text */}
-          <p className="playfair-display text-light-cream text-2xl leading-relaxed italic mb-8">
-            "The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. 
-            I feel more confident and radiant than ever before!"
-          </p>
-          
-          {/* Gold divider */}
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-accent to-transparent my-8"></div>
-          
-          {/* Client attribution */}
-          <div className="flex items-center">
-            {/* Client avatar */}
-            <div className="relative mr-6">
-              <div className="absolute inset-0 rounded-full border border-gold-accent/50 animate-pulse-slow"></div>
-              <div className="size-16 rounded-full bg-deep-emerald flex items-center justify-center border-2 border-gold-accent/30 overflow-hidden">
-                {/* Replace with actual image */}
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-              </div>
-            </div>
-            
-            <div>
-              <p className="montserrat font-semibold text-light-cream text-xl mb-1">
-                Sarah Johnson
-              </p>
-              <div className="flex items-center">
-                <span className="montserrat text-gold-accent text-sm tracking-wide mr-3">
-                  VERIFIED CLIENT
-                </span>
-                <span className="w-1 h-1 rounded-full bg-gold-accent/70"></span>
-                <span className="montserrat text-light-cream/80 text-sm ml-3">
-                  Facial Sculpting
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-   {/* --- PREMIUM TESTIMONIAL CARDS --- */}
-        {/* <div className="max-w-5xl mx-auto mb-24 grid grid-cols-1 md:grid-cols-3 gap-10">
-          <PremiumTestimonialCard
-            headline="Exceptional Experience"
-            testimonial="The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly. I feel more confident and radiant than ever before!"
-            clientName="Sarah Johnson"
-            clientType="VERIFIED CLIENT"
-            treatment="Facial Sculpting"
-          />
-          <PremiumTestimonialCard
-            headline="Truly Transformative"
-            testimonial="Aura gave me a natural, youthful glow that friends and family immediately noticed. The care and attention to detail was second to none."
-            clientName="Emily Chen"
-            clientType="VERIFIED CLIENT"
-            treatment="Signature Glow Treatment"
-          />
-          <PremiumTestimonialCard
-            headline="Luxury & Comfort"
-            testimonial="From the stunning clinic ambiance to the expertise of the staff, my experience was pure luxury. I left feeling rejuvenated and valued."
-            clientName="Michael Lee"
-            clientType="VERIFIED CLIENT"
-            treatment="Wellness Infusion"
-          />
-        </div> */}
-
+   
             
             {/* --- CLIENT TRANSFORMATIONS CTA --- */}
             <ClientTransformationsSection />
 
             {/* --- AWARDS/EXPERTISE --- */}
             <AwardsExpertiseSection />
+            <TestimonialCards />
           </div>
         </div>
       </div>

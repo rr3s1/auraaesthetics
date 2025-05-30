@@ -74,10 +74,10 @@ export function AwardsExpertiseSection() {
           variants={simpleFadeInUp} 
           className="mb-16 md:mb-20"
         >
-          <span className="merienda-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary">
-            Our Pillars of <span className="text-amber-600">Excellence</span>
+          <span className="cinzel-decorative-bold bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
+            Our Pillars of <span className="text-violet-400">Excellence</span>
           </span>
-          <div className="mt-4 h-1 w-24 bg-gradient-to-r from-amber-600 to-transparent mx-auto" />
+          <div className="mt-4 h-1 w-26 bg-gradient-to-r from-amber-600 to-transparent mx-auto" />
         </AnimatedBlock>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

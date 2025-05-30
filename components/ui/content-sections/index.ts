@@ -8,3 +8,4 @@ export { ClientTransformationsSection } from './client-transformations-section';
 export { AwardsExpertiseSection } from './awards-expertise-section';
 export { default as AnimatedPhilosophy } from './AnimatedPhilosophy';
 export { TreatmentCardItem } from './TreatmentCardItem';
+export { default as TestimonialCards } from './TestimonialCards';

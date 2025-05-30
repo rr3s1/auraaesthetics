@@ -14,6 +14,7 @@ import {
   paragraphLineVariants // Assuming you have this
 } from '../animations/animation-variants'; // Ensure path is correct
 import { MotionGradientButton } from '../animations/animated-components'; // Assuming your MotionGradientButton
+import { PremiumTestimonialCard } from './PremiumTestimonialCard';
 
 const ContactAndNewsletterSection: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -88,13 +89,14 @@ const ContactAndNewsletterSection: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.05 }} // Trigger animation sooner
     >
+     
       {/* Ignited Radiance Background Glows */}
       <div className="absolute inset-0 z-0 opacity-30 md:opacity-40">
         <div className="absolute -left-1/3 -top-1/4 h-3/4 w-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/25 via-accent-orange/10 to-transparent filter blur-[120px]" />
         <div className="absolute -right-1/3 -bottom-1/4 h-3/4 w-3/4 rounded-full bg-gradient-radial from-accent-red/20 via-accent-red-deep/10 to-transparent filter blur-[120px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 no-scrollbar">
         <AnimatedBlock el="div" variants={simpleFadeInUp} className="mb-16 md:mb-20 text-center">
           <h2 className="cinzel-decorative-bold mb-4 text-4xl md:text-5xl lg:text-6xl">
             <span className="bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-transparent">

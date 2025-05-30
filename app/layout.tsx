@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans as FontSans , Merienda , Racing_Sans_One as RacingSansOne , Cinzel_Decorative as CinzelDecorative , Cormorant_Garamond as CormorantGaramond } from "next/font/google";
+import { Plus_Jakarta_Sans as FontSans , Merienda , Racing_Sans_One as RacingSansOne , Cinzel_Decorative as CinzelDecorative , Cormorant_Garamond as CormorantGaramond , Playfair_Display as PlayfairDisplay , Montserrat } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
@@ -38,6 +38,18 @@ const fontCormorantGaramond = CormorantGaramond({
   variable: "--font-cormorant-garamond",
 });
 
+const fontPlayfairDisplay = PlayfairDisplay({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  variable: "--font-playfair-display",
+});
+
+const fontMontserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
+});
+
 export const metadata: Metadata = {
   title: "AURA Aesthetics",
   description:
@@ -66,6 +78,8 @@ export default function RootLayout({
           fontRacingSansOne.variable,
           fontCinzelDecorative.variable,
           fontCormorantGaramond.variable,
+          fontPlayfairDisplay.variable,
+          fontMontserrat.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">

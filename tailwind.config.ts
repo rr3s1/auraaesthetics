@@ -34,12 +34,18 @@ const config = {
         "content-bg": "#F7F6F2",          // Slightly darker Alabaster for content areas
         "text-primary": "#3A3A3A",        // Main Text: Deep Charcoal
         "text-secondary": "#5A5A5A",      // Secondary Text: Lighter Charcoal
-
+        "accent-gold": "#D4AF37",          // Primary Accent: Gold
         "accent-yellow-dark": "#FDB110",   // Primary Accent: Dark Yellow (gold-like)
         "accent-orange": "#F57A08",        // Secondary Accent: Orange
         "accent-yellow": "#FCCF14",        // Secondary Accent: Brighter Yellow
         "accent-red": "#E8400C",           // Tertiary Accent: Vibrant Red (use sparingly)
         "accent-red-deep": "#C81E08",      // Deepest Accent: Dark Red (use minimally)
+        
+        // Premium testimonial colors
+        "rich-charcoal": "#121212",        // Dark background for testimonials
+        "light-cream": "#f8f8f8",          // Light text color for testimonials
+        "gold-accent": "#d4af37",          // Gold accent for premium elements
+        "deep-emerald": "#0d5c4a",         // Deep emerald for accents
         
         // Previous Golden Hour Glow colors - commented out for reference
         // "accent-gold-rich": "#B89D62",
@@ -69,12 +75,16 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        'playfair-display': ['"Playfair Display"', 'serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'cormorant-garamond': ['"Cormorant Garamond"', 'serif'],
       },
       backgroundImage: {
         appointments: "url('/assets/images/appointments-bg.png')",
         pending: "url('/assets/images/pending-bg.png')",
         cancelled: "url('/assets/images/cancelled-bg.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'conic-gradient': 'conic-gradient(var(--tw-gradient-stops))',
       },
       keyframes: {
         "accordion-down": {
@@ -138,6 +148,7 @@ const config = {
         "pulse": "pulse 6s infinite ease-in-out",
         "pulse-slow": "pulse 6s infinite ease-in-out",
         "pulse-slower": "pulse 8s infinite ease-in-out",
+        "spin-slow": "spin 25s linear infinite",
       },
     },
   },

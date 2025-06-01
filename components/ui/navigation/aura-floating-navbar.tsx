@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from 'next/link';
+import { useState } from "react";
+
+import { MotionGradientButton } from '@/components/ui/animations/animated-components';
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { NavbarLogo } from "@/components/ui/resizable-navbar";
-import { MotionGradientButton } from '@/components/ui/animations/animated-components';
 
 export function AuraFloatingNavbar() {
   const navItems = [
@@ -24,7 +25,7 @@ export function AuraFloatingNavbar() {
   
   // Logo component that will be displayed on the left
   const LogoSection = () => (
-    <div className="flex items-center mr-6">
+    <div className="mr-6 flex items-center">
       <Link href="/" className="group inline-block" aria-label="AURA Homepage">
         <NavbarLogo />
       </Link>
@@ -54,11 +55,11 @@ export function AuraFloatingNavbar() {
     <div className="relative w-full">
       <FloatingNav 
         navItems={navItems}
-        className="pl-6 pr-6 py-3 bg-white/90 dark:bg-black/80 backdrop-blur-md border-transparent"
+        className="border-transparent bg-white/90 px-6 py-3 backdrop-blur-md dark:bg-black/80"
         rightContent={
           <>
             <LogoSection />
-            <div className="flex-grow" />
+            <div className="grow" />
             <AdminButton />
           </>
         }

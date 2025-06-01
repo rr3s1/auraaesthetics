@@ -19,7 +19,7 @@ export function HeroContent() {
 
   return (
     <motion.div
-      className="relative hero-gradient-mask  z-10 mb-16 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden px-3 text-left text-text-primary sm:items-start sm:px-4"
+      className="hero-gradient-mask relative z-10 mb-16 flex min-h-[60vh] flex-col items-start justify-center overflow-hidden px-3 text-left text-text-primary sm:px-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -30,18 +30,18 @@ export function HeroContent() {
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
-        {/* MODIFIED: Changed sm:flex-row to md:flex-row and adjusted gaps */}
-        <div className="flex w-full flex-col items-center justify-center gap-2 md:flex-row md:gap-4 lg:gap-6">
+        {/* MODIFIED: Changed to left alignment and removed centering */}
+        <div className="flex w-full flex-col items-start justify-start gap-2 md:flex-row md:gap-4 lg:gap-6">
           <GradientText
-            // MODIFIED: Font size progression
-            className="cinzel-decorative-black min-h-[1.2em] py-3 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            // MODIFIED: Changed text alignment to left
+            className="cinzel-decorative-black min-h-[1.2em] py-3 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
-            // MODIFIED: Font size progression
-            className="cinzel-decorative-black min-h-[1.2em] py-3 text-center text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            // MODIFIED: Changed text alignment to left
+            className="cinzel-decorative-black min-h-[1.2em] py-3 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
           >
             Aesthetics
           </GradientText>
@@ -50,7 +50,7 @@ export function HeroContent() {
 
       {/* Tagline */}
       <motion.div
-        className="pt-4 text-center text-lg font-bold uppercase tracking-wider sm:pt-6 sm:pt-8 sm:text-xl md:pt-10 md:text-3xl lg:text-4xl xl:text-5xl"
+        className="pt-4 text-left text-lg font-bold uppercase tracking-wider sm:pt-8 sm:text-xl md:pt-10 md:text-3xl lg:text-4xl xl:text-5xl"
         variants={paragraphVariants}
       >
         <span

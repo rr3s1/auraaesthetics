@@ -14,7 +14,7 @@ import {
 export function ClientTransformationsSection() {
   return (
     <motion.section
-      className="py-20 md:py-28 text-center bg-gradient-to-b from-content-bg/50 via-site-bg to-content-bg/50 relative overflow-hidden" 
+      className="relative overflow-hidden bg-gradient-to-b from-content-bg/50 via-site-bg to-content-bg/50 py-20 text-center md:py-28" 
       variants={sectionContainerVariants}
       initial="hidden"
       whileInView="visible"
@@ -22,11 +22,11 @@ export function ClientTransformationsSection() {
     >
       {/* Background Glows for emphasis */}
       <div className="absolute inset-0 z-[-1] opacity-30 md:opacity-40">
-        <div className="absolute -left-1/4 top-0 size-[120%] rounded-full bg-gradient-radial from-accent-yellow-dark/30 via-accent-orange/20 to-transparent filter blur-[100px]" />
-        <div className="absolute -right-1/4 bottom-0 size-[120%] rounded-full bg-gradient-radial from-accent-red/30 via-accent-red-deep/20 to-transparent filter blur-[100px]" />
+        <div className="absolute -left-1/4 top-0 size-[120%] rounded-full bg-gradient-radial from-accent-yellow-dark/30 via-accent-orange/20 to-transparent blur-[100px]" />
+        <div className="absolute -right-1/4 bottom-0 size-[120%] rounded-full bg-gradient-radial from-accent-red/30 via-accent-red-deep/20 to-transparent blur-[100px]" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-6xl overflow-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>  
+      <div className="container mx-auto max-w-6xl overflow-auto px-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>  
         <style jsx>{`
           div::-webkit-scrollbar {
             display: none;
@@ -51,7 +51,7 @@ export function ClientTransformationsSection() {
             <a className="inline-block">
               <MotionGradientButton
                 variant="ignitedRadiance"
-                className="px-10 py-4 text-lg font-semibold md:px-12 md:py-5 md:text-xl cormorant-garamond"
+                className="cormorant-garamond px-10 py-4 text-lg font-semibold text-slate-900 md:px-12 md:py-5 md:text-xl"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0px 8px 25px rgba(245, 122, 8, 0.4)"

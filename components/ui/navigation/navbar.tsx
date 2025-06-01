@@ -49,7 +49,7 @@ export function NavbarComponent() {
           <MotionGradientButton
             href="/admin"
             variant="variant"
-            className="cormorant-garamond max-h-[25px] p-6 text-lg sm:px-8 sm:py-4 sm:text-xl md:px-10  md:py-5 "
+            className="cormorant-garamond max-h-[25px] max-w-[35px] p-6 text-lg sm:px-8 sm:py-4 sm:text-xl md:px-10  md:py-5 "
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 
@@ -100,7 +100,7 @@ export function NavbarComponent() {
             <MotionGradientButton
             href="/admin"
             variant="variant"
-            className="cormorant-garamond min-w-[200px] px-6 py-3 text-lg sm:min-w-[220px] sm:px-8 sm:py-4 sm:text-xl md:min-w-[240px] md:px-10 md:py-5 md:text-2xl"
+            className="cormorant-garamond max-h-[25px] max-w-[30px] px-6 py-3 text-lg sm:px-8 sm:py-4 sm:text-lg md:px-10 md:py-5 md:text-xl"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 5px 15px rgba(200, 100, 255, 0.3)" 

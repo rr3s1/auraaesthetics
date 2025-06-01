@@ -1,27 +1,29 @@
 "use client";
-import React from "react";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
-import { NavbarLogo } from "@/components/ui/resizable-navbar";
-import { MotionGradientButton } from '@/components/ui/animations/animated-components';
 import Link from 'next/link';
+import React from "react";
+
+import { MotionGradientButton } from '@/components/ui/animations/animated-components';
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { NavbarLogo } from "@/components/ui/resizable-navbar";
+
 
 export default function FloatingNavDemo() {
   const navItems = [
     {
       name: "Services",
       link: "/services",
-      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconHome className="size-4 text-neutral-500 dark:text-white" />,
     },
     {
       name: "About",
       link: "/about",
-      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconUser className="size-4 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Contact",
       link: "/contact",
-      icon: <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <IconMessage className="size-4 text-neutral-500 dark:text-white" />,
     },
   ];
   
@@ -38,7 +40,7 @@ export default function FloatingNavDemo() {
         whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
         transition={{ type: "spring", stiffness: 200, damping: 15 }}
       >
-        ADMIN
+        ADMIN2
       </MotionGradientButton>
     </div>
   );
@@ -48,7 +50,7 @@ export default function FloatingNavDemo() {
       <FloatingNav 
         navItems={navItems} 
         rightContent={<CustomRightContent />} 
-        className="bg-gradient-to-r from-accent-yellow-dark/80 via-accent-orange/80 to-accent-red/80 backdrop-blur-md border-accent-yellow-dark/30"
+        className="border-accent-yellow-dark/30 bg-gradient-to-r from-accent-yellow-dark/80 via-accent-orange/80 to-accent-red/80 backdrop-blur-md"
       />
     </div>
   );

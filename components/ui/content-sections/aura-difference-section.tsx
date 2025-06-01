@@ -54,7 +54,7 @@ export function AuraDifferenceSection() {
         <AnimatedBlock variants={simpleFadeInUp} className="flex justify-center pt-8 sm:pt-10" delay={0.3}> {/* Centered button container and increased top padding */}
           <MotionGradientButton
             variant="ignitedRadiance"
-            className="cormorant-garamond min-w-[220px] px-8 py-4 text-lg font-semibold sm:min-w-[240px] sm:px-10 sm:py-5 sm:text-xl" // Slightly larger button
+            className="cormorant-garamond min-w-[220px] px-8 py-4 text-lg font-semibold text-slate-900 sm:min-w-[240px] sm:px-10 sm:py-5 sm:text-xl" // Slightly larger button
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0px 6px 20px rgba(245, 122, 8, 0.35)" // Enhanced shadow for Ignited Radiance

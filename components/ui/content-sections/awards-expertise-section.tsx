@@ -75,7 +75,7 @@ export function AwardsExpertiseSection() {
           className="mb-16 md:mb-20"
         >
           <span className="cinzel-decorative-bold bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
-            Our Pillars of <span className="text-violet-400">Excellence</span>
+            Our Pillars of <span className="text-violet-500">Excellence</span>
           </span>
           <div className="w-26 mx-auto mt-4 h-1 bg-gradient-to-r from-amber-600 to-transparent" />
         </AnimatedBlock>

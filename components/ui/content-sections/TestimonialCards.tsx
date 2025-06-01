@@ -48,7 +48,7 @@ const TestimonialCards = () => {
                       key={i}
                       src="/assets/star4.png"
                       alt="Star rating"
-                      className="mr-1 size-6 object-contain drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-24 md:size-[15%] lg:size-[18%] xl:size-1/5"
+                      className="mr-1 size-11 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-24 md:size-[15%] lg:size-[18%] xl:size-1/5"
                       style={{
                         filter: 'drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2))',
                         ...getStarAnimationStyle(i),
@@ -59,14 +59,14 @@ const TestimonialCards = () => {
                 </div>
                 
                 {/* Headline - appears second on small screens */}
-                <h1 className="cinzel-decorative-bold mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-xl font-bold text-transparent sm:mt-0 sm:text-center sm:text-2xl md:mt-6 md:pr-8 md:text-left md:text-3xl lg:pl-5 lg:text-5xl">
+                <h1 className="cinzel-decorative-bold mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-0 sm:mt-3 sm:text-center sm:text-2xl md:mt-6 md:pr-8 md:text-left md:text-3xl lg:pl-5 lg:text-5xl">
                   Exceptional Experience
                 </h1>
               </div>
 
               <div className="px-4 py-2 sm:pl-8 sm:pr-6 md:pl-12 md:pr-8">
                 {/* Testimonial text */}
-                <p className="playfair-display mb-8 text-lg italic leading-relaxed text-light-cream sm:text-xl md:text-2xl lg:text-4xl" style={{ textShadow: '0 0 5px rgba(228, 226, 217, 0.81), 0 0 20px rgba(228, 226, 213, 0.87)' }}>
+                <p className="playfair-display mb-8 text-xl italic leading-relaxed text-light-cream sm:text-xl md:text-2xl lg:text-4xl" style={{ textShadow: '0 0 5px rgba(228, 226, 217, 0.81), 0 0 20px rgba(228, 226, 213, 0.87)' }}>
                   &ldquo;The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly.
                   I feel more confident and radiant than ever before!&rdquo;
                 </p>
@@ -89,17 +89,17 @@ const TestimonialCards = () => {
                     </div>
                   </div>
 
-                  <div className="rounded-lg bg-slate-900 text-center sm:text-center md:text-left">
+                  <div className="rounded-lg bg-slate-900 bg-opacity-50 px-3 text-center sm:text-center md:text-left">
                     <p className="montserrat mb-1 text-lg font-semibold text-light-cream sm:text-xl md:text-xl lg:text-4xl">
                       Sarah Johnson
                     </p>
                     <div className="flex flex-col items-center sm:flex-col md:flex-row">
                       <span className="montserrat mb-2 text-sm font-bold tracking-wide text-gold-accent sm:mb-2 sm:text-base md:mb-0 md:mr-3 md:text-xl lg:text-2xl">
-                        VERIFIED CLIENT
+                        GOLD MEMBER
                       </span>
                       <span className="hidden size-1 rounded-full bg-gold-accent/70 md:block"></span>
                       <span className="montserrat text-sm font-bold uppercase text-light-cream/80 sm:text-base md:ml-3 md:text-xl lg:text-2xl">
-                        Blue LED Light Therapy
+                      Non-Invasive Body Sculpting
                       </span>
                     </div>
                   </div>

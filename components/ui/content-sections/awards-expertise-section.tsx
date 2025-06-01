@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import React from 'react';
 import { 
   Gem, 
   Award, 
@@ -9,6 +8,7 @@ import {
   ShieldCheck, 
   UserCircle2 
 } from 'lucide-react';
+import React from 'react';
 
 import { AnimatedBlock } from '../animations/animated-components';
 import { 
@@ -53,7 +53,7 @@ export function AwardsExpertiseSection() {
 
   return (
     <motion.section
-      className="bg-gradient-to-b from-site-bg to-content-bg py-20 md:py-28 relative overflow-hidden"
+      className="relative overflow-hidden bg-gradient-to-b from-site-bg to-content-bg py-20 md:py-28"
       variants={sectionContainerVariants}
       initial="hidden"
       whileInView="visible"
@@ -61,14 +61,14 @@ export function AwardsExpertiseSection() {
     >
       {/* Luxe Background Elements */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute left-0 top-1/4 size-96 rounded-full bg-gradient-radial from-accent-gold/30 to-transparent filter blur-[100px]" />
-        <div className="absolute right-0 bottom-1/3 size-80 rounded-full bg-gradient-radial from-accent-gold/15 to-transparent filter blur-[80px]" />
+        <div className="absolute left-0 top-1/4 size-96 rounded-full bg-gradient-radial from-accent-gold/30 to-transparent blur-[100px]" />
+        <div className="absolute bottom-1/3 right-0 size-80 rounded-full bg-gradient-radial from-accent-gold/15 to-transparent blur-[80px]" />
       </div>
       
       {/* Geometric Accent Pattern */}
       <div className="absolute inset-0 z-0 bg-[url('/assets/luxe-pattern.svg')] bg-[length:350px] bg-repeat opacity-[3%]" />
 
-      <div className="mx-auto max-w-7xl px-4 text-center relative z-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
         <AnimatedBlock 
           el="h2" 
           variants={simpleFadeInUp} 
@@ -77,7 +77,7 @@ export function AwardsExpertiseSection() {
           <span className="cinzel-decorative-bold bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
             Our Pillars of <span className="text-violet-400">Excellence</span>
           </span>
-          <div className="mt-4 h-1 w-26 bg-gradient-to-r from-amber-600 to-transparent mx-auto" />
+          <div className="w-26 mx-auto mt-4 h-1 bg-gradient-to-r from-amber-600 to-transparent" />
         </AnimatedBlock>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -87,17 +87,17 @@ export function AwardsExpertiseSection() {
               el="div"
               variants={simpleFadeInUp}
               delay={i * 0.15} 
-              className="group flex flex-col items-center p-8 rounded-xl bg-white bg-opacity-95 shadow-xl border border-accent-gold/10 transition-all duration-300 hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-site-bg/50"
+              className="group flex flex-col items-center rounded-xl border border-accent-gold/10 bg-white bg-opacity-95 p-8 shadow-xl transition-all duration-300 hover:bg-gradient-to-b hover:from-white hover:to-site-bg/50 hover:shadow-2xl"
             >
-              <div className="mb-6 p-4 bg-gradient-to-br from-amber-600/10 to-amber-600/5 rounded-full group-hover:from-amber-600/20 group-hover:to-amber-600/10 transition-all">
+              <div className="mb-6 rounded-full bg-gradient-to-br from-amber-600/10 to-amber-600/5 p-4 transition-all group-hover:from-amber-600/20 group-hover:to-amber-600/10">
                 {pillar.icon}
               </div>
               
-              <h3 className="font-sans text-lg font-semibold tracking-wide text-text-primary mb-4">
+              <h3 className="font-font-serif mb-4 text-lg font-semibold tracking-wide text-text-primary">
                 {pillar.title}
               </h3>
               
-              <p className="font-sans text-base leading-relaxed text-text-secondary">
+              <p className="cormorant-garamond text-base leading-relaxed text-text-secondary">
                 {pillar.description}
               </p>
             </AnimatedBlock>

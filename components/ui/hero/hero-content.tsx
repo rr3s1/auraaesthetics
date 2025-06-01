@@ -26,22 +26,22 @@ export function HeroContent() {
     >
       {/* Main Title */}
       <motion.div
-        className="-mt-4 max-w-full sm:-mt-6 md:-mt-8"
+        className="max-w-full "
         variants={titleWrapperVariants}
         aria-label={titleText}
       >
         {/* MODIFIED: Changed to left alignment and removed centering */}
-        <div className="flex w-full flex-col items-start justify-start gap-2 md:flex-row md:gap-4 lg:gap-6">
+        <div className="flex w-full flex-col items-start justify-start md:flex-row ">
           <GradientText
             // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em] py-3 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em] pr-10 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
             // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em] py-3 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:py-4 sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em]text-left pl-10 text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)]  sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
           >
             Aesthetics
           </GradientText>
@@ -56,21 +56,40 @@ export function HeroContent() {
         <span
           className="inline-block"
           style={{
-            color: '#FCFBF8', // Pale Alabaster
-            textShadow: '0 0 12px #F57A08, 0 0 24px #F57A08', // Subtle orange glow
+            color: '#3A3A3A', // Deep Charcoal - no glow
             padding: '0 0.15em',
           }}
         >
-          YOUR GLOW , 
+          Where 
         </span>
         <span
           className="inline-block"
           style={{
-            color: '#3A3A3A', // Deep Charcoal
+            color: '#FCFBF8', // Pale Alabaster
+            textShadow: '0 0 12px #F57A08, 0 0 24px #F57A08', // Glow effect
             padding: '0 0.15em',
           }}
         >
-           OUR PASSION
+          Glow 
+        </span>
+        <span
+          className="inline-block"
+          style={{
+            color: '#3A3A3A', // Deep Charcoal - no glow
+            padding: '0 0.15em',
+          }}
+        >
+          Becomes 
+        </span>
+        <span
+          className="inline-block"
+          style={{
+            color: '#FCFBF8', // Pale Alabaster
+            textShadow: '0 0 12px #F57A08, 0 0 24px #F57A08', // Glow effect
+            padding: '0 0.15em',
+          }}
+        >
+          You
         </span>
       </motion.div>
 

@@ -20,7 +20,7 @@ function GradientText({
   return (
     <Component
       className={cn(
-        "relative inline-block bg-white px-7 overflow-visible", // more padding, allow overflow
+        "relative inline-block bg-white overflow-visible", // more padding, allow overflow
         "bg-clip-text text-transparent",
         gradient || "bg-gradient-to-r from-pink-600 via-orange-400 to-green-500", // fallback gradient
         className

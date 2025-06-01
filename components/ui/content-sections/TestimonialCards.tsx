@@ -37,7 +37,7 @@ const TestimonialCards = () => {
           <div className="absolute inset-0 z-0 rounded-2xl bg-cover bg-center opacity-10 mix-blend-overlay"></div>
 
           {/* Content container */}
-          <div className="relative z-20 rounded-2xl border border-gold-accent/30 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center p-10 pl-5 opacity-90">
+          <div className="relative z-20 rounded-2xl border border-gold-accent/30 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center p-10 opacity-90">
             <div className="relative z-20">
               {/* Star rating and headline - responsive layout */}
               <div className="mb-6 flex flex-col sm:flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
@@ -48,7 +48,7 @@ const TestimonialCards = () => {
                       key={i}
                       src="/assets/star4.png"
                       alt="Star rating"
-                      className="mr-1 size-11 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-24 md:size-[15%] lg:size-[18%] xl:size-1/5"
+                      className="mr-1 size-8 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-16 md:size-14 lg:size-14 xl:size-16"
                       style={{
                         filter: 'drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2))',
                         ...getStarAnimationStyle(i),
@@ -59,14 +59,14 @@ const TestimonialCards = () => {
                 </div>
                 
                 {/* Headline - appears second on small screens */}
-                <h1 className="cinzel-decorative-bold mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-0 sm:mt-3 sm:text-center sm:text-2xl md:mt-6 md:pr-8 md:text-left md:text-3xl lg:pl-5 lg:text-5xl">
+                <h1 className="cinzel-decorative-bold mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-3 sm:text-center sm:text-3xl md:mt-6 md:pl-12 md:text-left md:text-4xl lg:pl-5 lg:text-5xl">
                   Exceptional Experience
                 </h1>
               </div>
 
               <div className="px-4 py-2 sm:pl-8 sm:pr-6 md:pl-12 md:pr-8">
                 {/* Testimonial text */}
-                <p className="playfair-display mb-8 text-xl italic leading-relaxed text-light-cream sm:text-xl md:text-2xl lg:text-4xl" style={{ textShadow: '0 0 5px rgba(228, 226, 217, 0.81), 0 0 20px rgba(228, 226, 213, 0.87)' }}>
+                <p className="playfair-display  mb-8 text-xl italic leading-relaxed text-light-cream sm:text-xl md:text-4xl lg:text-5xl" >
                   &ldquo;The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly.
                   I feel more confident and radiant than ever before!&rdquo;
                 </p>

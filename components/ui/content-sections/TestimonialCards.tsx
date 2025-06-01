@@ -48,7 +48,7 @@ const TestimonialCards = () => {
                       key={i}
                       src="/assets/star4.png"
                       alt="Star rating"
-                      className="mr-1 size-8 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-16 md:size-14 lg:size-14 xl:size-16"
+                      className="mr-1 size-14 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-16 md:size-20 lg:size-24 xl:size-28"
                       style={{
                         filter: 'drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2))',
                         ...getStarAnimationStyle(i),
@@ -59,7 +59,7 @@ const TestimonialCards = () => {
                 </div>
                 
                 {/* Headline - appears second on small screens */}
-                <h1 className="cinzel-decorative-bold mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-3 sm:text-center sm:text-3xl md:mt-6 md:pl-12 md:text-left md:text-4xl lg:pl-5 lg:text-5xl">
+                <h1 className="cinzel-decorative-bold md:pl-18 mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-3 sm:pl-20 sm:text-center sm:text-3xl md:mt-6 md:text-left md:text-4xl lg:pl-5 lg:text-5xl">
                   Exceptional Experience
                 </h1>
               </div>

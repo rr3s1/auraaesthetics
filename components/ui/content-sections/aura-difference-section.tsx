@@ -76,7 +76,7 @@ export function AuraDifferenceSection() {
             Consider slow-motion, elegant visuals, transformations, or abstract representations of radiance/beauty.
           */}
           <video
-            src="/Cinematic_Drone_Video_Ready.mp4" // REPLACE THIS PLACEHOLDER
+            src="/ranci.mp4" // REPLACE THIS PLACEHOLDER
             autoPlay
             loop
             muted

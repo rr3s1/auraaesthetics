@@ -34,14 +34,14 @@ export function HeroContent() {
         <div className="flex w-full flex-col items-start justify-start md:flex-row ">
           <GradientText
             // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em] pr-10 text-left text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em] pr-10 text-left text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
           >
             AURA
           </GradientText>
           <GradientText
             // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em]text-left pl-10 text-5xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)]  sm:text-6xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            className="cinzel-decorative-black min-h-[1.2em]text-left text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:pl-0 sm:text-6xl md:pl-0  md:text-6xl lg:pl-10 lg:text-7xl xl:text-8xl 2xl:text-9xl"
           >
             Aesthetics
           </GradientText>

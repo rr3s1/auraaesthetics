@@ -93,11 +93,11 @@ export function AwardsExpertiseSection() {
                 {pillar.icon}
               </div>
               
-              <h3 className="mb-4 font-serif text-lg font-semibold tracking-wide text-text-primary">
+              <h3 className="mb-4 font-serif text-xl font-semibold tracking-wide text-text-primary">
                 {pillar.title}
               </h3>
               
-              <p className="cormorant-garamond text-base leading-relaxed text-text-secondary">
+              <p className="cormorant-garamond text-lg leading-relaxed text-text-secondary">
                 {pillar.description}
               </p>
             </AnimatedBlock>

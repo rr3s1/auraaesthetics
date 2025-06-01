@@ -249,7 +249,7 @@ export const NavbarLogo = () => {
   return (
     <div className="inline-block">
       <GradientText
-        className="cinzel-decorative-black py-0 text-3xl font-black tracking-wider lg:text-4xl"
+        className="cinzel-decorative-black pr-3 text-3xl font-black tracking-wider lg:text-4xl"
         gradient="bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red"
       >
         AURA

@@ -1,8 +1,8 @@
 // src/components/AnimatedPhilosophy.tsx
 "use client";
 
-import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import React, { useEffect, useRef } from 'react';
 
 const AnimatedPhilosophy: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,33 +114,33 @@ const AnimatedPhilosophy: React.FC = () => {
     <div
       ref={containerRef}
       style={{ margin: '0 auto', padding: '0 1rem', maxWidth: '1280px', width: '100%', borderRadius: '2rem' }}
-      className="bg-[url('/assets/paint.svg')] bg-cover bg-center bg-opacity-30"
+      className="bg-opacity-30 bg-[url('/assets/paint.svg')] bg-cover bg-center"
     >
-      <div className="flex flex-col justify-center items-center min-h-[60vh] relative py-20">
+      <div className="relative flex min-h-[60vh] flex-col items-center justify-center py-20">
         {/* Sculpted background elements */}
         <div className="absolute inset-0 -z-10 opacity-0" ref={bgRef1}>
-          <div className="absolute top-1/4 left-1/4 w-1/3 h-1/3 bg-gradient-to-br from-accent-yellow/15 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute left-1/4 top-1/4 size-1/3 rounded-full bg-gradient-to-br from-accent-yellow/15 to-transparent blur-3xl"></div>
         </div>
         <div className="absolute inset-0 -z-10 opacity-0" ref={bgRef2}>
-          <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-tl from-accent-orange/20 to-transparent rounded-full rotate-0 blur-xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 size-40 rotate-0 rounded-full bg-gradient-to-tl from-accent-orange/20 to-transparent blur-xl"></div>
         </div>
 
         {/* Enhanced Philosophy Statement */}
-        <div className="mb-20 text-center relative w-full flex flex-col justify-center items-center">
+        <div className="relative mb-20 flex w-full flex-col items-center justify-center text-center">
           <h2 
             ref={quoteRef}
             className="cormorant-garamond mx-auto max-w-4xl px-4 text-4xl font-semibold italic leading-relaxed tracking-wide text-text-primary md:text-5xl lg:text-6xl"
           >
             Where science meets artistry,
             <br />
-            <span className="relative inline-block mt-8">
+            <span className="relative mt-8 inline-block">
               <span 
                 ref={sculptedHighlightRef}
-                className="absolute -inset-3 -z-10 bg-gradient-to-r from-accent-yellow-dark/20 to-accent-orange/20 rounded-full transform"
+                className="absolute -inset-3 -z-10 rounded-full bg-gradient-to-r from-accent-yellow-dark/20 to-accent-orange/20"
               ></span>
               <span 
                 ref={sculptedTextRef}
-                className="relative text-accent-red font-bold drop-shadow-md"
+                className="relative font-bold text-accent-red drop-shadow-md"
               >
                 and confidence is beautifully sculpted.
               </span>
@@ -148,14 +148,14 @@ const AnimatedPhilosophy: React.FC = () => {
           </h2>
           
           {/* Enhanced Separator */}
-          <div className="mt-12 flex justify-center items-center">
+          <div className="mt-12 flex flex-nowrap items-center justify-center">
             <div 
               ref={separatorLeftRef}
               className="h-1 w-0 bg-gradient-to-r from-transparent via-accent-yellow to-transparent"
             ></div>
             <div 
               ref={diamondRef}
-              className="mx-4 text-accent-yellow text-2xl scale-0"
+              className="mx-2 scale-0 text-xl text-accent-yellow sm:mx-4 sm:text-2xl"
             >
               ✦
             </div>
@@ -168,11 +168,11 @@ const AnimatedPhilosophy: React.FC = () => {
           {/* Prominent Attribution */}
           <p 
             ref={attributionRef}
-            className="cormorant-garamond mt-10 text-2xl font-medium text-text-primary bg-gradient-to-r from-transparent via-accent-yellow-dark/10 to-transparent py-4 px-8 inline-block rounded-lg border border-accent-yellow/30"
+            className="cormorant-garamond mt-10 inline-block whitespace-nowrap rounded-lg border border-accent-yellow/30 bg-gradient-to-r from-transparent via-accent-yellow-dark/10 to-transparent px-4 py-3 text-lg font-medium text-text-primary sm:px-8 sm:py-4 sm:text-2xl"
           >
-            <span className="text-accent-orange font-semibold mr-2">—</span>
+            <span className="mr-1 font-semibold text-accent-orange sm:mr-2">—</span>
             The Aura Aesthetics Philosophy
-            <span className="text-accent-orange font-semibold mr-2"> —</span>
+            <span className="ml-1 font-semibold text-accent-orange sm:ml-2">—</span>
           </p>
         </div>
       </div>

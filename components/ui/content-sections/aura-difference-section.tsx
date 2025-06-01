@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 
 import { AnimatedBlock , MotionGradientButton } from '../animations/animated-components';
 import { 
@@ -10,8 +9,6 @@ import {
   simpleFadeInUp,
   imageDramaticRevealVariants 
 } from '../animations/animation-variants';
-
-const Spline = lazy(() => import('@splinetool/react-spline'));
 
 export function AuraDifferenceSection() {
   return (
@@ -24,10 +21,10 @@ export function AuraDifferenceSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
 
-      <div className="order-1 flex w-full flex-col justify-center text-center md:w-2/5 md:text-left lg:w-1/3 relative"> {/* Adjusted width for text, added relative positioning */}
+      <div className="relative order-1 flex w-full flex-col justify-center text-center md:w-2/5 md:text-left lg:w-1/3"> {/* Adjusted width for text, added relative positioning */}
         
         {/* Enhanced Background Glow for Text Area */}
-        <div className="absolute inset-0 z-[-1] opacity-50 transform scale-125 md:scale-150"> {/* Scaled up for broader effect */}
+        <div className="absolute inset-0 z-[-1] scale-125 opacity-50 md:scale-150"> {/* Scaled up for broader effect */}
           <div 
             className="absolute left-1/2 top-1/2 size-full -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-accent-yellow/20 via-accent-orange/10 to-transparent" 
             style={{ filter: 'blur(80px)' }} // More pronounced blur
@@ -36,7 +33,7 @@ export function AuraDifferenceSection() {
         
         <AnimatedBlock el="div" variants={simpleFadeInUp} className="relative">
           
-          <h2 className="space-y-1 pl-10 font-serif text-4xl font-light leading-tight text-text-primary md:text-5xl lg:text-7xl xl:text-8xl"> {/* Adjusted spacing and sizes */}
+          <h2 className="mx-auto space-y-1 text-center font-serif text-4xl font-light leading-tight text-text-primary md:text-5xl lg:text-7xl xl:text-8xl"> {/* Centered and adjusted spacing and sizes */}
             <div className="cormorant-garamond pb-2 sm:pb-3">Confident</div>
             <div 
               className="cinzel-decorative-bold bg-gradient-to-r from-accent-yellow-dark via-accent-orange to-accent-red bg-clip-text text-[3rem] font-extrabold tracking-tight text-transparent sm:text-[3.75rem] lg:text-[4.5rem] xl:text-[5.5rem]"
@@ -54,7 +51,7 @@ export function AuraDifferenceSection() {
           </h2>
         </AnimatedBlock>
 
-        <AnimatedBlock variants={simpleFadeInUp} className="pt-8 pl-10 sm:pt-10" delay={0.3}> {/* Increased top padding */}
+        <AnimatedBlock variants={simpleFadeInUp} className="flex justify-center pt-8 sm:pt-10" delay={0.3}> {/* Centered button container and increased top padding */}
           <MotionGradientButton
             variant="ignitedRadiance"
             className="cormorant-garamond min-w-[220px] px-8 py-4 text-lg font-semibold sm:min-w-[240px] sm:px-10 sm:py-5 sm:text-xl" // Slightly larger button
@@ -64,7 +61,9 @@ export function AuraDifferenceSection() {
             }}
             whileTap={{ scale: 0.95, boxShadow: "0px 3px 10px rgba(232, 64, 12, 0.25)" }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            onClick={() => window.location.href = '/our-philosophy'}
+            onClick={() => {
+              window.location.href = '/our-philosophy';
+            }}
           >
             Discover Our Vision →
           </MotionGradientButton>
@@ -82,7 +81,7 @@ export function AuraDifferenceSection() {
             loop
             muted
             playsInline /* Important for mobile */
-            className="absolute top-0 left-0 h-full w-full object-cover"
+            className="absolute left-0 top-0 size-full object-cover"
             aria-label="Showcasing the Aura Aesthetics experience and results"
           >
             Your browser does not support the video tag.

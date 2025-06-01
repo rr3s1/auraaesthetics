@@ -2,19 +2,19 @@
 
 import React, { useEffect, useRef, Suspense, useCallback } from 'react';
 
+import { AnimatedPhilosophy } from '../content-sections';
 import { AuraDifferenceSection } from '../content-sections/aura-difference-section';
 import { AwardsExpertiseSection } from '../content-sections/awards-expertise-section';
 import { ClientTransformationsSection } from '../content-sections/client-transformations-section';
 import ContactAndNewsletterSection from '../content-sections/ContactAndNewsletterSection';
 import { SignatureTreatmentsSection } from '../content-sections/signature-treatments-section';
 import { TestimonialBlockquote } from '../content-sections/testimonial-blockquote';
+import TestimonialCards from '../content-sections/TestimonialCards';
 import { UnifiedLuxurySections } from '../content-sections/unified-luxury-sections';
 import { NavbarComponent } from '../navigation/navbar';
 
 import { HeroContent } from './hero-content';
 import { HeroSplineBackground } from './hero-spline-background';
-import { AnimatedPhilosophy } from '../content-sections';
-import TestimonialCards from '../content-sections/TestimonialCards';
 
 export const HeroSection = () => {
   const heroContentWrapperRef = useRef<HTMLDivElement>(null);
@@ -55,18 +55,18 @@ export const HeroSection = () => {
   // const warmBgColor = '#2d1810'; // Updated to a rust-influenced dark brown // Commented out, using Tailwind class now
 
   return (
-    <div className="relative bg-site-bg overflow-hidden"> {/* Main page overflow */}
+    <div className="relative overflow-hidden bg-site-bg"> {/* Main page overflow */}
       <NavbarComponent />
       {/* Hero Area */}
       <div className="relative h-screen w-full overflow-hidden">
         {/* ... (hero background elements remain the same) ... */}
-        <div className="absolute inset-0 z-[-1] opacity-70 overflow-hidden">
-          <div className="absolute -left-1/4 -top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/70 via-accent-orange/50 to-transparent" style={{ filter: 'blur(80px)' }} />
-          <div className="absolute -bottom-1/4 -right-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-red/70 via-accent-red-deep/50 to-transparent" style={{ filter: 'blur(80px)' }} />
-          <div className="absolute left-1/4 top-1/4 size-1/2 md:size-3/4 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent" style={{ filter: 'blur(100px)' }} />
+        <div className="absolute inset-0 z-[-1] overflow-hidden opacity-70">
+          <div className="absolute -left-1/4 -top-1/4 size-1/2 rounded-full bg-gradient-radial from-accent-yellow-dark/70 via-accent-orange/50 to-transparent md:size-3/4" style={{ filter: 'blur(80px)' }} />
+          <div className="absolute -bottom-1/4 -right-1/4 size-1/2 rounded-full bg-gradient-radial from-accent-red/70 via-accent-red-deep/50 to-transparent md:size-3/4" style={{ filter: 'blur(80px)' }} />
+          <div className="absolute left-1/4 top-1/4 size-1/2 rounded-full bg-gradient-radial from-accent-yellow/60 via-accent-yellow-dark/40 to-transparent md:size-3/4" style={{ filter: 'blur(100px)' }} />
         </div>
 
-        <div className="absolute inset-0 z-0 hero-gradient-mask">
+        <div className="hero-gradient-mask absolute inset-0 z-0">
           <HeroSplineBackground />
         </div>
 
@@ -85,7 +85,7 @@ export const HeroSection = () => {
 
       {/* Enhanced Transition Section with smoother transition */}
       <div 
-        className="bg-project-bg relative z-10 py-16 text-text-primary md:py-24 overflow-hidden" // Added overflow-hidden here
+        className="bg-project-bg relative z-10 overflow-hidden py-16 text-text-primary md:py-24" // Added overflow-hidden here
       >
            
         {/* Ambient overlays BEHIND the content now */}
@@ -120,13 +120,12 @@ export const HeroSection = () => {
                 mx-auto                   
                 max-w-4xl        
                 rounded-xl                 
-                border-t-2 border-b-2      
-                border-accent-orange/70    
-                bg-gradient-to-br from-content-bg via-accent-yellow/15 to-content-bg 
+                border-y-2 border-accent-orange/70      
+                bg-gradient-to-br    
+                from-content-bg via-accent-yellow/15 to-content-bg px-8 
                 py-12                      
-                px-8       
-                shadow-xl                  
-                opacity-100               
+                opacity-100       
+                shadow-xl               
               "
               quoteClassName="
                 cinzel-decorative-bold     

@@ -40,7 +40,7 @@ export default function FloatingNavDemo() {
         whileTap={{ scale: 0.95, boxShadow: "0px 2px 8px rgba(200, 100, 255, 0.2)" }}
         transition={{ type: "spring", stiffness: 200, damping: 15 }}
       >
-        ADMIN2
+        ADMIN
       </MotionGradientButton>
     </div>
   );

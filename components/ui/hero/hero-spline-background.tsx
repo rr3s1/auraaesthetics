@@ -34,7 +34,7 @@ export function HeroSplineBackground() {
             width: '110%',
             height: '110%',
           }}
-          scene="https://prod.spline.design/5rRURbVXjAe-rXSV/scene.splinecode" // KEEP AS PLACEHOLDER UNTIL REPLACED
+          scene="https://prod.spline.design/TRa8S3ZBBc9xclvu/scene.splinecode" // KEEP AS PLACEHOLDER UNTIL REPLACED
         />
       </Suspense>
     </div>

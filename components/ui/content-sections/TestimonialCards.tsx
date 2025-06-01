@@ -25,8 +25,16 @@ const TestimonialCards = () => {
             <div className="absolute inset-0 rounded-full bg-gradient-radial from-accent-yellow-dark/50 via-accent-orange/30 to-transparent blur-[120px]"></div>
           </div>
           {/* Metallic gradient border */}
-          <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl">
-            <div className="absolute -left-1/2 -top-1/2 size-[200%] animate-spin-slow bg-conic-gradient from-gold-accent via-transparent to-gold-accent opacity-10"></div>
+          <div className="absolute inset-0 z-20 overflow-hidden rounded-2xl">
+            <div 
+              className="absolute inset-[-2px] animate-spin-slow rounded-2xl"
+              style={{
+                background: 'conic-gradient(from 0deg, #d4af37, transparent 120deg, #d4af37 240deg, transparent)',
+                padding: '2px'
+              }}
+            >
+              <div className="size-full rounded-2xl bg-deep-emerald"></div>
+            </div>
           </div>
 
           {/* Gold foil accents */}
@@ -34,7 +42,7 @@ const TestimonialCards = () => {
           <div className="bg-gold-accent/8 absolute bottom-0 left-0 z-0 size-32 -translate-x-12 translate-y-12 blur-xl"></div>
 
           {/* Luxury texture overlay */}
-          <div className="absolute inset-0 z-0 rounded-2xl bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 z-20 rounded-2xl bg-cover bg-center opacity-10 mix-blend-overlay"></div>
 
           {/* Content container */}
           <div className="relative z-20 rounded-2xl border border-gold-accent/30 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center p-10 opacity-90">
@@ -48,7 +56,7 @@ const TestimonialCards = () => {
                       key={i}
                       src="/assets/star4.png"
                       alt="Star rating"
-                      className="mr-1 size-14 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-16 md:size-20 lg:size-24 xl:size-28"
+                      className="md:size-18 lg:size-18 xl:size-22 mr-1 size-14 object-contain align-middle drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-transform duration-300 sm:size-16"
                       style={{
                         filter: 'drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2))',
                         ...getStarAnimationStyle(i),
@@ -59,14 +67,14 @@ const TestimonialCards = () => {
                 </div>
                 
                 {/* Headline - appears second on small screens */}
-                <h1 className="cinzel-decorative-bold md:pl-18 mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-3 sm:pl-20 sm:text-center sm:text-3xl md:mt-6 md:text-left md:text-4xl lg:pl-5 lg:text-5xl">
+                <h1 className="cinzel-decorative-bold md:pl-22 mb-6 mt-0 flex-1 bg-gradient-to-r from-[#fcd7a0] via-[#fff4e0] to-[#e0b97c] bg-clip-text text-center text-2xl font-bold text-transparent sm:mt-3 sm:text-center sm:text-3xl md:mt-6 md:text-right md:text-4xl lg:pl-5 lg:text-5xl">
                   Exceptional Experience
                 </h1>
               </div>
 
               <div className="px-4 py-2 sm:pl-8 sm:pr-6 md:pl-12 md:pr-8">
                 {/* Testimonial text */}
-                <p className="playfair-display  mb-8 text-xl italic leading-relaxed text-light-cream sm:text-xl md:text-4xl lg:text-5xl" >
+                <p className="playfair-display  xs:text-2xl mb-8 italic leading-relaxed text-light-cream sm:text-3xl md:text-4xl lg:text-5xl" >
                   &ldquo;The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly.
                   I feel more confident and radiant than ever before!&rdquo;
                 </p>
@@ -99,7 +107,7 @@ const TestimonialCards = () => {
                       </span>
                       <span className="hidden size-1 rounded-full bg-gold-accent/70 md:block"></span>
                       <span className="montserrat text-sm font-bold uppercase text-light-cream/80 sm:text-base md:ml-3 md:text-xl lg:text-2xl">
-                      Non-Invasive Body Sculpting
+                       Body Sculpting
                       </span>
                     </div>
                   </div>

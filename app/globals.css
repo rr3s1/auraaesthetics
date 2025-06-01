@@ -329,11 +329,11 @@
 
   /* Ignited Radiance Theme Button */
   .gradient-button-ignited-radiance {
-    --gb-color-1: #FDB110; /* Dark Yellow */
+    --gb-color-1: #C9A050; /* Dark Yellow */
     --gb-color-2: #F57A08; /* Orange */
     --gb-color-3: #FCCF14; /* Yellow */
     --gb-color-4: #FDB110; /* Dark Yellow */
-    --gb-color-5: #F57A08; /* Orange */
+    --gb-color-5: #A17930; /* Orange */
 
     /* Adjust stops for a pleasing gradient flow */
     --stop-1: 0%;

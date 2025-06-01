@@ -15,6 +15,8 @@ const AnimatedPhilosophy: React.FC = () => {
   const separatorRightRef = useRef<HTMLDivElement>(null);
   const diamondRef = useRef<HTMLDivElement>(null);
   const attributionRef = useRef<HTMLParagraphElement>(null);
+  const dashLeftRef = useRef<HTMLDivElement>(null);
+  const dashRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -37,6 +39,7 @@ const AnimatedPhilosophy: React.FC = () => {
           gsap.set([separatorLeftRef.current, separatorRightRef.current], { opacity: 0, width: 0 });
           gsap.set(diamondRef.current, { opacity: 0, scale: 0 });
           gsap.set(attributionRef.current, { opacity: 0, y: 20 });
+          gsap.set([dashLeftRef.current, dashRightRef.current], { opacity: 0, width: 0 });
 
           // Create timeline
           const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -90,7 +93,12 @@ const AnimatedPhilosophy: React.FC = () => {
               opacity: 1, 
               y: 0, 
               duration: 0.8 
-            }, 1.4);
+            }, 1.4)
+            .to([dashLeftRef.current, dashRightRef.current], { 
+              width: "2rem", 
+              opacity: 1, 
+              duration: 1.2 
+            }, 1.6);
         }, containerRef);
         // Disconnect observer after animation triggers
         if (observer) observer.disconnect();
@@ -166,14 +174,22 @@ const AnimatedPhilosophy: React.FC = () => {
           </div>
           
           {/* Prominent Attribution */}
-          <p 
+          <div 
             ref={attributionRef}
-            className="cormorant-garamond mt-10 inline-block whitespace-nowrap rounded-lg border border-accent-yellow/30 bg-gradient-to-r from-transparent via-accent-yellow-dark/10 to-transparent px-4 py-3 text-lg font-medium text-text-primary sm:px-8 sm:py-4 sm:text-2xl"
+            className="cormorant-garamond mt-10 flex items-center justify-center whitespace-nowrap rounded-lg border border-accent-yellow/30 bg-gradient-to-r from-transparent via-accent-yellow-dark/10 to-transparent px-4 py-3 text-lg font-medium text-text-primary sm:px-8 sm:py-4 sm:text-2xl"
           >
-            <span className="mr-1 font-semibold text-accent-orange sm:mr-2">—</span>
-            The Aura Aesthetics Philosophy
-            <span className="ml-1 font-semibold text-accent-orange sm:ml-2">—</span>
-          </p>
+            <div 
+              ref={dashLeftRef}
+              className="h-0.5 w-1 bg-gradient-to-r from-transparent via-accent-red to-transparent"
+            >
+            </div>
+            <span className="mx-4">The Aura Aesthetics Philosophy</span>
+            <div 
+              ref={dashRightRef}
+              className="h-0.5 w-1 bg-gradient-to-r from-transparent via-accent-red to-transparent"
+            >
+            </div>
+          </div>
         </div>
       </div>
     </div>

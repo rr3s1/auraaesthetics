@@ -20,6 +20,10 @@ const TestimonialCards = () => {
       <style dangerouslySetInnerHTML={{ __html: keyframesStyle }} />
       <div className="relative my-24">
         <div className="relative overflow-hidden rounded-2xl bg-deep-emerald shadow-[0_25px_70px_-15px_rgba(0,0,0,0.5)]">
+           {/* Enhanced background glow */}
+           <div className="absolute inset-x-0 bottom-1/4 top-0 z-[1] opacity-30 md:opacity-35">
+            <div className="absolute inset-0 rounded-full bg-gradient-radial from-accent-yellow-dark/50 via-accent-orange/30 to-transparent blur-[120px]"></div>
+          </div>
           {/* Metallic gradient border */}
           <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl">
             <div className="absolute -left-1/2 -top-1/2 size-[200%] animate-spin-slow bg-conic-gradient from-gold-accent via-transparent to-gold-accent opacity-10"></div>
@@ -33,7 +37,7 @@ const TestimonialCards = () => {
           <div className="absolute inset-0 z-0 rounded-2xl bg-cover bg-center opacity-10 mix-blend-overlay"></div>
 
           {/* Content container */}
-          <div className="relative z-10 rounded-2xl border border-gold-accent/30 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center p-10 pl-5 opacity-90">
+          <div className="relative z-20 rounded-2xl border border-gold-accent/30 bg-[url('/assets/luxury-texture.svg')] bg-cover bg-center p-10 pl-5 opacity-90">
             <div className="relative z-20">
               {/* Star rating and headline - responsive layout */}
               <div className="mb-6 flex flex-col sm:flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
@@ -62,7 +66,7 @@ const TestimonialCards = () => {
 
               <div className="px-4 py-2 sm:pl-8 sm:pr-6 md:pl-12 md:pr-8">
                 {/* Testimonial text */}
-                <p className="playfair-display mb-8 text-lg italic leading-relaxed text-light-cream sm:text-xl md:text-2xl lg:text-3xl" style={{ textShadow: '0 0 5px rgba(228, 226, 217, 0.81), 0 0 20px rgba(228, 226, 213, 0.87)' }}>
+                <p className="playfair-display mb-8 text-lg italic leading-relaxed text-light-cream sm:text-xl md:text-2xl lg:text-4xl" style={{ textShadow: '0 0 5px rgba(228, 226, 217, 0.81), 0 0 20px rgba(228, 226, 213, 0.87)' }}>
                   &ldquo;The team at Aura Aesthetics made me feel so comfortable and understood my vision perfectly.
                   I feel more confident and radiant than ever before!&rdquo;
                 </p>
@@ -76,21 +80,25 @@ const TestimonialCards = () => {
                   <div className="relative mb-4 sm:mb-4 md:mb-0 md:mr-6">
                     <div className="absolute inset-0 animate-pulse-slow rounded-full border border-gold-accent/50"></div>
                     <div className="flex size-12 items-center justify-center overflow-hidden rounded-full border-2 border-gold-accent/30 bg-deep-emerald sm:size-14 md:size-16">
-                      {/* Replace with actual image */}
-                      <div className="size-full rounded-xl border-2 border-dashed bg-gray-200" />
+                      {/* Sarah Johnson's actual image */}
+                      <img 
+                        src="/assets/d2.png" 
+                        alt="Sarah Johnson" 
+                        className="size-full rounded-full object-cover"
+                      />
                     </div>
                   </div>
 
                   <div className="rounded-lg bg-slate-900 text-center sm:text-center md:text-left">
-                    <p className="montserrat mb-1 text-lg font-semibold text-light-cream sm:text-xl md:text-xl lg:text-3xl">
+                    <p className="montserrat mb-1 text-lg font-semibold text-light-cream sm:text-xl md:text-xl lg:text-4xl">
                       Sarah Johnson
                     </p>
                     <div className="flex flex-col items-center sm:flex-col md:flex-row">
-                      <span className="montserrat mb-2 text-sm font-bold tracking-wide text-gold-accent sm:mb-2 sm:text-base md:mb-0 md:mr-3 md:text-xl lg:text-3xl">
+                      <span className="montserrat mb-2 text-sm font-bold tracking-wide text-gold-accent sm:mb-2 sm:text-base md:mb-0 md:mr-3 md:text-xl lg:text-2xl">
                         VERIFIED CLIENT
                       </span>
                       <span className="hidden size-1 rounded-full bg-gold-accent/70 md:block"></span>
-                      <span className="montserrat text-sm font-bold uppercase text-light-cream/80 sm:text-base md:ml-3 md:text-xl lg:text-3xl">
+                      <span className="montserrat text-sm font-bold uppercase text-light-cream/80 sm:text-base md:ml-3 md:text-xl lg:text-2xl">
                         Blue LED Light Therapy
                       </span>
                     </div>

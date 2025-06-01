@@ -93,7 +93,7 @@ export function AwardsExpertiseSection() {
                 {pillar.icon}
               </div>
               
-              <h3 className="font-font-serif mb-4 text-lg font-semibold tracking-wide text-text-primary">
+              <h3 className="mb-4 font-serif text-lg font-semibold tracking-wide text-text-primary">
                 {pillar.title}
               </h3>
               

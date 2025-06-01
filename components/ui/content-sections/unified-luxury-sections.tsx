@@ -62,9 +62,9 @@ function LuxurySection({
       variants={sectionContainerVariants} 
     >
       {/* Subtle Background Glow for each section - more localized */}
-      <div className={`absolute inset-0 z-[-1] pointer-events-none opacity-20 md:opacity-25
+      <div className={`pointer-events-none absolute inset-0 z-[-1] opacity-20 md:opacity-25
                        ${reverse ? 'lg:left-1/2' : 'lg:right-1/2'}`}>
-        <div className={`absolute inset-0 rounded-full bg-gradient-radial ${gradientClasses[accentGradient]}/30 via-transparent to-transparent filter blur-[150px]`} />
+        <div className={`absolute inset-0 rounded-full bg-gradient-radial ${gradientClasses[accentGradient]}/30 via-transparent to-transparent blur-[150px]`} />
       </div>
 
       {/* Text Content */}
@@ -131,7 +131,7 @@ function LuxurySection({
       >
         <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
           {/* Enhanced Image Presentation */}
-          <div className="relative inline-block p-2 group">
+          <div className="group relative inline-block p-2">
             {/* Hover Glow for Image */}
             <div className={`absolute inset-0 z-[-1] rounded-3xl bg-gradient-to-br ${gradientClasses[accentGradient]}/50 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-75`} />
             <motion.img
@@ -157,7 +157,7 @@ export function UnifiedLuxurySections() {
       description: (
         <>
           <p className="mb-4">
-            At Aura Aesthetics, we believe the most profound beauty enhancements are those that honor your unique individuality. Our 'Refined Naturalism' philosophy is not about altering who you are, but artfully revealing the most confident and radiant version of yourself.
+            At Aura Aesthetics, we believe the most profound beauty enhancements are those that honor your unique individuality. Our &apos;Refined Naturalism&apos; philosophy is not about altering who you are, but artfully revealing the most confident and radiant version of yourself.
           </p>
           <p>
             This approach focuses on subtle yet significant improvements. We utilize advanced, minimally invasive techniques to gently restore youthfulness, smooth imperfections, and highlight your distinct features. The goal is harmony and balance, ensuring results that are imperceptibly beautiful, never overdone.
@@ -188,7 +188,7 @@ export function UnifiedLuxurySections() {
             Our commitment to excellence is underpinned by a dedication to utilizing the latest, clinically-proven technologies and premium, medical-grade products. We continually invest in state-of-the-art equipment, ensuring that Aura Aesthetics remains at the forefront of aesthetic medicine.
           </p>
           <p>
-            This commitment extends to our team's expertise. Continuous training and education in emerging techniques mean we deliver not only the safest and most effective treatments but also innovative solutions tailored to evolving aesthetic needs.
+            This commitment extends to our team&apos;s expertise. Continuous training and education in emerging techniques mean we deliver not only the safest and most effective treatments but also innovative solutions tailored to evolving aesthetic needs.
           </p>
         </>
       ),
@@ -200,8 +200,8 @@ export function UnifiedLuxurySections() {
       ],
       ctaText: "Discover Our Technologies",
       ctaLink: "/technologies",
-      imageSrc: "/Intruments.png",
-      imageAlt: "Sleek, state-of-the-art aesthetic laser and energy devices in a modern clinic room.",
+      imageSrc: "/Doc1.png",
+      imageAlt: "State-of-the-art aesthetic technology in a clinic setting",
       accentGradient: 'orangeToRed',
       reverse: true // Alternating layout
     },
@@ -228,7 +228,7 @@ export function UnifiedLuxurySections() {
       ],
       ctaText: "Begin Your Aura Journey",
       ctaLink: "/consultation",
-      imageSrc: "/doctor_consult.png",
+      imageSrc: "/TreatmentRoom.png",
       imageAlt: "Aesthetician warmly consulting with a client, discussing a personalized treatment plan.",
       accentGradient: 'yellowToRed',
       reverse: false
@@ -241,7 +241,7 @@ export function UnifiedLuxurySections() {
         <React.Fragment key={section.id || index}>
           <LuxurySection {...section} />
           {index < sections.length - 1 && (
-            <div className="relative max-w-lg mx-auto h-20 md:h-28 flex items-center justify-center" aria-hidden="true">
+            <div className="relative mx-auto flex h-20 max-w-lg items-center justify-center md:h-28" aria-hidden="true">
               <div className="h-px w-2/3 bg-gradient-to-r from-transparent via-accent-yellow-dark/30 to-transparent" />
             </div>
           )}

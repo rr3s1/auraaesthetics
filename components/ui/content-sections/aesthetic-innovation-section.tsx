@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { AnimatedBlock, AnimatedText } from '../animations/animated-components';
 import { 
@@ -13,6 +14,9 @@ import {
 } from '../animations/animation-variants';
 
 export function AestheticInnovationSection() {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <motion.section
       className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2"
@@ -58,13 +62,53 @@ export function AestheticInnovationSection() {
         className="relative z-10"
       >
         <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
-          <motion.img 
-            src="/Intruments.png" 
-            alt="State-of-the-art aesthetic technology in a clinic setting" 
-            className="mx-auto w-full max-w-md rounded-xl object-cover shadow-2xl transition-transform duration-300 hover:scale-105"
+          <motion.div
+            className="relative mx-auto w-full max-w-md overflow-hidden rounded-xl shadow-2xl"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
-          />
+          >
+            {!imageError ? (
+              <Image 
+                src="/Doc1.png" 
+                alt="State-of-the-art aesthetic technology in a clinic setting" 
+                width={400}
+                height={600}
+                className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
+                priority={true}
+                onError={(e) => {
+                  console.error('Next.js Image failed to load:', e);
+                  setImageError(true);
+                }}
+                onLoad={() => {
+                  console.log('Next.js Image loaded successfully: /Doc1.png');
+                  setImageLoaded(true);
+                }}
+              />
+            ) : (
+              // Fallback to regular img tag
+              <img 
+                src="/Doc1.png" 
+                alt="State-of-the-art aesthetic technology in a clinic setting" 
+                className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
+                onError={(e) => {
+                  console.error('Fallback img also failed to load:', e);
+                  console.log('Image path attempted: /Doc1.png');
+                  console.log('Current location:', window.location.href);
+                }}
+                onLoad={() => {
+                  console.log('Fallback img loaded successfully: /Doc1.png');
+                }}
+              />
+            )}
+            
+            {/* Debug info - remove this in production */}
+            {process.env.NODE_ENV === 'development' && (
+              <div className="absolute left-2 top-2 rounded bg-black/80 p-2 text-xs text-white">
+                <div>Image Status: {imageLoaded ? 'Loaded' : imageError ? 'Error' : 'Loading...'}</div>
+                <div>Path: /Doc1.png</div>
+              </div>
+            )}
+          </motion.div>
         </AnimatedBlock>
       </motion.div>
     </motion.section>

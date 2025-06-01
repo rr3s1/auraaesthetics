@@ -42,24 +42,30 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
             width={80}
             height={80}
             className="mx-auto size-20 rounded-full object-cover shadow-md"
+            onError={(e) => {
+              console.error('Failed to load image:', avatarPlaceholder, e);
+            }}
+            onLoad={() => {
+              console.log('Successfully loaded image:', avatarPlaceholder);
+            }}
           />
         ) : (
-          <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-primary-blue text-3xl font-semibold text-white shadow-md ring-4 ring-white dark:bg-primary-blue/80 dark:ring-slate-800">
+          <div className="bg-primary-blue dark:bg-primary-blue/80 mx-auto flex size-20 items-center justify-center rounded-full text-3xl font-semibold text-white shadow-md ring-4 ring-white dark:ring-slate-800">
             {avatarPlaceholder || name.substring(0, 1)}
           </div>
         )}
       </div>
 
       <div className="relative grow">
-        <ChatBubbleOvalLeftEllipsisIcon className="absolute left-0 top-0 size-10 -translate-x-4 -translate-y-4 text-primary-green/50 dark:text-primary-green/40" />
-        <blockquote className="relative z-10 mb-6 text-base italic leading-relaxed text-neutral-medium-gray dark:text-neutral-light-gray/90 md:text-lg">
+        <ChatBubbleOvalLeftEllipsisIcon className="text-primary-green/50 dark:text-primary-green/40 absolute left-0 top-0 size-10 -translate-x-4 -translate-y-4" />
+        <blockquote className="text-neutral-medium-gray dark:text-neutral-light-gray/90 relative z-10 mb-6 text-base italic leading-relaxed md:text-lg">
           &ldquo;{quote}&rdquo;
         </blockquote>
       </div>
 
       <cite className="mt-auto border-t border-slate-200 pt-5 text-center dark:border-slate-700">
-        <span className="block text-lg font-bold text-neutral-dark-gray dark:text-neutral-light-gray">{name}</span>
-        <span className="block text-sm text-neutral-medium-gray/80 dark:text-neutral-light-gray/70">{title}</span>
+        <span className="text-neutral-dark-gray dark:text-neutral-light-gray block text-lg font-bold">{name}</span>
+        <span className="text-neutral-medium-gray/80 dark:text-neutral-light-gray/70 block text-sm">{title}</span>
       </cite>
     </motion.div>
   );
@@ -72,7 +78,7 @@ const TestimonialsSection: React.FC = () => {
         "This platform has revolutionized how I manage my appointments. So easy and efficient!",
       name: "Sarah J.",
       title: "Satisfied Patient",
-      avatarPlaceholder: "SJ", // Ideally, path to an image: e.g., "/avatars/sarah.jpg"
+      avatarPlaceholder: "/assets/d2.png", // Updated to use the actual image path
     },
     {
       quote:
@@ -114,20 +120,20 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <motion.section
-      className="bg-neutral-light-gray px-4 py-16 dark:bg-neutral-dark-gray sm:px-6 lg:px-8 lg:py-24"
+      className="bg-neutral-light-gray dark:bg-neutral-dark-gray px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionVariants}
     >
       <motion.h2
-        className="mb-4 text-center text-3xl font-extrabold text-neutral-dark-gray dark:text-neutral-light-gray sm:text-4xl lg:text-5xl"
+        className="text-neutral-dark-gray dark:text-neutral-light-gray mb-4 text-center text-3xl font-extrabold sm:text-4xl lg:text-5xl"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5}} }}
       >
         Trusted by Patients and Professionals Alike
       </motion.h2>
       <motion.p
-        className="mx-auto mb-12 max-w-3xl text-center text-lg text-neutral-medium-gray dark:text-neutral-light-gray/80 md:mb-16"
+        className="text-neutral-medium-gray dark:text-neutral-light-gray/80 mx-auto mb-12 max-w-3xl text-center text-lg md:mb-16"
         variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: {duration: 0.5, delay: 0.2}} }}
       >
         Hear directly from our growing community about how CarePulse is making healthcare simpler and more accessible for everyone.

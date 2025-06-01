@@ -59,7 +59,7 @@ export function PersonalisedJourneySection() {
       >
         <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
           <motion.img 
-            src="/doctor_consult.png" 
+            src="/TreatmentRoom.png" 
             alt="Doctor consulting with a client in a luxury clinic" 
             className="mx-auto w-full max-w-md rounded-xl object-cover shadow-2xl transition-transform duration-300 hover:scale-105"
             whileHover={{ scale: 1.02 }}

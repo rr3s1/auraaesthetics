@@ -270,7 +270,7 @@
     --gb-color-2: #c66c64;
     --gb-color-3: #cc7d23;
     --gb-color-4: #37140a;
-    --gb-color-5: #000;
+    --gb-color-5: #b44407;
     --border-angle: 190deg;
     --border-color-1: hsla(340, 78%, 90%, 0.1);
     --border-color-2: hsla(340, 75%, 90%, 0.6);
@@ -288,7 +288,7 @@
     --gb-color-4: #f8fafc;
     --border-angle: 120deg;
     --border-color-1: hsla(24, 100%, 50%, 0.8);
-    --border-color-2: hsla(30, 100%, 60%, 0.4);
+    --border-color-2: hsla(19, 94%, 47%, 0.889);
   }
 
   .gradient-button-variant:hover {
@@ -344,7 +344,7 @@
 
     --border-angle: 135deg;
     --border-color-1: hsla(39, 98%, 53%, 0.5); /* Dark Yellow with alpha */
-    --border-color-2: hsla(27, 91%, 50%, 0.3); /* Orange with alpha */
+    --border-color-2: hsla(45, 91%, 49%, 0.926); /* Orange with alpha */
   }
 
   .gradient-button-ignited-radiance:hover {

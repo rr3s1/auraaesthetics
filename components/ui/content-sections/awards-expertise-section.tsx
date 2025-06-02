@@ -27,27 +27,27 @@ export function AwardsExpertiseSection() {
     {
       title: "Award-Winning Treatments",
       description: "Recognized for excellence and innovation in aesthetic care, delivering consistently outstanding, natural-looking results.",
-      icon: <Award className="size-10 text-amber-600" />
+      icon: <Award className="size-10 text-purple-600" />
     },
     {
       title: "Board-Certified Experts",
       description: "Our team comprises highly skilled, board-certified dermatologists and aesthetic specialists dedicated to your safety and satisfaction.",
-      icon: <UserCircle2 className="size-10 text-amber-600" />
+      icon: <UserCircle2 className="size-10 text-purple-600" />
     },
     {
       title: "Premium Brand Partners",
       description: "We exclusively partner with leading global brands for medical-grade products and technologies, ensuring efficacy and quality.",
-      icon: <Gem className="size-10 text-amber-600" />
+      icon: <Gem className="size-10 text-purple-600" />
     },
     {
       title: "Patient-Centric Care",
       description: "Your journey is our priority. We provide compassionate, personalized attention from consultation through to comprehensive aftercare.",
-      icon: <HeartPulse className="size-10 text-amber-600" />
+      icon: <HeartPulse className="size-10 text-purple-600" />
     },
     {
       title: "Commitment to Safety",
       description: "Adhering to the highest medical standards and protocols to ensure your well-being and provide treatments in a secure, sterile environment.",
-      icon: <ShieldCheck className="size-10 text-amber-600" />
+      icon: <ShieldCheck className="size-10 text-purple-600" />
     },
   ];
 
@@ -89,7 +89,7 @@ export function AwardsExpertiseSection() {
               delay={i * 0.15} 
               className="group flex flex-col items-center rounded-xl border border-accent-gold/10 bg-white bg-opacity-95 p-8 shadow-xl transition-all duration-300 hover:bg-gradient-to-b hover:from-white hover:to-site-bg/50 hover:shadow-2xl"
             >
-              <div className="mb-6 rounded-full bg-gradient-to-br from-amber-600/10 to-amber-600/5 p-4 transition-all group-hover:from-amber-600/20 group-hover:to-amber-600/10">
+              <div className="mb-6 rounded-full bg-gradient-to-br from-purple-600/10 to-purple-600/5 p-4 transition-all group-hover:from-purple-600/20 group-hover:to-purple-600/10">
                 {pillar.icon}
               </div>
               

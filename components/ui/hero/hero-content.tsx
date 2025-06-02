@@ -32,19 +32,62 @@ export function HeroContent() {
       >
         {/* MODIFIED: Changed to left alignment and removed centering */}
         <div className="flex w-full flex-col items-start justify-start md:flex-row ">
-          <GradientText
-            // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em] pr-10 text-left text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
-            gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
-          >
-            AURA
-          </GradientText>
-          <GradientText
-            // MODIFIED: Changed text alignment to left
-            className="cinzel-decorative-black min-h-[1.2em]text-left text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:pl-0 sm:text-6xl md:pl-0  md:text-6xl lg:pl-10 lg:text-7xl xl:text-8xl 2xl:text-9xl"
-          >
-            Aesthetics
-          </GradientText>
+          <div className="relative">
+            <motion.div
+              className="absolute inset-0 z-0"
+              animate={{
+                textShadow: [
+                  "0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 90px rgba(255, 255, 255, 0.2)",
+                  "0 0 50px rgba(255, 255, 255, 0.8), 0 0 100px rgba(255, 255, 255, 0.6), 0 0 150px rgba(255, 255, 255, 0.3)",
+                  "0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 90px rgba(255, 255, 255, 0.2)"
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <span className="cinzel-decorative-black min-h-[1.2em] pr-10 text-left text-4xl font-bold leading-tight tracking-[0.12em] text-transparent sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
+                AURA
+              </span>
+            </motion.div>
+            <GradientText
+              // MODIFIED: Changed text alignment to left
+              className="cinzel-decorative-black relative z-10 min-h-[1.2em] pr-10 text-left text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+              gradient="bg-gradient-to-r from-orange-400 via-orange-600 to-red-600"
+            >
+              AURA
+            </GradientText>
+          </div>
+          <div className="relative">
+            <motion.div
+              className="absolute inset-0 z-0"
+              animate={{
+                textShadow: [
+                  "0 0 25px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.4), 0 0 75px rgba(255, 255, 255, 0.2)",
+                  "0 0 45px rgba(255, 255, 255, 0.8), 0 0 90px rgba(255, 255, 255, 0.6), 0 0 135px rgba(255, 255, 255, 0.3)",
+                  "0 0 25px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.4), 0 0 75px rgba(255, 255, 255, 0.2)"
+                ]
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.8
+              }}
+            >
+              <span className="cinzel-decorative-black min-h-[1.2em] text-left text-4xl font-bold leading-tight tracking-[0.12em] text-transparent sm:pl-0 sm:text-6xl md:pl-0 md:text-6xl lg:pl-10 lg:text-7xl xl:text-8xl 2xl:text-9xl">
+                Aesthetics
+              </span>
+            </motion.div>
+            <GradientText
+              // MODIFIED: Changed text alignment to left
+              className="cinzel-decorative-black min-h-[1.2em]text-left relative z-10 text-4xl font-bold leading-tight tracking-[0.12em] drop-shadow-[0_4px_24px_rgba(253,177,16,0.18)] sm:pl-0 sm:text-6xl md:pl-0  md:text-6xl lg:pl-10 lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            >
+              Aesthetics
+            </GradientText>
+          </div>
         </div>
       </motion.div>
 

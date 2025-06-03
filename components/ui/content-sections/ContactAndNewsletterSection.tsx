@@ -67,10 +67,11 @@ const ContactAndNewsletterSection: React.FC = () => {
   ];
 
   const newsletterBenefits = [
+    
+    { text: "Curated wellness tips from our leading aesthetic experts.", iconColor: "bg-accent-yellow" },
     { text: "Personalized skincare & treatment insights based on your profile.", iconColor: "bg-accent-yellow-dark" },
     { text: "Priority access to new service launches & limited-time offers.", iconColor: "bg-accent-orange" },
     { text: "Exclusive invitations to Aura Wellness events & workshops.", iconColor: "bg-accent-red" },
-    { text: "Curated wellness tips from our leading aesthetic experts.", iconColor: "bg-accent-yellow" },
   ];
 
   const socialLinks = [

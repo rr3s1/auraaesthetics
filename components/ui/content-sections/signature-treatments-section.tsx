@@ -65,7 +65,7 @@ export function SignatureTreatmentsSection() {
           />
           <AnimatedBlock variants={imageDramaticRevealVariants} delay={0.3} className="mx-auto mt-16 w-full max-w-3xl">
             <video
-              src="/collageVID.mp4"
+              src="/CosmeticTreatmentsCollage.mp4"
               autoPlay
               muted
               loop

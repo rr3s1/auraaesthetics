@@ -87,7 +87,7 @@ export function AwardsExpertiseSection() {
               el="div"
               variants={simpleFadeInUp}
               delay={i * 0.15} 
-              className="group flex flex-col items-center rounded-xl border border-accent-gold/10 bg-white bg-opacity-95 p-8 shadow-xl transition-all duration-300 hover:bg-gradient-to-b hover:from-white hover:to-site-bg/50 hover:shadow-2xl"
+              className="group relative flex flex-col items-center rounded-xl border border-accent-gold/10 bg-gradient-to-br from-site-bg via-light-cream to-content-bg p-8 shadow-xl backdrop-blur-sm transition-all duration-500 ease-in-out hover:scale-[1.1] border-accent-gold/30 bg-gradient-to-tl from-accent-gold/10 via-accent-yellow-light/20 to-site-bg shadow-2xl shadow-accent-gold/20 hover:border-accent-purple/30 hover:shadow-violet-500/80"
             >
               <div className="mb-6 rounded-full bg-gradient-to-br from-purple-600/10 to-purple-600/5 p-4 transition-all group-hover:from-purple-600/20 group-hover:to-purple-600/10">
                 {pillar.icon}

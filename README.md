@@ -1,4 +1,5 @@
- <img src="https://github.com/user-attachments/assets/f666d9b9-ba56-4e6d-a679-35ecadb5b58c" /> <br/>  
+ <img src="https://github.com/user-attachments/assets/59a2cf58-bc15-41e3-8b36-97ec278fc455" /> <br/>  
+
 
  <br/>  
   
@@ -24,6 +25,7 @@
 7. [Core Technologies](#core-technologies)   
 8. [Acknowledgments](#acknowledgments)  
 9. [License](#license)
+10. [Screenmshots](#screenshots)
 
 ---
 ## 1. 🚀 Features <a id="features"></a>
@@ -233,4 +235,10 @@ Built with inspiration from:
 MIT License - see LICENSE.md for details.
 <br />
 <br />
+
+![image](https://github.com/user-attachments/assets/9d8fb39d-f412-4a08-9621-06e55b9d2eff)
+![image](https://github.com/user-attachments/assets/8a934eae-ab19-4250-94de-214362cf657d)
+![image](https://github.com/user-attachments/assets/614b3a40-8340-4f6d-af3b-6957823ab71f)
+![image](https://github.com/user-attachments/assets/5ae92d28-1583-40c2-b2e0-63cf7873f94f)
+![image](https://github.com/user-attachments/assets/8869a1da-ef90-4ac5-a458-aed454ca39d8)
 

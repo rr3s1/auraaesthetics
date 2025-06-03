@@ -91,7 +91,7 @@ const ContactAndNewsletterSection: React.FC = () => {
     >
      
       {/* Ignited Radiance Background Glows */}
-      <div className="absolute inset-0 z-0 opacity-30 md:opacity-40">
+      <div className="absolute inset-0 z-0 opacity-30 md:opacity-40 no-scrollbar">
         <div className="absolute -left-1/3 -top-1/4 h-3/4 w-3/4 rounded-full bg-gradient-radial from-accent-yellow-dark/25 via-accent-orange/10 to-transparent filter blur-[120px]" />
         <div className="absolute -right-1/3 -bottom-1/4 h-3/4 w-3/4 rounded-full bg-gradient-radial from-accent-red/20 via-accent-red-deep/10 to-transparent filter blur-[120px]" />
       </div>

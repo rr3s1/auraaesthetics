@@ -51,7 +51,7 @@ export function ClientTransformationsSection() {
             <a className="inline-block">
               <MotionGradientButton
                 variant="ignitedRadiance"
-                className="cormorant-garamond px-10 py-4  text-2xl font-semibold text-slate-900 md:px-12 md:py-5"
+                className="cormorant-garamond px-10 py-4  text-2xl font-semibold text-slate-700 md:px-12 md:py-5"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0px 8px 25px rgba(245, 122, 8, 0.4)"

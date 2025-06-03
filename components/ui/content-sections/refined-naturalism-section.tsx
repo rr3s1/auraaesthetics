@@ -59,7 +59,7 @@ export function RefinedNaturalismSection() {
       >
         <AnimatedBlock variants={imageDramaticRevealVariants} className="text-center">
           <motion.img 
-            src="/client_SCase.png" 
+            src="/client_SCase2.png" 
             alt="Client showcasing natural-looking aesthetic results" 
             className="mx-auto w-full max-w-md rounded-xl object-cover shadow-2xl transition-transform duration-300 hover:scale-105"
             whileHover={{ scale: 1.02 }}

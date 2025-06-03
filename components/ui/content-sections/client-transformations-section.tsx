@@ -46,23 +46,33 @@ export function ClientTransformationsSection() {
           splitter="line"
           staggerAmount={0.02}
         />
-        <AnimatedBlock variants={simpleFadeInUp} delay={0.2}>
-          <Link href="/gallery-testimonials" passHref legacyBehavior>
-            <a className="inline-block">
-              <MotionGradientButton
-                variant="ignitedRadiance"
-                className="cormorant-garamond px-10 py-4  text-2xl font-semibold text-slate-700 md:px-12 md:py-5"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0px 8px 25px rgba(245, 122, 8, 0.4)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Gallery & Testimonials
-              </MotionGradientButton>
-            </a>
-          </Link>
-        </AnimatedBlock>
+       <AnimatedBlock variants={simpleFadeInUp} delay={0.2}>
+  <div className="flex flex-col items-center">
+    <video 
+      src="/AquaMarineGlowVID.mp4" 
+      autoPlay 
+      loop 
+      muted 
+      playsInline
+      className="w-[85%] mb-10 rounded-lg"
+    />
+    <Link href="/gallery-testimonials" passHref legacyBehavior>
+      <a className="inline-block">
+        <MotionGradientButton
+          variant="ignitedRadiance"
+          className="cormorant-garamond px-10 py-4 text-2xl font-semibold text-slate-700 md:px-12 md:py-5"
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 8px 25px rgba(245, 122, 8, 0.4)"
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          View Gallery & Testimonials
+        </MotionGradientButton>
+      </a>
+    </Link>
+  </div>
+</AnimatedBlock>
       </div>
     </motion.section>
   );

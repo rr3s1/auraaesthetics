@@ -172,7 +172,7 @@ export function UnifiedLuxurySections() {
       ],
       ctaText: "Explore Our Philosophy",
       ctaLink: "/philosophy",
-      imageSrc: "/client_SCase.png",
+      imageSrc: "/client_SCase2.png",
       imageAlt: "Client with subtle, natural-looking aesthetic enhancements, smiling confidently.",
       accentGradient: 'yellowToOrange',
       reverse: false

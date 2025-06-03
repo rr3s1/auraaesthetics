@@ -69,7 +69,7 @@ export function AestheticInnovationSection() {
           >
             {!imageError ? (
               <Image 
-                src="/Doc1.png" 
+                src="/client_SCase.png" 
                 alt="State-of-the-art aesthetic technology in a clinic setting" 
                 width={400}
                 height={600}

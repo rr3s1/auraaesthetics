@@ -172,7 +172,7 @@ export function UnifiedLuxurySections() {
       ],
       ctaText: "Explore Our Philosophy",
       ctaLink: "/philosophy",
-      imageSrc: "/client_SCase2.png",
+      imageSrc: "/client_SCase.png",
       imageAlt: "Client with subtle, natural-looking aesthetic enhancements, smiling confidently.",
       accentGradient: 'yellowToOrange',
       reverse: false
@@ -200,7 +200,7 @@ export function UnifiedLuxurySections() {
       ],
       ctaText: "Discover Our Technologies",
       ctaLink: "/technologies",
-      imageSrc: "/Doc1.png",
+      imageSrc: "/client_SCase2.png",
       imageAlt: "State-of-the-art aesthetic technology in a clinic setting",
       accentGradient: 'orangeToRed',
       reverse: true // Alternating layout

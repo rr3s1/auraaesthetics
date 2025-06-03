@@ -47,16 +47,18 @@ export function ClientTransformationsSection() {
           staggerAmount={0.02}
         />
        <AnimatedBlock variants={simpleFadeInUp} delay={0.2}>
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col hero-gradient-mask-variant items-center">
     <video 
-      src="/AquaMarineGlowVID.mp4" 
+      src="/AquaMarineGlowVID.webm" 
       autoPlay 
       loop 
       muted 
       playsInline
-      className="w-[85%] mb-10 rounded-lg"
+      className="w-[60%] mb-10 rounded-3xl"
     />
-    <Link href="/gallery-testimonials" passHref legacyBehavior>
+    
+  </div>
+  <Link href="/gallery-testimonials" passHref legacyBehavior>
       <a className="inline-block">
         <MotionGradientButton
           variant="ignitedRadiance"
@@ -71,7 +73,6 @@ export function ClientTransformationsSection() {
         </MotionGradientButton>
       </a>
     </Link>
-  </div>
 </AnimatedBlock>
       </div>
     </motion.section>

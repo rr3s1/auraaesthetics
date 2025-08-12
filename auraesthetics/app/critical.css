@@ -1,0 +1,91 @@
+/* Critical CSS for above-the-fold content */
+/* This should be inlined in the head for fastest rendering */
+
+/* Font face declarations for critical fonts */
+@font-face {
+  font-family: 'Cinzel Decorative';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/cinzel-decorative.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond.woff2') format('woff2');
+}
+
+/* Critical hero styles */
+.hero-gradient-mask {
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+/* Optimize animations for performance */
+.cinzel-decorative-black {
+  font-family: 'Cinzel Decorative', serif;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.cormorant-garamond {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Reduce layout shifts */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+}
+
+/* Optimize gradient rendering */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Critical button styles */
+.motion-gradient-button {
+  contain: layout style;
+  will-change: transform, box-shadow;
+}
+
+/* Optimize text rendering */
+.text-rendering-optimized {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce paint complexity */
+.backdrop-blur-optimized {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Optimize scroll performance */
+.scroll-optimized {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce repaints */
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}

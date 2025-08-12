@@ -1,0 +1,1009 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================== TAILWIND STYLES */
+@layer base {
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+  }
+
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+  }
+
+  @property --gb-color-1 {
+    syntax: '<color>';
+    initial-value: #000;
+    inherits: false;
+  }
+
+  @property --gb-color-2 {
+    syntax: '<color>';
+    initial-value: #08012c;
+    inherits: false;
+  }
+
+  @property --gb-color-3 {
+    syntax: '<color>';
+    initial-value: #4e1e40;
+    inherits: false;
+  }
+
+  @property --gb-color-4 {
+    syntax: '<color>';
+    initial-value: #70464e;
+    inherits: false;
+  }
+
+  @property --gb-color-5 {
+    syntax: '<color>';
+    initial-value: #88394c;
+    inherits: false;
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+  }
+
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 60%, 0.2);
+    inherits: true;
+  }
+
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(340, 75%, 40%, 0.75);
+    inherits: true;
+  }
+
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+  }
+
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+  }
+
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+  }
+
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+  }
+
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+  }
+  /* --- RAINBOW BUTTON COLORS --- */
+  :root {
+    /* These are used by the GradientText component */
+    --color-1: 330 100% 40%; /* Dark Neon Pink */
+    --color-2: 140 100% 55%; /* Bright Electric Green */
+    --color-3: 210 100% 30%; /* Deep Neon Blue */
+    --color-4: 60 100% 70%; /* Light Neon Yellow */
+    --color-5: 295 100% 45%; /* Dark Neon Purple */
+    --color-11: 210 80% 60%; /* Example: A vibrant blue hue, saturation, lightness */
+    --color-22: 180 70% 50%; /* Example: A teal/cyan */
+    --color-33: 30 90% 65%;  /* Example: A warm orange/gold for icons/accents */
+    --brand: 50 100% 50%; /* Bright, punchy yellow */
+    /* Define --color-4 and --color-5 if used */
+  }
+  
+  .dark {
+    --color-1: 330 100% 40%; /* Dark Neon Pink */
+    --color-2: 140 100% 55%; /* Bright Electric Green */
+    --color-3: 210 100% 30%; /* Deep Neon Blue */
+    --color-4: 60 100% 70%; /* Light Neon Yellow */
+    --color-5: 295 100% 45%; /* Dark Neon Purple */
+    --brand: 50 100% 50%; /* Bright, punchy yellow */
+  }
+  
+  /* --- MERIENDA FONT FOR TITLES --- */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-merienda);
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  /* --- UPDATED STYLES TO ENABLE PROPER SCROLL BEHAVIOR --- */
+  html {
+    /* Enable smooth scrolling for better user experience */
+    scroll-behavior: smooth;
+    /* For Firefox - allow scrollbar but make it thin */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(224, 185, 124, 0.3) rgba(28, 8, 0, 0.1);
+    /* For IE and older Edge */
+    -ms-overflow-style: scrollbar;
+  }
+  
+  body {
+    /* Ensure proper scroll behavior */
+    overflow-x: hidden; /* Only hide horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(224, 185, 124, 0.3) rgba(28, 8, 0, 0.1);
+  }
+
+  /* For WebKit browsers (Chrome, Safari, newer Edge) - Custom styled scrollbar */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: rgba(28, 8, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background: rgba(224, 185, 124, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover {
+    background: rgba(224, 185, 124, 0.5);
+  }
+  /* --- END OF UPDATED STYLES --- */
+
+  /* Original .remove-scrollbar class definition */
+  .remove-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    border-radius: 0px;
+    /* display: none; /* You can add this for consistency if this class is used */
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 0px;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+  
+  /* If you want .remove-scrollbar to be fully cross-browser for specific elements: */
+  /*
+  .remove-scrollbar {
+    scrollbar-width: none; // For Firefox
+    -ms-overflow-style: none; // For IE and older Edge
+  }
+  .remove-scrollbar::-webkit-scrollbar { // For Webkit, already defined above mostly
+    display: none;
+  }
+  */
+}
+
+@layer components {
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(
+      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+      var(--gb-color-1) var(--stop-1),
+      var(--gb-color-2) var(--stop-2),
+      var(--gb-color-3) var(--stop-3),
+      var(--gb-color-4) var(--stop-4),
+      var(--gb-color-5) var(--stop-5)
+    );
+    transition:
+      --pos-x 0.5s,
+      --pos-y 0.5s,
+      --spread-x 0.5s,
+      --spread-y 0.5s,
+      --gb-color-1 0.5s,
+      --gb-color-2 0.5s,
+      --gb-color-3 0.5s,
+      --gb-color-4 0.5s,
+      --gb-color-5 0.5s,
+      --border-angle 0.5s,
+      --border-color-1 0.5s,
+      --border-color-2 0.5s,
+      --stop-1 0.5s,
+      --stop-2 0.5s,
+      --stop-3 0.5s,
+      --stop-4 0.5s,
+      --stop-5 0.5s;
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle),
+      var(--border-color-1),
+      var(--border-color-2)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 91.51%;
+    --spread-x: 120.24%;
+    --spread-y: 103.18%;
+    --gb-color-1: #c96287;
+    --gb-color-2: #c66c64;
+    --gb-color-3: #cc7d23;
+    --gb-color-4: #37140a;
+    --gb-color-5: #b44407;
+    --border-angle: 190deg;
+    --border-color-1: hsla(340, 78%, 90%, 0.1);
+    --border-color-2: hsla(340, 75%, 90%, 0.6);
+    --stop-1: 0%;
+    --stop-2: 8.8%;
+    --stop-3: 21.44%;
+    --stop-4: 71.34%;
+    --stop-5: 85.76%;
+  }
+
+  .gradient-button-variant {
+    --gb-color-1: #F57A08;
+    --gb-color-2: #E8400C;
+    --gb-color-3: #C81E08;
+    --gb-color-4: #f8fafc;
+    --border-angle: 120deg;
+    --border-color-1: hsla(24, 100%, 50%, 0.8);
+    --border-color-2: hsla(19, 94%, 47%, 0.889);
+  }
+
+  .gradient-button-variant:hover {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --gb-color-1: #8B2200;
+    --gb-color-2: #A22800;
+    --gb-color-3: #8B2200;
+    --gb-color-4: #A22800;
+    --gb-color-5: #7A1F00;
+    --stop-1: 0%;
+    --stop-2: 8.8%;
+    --stop-3: 21.44%;
+    --stop-4: 75.34%;
+    --stop-5: 95.76%;
+    --border-angle: 210deg;
+    --border-color-1: hsla(16, 100%, 50%, 0.6);
+    --border-color-2: hsla(24, 100%, 50%, 0.9);
+  }
+
+  .gradient-button-golden-hour {
+    --gb-color-1: #C0A772; /* Lighter Rich Gold */
+    --gb-color-2: #B89D62; /* Rich Gold */
+    --gb-color-3: #AF9358; /* Darker Rich Gold */
+    --gb-color-4: #B89D62; /* Rich Gold */
+    --gb-color-5: #C0A772; /* Lighter Rich Gold */
+
+    --border-color-1: #88856A; /* Sage Taupe */
+    --border-color-2: #88856A; /* Sage Taupe */
+  }
+
+  .gradient-button-golden-hour:hover {
+    --border-color-1: #F8F0E3; /* Light Champagne */
+    --border-color-2: #F8F0E3; /* Light Champagne */
+  }
+
+  /* Ignited Radiance Theme Button */
+  .gradient-button-ignited-radiance {
+    --gb-color-1: #C9A050; /* Dark Yellow */
+    --gb-color-2: #F57A08; /* Orange */
+    --gb-color-3: #FCCF14; /* Yellow */
+    --gb-color-4: #FDB110; /* Dark Yellow */
+    --gb-color-5: #A17930; /* Orange */
+
+    /* Adjust stops for a pleasing gradient flow */
+    --stop-1: 0%;
+    --stop-2: 30%;
+    --stop-3: 60%;
+    --stop-4: 85%;
+    --stop-5: 100%;
+
+    --border-angle: 135deg;
+    --border-color-1: hsla(39, 98%, 53%, 0.5); /* Dark Yellow with alpha */
+    --border-color-2: hsla(45, 91%, 49%, 0.926); /* Orange with alpha */
+  }
+
+  .gradient-button-ignited-radiance:hover {
+    --gb-color-1: #F57A08; /* Orange */
+    --gb-color-2: #E8400C; /* Red */
+    --gb-color-3: #FDB110; /* Dark Yellow */
+    --gb-color-4: #F57A08; /* Orange */
+    --gb-color-5: #E8400C; /* Red */
+    
+    --border-angle: 160deg;
+    --border-color-1: hsla(27, 91%, 50%, 0.7); /* Orange with alpha */
+    --border-color-2: hsla(13, 82%, 48%, 0.5); /* Red with alpha */
+  }
+}
+
+@layer utilities {
+  /* Testimonial fadeInUp animation */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Pulse animation for decorative elements */
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  
+  /* Shimmer animation for divider */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+  
+  /* Testimonial hover effect */
+  .testimonial-hover:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+
+  /* Card Border Glow Properties for Signature Treatments */
+  @property --color-border-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  @property --color-glow-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  @property --color-inner-glow-start {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+  
+  .signature-treatment-card-group:hover .card-border-glow,
+  .signature-treatment-card-group:focus-within .card-border-glow {
+    --color-border-start: theme('colors.accent-orange.DEFAULT / 50%');
+    --color-glow-start: theme('colors.accent-red.DEFAULT / 30%');
+    --color-inner-glow-start: theme('colors.accent-yellow-dark.DEFAULT / 20%');
+    transition: --color-border-start 0.5s, --color-glow-start 0.5s, --color-inner-glow-start 0.5s;
+  }
+  
+  /* ===== UTILITIES */
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Luxury Navbar Animation Classes */
+  .animate-shimmer {
+    animation: shimmer 21s ease-in-out infinite;
+  }
+  
+  .bg-size-200 {
+    background-size: 200% 100%;
+  }
+  
+  .bg-pos-0 {
+    background-position: 200% 0;
+  }
+  
+  .bg-pos-100 {
+    background-position: -200% 0;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    50% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .sidebar {
+    @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
+  }
+
+  .left-sidebar {
+    @apply hidden lg:flex;
+  }
+
+  .right-sidebar {
+    @apply hidden xl:flex;
+  }
+
+  .clip-text {
+    @apply bg-clip-text text-transparent;
+  }
+
+  .bg-image {
+    @apply bg-black-900 bg-light-rays bg-cover bg-no-repeat;
+  }
+
+  .header {
+    @apply text-32-bold md:text-36-bold font-merienda;
+  }
+
+  .sub-header {
+    @apply text-18-bold md:text-24-bold font-merienda;
+  }
+  
+  /* Merienda font utility classes */
+  .font-merienda {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  .merienda-title {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merienda-light {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .merienda-regular {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .merienda-medium {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .merienda-bold {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merienda-black {
+    font-family: var(--font-merienda), cursive;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  /* Cinzel Decorative font classes */
+  .cinzel-decorative-regular {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .cinzel-decorative-bold {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .cinzel-decorative-black {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  /* Cormorant Garamond font classes */
+  .cormorant-garamond {
+    font-family: var(--font-cormorant-garamond), serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+  .font-racing-sans-one {
+    font-family: var(--font-racing-sans-one), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Golden Hour Glow Palette Utilities */
+  .bg-golden-shimmer {
+    background-image: linear-gradient(90deg, #B89D62, #F8F0E3, #FFD700, #B89D62);
+  }
+
+  .text-golden-shimmer {
+    background: linear-gradient(90deg, #B89D62, #F8F0E3, #FFD700, #B89D62);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
+  .bg-warm-radial {
+    background-image: radial-gradient(circle, rgba(248, 240, 227, 0) 0%, #C9B98F 100%); /* transparent Light Champagne to Richer Champagne/Warm Beige */
+  }
+  /* End Golden Hour Glow Palette Utilities */
+
+  .container {
+    @apply relative flex-1 overflow-y-auto px-[5%]; /* This has overflow-y-auto. If applied to body or html, it could be a source. */
+  }                                                  /* However, based on your HeroSection code, it's used for internal content blocks. */
+
+  .sub-container {
+    @apply mx-auto flex size-full flex-col py-10;
+  }
+
+  .side-img {
+    @apply hidden h-full object-cover md:block;
+  }
+
+  .copyright {
+    @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
+  }
+
+  /* ==== SUCCESS */
+  .success-img {
+    @apply m-auto flex flex-1 flex-col items-center justify-between gap-10 py-10;
+  }
+
+  .request-details {
+    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md:w-fit md:flex-row;
+  }
+
+  /* ===== ADMIN */
+  .admin-header {
+    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
+  }
+
+  .admin-main {
+    @apply flex flex-col items-center space-y-6 px-[5%] pb-12 xl:space-y-12 xl:px-12;
+  }
+
+  .admin-stat {
+    @apply flex w-full flex-col justify-between gap-5 sm:flex-row xl:gap-10;
+  }
+
+  /* ==== FORM */
+  .radio-group {
+    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+  }
+
+  .checkbox-label {
+    @apply cursor-pointer text-sm font-medium text-gray-800 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+  }
+
+  /* ==== File Upload */
+  .file-upload {
+    @apply text-12-regular flex cursor-pointer  flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
+  }
+
+  .file-upload_label {
+    @apply flex flex-col justify-center gap-2 text-center text-dark-600;
+  }
+
+  /* ==== Stat Card */
+  .stat-card {
+    @apply flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg;
+  }
+
+  /* ==== Status Badge */
+  .status-badge {
+    @apply flex w-fit items-center gap-2 rounded-full px-4 py-2;
+  }
+
+  /* Data Table */
+  .data-table {
+    @apply z-10 w-full overflow-hidden rounded-lg border border-dark-400 shadow-lg;
+  }
+
+  .table-actions {
+    @apply flex w-full items-center justify-between space-x-2 p-4;
+  }
+
+  /* ===== ALIGNMENTS */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* ===== TYPOGRAPHY */
+  .text-36-bold {
+    @apply text-[36px] leading-[40px] font-bold font-merienda;
+  }
+
+  .text-24-bold {
+    @apply text-[24px] leading-[28px] font-bold;
+  }
+
+  .text-32-bold {
+    @apply text-[32px] leading-[36px] font-bold;
+  }
+
+  .text-18-bold {
+    @apply text-[18px] leading-[24px] font-bold;
+  }
+
+  .text-16-semibold {
+    @apply text-[16px] leading-[20px] font-semibold;
+  }
+
+  .text-16-regular {
+    @apply text-[16px] leading-[20px] font-normal;
+  }
+
+  .text-14-medium {
+    @apply text-[14px] leading-[18px] font-medium;
+  }
+
+  .text-14-regular {
+    @apply text-[14px] leading-[18px] font-normal;
+  }
+
+  .text-12-regular {
+    @apply text-[12px] leading-[16px] font-normal;
+  }
+
+  .text-12-semibold {
+    @apply text-[12px] leading-[16px] font-semibold;
+  }
+
+  /* =====  SHADCN OVERRIDES */
+  .shad-primary-btn {
+    @apply bg-green-500 text-white !important;
+  }
+
+  .shad-danger-btn {
+    @apply bg-red-700 text-white !important;
+  }
+
+  .shad-gray-btn {
+    @apply border border-dark-500 cursor-pointer bg-dark-400 text-white !important;
+  }
+
+  .shad-input-label {
+    @apply text-14-medium text-dark-700 !important;
+  }
+
+  .shad-input {
+    @apply bg-dark-400 placeholder:text-dark-600 text-slate-800 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-input-icon {
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-textArea {
+    @apply bg-dark-400 placeholder:text-dark-600 text-slate-800 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-combobox-item {
+    @apply data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 !important;
+  }
+
+  .shad-combobox-trigger {
+    @apply h-11 !important;
+  }
+
+  .shad-select-trigger {
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
+  }
+
+  .shad-select-content {
+    @apply bg-dark-400 border-dark-500 !important;
+  }
+
+  .shad-dialog {
+    @apply bg-dark-400 border-dark-500 !important;
+  }
+
+  .shad-dialog button {
+    @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+
+  .shad-error {
+    @apply text-red-400 !important;
+  }
+
+  .shad-table {
+    @apply rounded-lg overflow-hidden !important;
+  }
+
+  .shad-table-row-header {
+    @apply border-b border-dark-400 text-light-200 hover:bg-transparent !important;
+  }
+
+  .shad-table-row {
+    @apply border-b border-dark-400 text-light-200 !important;
+  }
+
+  .shad-otp {
+    @apply w-full flex justify-between !important;
+  }
+
+  .shad-otp-slot {
+    @apply text-36-bold justify-center flex border border-dark-500 rounded-lg size-16 gap-4 !important;
+  }
+
+  .shad-alert-dialog {
+    @apply space-y-5 bg-dark-400 border-dark-500 outline-none !important;
+  }
+
+  .shad-sheet-content button {
+    @apply top-2 focus:ring-0 focus:ring-offset-0 focus-visible:border-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+
+  /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
+  .input-phone {
+    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-slate-100 border-dark-500 !important;
+  }
+
+  /* =====  PHONE INPUT CUSTOM PROPERTIES FOR IGNITED RADIANCE THEME */
+  :root {
+    /* Country select dropdown arrow colors */
+    --PhoneInputCountrySelectArrow-color: #0665fc; /* Secondary text color for normal state */
+    --PhoneInputCountrySelectArrow-opacity: 0.8; /* Arrow opacity when not focused */
+    --PhoneInput-color--focus: #FDB110; /* Primary accent color when focused */
+    
+    /* Country flag styling */
+    --PhoneInputCountryFlag-height: 1.2em;
+    --PhoneInputCountryFlag-borderColor: #E0E0E0;
+    --PhoneInputCountryFlag-aspectRatio: 1.5;
+  }
+
+  /* Phone input container styling for light theme */
+  .PhoneInput {
+    background: #FCFBF8 !important; /* Site background */
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 0.375rem !important;
+    color: #2b2828 !important; /* Primary text color */
+  }
+
+  .PhoneInput--focus {
+    border-color: #FDB110 !important; /* Primary accent when focused */
+    box-shadow: 0 0 0 1px #FDB110 !important;
+  }
+
+  /* Country select button styling */
+  .PhoneInputCountrySelect {
+    background: transparent !important;
+    border: none !important;
+    color: #eeecec !important;
+  }
+
+  .PhoneInputCountrySelect:focus {
+    outline: none !important;
+    background: rgba(249, 249, 249, 0.1) !important; /* Subtle accent background on focus */
+  }
+
+  /* SPECIFIC ARROW COLOR FIXES */
+  .PhoneInputCountrySelectArrow {
+    color: #0665fc !important;
+    opacity: 0.8 !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelectArrow {
+    color: #FDB110 !important;
+    opacity: 1 !important;
+  }
+
+  /* Additional specific selectors for arrow elements */
+  .PhoneInputCountrySelect button::after,
+  .PhoneInputCountrySelect > button::after,
+  .PhoneInputCountrySelect [role="button"]::after {
+    border-top-color: #0665fc !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelect button::after,
+  .PhoneInput--focus .PhoneInputCountrySelect > button::after,
+  .PhoneInput--focus .PhoneInputCountrySelect [role="button"]::after {
+    border-top-color: #FDB110 !important;
+  }
+
+  /* SVG arrow elements */
+  .PhoneInputCountrySelect svg,
+  .PhoneInputCountrySelectArrow svg {
+    fill: #0665fc !important;
+    color: #0665fc !important;
+  }
+
+  .PhoneInput--focus .PhoneInputCountrySelect svg,
+  .PhoneInput--focus .PhoneInputCountrySelectArrow svg {
+    fill: #FDB110 !important;
+    color: #FDB110 !important;
+  }
+
+  /* Ensure custom properties work in all contexts */
+  .PhoneInput,
+  .PhoneInput * {
+    --PhoneInputCountrySelectArrow-color: #0665fc !important;
+    --PhoneInputCountrySelectArrow-opacity: 0.8 !important;
+  }
+
+  .PhoneInput--focus,
+  .PhoneInput--focus * {
+    --PhoneInputCountrySelectArrow-color: #FDB110 !important;
+    --PhoneInputCountrySelectArrow-opacity: 1 !important;
+  }
+
+  /* =====  REACT DATE PICKER OVERRIDES */
+  .date-picker {
+    @apply overflow-hidden border-transparent w-full placeholder:text-dark-600  h-11 text-14-medium rounded-md px-3 outline-none !important;
+  }
+}
+
+/* =====  REACT-DATEPICKER OVERRIDES */
+.react-datepicker-wrapper.date-picker {
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker,
+.react-datepicker__time,
+.react-datepicker__header,
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker-time__header {
+  background-color: #1a1d21 !important;
+  border-color: #363a3d !important;
+  color: #abb8c4 !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker-time__header {
+  color: #ffffff !important;
+}
+
+.react-datepicker__triangle {
+  fill: #1a1d21 !important;
+  color: #1a1d21 !important;
+  stroke: #1a1d21 !important;
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: #363a3d !important;
+}
+
+.react-datepicker__input-container input {
+  background-color: #1a1d21 !important;
+  width: 100%;
+  outline: none;
+}
+
+.react-datepicker__day--selected {
+  background-color: #24ae7c !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #24ae7c !important;
+}
+
+.react-datepicker__time-container {
+  border-left: 1px solid #363a3d !important;
+}
+
+.react-datepicker__time-list-item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* =====  REACT PHONE NUMBER INPUT OVERRIDES */
+.PhoneInputInput {
+  outline: none;
+  margin-left: 4px;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3A3A3A;
+}
+
+.PhoneInputInput::placeholder {
+  color: #3A3A3A;
+}
+
+
+/* The tailwind.config.js content should be in its separate file, not here. */
+
+/* --- HERO GRADIENT MASK UTILITY --- */
+.hero-gradient-mask {
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.hero-gradient-mask-variant {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* Copied from ProjectB for background effects */
+.blue__gradient {
+  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  filter: blur(123px);
+}
+
+.pink__gradient {
+  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  filter: blur(900px);
+}
+
+.white__gradient {
+  background: rgba(255, 255, 255, 0.6);
+  filter: blur(750px);
+}
+/* The tailwind.config.js content should be in its separate file, not here. */

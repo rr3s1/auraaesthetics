@@ -1,0 +1,98 @@
+.footerCtaSection {
+  background-color: #1f2937; /* Dark background for footer */
+  color: #f9fafb; /* Light text color */
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footerCtaSection h2 {
+  font-size: 2em;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.subText {
+  font-size: 1.1em;
+  color: #d1d5db; /* Lighter gray for subtext */
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  border-radius: 6px;
+  font-weight: 600;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  border: 1px solid transparent; /* Base border */
+}
+
+.btnRegister {
+  background-color: #3b82f6; /* Primary blue */
+  color: white;
+}
+
+.btnRegister:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btnBook {
+  background-color: #10b981; /* Green for booking */
+  color: white;
+}
+
+.btnBook:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
+.footerLinks {
+  margin-bottom: 20px;
+}
+
+.footerLinks a {
+  color: #9ca3af; /* Mid-gray for links */
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #e5e7eb; /* Lighter gray on hover */
+  text-decoration: underline;
+}
+
+.linkSeparator {
+  margin: 0 10px;
+  color: #4b5563; /* Darker separator */
+}
+
+.copyright {
+  font-size: 0.85em;
+  color: #9ca3af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footerCtaSection h2 {
+    font-size: 1.7em;
+  }
+  .subText {
+    font-size: 1em;
+  }
+}

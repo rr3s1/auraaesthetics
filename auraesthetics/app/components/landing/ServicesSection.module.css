@@ -1,0 +1,68 @@
+.servicesSection {
+  padding: 50px 20px;
+  background-color: #ffffff; /* White background for this section */
+  text-align: center;
+}
+
+.servicesSection h2 {
+  font-size: 2.2em;
+  color: #1f2937; /* Dark gray for heading */
+  margin-bottom: 40px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Responsive grid */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  background-color: #f9fafb; /* Very light gray for card background */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.iconPlaceholder {
+  font-size: 2.5em; /* Make icon placeholder larger */
+  margin-bottom: 15px;
+  color: #3b82f6; /* Primary blue for icons */
+}
+
+.featureCard h3 {
+  font-size: 1.4em;
+  color: #111827; /* Darker text for title */
+  margin-bottom: 10px;
+}
+
+.featureCard p {
+  font-size: 0.95em;
+  color: #4b5563; /* Softer gray for description */
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .servicesSection h2 {
+    font-size: 1.8em;
+  }
+  .featureCard h3 {
+    font-size: 1.2em;
+  }
+  .featuresGrid {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+  }
+}

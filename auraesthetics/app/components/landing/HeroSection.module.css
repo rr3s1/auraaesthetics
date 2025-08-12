@@ -1,0 +1,91 @@
+.hero {
+  background-color: #e0f2fe; /* Light blue, calming color */
+  /* Placeholder for background image: e.g., background-image: url('/path/to/hero-image.jpg'); */
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 400px; /* Ensure it has some height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroContent {
+  max-width: 700px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Slight overlay for text readability if bg image is busy */
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.headline {
+  font-size: 2.8em; /* Responsive font size */
+  color: #0c4a6e; /* Darker blue for headline */
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+
+.introText {
+  font-size: 1.1em;
+  color: #374151; /* Neutral dark gray */
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1em;
+  border-radius: 6px;
+  font-weight: 600;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.btnRegister {
+  background-color: #3b82f6; /* Primary blue */
+  color: white;
+}
+
+.btnRegister:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btnBook {
+  background-color: #10b981; /* Green for booking */
+  color: white;
+}
+
+.btnBook:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+}
+
+/* Basic responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2.2em;
+  }
+  .introText {
+    font-size: 1em;
+  }
+  .hero {
+    padding: 40px 15px;
+  }
+  .heroContent {
+    padding: 20px;
+  }
+} 

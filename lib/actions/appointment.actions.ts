@@ -97,6 +97,21 @@ export const getRecentAppointmentList = async () => {
       "An error occurred while retrieving the recent appointments:",
       error,
     );
+    // Return default structure when error occurs (e.g., during build time or when Appwrite is unavailable)
+    const defaultData = {
+      totalCount: 0,
+      scheduledCount: 0,
+      pendingCount: 0,
+      cancelledCount: 0,
+      documents: [],
+    };
+    try {
+      return parseStringify(defaultData);
+    } catch (parseError) {
+      // If parseStringify fails, return the object directly
+      console.error("Error in parseStringify:", parseError);
+      return defaultData;
+    }
   }
 };
 
